@@ -16,23 +16,41 @@
 #
 import webapp2
 import logging
+import jinja2
+import os
 
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-    	logging.info('in main handler logging')
-    	print 'in main handler print'
-        self.response.write('Main page.')
+# Sets jinja's relative directory to match the directory name (dirname) of the current __file__, in this case, main.py
+jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+
+
+class HomeHandler(webapp2.RequestHandler):
+	def get(self):
+		home_template = jinja_environment.get_template('templates/home.html')
+		logging.info('in main handler logging')
+		self.response.write(home_template.render())
 
 class ShopHandler(webapp2.RequestHandler):
 	def get(self):
-		self.response.write('Shop page.')
+		print "hello"
+		shop_template = jinja_environment.get_template('templates/shop.html')
+		logging.info('in shop handler logging')
+		self.response.write(shop_template.render())
 
 class WhoWoreWhatHandler(webapp2.RequestHandler):
 	def get(self):
-		self.response.write('Who Wore What page.')
+		whoworewhat_template = jinja_environment.get_template('templates/whoworewhat.html')
+		logging.info('in who wore what handler logging')
+		self.response.write(whoworewhat_template.render())
+
+class StyleGuidesHandler(webapp2.RequestHandler):
+	def get(self):
+		styleguides_template = jinja_environment.get_template('templates/styleguides.html')
+		logging.info('in style guides handler logging')
+		self.response.write(styleguides_template.render())
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
     ('/shop', ShopHandler),
-    ('/whoworewhat', WhoWoreWhatHandler)
+    ('/whoworewhat', WhoWoreWhatHandler),
+    ('/styleguides', StyleGuidesHandler),
+    ('/.*', HomeHandler)
 ], debug=True)
