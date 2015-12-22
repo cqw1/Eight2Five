@@ -4,29 +4,31 @@ h1 {
 
 body {
 	font-family: Arial, Helvetica, sans-serif;
+	margin: 20px;
 }
 
-ul {
+#nav-container ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
 	background-color: #333;
+	text-align: center;
 }
 
-li {
-	float: left;
+#nav-container ul li {
+	display: inline;
 }
 
-li a {
-	display: block;
+#nav-container ul li a {
+	display: inline-block;
 	color: white;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
 }
 
-li a:hover {
+#nav-container ul li a:hover {
 	background-color: #111;
 }
 
