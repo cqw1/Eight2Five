@@ -39,19 +39,41 @@ class ShopHandler(webapp2.RequestHandler):
 
 class WhoWoreWhatHandler(webapp2.RequestHandler):
 	def get(self):
-		whoworewhat_template = jinja_environment.get_template('templates/whoworewhat.html')
+		who_wore_what_template = jinja_environment.get_template('templates/who_wore_what.html')
 		logging.info('in who wore what handler logging')
-		self.response.write(whoworewhat_template.render())
+		self.response.write(who_wore_what_template.render())
 
 class StyleGuidesHandler(webapp2.RequestHandler):
 	def get(self):
-		styleguides_template = jinja_environment.get_template('templates/styleguides.html')
+		style_guides_template = jinja_environment.get_template('templates/style_guides.html')
 		logging.info('in style guides handler logging')
-		self.response.write(styleguides_template.render())
+		self.response.write(style_guides_template.render())
+
+class SmartCasualHandler(webapp2.RequestHandler):
+	def get(self):
+		smart_casual_template = jinja_environment.get_template('templates/smart_casual.html')
+		logging.info('in smart casual handler logging')
+		self.response.write(smart_casual_template.render())
+
+class BusinessCasualHandler(webapp2.RequestHandler):
+	def get(self):
+		business_casual_template = jinja_environment.get_template('templates/business_casual.html')
+		logging.info('in business casual handler logging')
+		self.response.write(business_casual_template.render())
+
+class BusinessFormalHandler(webapp2.RequestHandler):
+	def get(self):
+		business_formal_template = jinja_environment.get_template('templates/business_formal.html')
+		logging.info('in business formal handler logging')
+		self.response.write(business_formal_template.render())
+
 
 app = webapp2.WSGIApplication([
     ('/shop', ShopHandler),
     ('/whoworewhat', WhoWoreWhatHandler),
+    ('/styleguides/smartcasual', SmartCasualHandler),
+    ('/styleguides/businesscasual', BusinessCasualHandler),
+    ('/styleguides/businessformal', BusinessFormalHandler),
     ('/styleguides', StyleGuidesHandler),
     ('/.*', HomeHandler)
 ], debug=True)
