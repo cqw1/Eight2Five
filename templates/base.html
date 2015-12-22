@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Main Page</title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+  	{% block head %} 
+    <link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+    <title>{% block title %}{% endblock %}</title>
+    {% endblock %}
   </head>
   <body>
-    <div id="navcontainer">
+    <div id="nav-container">
     	<ul>
     		<li><a href="home">Home</a></li>
     		<li><a href="whoworewhat">Who Wore What</a></li>
@@ -13,7 +15,7 @@
     		<li><a href="shop">Shop</a></li>
     	</ul>
     </div>
-    <h1>Main Page.</h1>
-    <h2>End Main Page.</h2>
+
+    <div id="content">{% block content %}{% endblock %}</div>
   </body>
 </html>
