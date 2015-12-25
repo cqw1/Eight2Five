@@ -1,0 +1,32 @@
+{% extends "templates/base.html" %}
+
+{% block title %}Style Guides Industry{% endblock %}
+
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+{% block content %}
+   <h1>{{industry}} Page.</h1>
+
+  <div id="path-links">
+    <a href="/styleguides" class="button">Style Guides</a>
+    &gt;
+   {{industry}} 
+  </div>
+
+<!--     <div id="filter-by-container">
+      Filter by
+      <select name="industry-select" id="industry-select">
+        {% for industry in industries %}
+          <option value={{industry}}>{{industries[industry]}}</option>
+        {% endfor %}
+        <option value="hello">hello</option>
+      </select>
+
+      <button onclick="selectIndustry()">Select Industry</button>
+
+    </div>
+ -->
+    <h2>End Industry Page.</h2>
+{% endblock %}

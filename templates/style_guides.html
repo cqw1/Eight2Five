@@ -1,10 +1,11 @@
 {% extends "templates/base.html" %}
 
-{% block title %}Style GuidesPage{% endblock %}
+{% block title %}Style Guides{% endblock %}
 
 {% block head %}
   {{ super() }}
-  <script src="/javascript/styleguides.js"></script>
+  <script src="/javascript/style_guides.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style_guides.css">
 {% endblock %}
 
 {% block content %}
@@ -14,9 +15,8 @@
       Filter by
       <select name="industry-select" id="industry-select">
         {% for industry in industries %}
-          <option value={{industry}}>{{industries[industry]}}</option>
+          <option value={{industry['value']}}>{{industry['display']}}</option>
         {% endfor %}
-        <option value="hello">hello</option>
       </select>
 
       <button onclick="selectIndustry()">Select Industry</button>
@@ -24,9 +24,17 @@
     </div>
 
     <div id="style-guides-choices">
-      <a href="/styleguides/smartcasual" class="button">Smart Casual</a>
-      <a href="/styleguides/businesscasual" class="button">Business Casual</a>
-      <a href="/styleguides/businessformal" class="button">Business Formal</a>
+      <span class="style-image">
+        <a href="/styleguides/smartcasual"><img border="1" title="Smart Casual" alt="Smart Casual" src="/images/smartcasual.png" width="30%"></a>
+      </span>
+
+      <span class="style-image">
+        <a href="/styleguides/businesscasual"><img border="1" title="Business Casual" alt="Business Casual" src="/images/businesscasual.png" width="30%"></a>
+      </span>
+
+      <span class="style-image">
+        <a href="/styleguides/businessformal"><img border="1" title="Business Formal" alt="Business Formal" src="/images/businessformal.png" width="30%"></a>
+      </span>
     </div>
 
     <h2>End Style Guides Page.</h2>

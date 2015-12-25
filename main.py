@@ -42,12 +42,6 @@ class WhoWoreWhatHandler(webapp2.RequestHandler):
 		logging.info('in who wore what handler logging')
 		self.response.write(who_wore_what_template.render())
 
-class StyleGuidesHandler(webapp2.RequestHandler):
-	def get(self):
-		style_guides_template = jinja_environment.get_template('templates/style_guides.html')
-		logging.info('in style guides handler logging')
-		self.response.write(style_guides_template.render())
-
 class SmartCasualHandler(webapp2.RequestHandler):
 	def get(self):
 		smart_casual_template = jinja_environment.get_template('templates/smart_casual.html')
@@ -66,41 +60,51 @@ class BusinessFormalHandler(webapp2.RequestHandler):
 		logging.info('in business formal handler logging')
 		self.response.write(business_formal_template.render())
 
-class StyleGuidesKeyWordsHandler(webapp2.RequestHandler):
+class StyleGuidesIndustryHandler(webapp2.RequestHandler):
 	def get(self):
-		# Dictionary of 'select value': 'display name' of an industry.
-		industries = {'industry1': 'Industry 1', 'industry2': 'Industry 2', 'industry3': 'Industry 3'}
-		logging.info('created industries list')
 		try: 
-			style = self.request.get('style')
 			industry = self.request.get('industry')
 
-			logging.info('url arg style: ' + style)
 			logging.info('url arg industry: ' + industry)
 
-			if style == 'businessformal':
-				business_formal_template = jinja_environment.get_template('templates/business_formal.html')
-				logging.info('in business formal handler logging')
-				self.response.write(business_formal_template.render())
+			# Check if it's a valid industry.
+			if industry == '':
+				print "hello"
 
 			else:
 				# Display normal style guides page.
-				style_guides_template = jinja_environment.get_template('templates/style_guides.html')
-				logging.info('in style guides handler logging')
-				self.response.write(style_guides_template.render({'industries': industries}))
+				industry_template = jinja_environment.get_template('templates/industry.html')
+				logging.info('in industry handler logging')
+				self.response.write(industry_template.render({'industry': industry}))
 
 		except(TypeError, ValueError):
-			self.response.write('<html><body><p>Invalid Style Guides URL. Try something like "/styleguides?style=&industry="</p></body></html>')
+			self.response.write('<html><body><p>Invalid industry."</p></body></html>')
+
+
+class StyleGuidesHandler(webapp2.RequestHandler):
+	def get(self):
+		# Dictionary of 'select value': 'display name' of an industry.
+		industries = [
+						{'value': 'industry1', 'display': 'Industry 1'}, 
+						{'value': 'industry2', 'display': 'Industry 2'}, 
+						{'value': 'industry3', 'display': 'Industry 3'}
+					]
+		logging.info('created industries list')
+
+		style_guides_template = jinja_environment.get_template('templates/style_guides.html')
+		logging.info('in style guides handler logging')
+		self.response.write(style_guides_template.render({'industries': industries}))
 
 
 
 app = webapp2.WSGIApplication([
-    ('/shop', ShopHandler),
-    ('/whoworewhat', WhoWoreWhatHandler),
-    ('/styleguides.*', StyleGuidesKeyWordsHandler),
-    # ('/styleguides/smartcasual', SmartCasualHandler),
-    # ('/styleguides/businesscasual', BusinessCasualHandler),
-    # ('/styleguides/businessformal', BusinessFormalHandler),
-    ('/styleguides', StyleGuidesHandler),
+    ('/shop.*', ShopHandler),
+    ('/whoworewhat.*', WhoWoreWhatHandler),
+    ('/styleguides/smartcasual.*', SmartCasualHandler),
+    ('/styleguides/businesscasual.*', BusinessCasualHandler),
+    ('/styleguides/businessformal.*', BusinessFormalHandler),
+    ('/styleguides/industry.*', StyleGuidesIndustryHandler),
+    ('/styleguides.*', StyleGuidesHandler),
+    # ('/styleguides', StyleGuidesHandler),
     ('/.*', HomeHandler)
 ], debug=True)
