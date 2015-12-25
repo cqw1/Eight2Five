@@ -32,7 +32,6 @@ class HomeHandler(webapp2.RequestHandler):
 
 class ShopHandler(webapp2.RequestHandler):
 	def get(self):
-		print "hello"
 		shop_template = jinja_environment.get_template('templates/shop.html')
 		logging.info('in shop handler logging')
 		self.response.write(shop_template.render())
@@ -67,13 +66,40 @@ class BusinessFormalHandler(webapp2.RequestHandler):
 		logging.info('in business formal handler logging')
 		self.response.write(business_formal_template.render())
 
+class StyleGuidesKeyWordsHandler(webapp2.RequestHandler):
+	def get(self):
+		industries = ['Industry 1', 'Industry 2', 'Industry 3']
+		logging.info('created industries list')
+		try: 
+			style = self.request.get('style')
+			industry = self.request.get('industry')
+
+			logging.info('url arg style: ' + style)
+			logging.info('url arg industry: ' + industry)
+
+			if style == 'businessformal':
+				business_formal_template = jinja_environment.get_template('templates/business_formal.html')
+				logging.info('in business formal handler logging')
+				self.response.write(business_formal_template.render())
+
+			else:
+				# Display normal style guides page.
+				style_guides_template = jinja_environment.get_template('templates/style_guides.html')
+				logging.info('in style guides handler logging')
+				self.response.write(style_guides_template.render({'industries': industries}))
+
+		except(TypeError, ValueError):
+			self.response.write('<html><body><p>Invalid Style Guides URL. Try something like "/styleguides?style=&industry="</p></body></html>')
+
+
 
 app = webapp2.WSGIApplication([
     ('/shop', ShopHandler),
     ('/whoworewhat', WhoWoreWhatHandler),
-    ('/styleguides/smartcasual', SmartCasualHandler),
-    ('/styleguides/businesscasual', BusinessCasualHandler),
-    ('/styleguides/businessformal', BusinessFormalHandler),
+    ('/styleguides.*', StyleGuidesKeyWordsHandler),
+    # ('/styleguides/smartcasual', SmartCasualHandler),
+    # ('/styleguides/businesscasual', BusinessCasualHandler),
+    # ('/styleguides/businessformal', BusinessFormalHandler),
     ('/styleguides', StyleGuidesHandler),
     ('/.*', HomeHandler)
 ], debug=True)

@@ -4,6 +4,7 @@
 
 {% block head %}
   {{ super() }}
+  <script src="/javascript/styleguides.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -11,12 +12,22 @@
 
     <div id="filter-by-container">
       Filter by
-      <select name="filter-by-select">
-        <option value="industry1">Industry 1</option>
+      <select name="industry-select">
+<!--         <option value="industry1">Industry 1</option>
         <option value="industry2">Industry 2</option>
         <option value="industry3">Industry 3</option>
         <option value="industry4">Industry 4</option>
+ -->        
+        {% for industry in industries %}
+          <option value={{industry}}>{{industry}}</option>
+        {% endfor %}
       </select>
+
+      <form method="GET" action='/styleguides?'>
+        <input type="hidden" name="style" value="" />
+        <input type="hidden" name="industry" value="" />
+        <input type="submit" name="submit" value="industry-button" />
+      </form>
     </div>
 
     <div id="style-guides-choices">
