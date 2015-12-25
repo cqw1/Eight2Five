@@ -12,22 +12,15 @@
 
     <div id="filter-by-container">
       Filter by
-      <select name="industry-select">
-<!--         <option value="industry1">Industry 1</option>
-        <option value="industry2">Industry 2</option>
-        <option value="industry3">Industry 3</option>
-        <option value="industry4">Industry 4</option>
- -->        
+      <select name="industry-select" id="industry-select">
         {% for industry in industries %}
-          <option value={{industry}}>{{industry}}</option>
+          <option value={{industry}}>{{industries[industry]}}</option>
         {% endfor %}
+        <option value="hello">hello</option>
       </select>
 
-      <form method="GET" action='/styleguides?'>
-        <input type="hidden" name="style" value="" />
-        <input type="hidden" name="industry" value="" />
-        <input type="submit" name="submit" value="industry-button" />
-      </form>
+      <button onclick="selectIndustry()">Select Industry</button>
+
     </div>
 
     <div id="style-guides-choices">

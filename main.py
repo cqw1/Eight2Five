@@ -68,7 +68,8 @@ class BusinessFormalHandler(webapp2.RequestHandler):
 
 class StyleGuidesKeyWordsHandler(webapp2.RequestHandler):
 	def get(self):
-		industries = ['Industry 1', 'Industry 2', 'Industry 3']
+		# Dictionary of 'select value': 'display name' of an industry.
+		industries = {'industry1': 'Industry 1', 'industry2': 'Industry 2', 'industry3': 'Industry 3'}
 		logging.info('created industries list')
 		try: 
 			style = self.request.get('style')
