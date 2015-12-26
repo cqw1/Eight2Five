@@ -21,7 +21,13 @@ import os
 
 # Sets jinja's relative directory to match the directory name (dirname) of the current __file__, in this case, main.py
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
-# jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), 'templates')))
+
+# Dictionary of 'select value': 'display name' of an industry.
+industries = [
+				{'value': 'industry1', 'display': 'Industry 1'}, 
+				{'value': 'industry2', 'display': 'Industry 2'}, 
+				{'value': 'industry3', 'display': 'Industry 3'}
+			]
 
 
 class HomeHandler(webapp2.RequestHandler):
@@ -83,12 +89,6 @@ class StyleGuidesIndustryHandler(webapp2.RequestHandler):
 
 class StyleGuidesHandler(webapp2.RequestHandler):
 	def get(self):
-		# Dictionary of 'select value': 'display name' of an industry.
-		industries = [
-						{'value': 'industry1', 'display': 'Industry 1'}, 
-						{'value': 'industry2', 'display': 'Industry 2'}, 
-						{'value': 'industry3', 'display': 'Industry 3'}
-					]
 		logging.info('created industries list')
 
 		style_guides_template = jinja_environment.get_template('templates/style_guides.html')
