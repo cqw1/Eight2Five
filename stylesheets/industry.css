@@ -41,3 +41,18 @@
 #attire-content, #attire-category {
 	border-bottom: 1px solid #ddd;
 }
+
+.style-image-container {
+	position: relative;
+}
+
+.style-image {
+	height: 100%;
+}
+
+.shop-the-look-button {
+	position: absolute;
+	bottom: 5%;
+	left: 50%;
+	margin-left:-50px; /* width of button / 2 */
+}

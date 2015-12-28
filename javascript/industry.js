@@ -13,3 +13,7 @@ function selectIndustry() {
 
 	window.location.href='/styleguides/industry?industry=' + industry;
 }
+
+function shopTheLook() {
+	console.log('industry.js == shopTheLook function');
+}

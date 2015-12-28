@@ -40,10 +40,11 @@
         <th id="image-category" class="row-category"></th>
         {% for i in industry_data['style_data'] %}
           <td id="image-content" class="row-content">
-            <span class="style-image">
-              <img border="1" src={{i['image_src']}}>
+            <div class="style-image-container">
+              <img class="style-image" border="1" src={{i['image_src']}}>
+              <button class="shop-the-look-button" onclick="shopTheLook()">Shop the Look</button>
               <!-- Implement shop_link -->
-            </span>
+            </div>
           </td>
         {% endfor %}
       </tr>
