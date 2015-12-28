@@ -1,0 +1,43 @@
+#info-table-container {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+}
+
+#info-table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#info-table th {
+	text-align: left;
+	padding-right: 20px;
+}
+
+#info-table td {
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#info-table th, td {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#image-content, #image-category {
+	border-bottom: 1px solid #ddd;
+}
+
+#relevance-content, #relevance-category {
+	border-bottom: 1px solid #ddd;
+}
+
+#activities-content, #activities-category {
+	border-bottom: 1px solid #ddd;
+}
+
+#attire-content, #attire-category {
+	border-bottom: 1px solid #ddd;
+}

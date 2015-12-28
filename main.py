@@ -22,12 +22,77 @@ import os
 # Sets jinja's relative directory to match the directory name (dirname) of the current __file__, in this case, main.py
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
-# Dictionary of 'select value': 'display name' of an industry.
-industries = [
-				{'value': 'industry1', 'display': 'Industry 1'}, 
-				{'value': 'industry2', 'display': 'Industry 2'}, 
-				{'value': 'industry3', 'display': 'Industry 3'}
-			]
+# For the drop-down select so we don't have to send the whole industry_data over.
+industry_names = [
+	{'id': 'consulting', 'display': 'Consulting'},
+	{'id': 'industry2', 'display': 'Industry 2'}
+]
+
+# Contains all the info for the style guides > industry pages.
+industry_data = [
+	{
+		'id': 'consulting',
+		'display': 'Consulting',
+		'style_data': [
+			{
+				'name': 'Business Formal',
+				'image_src': '/images/businessformal.png',#TODO: FILLOUT
+				'shop_link': 'about:blank',#TODO: FILLOUT
+				'relevance': 'High',
+				'activities': 'Client site activities',
+				'attire': 'Dark suit, top'
+			},
+			{
+				'name': 'Business Casual',
+				'image_src': '/images/businesscasual.png',#TODO: FILLOUT
+				'shop_link': 'about:blank',#TODO: FILLOUT
+				'relevance': 'Medium',
+				'activities': 'Casual fridays in office',
+				'attire': 'Dress pant, shirt'
+			},			
+			{
+				'name': 'Smart Casual',
+				'image_src': '/images/smartcasual.png',#TODO: FILLOUT
+				'shop_link': 'about:blank',#TODO: FILLOUT
+				'relevance': 'Low',
+				'activities': 'Happy hour, Social hangouts',
+				'attire': 'Jeans, blazer'
+			}
+		]
+	},
+	{
+		'id': 'industry2',
+		'display': 'Industry 2',
+		'style_data': [
+			{
+				'name': 'Business Formal',
+				'image_src': '/images/businessformal.png',#TODO: FILLOUT
+				'shop_link': 'about:blank',#TODO: FILLOUT
+				'relevance': 'High',
+				'activities': 'Nothing',
+				'attire': 'Pants, shirt'
+			},
+			{
+				'name': 'Smart Casual',
+				'image_src': '/images/smartcasual.png',#TODO: FILLOUT
+				'shop_link': 'about:blank',#TODO: FILLOUT
+				'relevance': 'Medium',
+				'activities': 'Something',
+				'attire': 'Sandals, hat'
+			},			
+			{
+				'name': 'Business Casual',
+				'image_src': '/images/businesscasual.png',#TODO: FILLOUT
+				'shop_link': 'about:blank',#TODO: FILLOUT
+				'relevance': 'Low',
+				'activities': 'Anything',
+				'attire': 'Socks, gloves'
+			}
+		]
+	}
+]
+
+
 
 
 class HomeHandler(webapp2.RequestHandler):
@@ -69,19 +134,30 @@ class BusinessFormalHandler(webapp2.RequestHandler):
 class StyleGuidesIndustryHandler(webapp2.RequestHandler):
 	def get(self):
 		try: 
-			industry = self.request.get('industry')
+			selected_industry = self.request.get('industry')
 
-			logging.info('url arg industry: ' + industry)
+			found_industry_data = {}
+
+			for i in industry_data:
+				if selected_industry == i['id']:
+					found_industry_data = i
+					break
+
+			if found_industry_data == {}:
+				logging.info('no industry data found for industry: ' + selected_industry)
+
+
+			template_vars = {'industry_names': industry_names, 'industry_data': found_industry_data}
 
 			# Check if it's a valid industry.
-			if industry == '':
-				print "hello"
+			if self.request.get('industry') == '':
+				print "didn't get a valid industry value in get request."
 
 			else:
 				# Display normal style guides page.
 				industry_template = jinja_environment.get_template('templates/industry.html')
 				logging.info('in industry handler logging')
-				self.response.write(industry_template.render({'industry': industry}))
+				self.response.write(industry_template.render(template_vars))
 
 		except(TypeError, ValueError):
 			self.response.write('<html><body><p>Invalid industry."</p></body></html>')
@@ -93,7 +169,7 @@ class StyleGuidesHandler(webapp2.RequestHandler):
 
 		style_guides_template = jinja_environment.get_template('templates/style_guides.html')
 		logging.info('in style guides handler logging')
-		self.response.write(style_guides_template.render({'industries': industries}))
+		self.response.write(style_guides_template.render({'industry_names': industry_names}))
 
 
 

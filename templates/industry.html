@@ -4,29 +4,74 @@
 
 {% block head %}
   {{ super() }}
+  <script src="/javascript/industry.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/industry.css">
 {% endblock %}
 
 {% block content %}
-   <h1>{{industry}} Page.</h1>
+ <h1>{{industry_data['display']}} Page.</h1>
 
   <div id="path-links">
-    <a href="/styleguides" class="button">Style Guides</a>
-    &gt;
-   {{industry}} 
+    <a href="/styleguides" class="button">Style Guides</a> &gt; {{industry_data['display']}} 
   </div>
 
-<!--     <div id="filter-by-container">
-      Filter by
-      <select name="industry-select" id="industry-select">
-        {% for industry in industries %}
-          <option value={{industry}}>{{industries[industry]}}</option>
+  <div id="industry-select-container">
+    Select Industry 
+    <select name="industry-select" id="industry-select">
+      {% for i in industry_names %}
+        <option value={{i['id']}}>{{i['display']}}</option>
+      {% endfor %}
+    </select>
+
+    <button onclick="selectIndustry()">Go</button>
+  </div>
+
+  <div id="info-table-container">
+    <table id="info-table">
+
+      <tr id="name-row">
+        <th id="name-category" class="row-category"></th>
+        {% for i in industry_data['style_data'] %}
+          <td id="name-content" class="row-content">{{i['name']}}</td>
         {% endfor %}
-        <option value="hello">hello</option>
-      </select>
+      </tr>
 
-      <button onclick="selectIndustry()">Select Industry</button>
+      <tr id="image-row">
+        <th id="image-category" class="row-category"></th>
+        {% for i in industry_data['style_data'] %}
+          <td id="image-content" class="row-content">
+            <span class="style-image">
+              <img border="1" src={{i['image_src']}}>
+              <!-- Implement shop_link -->
+            </span>
+          </td>
+        {% endfor %}
+      </tr>
 
-    </div>
- -->
-    <h2>End Industry Page.</h2>
+      <tr id="relevance-row">
+        <th id="relevance-category" class="row-category">Relevance</th>
+        {% for i in industry_data['style_data'] %}
+          <td id="relevance-content" class="row-content">{{i['relevance']}}</td>
+        {% endfor %}
+      </tr>
+
+      <tr id="activities-row">
+        <th id="activities-category" class="row-category">Activities</th>
+        {% for i in industry_data['style_data'] %}
+          <td id="activities-content" class="row-content">{{i['activities']}}</td>
+        {% endfor %}
+      </tr>
+
+      <tr id="attire-row">
+        <th id = "attire-category" class="row-category">Attire</th>
+        {% for i in industry_data['style_data'] %}
+          <td id="attire-content" class="row-content">{{i['attire']}}</td>
+        {% endfor %}
+      </tr>
+
+
+    </table>
+  </div>
+
+  <h2>End Industry Page.</h2>
 {% endblock %}

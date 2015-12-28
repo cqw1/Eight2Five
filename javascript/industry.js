@@ -1,8 +1,8 @@
-styleGuidesInit();
+industryInit();
 
 
-function styleGuidesInit() {
-	console.log("styleguides.js == styleGuidesInit function");
+function industryInit() {
+	console.log("industry.js == industryInit function");
 }
 
 function selectIndustry() {

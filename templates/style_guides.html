@@ -11,15 +11,15 @@
 {% block content %}
     <h1>Style Guides Page.</h1>
 
-    <div id="filter-by-container">
-      Filter by
+    <div id="industry-select-container">
+      Select Industry 
       <select name="industry-select" id="industry-select">
-        {% for industry in industries %}
-          <option value={{industry['value']}}>{{industry['display']}}</option>
+        {% for i in industry_names%}
+          <option value={{i['id']}}>{{i['display']}}</option>
         {% endfor %}
       </select>
 
-      <button onclick="selectIndustry()">Select Industry</button>
+      <button onclick="selectIndustry()">Go</button>
 
     </div>
 
