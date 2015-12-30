@@ -49,8 +49,10 @@ $(function() {
             $('#dots-container > *').attr('src', '/images/emptycircle.png').removeAttr('id').eq(index).attr('id', 'current-dot').attr('src', '/images/filledcircle.png');
         },
 		
-		confirm: function() {
+		confirm: function(event, cover, index) {
 			console.log('Confirm');
+            var img = $(cover).children().andSelf().filter('img').last();
+            window.location.href = '/whoworewhat/person?person=' + img.attr('id');
 		},
 
 		change:	function(event, cover) {

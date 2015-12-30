@@ -37,7 +37,7 @@ industry_data = [
 			{
 				'name': 'Business Formal',
 				'image_src': '/images/businessformal.png',#TODO: FILLOUT
-				'shop_link': 'about:blank',#TODO: FILLOUT
+				'shop_page': 'about:blank',#TODO: FILLOUT
 				'relevance': 'High',
 				'activities': 'Client site activities',
 				'attire': 'Dark suit, top'
@@ -45,7 +45,7 @@ industry_data = [
 			{
 				'name': 'Business Casual',
 				'image_src': '/images/businesscasual.png',#TODO: FILLOUT
-				'shop_link': 'about:blank',#TODO: FILLOUT
+				'shop_page': 'about:blank',#TODO: FILLOUT
 				'relevance': 'Medium',
 				'activities': 'Casual fridays in office',
 				'attire': 'Dress pant, shirt'
@@ -53,7 +53,7 @@ industry_data = [
 			{
 				'name': 'Smart Casual',
 				'image_src': '/images/smartcasual.png',#TODO: FILLOUT
-				'shop_link': 'about:blank',#TODO: FILLOUT
+				'shop_page': 'about:blank',#TODO: FILLOUT
 				'relevance': 'Low',
 				'activities': 'Happy hour, Social hangouts',
 				'attire': 'Jeans, blazer'
@@ -67,7 +67,7 @@ industry_data = [
 			{
 				'name': 'Business Formal',
 				'image_src': '/images/businessformal.png',#TODO: FILLOUT
-				'shop_link': 'about:blank',#TODO: FILLOUT
+				'shop_page': 'about:blank',#TODO: FILLOUT
 				'relevance': 'High',
 				'activities': 'Nothing',
 				'attire': 'Pants, shirt'
@@ -75,7 +75,7 @@ industry_data = [
 			{
 				'name': 'Smart Casual',
 				'image_src': '/images/smartcasual.png',#TODO: FILLOUT
-				'shop_link': 'about:blank',#TODO: FILLOUT
+				'shop_page': 'about:blank',#TODO: FILLOUT
 				'relevance': 'Medium',
 				'activities': 'Something',
 				'attire': 'Sandals, hat'
@@ -83,7 +83,7 @@ industry_data = [
 			{
 				'name': 'Business Casual',
 				'image_src': '/images/businesscasual.png',#TODO: FILLOUT
-				'shop_link': 'about:blank',#TODO: FILLOUT
+				'shop_page': 'about:blank',#TODO: FILLOUT
 				'relevance': 'Low',
 				'activities': 'Anything',
 				'attire': 'Socks, gloves'
@@ -95,40 +95,74 @@ industry_data = [
 coverflow_data = [
 	{
 		'caption': 'Bulbasaur',
+		'id': 'bulbasaur',
 		'image_src': '/images/bulbasaurllama.png'
 	},
 	{
 		'caption': 'Ivysaur',
+		'id': 'ivysaur',
 		'image_src': '/images/ivysaurllama.png'
 	},
 	{
 		'caption': 'Venusaur',
+		'id': 'venusaur',
 		'image_src': '/images/venusaurllama.png'
 	},
 	{
 		'caption': 'Charmander',
+		'id': 'charmander',
 		'image_src': '/images/charmanderllama.png'
 	},
 	{
 		'caption': 'Charmeleon',
+		'id': 'charmeleon',
 		'image_src': '/images/charmeleonllama.png'
 	},
 	{
 		'caption': 'Charizard',
+		'id': 'charizard',
 		'image_src': '/images/charizardllama.png'
 	},
 	{
 		'caption': 'Squirtle',
+		'id': 'squirtle',
 		'image_src': '/images/squirtlellama.png'
 	},
 	{
 		'caption': 'Wartortle',
+		'id': 'wartortle',
 		'image_src': '/images/wartortlellama.png'
 	},
 	{
 		'caption': 'Blastoise',
+		'id': 'blastoise',
 		'image_src': '/images/blastoisellama.png'
 	},
+]
+
+person_data = [
+	{
+		'id': 'charmander',
+		'display': 'Charmander',
+		'bio': "Charmander is a bipedal, reptilian Pokemon with an orange body, though its underside and soles are cream-colored. It has two small fangs visible in its upper and lower jaws and blue eyes. Its arms and legs are short with four fingers and three clawed toes. A fire burns at the tip of this Pokemon's slender tail, and has blazed there since Charmander's birth. The flame can be used as an indication of Charmander's health and mood, burning brightly when the Pokemon is strong, weakly when it is exhausted, wavering when it is happy, and blazing when it is enraged. It is said that Charmander dies if its flame goes out. Charmander can be found in hot, mountainous areas. However, it is found far more often in the ownership of Trainers. Charmander exhibits pack behavior, calling others of its species if it finds food.",
+		'postings': [
+			{
+				'image_src': '/images/gentlemoncharmander.png',
+				'date': '2015-12-30',
+				'description': 'Spotted in downtown Cerulean City with a new top hat and monocle.',
+				'similar_styles': [
+					{
+						'image_src': '/images/tophat.png',
+						'description': 'Top hat from club penguin.'
+					},
+					{
+						'image_src': '/images/monocleandmustache.png',
+						'description': 'Comes with a free mustache.'
+					}
+				]
+			}
+		]
+	}
 ]
 
 
@@ -153,6 +187,39 @@ class WhoWoreWhatHandler(webapp2.RequestHandler):
 		logging.info('in who wore what handler logging')
 		self.response.write(who_wore_what_template.render(template_vars))
 
+class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
+	def get(self):
+		try: 
+			person_arg = self.request.get('person')
+
+			template_vars = {}
+
+			found_person_data = {}
+
+			for i in person_data:
+				if person_arg == i['id']:
+					found_person_data = i
+					break
+
+			if found_person_data == {}:
+				logging.info('no person data found for person: ' + person_arg)
+
+
+			template_vars = {'person_data': found_person_data}
+
+			# Check if it's a valid person.
+			if self.request.get('person') == '':
+				print "didn't get a valid person value in get request."
+
+			else:
+				# Display normal style guides page.
+				person_template = jinja_environment.get_template('templates/person.html')
+				logging.info('in person handler logging')
+				self.response.write(person_template.render(template_vars))
+
+		except(TypeError, ValueError):
+			self.response.write('<html><body><p>Invalid person."</p></body></html>')
+
 class SmartCasualHandler(webapp2.RequestHandler):
 	def get(self):
 		smart_casual_template = jinja_environment.get_template('templates/smart_casual.html')
@@ -174,17 +241,17 @@ class BusinessFormalHandler(webapp2.RequestHandler):
 class StyleGuidesIndustryHandler(webapp2.RequestHandler):
 	def get(self):
 		try: 
-			selected_industry = self.request.get('industry')
+			industry_arg = self.request.get('industry')
 
 			found_industry_data = {}
 
 			for i in industry_data:
-				if selected_industry == i['id']:
+				if industry_arg == i['id']:
 					found_industry_data = i
 					break
 
 			if found_industry_data == {}:
-				logging.info('no industry data found for industry: ' + selected_industry)
+				logging.info('no industry data found for industry: ' + industry_arg)
 
 
 			template_vars = {'industry_names': industry_names, 'industry_data': found_industry_data}
@@ -215,6 +282,7 @@ class StyleGuidesHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/shop.*', ShopHandler),
+    ('/whoworewhat/person.*', WhoWoreWhatPersonHandler),
     ('/whoworewhat.*', WhoWoreWhatHandler),
     ('/styleguides/smartcasual.*', SmartCasualHandler),
     ('/styleguides/businesscasual.*', BusinessCasualHandler),

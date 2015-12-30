@@ -1,0 +1,72 @@
+#display-name {
+    text-align: center;
+}
+
+#biography {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+#postings-container {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.posting {
+    height: 400px;
+}
+
+.posting-image {
+    /*width: 40%;*/
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.posting-info {
+    /*width: 40%;*/
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.posting-info-date {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.posting-info-description {
+    margin-bottom: 10px;
+}
+
+.posting-info-similar-styles {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.similar-styles-outer-container {
+    height: 200px;
+    /*width: 200px;*/
+    overflow-x: scroll;
+}
+
+.similar-styles-image {
+    height: 80%;
+}
+
+.similar-styles-description {
+    height: 20%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.similar-styles-inner-container {
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 90%;
+}
+
+p {
+    text-indent: 50px;
+}

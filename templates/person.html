@@ -1,0 +1,50 @@
+{% extends "templates/base.html" %}
+
+{% block title %}Person{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <!-- <script src="/javascript/person.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/person.css">
+{% endblock %}
+
+{% block content %}
+    <h1>{{person_data['display']}} Page.</h1>
+
+    <div id="path-links">
+        <a href="/whoworewhat" class="button">Who Wore What</a> &gt; {{person_data['display']}} 
+    </div>
+
+    <span id="display-name"><h1>{{person_data['display']}}</h1></span>
+    <p id="biography">{{person_data['bio']}}</p>
+
+    <div id="postings-container">
+        {% for p in person_data['postings'] %}
+            <div class="posting">
+                <img class="posting-image" src='{{p['image_src']}}'></img>
+
+                <div class="posting-info">
+                    <div class="posting-info-date">Posted: {{p['date']}}</div>
+                    <div class="posting-info-description">{{p['description']}}</div>
+
+                    <div class="posting-info-similar-styles">Similar Styles</div>
+                    <div class="similar-styles-outer-container">
+                        {% for i in p['similar_styles'] %}
+                            <div class="similar-styles-inner-container">
+                                <img class="similar-styles-image" src='{{i['image_src']}}'></img>
+                                <div class="similar-styles-description">{{i['description']}}</div>
+                                <!-- TODO: Implement link to item_page -->
+                            </div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+
+    <h2>End Person Page.</h2>
+{% endblock %}
