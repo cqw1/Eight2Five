@@ -2,9 +2,6 @@
 var coverflowTimer = setCoverflowTimer();
 
 $(function() {
-	// Alphabet
-
-
     $('#left-arrow')
         .click(coverflowPrev)
         .mouseover(function() {
@@ -23,21 +20,16 @@ $(function() {
             $('#right-arrow').attr('src', '/images/grayrightarrow.png');
         });
 
+    $('#dots-container > *').click(function() {
+        $('.photos').coverflow('index', $(this).index());
+
+        clearInterval(coverflowTimer);
+        coverflowTimer = setCoverflowTimer();
+    })
+
 
 	$('.coverflow').coverflow();
 	
-	$('#keyboard').click(function() {
-		$('.coverflow').coverflow('option', 'enableKeyboard', $(this).is(':checked'));
-	});
-	
-	$('#wheel').click(function() {
-		$('.coverflow').coverflow('option', 'enableWheel', $(this).is(':checked'));
-	});
-	
-	$('#click').click(function() {
-		$('.coverflow').coverflow('option', 'enableClick', $(this).is(':checked'));
-	});
-
 	if ($.fn.reflect) {
 		$('.photos .cover').reflect();
 	}
@@ -50,12 +42,18 @@ $(function() {
 		visible:		'density',
 		selectedCss:	{	opacity: 1	},
 		outerCss:		{	opacity: .1	},
+
+        select: function(event, cover, index) {
+            // Set everything to be an empty circle and remove their id. 
+            // Add selected-dot id and filled circle image to the img at the selected index.
+            $('#dots-container > *').attr('src', '/images/emptycircle.png').removeAttr('id').eq(index).attr('id', 'current-dot').attr('src', '/images/filledcircle.png');
+        },
 		
-		confirm:	function() {
+		confirm: function() {
 			console.log('Confirm');
 		},
 
-		change:		function(event, cover) {
+		change:	function(event, cover) {
 			var img = $(cover).children().andSelf().filter('img').last();
 			$('#photos-name').text(img.data('name') || 'unknown');
 		}

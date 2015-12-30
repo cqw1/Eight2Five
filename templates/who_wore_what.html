@@ -43,6 +43,13 @@
             <img id="left-arrow" src="/images/grayleftarrow.png">
             <img id="right-arrow" src="/images/grayrightarrow.png">
         </div>
+
+        <span id="dots-container">
+            {% for i in coverflow_data %}
+                <img class="dot" id="current-dot" src='/images/emptycircle.png'/>
+            {% endfor %}
+        </span>
+
         <div id="photos-info">
             <div id="photos-name"></div>
         </div>

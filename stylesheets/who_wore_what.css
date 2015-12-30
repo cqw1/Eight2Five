@@ -18,3 +18,13 @@
     cursor: pointer;
 }
 
+#dots-container {
+    display: table;
+    margin: 0 auto;
+}
+
+.dot {
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
