@@ -1,0 +1,20 @@
+#coverflow-photos-container {
+    position:relative;
+}
+
+#left-arrow {
+    position: absolute;
+    bottom: 50%;
+    left: 0.5%;
+    z-index: 2000;
+    cursor: pointer;
+}
+
+#right-arrow {
+    position: absolute;
+    bottom: 50%;
+    right: 0.5%;
+    z-index: 2000;
+    cursor: pointer;
+}
+

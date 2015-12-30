@@ -1,6 +1,28 @@
 $(function() {
-
 	// Alphabet
+
+    $('#left-arrow')
+        .click(function() {
+            // TODO: implement.
+        })
+        .mouseover(function() {
+            $('#left-arrow').attr('src', '/images/blackleftarrow.png');
+        })
+        .mouseout(function() {
+            $('#left-arrow').attr('src', '/images/grayleftarrow.png');
+        });
+
+    $('#right-arrow')
+        .click(function() {
+            // TODO: implement.
+        })
+        .mouseover(function() {
+            $('#right-arrow').attr('src', '/images/blackrightarrow.png');
+        })
+        .mouseout(function() {
+            $('#right-arrow').attr('src', '/images/grayrightarrow.png');
+        });
+
 
 	$('.coverflow').coverflow();
 
@@ -54,3 +76,5 @@ $(function() {
 		
 	});	
 });
+
+
