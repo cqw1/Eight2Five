@@ -3,10 +3,50 @@
 {% block title %}Who Wore What Page{% endblock %}
 
 {% block head %}
-  {{ super() }}
+    {{ super() }}
+
+    <!-- Needed for coverflow stuff. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.js"></script>
+
+	<!-- Optional: Reflection -->
+	<script type="text/javascript" src="/coverflow/reflection.js"></script>
+
+	<!-- interpolate, depends on jQ 1.8.0+ -->
+	<script src="/coverflow/jquery.interpolate.js"></script>
+    <script src="/coverflow/jquery.coverflow.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/coverflow.css">
+    <!-- End coverflow stuff. -->
+
+    <script src="/javascript/who_wore_what.js"></script>
 {% endblock %}
 
 {% block content %}
     <h1>Who Wore What Page.</h1>
+<!-- 		<div style="position:absolute;background:rgba(255,255,255,.75);z-index:1000;padding:10px">
+        <div>
+            <button id="first">first</button>
+			<button id="first">first</button>
+			<button id="goto6">Go to #6</button>
+			<button id="last">last</button>
+		</div>
+ -->
+        <h3>CD Covers</h3>
+        <div class="photos">
+            <img class="cover" data-name="Bulbasaur" src="/images/bulbasaurllama.png"/>
+            <img class="cover" data-name="Ivysaur" src="/images/ivysaurllama.png"/>
+            <img class="cover" data-name="Venusaur" src="/images/venusaurllama.png"/>
+            <img class="cover" data-name="Charmander" src="/images/charmanderllama.png"/>
+            <img class="cover" data-name="Charmeleon" src="/images/charmeleonllama.png"/>
+            <img class="cover" data-name="Charizard" src="/images/charizardllama.png"/>
+            <img class="cover" data-name="Squirtle" src="/images/squirtlellama.png"/>
+            <img class="cover" data-name="Wartortle" src="/images/wartortlellama.png"/>
+            <img class="cover" data-name="Blastoise" src="/images/blastoisellama.png"/>
+        </div>
+        <div id="photos-info">
+            <div id="photos-name"></div>
+        </div>
+
     <h2>End Who Wore What Page.</h2>
 {% endblock %}
