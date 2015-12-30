@@ -34,15 +34,9 @@
  -->
         <h3>CD Covers</h3>
         <div class="photos">
-            <img class="cover" data-name="Bulbasaur" src="/images/bulbasaurllama.png"/>
-            <img class="cover" data-name="Ivysaur" src="/images/ivysaurllama.png"/>
-            <img class="cover" data-name="Venusaur" src="/images/venusaurllama.png"/>
-            <img class="cover" data-name="Charmander" src="/images/charmanderllama.png"/>
-            <img class="cover" data-name="Charmeleon" src="/images/charmeleonllama.png"/>
-            <img class="cover" data-name="Charizard" src="/images/charizardllama.png"/>
-            <img class="cover" data-name="Squirtle" src="/images/squirtlellama.png"/>
-            <img class="cover" data-name="Wartortle" src="/images/wartortlellama.png"/>
-            <img class="cover" data-name="Blastoise" src="/images/blastoisellama.png"/>
+            {% for i in coverflow_data %}
+                <img class="cover" data-name={{i['caption']}} src='{{i['image_src']}}'/>
+            {% endfor %}
         </div>
         <div id="photos-info">
             <div id="photos-name"></div>

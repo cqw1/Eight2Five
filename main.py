@@ -92,6 +92,44 @@ industry_data = [
 	}
 ]
 
+coverflow_data = [
+	{
+		'caption': 'Bulbasaur',
+		'image_src': '/images/bulbasaurllama.png'
+	},
+	{
+		'caption': 'Ivysaur',
+		'image_src': '/images/ivysaurllama.png'
+	},
+	{
+		'caption': 'Venusaur',
+		'image_src': '/images/venusaurllama.png'
+	},
+	{
+		'caption': 'Charmander',
+		'image_src': '/images/charmanderllama.png'
+	},
+	{
+		'caption': 'Charmeleon',
+		'image_src': '/images/charmeleonllama.png'
+	},
+	{
+		'caption': 'Charizard',
+		'image_src': '/images/charizardllama.png'
+	},
+	{
+		'caption': 'Squirtle',
+		'image_src': '/images/squirtlellama.png'
+	},
+	{
+		'caption': 'Wartortle',
+		'image_src': '/images/wartortlellama.png'
+	},
+	{
+		'caption': 'Blastoise',
+		'image_src': '/images/blastoisellama.png'
+	},
+]
 
 
 
@@ -109,9 +147,11 @@ class ShopHandler(webapp2.RequestHandler):
 
 class WhoWoreWhatHandler(webapp2.RequestHandler):
 	def get(self):
+		template_vars = {'coverflow_data': coverflow_data}
+
 		who_wore_what_template = jinja_environment.get_template('templates/who_wore_what.html')
 		logging.info('in who wore what handler logging')
-		self.response.write(who_wore_what_template.render())
+		self.response.write(who_wore_what_template.render(template_vars))
 
 class SmartCasualHandler(webapp2.RequestHandler):
 	def get(self):
