@@ -3,7 +3,8 @@ $(function() {
 
     $('#left-arrow')
         .click(function() {
-            // TODO: implement.
+            // Automatically wraps around.
+            $('.photos').coverflow('index', $('.photos').coverflow('index') - 1);
         })
         .mouseover(function() {
             $('#left-arrow').attr('src', '/images/blackleftarrow.png');
@@ -14,7 +15,14 @@ $(function() {
 
     $('#right-arrow')
         .click(function() {
-            // TODO: implement.
+            // Need to manually check to see if the index actually incremented. If not, then wrap it around to the first picture.
+            var previousIndex = $('.photos').coverflow('index');
+            $('.photos').coverflow('index', $('.photos').coverflow('index') + 1);
+            var newIndex = $('.photos').coverflow('index');
+
+            if (newIndex == previousIndex) {
+                $('.photos').coverflow('index', 0);
+            }
         })
         .mouseover(function() {
             $('#right-arrow').attr('src', '/images/blackrightarrow.png');
@@ -25,18 +33,6 @@ $(function() {
 
 
 	$('.coverflow').coverflow();
-
-	$('#first').click(function() {
-		$('.coverflow').coverflow('index', 0);
-	});
-
-	$('#last').click(function() {
-		$('.coverflow').coverflow('index', -1);
-	});
-
-	$('#goto6').click(function() {
-		$('.coverflow').coverflow('index', 6-1);	// zero-based index!
-	});
 	
 	$('#keyboard').click(function() {
 		$('.coverflow').coverflow('option', 'enableKeyboard', $(this).is(':checked'));
@@ -49,8 +45,6 @@ $(function() {
 	$('#click').click(function() {
 		$('.coverflow').coverflow('option', 'enableClick', $(this).is(':checked'));
 	});
-
-	/* CD covers */
 
 	if ($.fn.reflect) {
 		$('.photos .cover').reflect();
