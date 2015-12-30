@@ -1,11 +1,12 @@
+// Global interval timer.
+var coverflowTimer = setCoverflowTimer();
+
 $(function() {
 	// Alphabet
 
+
     $('#left-arrow')
-        .click(function() {
-            // Automatically wraps around.
-            $('.photos').coverflow('index', $('.photos').coverflow('index') - 1);
-        })
+        .click(coverflowPrev)
         .mouseover(function() {
             $('#left-arrow').attr('src', '/images/blackleftarrow.png');
         })
@@ -14,16 +15,7 @@ $(function() {
         });
 
     $('#right-arrow')
-        .click(function() {
-            // Need to manually check to see if the index actually incremented. If not, then wrap it around to the first picture.
-            var previousIndex = $('.photos').coverflow('index');
-            $('.photos').coverflow('index', $('.photos').coverflow('index') + 1);
-            var newIndex = $('.photos').coverflow('index');
-
-            if (newIndex == previousIndex) {
-                $('.photos').coverflow('index', 0);
-            }
-        })
+        .click(coverflowNext)
         .mouseover(function() {
             $('#right-arrow').attr('src', '/images/blackrightarrow.png');
         })
@@ -71,4 +63,31 @@ $(function() {
 	});	
 });
 
+/** Resets the coverflow timer so that it doesn't change right after the user clicks next or previous. **/
+function setCoverflowTimer() {
+    // Switches after every 5 milliseconds.
+    return setInterval(coverflowNext, 5000);
+}
+
+function coverflowNext() {
+    // Need to manually check to see if the index actually incremented. If not, then wrap it around to the first picture.
+    var previousIndex = $('.photos').coverflow('index');
+    $('.photos').coverflow('index', $('.photos').coverflow('index') + 1);
+    var newIndex = $('.photos').coverflow('index');
+
+    if (newIndex == previousIndex) {
+        $('.photos').coverflow('index', 0);
+    }
+
+    clearInterval(coverflowTimer);
+    coverflowTimer = setCoverflowTimer();
+}
+
+function coverflowPrev() {
+    // Automatically wraps around.
+    $('.photos').coverflow('index', $('.photos').coverflow('index') - 1);
+
+    clearInterval(coverflowTimer);
+    coverflowTimer = setCoverflowTimer();
+}
 
