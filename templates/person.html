@@ -9,8 +9,6 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{person_data['display']}} Page.</h1>
-
     <div id="path-links">
         <a href="/whoworewhat" class="button">Who Wore What</a> &gt; {{person_data['display']}} 
     </div>
@@ -31,35 +29,36 @@
                             <div class="posting-info-date">Posted: {{p['date']}}</div>
                             <div class="posting-info-description">{{p['description']}}</div>
                             <div class="posting-info-similar-styles">Similar Styles</div>
-                            <div class="blah">
-                                <div class="similar-styles-table-container">
-                                    <table class="similar-styles-outer-container">
-                                        <tr>
-                                            {% for i in p['similar_styles'] %}
-                                                <td class="similar-styles-inner-container">
-                                                        <img class="similar-styles-image" src='{{i['image_src']}}'></img>
-                                                        <div class="similar-styles-description">{{i['description']}}</div>
-                                                        <!-- TODO: Implement link to item_page -->
-                                                </td>
-                                                <td class="similar-styles-inner-container">
-                                                        <img class="similar-styles-image" src='{{i['image_src']}}'></img>
-                                                        <div class="similar-styles-description">{{i['description']}}</div>
-                                                        <!-- TODO: Implement link to item_page -->
-                                                </td>
-                                            {% endfor %}
-                                        </tr>
-                                    </table>
-                                </div>
+                            <div class="similar-styles-table-container">
+                                <table class="similar-styles-outer-container">
+                                    <tr>
+                                        {% for i in p['similar_styles'] %}
+                                            <td class="similar-styles-inner-container">
+                                                    <img class="similar-styles-image" src='{{i['image_src']}}'></img>
+                                                    <!-- <div class="similar-styles-description">{{i['description']}}</div> -->
+                                                    <div class="similar-styles-description">
+                                                        <div class="brand"><b>Brand: </b>{{i['brand']}}</div>
+                                                        <div class="price"><b>Price: </b>${{i['price']}}</div>
+                                                    </div>
+                                                    <!-- TODO: Implement link to item_page -->
+                                            </td>
+                                            <td class="similar-styles-inner-container">
+                                                    <img class="similar-styles-image" src='{{i['image_src']}}'></img>
+                                                    <div class="similar-styles-description">{{i['description']}}</div>
+                                                    <!-- TODO: Implement link to item_page -->
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                </table>
                             </div>
                         </td>
                     </tr>
                 </table>
             </div>
+
+            <hr>
         {% endfor %}
     </div>
 
-
-
-
-    <h2>End Person Page.</h2>
 {% endblock %}
+

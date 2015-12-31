@@ -24,27 +24,25 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Who Wore What Page.</h1>
-        <!-- Kept as 'photos' rather than 'images' for inheritance's sake. -->
-        <div id="coverflow-photos-container">
-            <div class="photos">
-                {% for i in coverflow_data %}
-                    <img class="cover" id={{i['id']}} data-name={{i['caption']}} src='{{i['image_src']}}'/>
-                {% endfor %}
-            </div>
-            <img id="left-arrow" src="/images/grayleftarrow.png">
-            <img id="right-arrow" src="/images/grayrightarrow.png">
-        </div>
-
-        <span id="dots-container">
+    <!-- Kept as 'photos' rather than 'images' for inheritance's sake. -->
+    <div id="coverflow-photos-container">
+        <div class="photos">
             {% for i in coverflow_data %}
-                <img class="dot" id="current-dot" src='/images/emptycircle.png'/>
+                <img class="cover" id={{i['id']}} data-name={{i['caption']}} src='{{i['image_src']}}'/>
             {% endfor %}
-        </span>
-
-        <div id="photos-info">
-            <div id="photos-name"></div>
         </div>
+        <img id="left-arrow" src="/images/grayleftarrow.png">
+        <img id="right-arrow" src="/images/grayrightarrow.png">
+    </div>
 
-    <h2>End Who Wore What Page.</h2>
+    <span id="dots-container">
+        {% for i in coverflow_data %}
+            <img class="dot" id="current-dot" src='/images/emptycircle.png'/>
+        {% endfor %}
+    </span>
+
+    <div id="photos-info">
+        <div id="photos-name"></div>
+    </div>
+
 {% endblock %}

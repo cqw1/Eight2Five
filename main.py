@@ -153,11 +153,34 @@ person_data = [
 				'similar_styles': [
 					{
 						'image_src': '/images/tophat.png',
+						'brand': 'Ann Taylor',
+						'price': '29.99',
 						'description': 'Top hat from club penguin.'
 					},
 					{
 						'image_src': '/images/monocleandmustache.png',
+						'brand': 'JCrew',
+						'price': '19.99',
 						'description': 'Comes with a free mustache.'
+					}
+				]
+			},
+			{
+				'image_src': '/images/charmanderascharizard.jpg',
+				'date': '2015-09-07',
+				'description': 'Dressed as Charizard.',
+				'similar_styles': [
+					{
+						'image_src': '/images/charmanderonesie.jpg',
+						'brand': 'Ann Taylor',
+						'price': '29.99',
+						'description': 'Onesies!'
+					},
+					{
+						'image_src': '/images/familyofcharmanders.jpg',
+						'brand': 'JCrew',
+						'price': '19.99',
+						'description': 'Because why not.'
 					}
 				]
 			}
