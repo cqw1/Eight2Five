@@ -20,7 +20,7 @@ body {
 	display: inline-block;
 	color: white;
 	text-align: center;
-	padding: 14px 16px;
+	padding: 1em 1.5em;
 	text-decoration: none;
 }
 
@@ -33,7 +33,7 @@ body {
 }
 
 #content {
-	padding-bottom: 3em; /* Same as footer height. */
+	padding: 2em 2em 3em 2em; /* 3em is footer height */
 }
 
 #outer-container, html, body {
@@ -43,12 +43,6 @@ body {
 body > #outer-container {
 	height: auto;
 	min-height: 100%;
-}
-
-#content {
-	margin-top: 20px;
-	margin-left: 20px;
-	margin-right: 20px;
 }
 
 footer {
@@ -61,7 +55,8 @@ footer {
 }
 
 #footer-placeholder {
-	padding: 10px;
+	background-color: #333;
+	padding: 1em;
 	margin: 0 auto;
 	color: white;
 	text-align: center;
