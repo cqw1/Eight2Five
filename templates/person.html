@@ -20,25 +20,38 @@
 
     <div id="postings-container">
         {% for p in person_data['postings'] %}
-            <div class="posting">
-                <img class="posting-image" src='{{p['image_src']}}'></img>
+            <div id="posting-table">
+                <table class="posting">
+                    <tr>
+                        <td class="posting-image-cell">
+                            <img class="posting-image" src='{{p['image_src']}}'></img>
+                        </td>
 
-                <div class="posting-info">
-                    <div class="posting-info-date">Posted: {{p['date']}}</div>
-                    <div class="posting-info-description">{{p['description']}}</div>
-
-                    <div class="posting-info-similar-styles">Similar Styles</div>
-                    <div class="similar-styles-outer-container">
-                        {% for i in p['similar_styles'] %}
-                            <div class="similar-styles-inner-container">
-                                <img class="similar-styles-image" src='{{i['image_src']}}'></img>
-                                <div class="similar-styles-description">{{i['description']}}</div>
-                                <!-- TODO: Implement link to item_page -->
+                        <td class="posting-info-cell">
+                            <div class="posting-info-date">Posted: {{p['date']}}</div>
+                            <div class="posting-info-description">{{p['description']}}</div>
+                            <div class="posting-info-similar-styles">Similar Styles</div>
+                            <div class="similar-styles-table-container">
+                                <table class="similar-styles-outer-container">
+                                    <tr>
+                                        {% for i in p['similar_styles'] %}
+                                            <td class="similar-styles-inner-container">
+                                                    <img class="similar-styles-image" src='{{i['image_src']}}'></img>
+                                                    <div class="similar-styles-description">{{i['description']}}</div>
+                                                    <!-- TODO: Implement link to item_page -->
+                                            </td>
+                                            <td class="similar-styles-inner-container">
+                                                    <img class="similar-styles-image" src='{{i['image_src']}}'></img>
+                                                    <div class="similar-styles-description">{{i['description']}}</div>
+                                                    <!-- TODO: Implement link to item_page -->
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                </table>
                             </div>
-
-                        {% endfor %}
-                    </div>
-                </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         {% endfor %}
     </div>

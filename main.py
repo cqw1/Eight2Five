@@ -149,7 +149,7 @@ person_data = [
 			{
 				'image_src': '/images/gentlemoncharmander.png',
 				'date': '2015-12-30',
-				'description': 'Spotted in downtown Cerulean City with a new top hat and monocle.',
+				'description': 'Spotted in downtown balw awoiejf laiwjf a oifjaefoi jaeof ijewfoija ifjei oeawif id oieaa oeaijfaoeif efi jeaofi jefi jewaoifj oiewafj Cerulean City with a new top hat and monocle.',
 				'similar_styles': [
 					{
 						'image_src': '/images/tophat.png',
