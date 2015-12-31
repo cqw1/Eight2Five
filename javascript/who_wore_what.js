@@ -27,9 +27,6 @@ $(function() {
         coverflowTimer = setCoverflowTimer();
     })
 
-
-	$('.coverflow').coverflow();
-	
 	if ($.fn.reflect) {
 		$('.photos .cover').reflect();
 	}
@@ -37,8 +34,8 @@ $(function() {
 	$('.photos').coverflow({
 		duration:		'slow',
 		index:			3,
-		width:			320,
-		height:			240,
+		width:			312,
+		height:			312,
 		visible:		'density',
 		selectedCss:	{	opacity: 1	},
 		outerCss:		{	opacity: .1	},

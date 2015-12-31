@@ -92,6 +92,7 @@ industry_data = [
 	}
 ]
 
+## NOTE: images must be same width x height. otherwise becomes really distorted.
 coverflow_data = [
 	{
 		'caption': 'Bulbasaur',
@@ -137,7 +138,7 @@ coverflow_data = [
 		'caption': 'Blastoise',
 		'id': 'blastoise',
 		'image_src': '/images/blastoisellama.png'
-	},
+	}
 ]
 
 person_data = [

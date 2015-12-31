@@ -1,6 +1,12 @@
 #coverflow-photos-container {
-    position:relative;
+    position: relative;
 }
+
+#container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
 
 #left-arrow {
     position: absolute;
@@ -27,4 +33,25 @@
     margin-left: 5px;
     margin-right: 5px;
     cursor: pointer;
+}
+
+.photos .cover {
+    cursor: pointer;
+}
+
+#photos-info {
+    padding-top: 10px;
+    /*position:     relative;*/
+    text-align:     center;
+    z-index:        1000;
+    text-shadow:    0 0 8px white;
+}
+
+#photos-name {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+.clearfix {
+    clear: both;
 }
