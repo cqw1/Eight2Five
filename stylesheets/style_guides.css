@@ -5,3 +5,8 @@
 .style-image-container {
 	padding: 1.5%;
 }
+
+.style-image {
+    border: 1px solid;
+    width: 30%;
+}

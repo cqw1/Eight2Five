@@ -39,24 +39,24 @@ industry_data = [
 				'image_src': '/images/businessformal.png',#TODO: FILLOUT
 				'shop_page': 'about:blank',#TODO: FILLOUT
 				'relevance': 'High',
-				'activities': 'Client site activities',
-				'attire': 'Dark suit, top'
+				'activities': ['Client site activities'],
+				'attire': ['Dark suit', 'Top']
 			},
 			{
 				'name': 'Business Casual',
 				'image_src': '/images/businesscasual.png',#TODO: FILLOUT
 				'shop_page': 'about:blank',#TODO: FILLOUT
 				'relevance': 'Medium',
-				'activities': 'Casual fridays in office',
-				'attire': 'Dress pant, shirt'
+				'activities': ['Casual fridays in office'],
+				'attire': ['Dress pant', 'Shirt']
 			},			
 			{
 				'name': 'Smart Casual',
 				'image_src': '/images/smartcasual.png',#TODO: FILLOUT
 				'shop_page': 'about:blank',#TODO: FILLOUT
 				'relevance': 'Low',
-				'activities': 'Happy hour, Social hangouts',
-				'attire': 'Jeans, blazer'
+				'activities': ['Happy hour', 'Social hangouts'],
+				'attire': ['Jeans', 'Blazer']
 			}
 		]
 	},
@@ -69,24 +69,24 @@ industry_data = [
 				'image_src': '/images/businessformal.png',#TODO: FILLOUT
 				'shop_page': 'about:blank',#TODO: FILLOUT
 				'relevance': 'High',
-				'activities': 'Nothing',
-				'attire': 'Pants, shirt'
+				'activities': ['Nothing'],
+				'attire': ['Pants', 'Shirt']
 			},
 			{
 				'name': 'Smart Casual',
 				'image_src': '/images/smartcasual.png',#TODO: FILLOUT
 				'shop_page': 'about:blank',#TODO: FILLOUT
 				'relevance': 'Medium',
-				'activities': 'Something',
-				'attire': 'Sandals, hat'
+				'activities': ['Something'],
+				'attire': ['Sandals', 'Hat']
 			},			
 			{
 				'name': 'Business Casual',
 				'image_src': '/images/businesscasual.png',#TODO: FILLOUT
 				'shop_page': 'about:blank',#TODO: FILLOUT
 				'relevance': 'Low',
-				'activities': 'Anything',
-				'attire': 'Socks, gloves'
+				'activities': ['Anything'],
+				'attire': ['Socks', 'Gloves']
 			}
 		]
 	}

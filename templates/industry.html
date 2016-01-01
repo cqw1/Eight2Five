@@ -57,14 +57,14 @@
       <tr id="activities-row">
         <th id="activities-category" class="row-category">Activities</th>
         {% for i in industry_data['style_data'] %}
-          <td id="activities-content" class="row-content">{{i['activities']}}</td>
+          <td id="activities-content" class="row-content">{{i['activities'] | join(', ')}}</td>
         {% endfor %}
       </tr>
 
       <tr id="attire-row">
         <th id = "attire-category" class="row-category">Attire</th>
         {% for i in industry_data['style_data'] %}
-          <td id="attire-content" class="row-content">{{i['attire']}}</td>
+          <td id="attire-content" class="row-content">{{i['attire'] | join(', ')}}</td>
         {% endfor %}
       </tr>
 
