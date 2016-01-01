@@ -9,4 +9,5 @@
 .style-image {
     border: 1px solid;
     width: 30%;
+    cursor: pointer;
 }

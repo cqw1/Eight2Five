@@ -189,6 +189,36 @@ person_data = [
 	}
 ]
 
+style_data = [
+	{
+		'id': 'smartcasual',
+		'display': 'Smart Casual',
+		'image_src': '/images/smartcasual.png',
+		'styles': [
+			{
+				'look': {
+					'image_src': '/images/smartcasual.png',
+					'descriptions': ['White jeans and top', 'Beige blazer']
+				},
+				'occasion': {
+					'image_src': '/images/smartcasual.png',
+					'descriptions': ['Casual fridays']
+				}
+			},
+			{
+				'look': {
+					'image_src': '/images/smartcasual.png',
+					'descriptions': ['Blank']
+				},
+				'occasion': {
+					'image_src': '/images/smartcasual.png',
+					'descriptions': ['The happy hour']
+				}
+			}
+		]
+	}
+]
+
 
 
 class HomeHandler(webapp2.RequestHandler):
@@ -293,6 +323,37 @@ class StyleGuidesIndustryHandler(webapp2.RequestHandler):
 		except(TypeError, ValueError):
 			self.response.write('<html><body><p>Invalid industry."</p></body></html>')
 
+class StyleGuidesStyleHandler(webapp2.RequestHandler):
+	def get(self):
+		try: 
+			style_arg = self.request.get('style')
+
+			found_style_data = {}
+
+			for i in style_data:
+				if style_arg == i['id']:
+					found_style_data = i
+					break
+
+			if found_style_data == {}:
+				logging.info('no style data found for style: ' + style_arg)
+
+
+			template_vars = {'industry_names': industry_names, 'style_data': found_style_data}
+
+			# Check if it's a valid industry.
+			if style_arg == '':
+				print "didn't get a valid style value in get request."
+
+			else:
+				# Display normal industry page.
+				style_template = jinja_environment.get_template('templates/style.html')
+				logging.info('in style handler logging')
+				self.response.write(style_template.render(template_vars))
+
+		except(TypeError, ValueError):
+			self.response.write('<html><body><p>Invalid style."</p></body></html>')
+
 
 class StyleGuidesHandler(webapp2.RequestHandler):
 	def get(self):
@@ -312,7 +373,7 @@ app = webapp2.WSGIApplication([
     ('/styleguides/businesscasual.*', BusinessCasualHandler),
     ('/styleguides/businessformal.*', BusinessFormalHandler),
     ('/styleguides/industry.*', StyleGuidesIndustryHandler),
+    ('/styleguides/style.*', StyleGuidesStyleHandler),
     ('/styleguides.*', StyleGuidesHandler),
-    # ('/styleguides', StyleGuidesHandler),
     ('/.*', HomeHandler)
 ], debug=True)

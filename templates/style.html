@@ -1,0 +1,69 @@
+{% extends "templates/base.html" %}
+
+{% block title %}Style{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <script src="/javascript/style.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+{% endblock %}
+
+{% block content %}
+  <div id="path-links">
+    <a href="/styleguides" class="button">Style Guides</a> &gt; {{style_data['display']}} 
+  </div>
+
+  <div id="industry-select-container">
+    Select Industry 
+    <select name="industry-select" id="industry-select">
+      {% for i in industry_names %}
+        <option value={{i['id']}}>{{i['display']}}</option>
+      {% endfor %}
+    </select>
+
+    <button onclick="selectIndustry()">Go</button>
+  </div>
+
+  <table id="look-occasion-table">
+    <tr>
+        <th>The Look</th>
+        <th>The Occasions</th>
+    </tr>
+
+    {% for style in style_data['styles'] %}
+        <tr>
+            <td class="look-cell">
+                <div class="look-inner-container">
+                    <img class="look-image" src="{{style['look']['image_src']}}">
+
+                    <div class="look-description">
+                        <ul>
+                            {% for description in style['look']['descriptions'] %}
+                                <li>{{description}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </td>
+
+            <td class="occasion-cell">
+                <div class="occasion-inner-container">
+                    <img class="occasion-image" src="{{style['occasion']['image_src']}}">
+
+                    <div class="occasion-description">
+                        <ul>
+                            {% for description in style['occasion']['descriptions'] %}
+                                <li>{{description}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+  </table>
+
+
+
+
+{% endblock %}
