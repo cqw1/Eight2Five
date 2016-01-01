@@ -198,7 +198,7 @@ style_data = [
 			{
 				'look': {
 					'image_src': '/images/smartcasual.png',
-					'descriptions': ['White jeans and top', 'Beige blazer']
+					'descriptions': ['White jeans and top aofeij ef awejf ewafio jawef aewf ijweof ijewf oijewaof jwae', 'Beige blazer']
 				},
 				'occasion': {
 					'image_src': '/images/smartcasual.png',

@@ -24,17 +24,19 @@
     <button onclick="selectIndustry()">Go</button>
   </div>
 
-  <table id="look-occasion-table">
+  <table align="center" id="look-occasion-table">
     <tr>
         <th>The Look</th>
-        <th>The Occasions</th>
+        <th>The Occasion</th>
     </tr>
 
     {% for style in style_data['styles'] %}
         <tr>
             <td class="look-cell">
                 <div class="look-inner-container">
-                    <img class="look-image" src="{{style['look']['image_src']}}">
+                    <div class="look-image-container">
+                        <img class="look-image" src="{{style['look']['image_src']}}">
+                    </div>
 
                     <div class="look-description">
                         <ul>
@@ -48,7 +50,9 @@
 
             <td class="occasion-cell">
                 <div class="occasion-inner-container">
-                    <img class="occasion-image" src="{{style['occasion']['image_src']}}">
+                    <div class="occasion-image-container">
+                        <img class="occasion-image" src="{{style['occasion']['image_src']}}">
+                    </div>
 
                     <div class="occasion-description">
                         <ul>
