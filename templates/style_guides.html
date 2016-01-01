@@ -12,7 +12,7 @@
   <div id="industry-select-container">
     Select Industry 
     <select name="industry-select" id="industry-select">
-      {% for i in industry_names%}
+      {% for i in industry_names %}
         <option value={{i['id']}}>{{i['display']}}</option>
       {% endfor %}
     </select>
@@ -22,17 +22,12 @@
   </div>
 
   <div id="style-guides-choices">
-    <span class="style-image-container">
-      <img id="smartcasual" class="style-image" onclick="selectStyle(this)" title="Smart Casual" alt="Smart Casual" src="/images/smartcasual.png"></a>
-    </span>
+    {% for i in style_data %} 
+      <span class="style-image-container">
+        <img id={{i['id']}} class="style-image" onclick="selectStyle(this)" title={{i['display']}} alt={{i['display']}} src="{{i['image_src']}}"></a>
+      </span>
 
-    <span class="style-image-container">
-      <img id="businesscasual" class="style-image" onclick="selectStyle(this)" title="Business Casual" alt="Business Casual" src="/images/businesscasual.png"></a>
-    </span>
-
-    <span class="style-image-container">
-      <img id="businessformal" class="style-image" onclick="selectStyle(this)" title="Business Formal" alt="Business Formal" src="/images/businessformal.png"></a>
-    </span>
+    {% endfor %}
   </div>
 
 {% endblock %}

@@ -216,6 +216,60 @@ style_data = [
 				}
 			}
 		]
+	},
+	{
+		'id': 'businesscasual',
+		'display': 'Business Casual',
+		'image_src': '/images/businesscasual.png',
+		'styles': [
+			{
+				'look': {
+					'image_src': '/images/businesscasual.png',
+					'descriptions': ['blah']
+				},
+				'occasion': {
+					'image_src': '/images/businesscasual.png',
+					'descriptions': ['Casual fridays']
+				}
+			},
+			{
+				'look': {
+					'image_src': '/images/businesscasual.png',
+					'descriptions': ['Blank', 'Blank']
+				},
+				'occasion': {
+					'image_src': '/images/businesscasual.png',
+					'descriptions': ['The happy hour']
+				}
+			}
+		]
+	},
+	{
+		'id': 'businessformal',
+		'display': 'Business Formal',
+		'image_src': '/images/businessformal.png',
+		'styles': [
+			{
+				'look': {
+					'image_src': '/images/businessformal.png',
+					'descriptions': ['blah']
+				},
+				'occasion': {
+					'image_src': '/images/businessformal.png',
+					'descriptions': ['Casual fridays']
+				}
+			},
+			{
+				'look': {
+					'image_src': '/images/businessformal.png',
+					'descriptions': ['Blank', 'Blank']
+				},
+				'occasion': {
+					'image_src': '/images/businessformal.png',
+					'descriptions': ['The happy hour']
+				}
+			}
+		]
 	}
 ]
 
@@ -361,7 +415,7 @@ class StyleGuidesHandler(webapp2.RequestHandler):
 
 		style_guides_template = jinja_environment.get_template('templates/style_guides.html')
 		logging.info('in style guides handler logging')
-		self.response.write(style_guides_template.render({'industry_names': industry_names}))
+		self.response.write(style_guides_template.render({'industry_names': industry_names, 'style_data': style_data}))
 
 
 
