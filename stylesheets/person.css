@@ -17,17 +17,15 @@
 #posting-table-container {
     width: 80%;
     margin: 0 auto;
-    /*border-bottom: 2px solid black;*/
 }
 
 .posting-image-cell {
     width: 40%;
+    min-width: 5em;
 }
 
 .posting-info-cell {
     max-width: 60%;
-    /*min-height: 400px;*/
-    /*transform: translate(0, -30%);*/
     position: relative;
 }
 
@@ -46,9 +44,7 @@
 
 .posting-info-description {
     margin-bottom: 10px;
-    height: 5em;
     overflow-y: auto;
-    /*position: absolute;*/
 }
 
 .posting-info-similar-styles {
@@ -59,7 +55,6 @@
 .similar-styles-table-container {
     overflow-x: auto;
     width: 100%;
-    /*position: absolute;*/
 }
 
 .similar-styles-outer-container {
