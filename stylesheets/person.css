@@ -22,20 +22,22 @@
 
 .posting-image-cell {
     width: 40%;
-    height: 400px;
 }
 
 .posting-info-cell {
     max-width: 60%;
-    min-height: 400px;
-    transform: translate(0, -30%);
+    /*min-height: 400px;*/
+    /*transform: translate(0, -30%);*/
     position: relative;
 }
 
 .posting-image {
-    height: 100%;
+    width: 100%;
 }
 
+.posting-info-cell-inner-container {
+    width: 30em;
+}
 
 .posting-info-date {
     font-weight: bold;
@@ -44,7 +46,7 @@
 
 .posting-info-description {
     margin-bottom: 10px;
-    height: 55px;
+    height: 5em;
     overflow-y: auto;
     /*position: absolute;*/
 }
@@ -57,7 +59,7 @@
 .similar-styles-table-container {
     overflow-x: auto;
     width: 100%;
-    position: absolute;
+    /*position: absolute;*/
 }
 
 .similar-styles-outer-container {

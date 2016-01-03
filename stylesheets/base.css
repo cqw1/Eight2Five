@@ -12,6 +12,10 @@ body {
 	text-align: center;
 }
 
+.navbar {
+	border-radius: 0px;
+}
+
 #nav-container ul li {
 	display: inline;
 }
