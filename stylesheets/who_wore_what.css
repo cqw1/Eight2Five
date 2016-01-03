@@ -12,6 +12,10 @@
     /*overflow: hidden;*/
 }
 
+#b-container {
+    width: 100%;
+}
+
 #left-arrow {
     cursor: pointer;
 }
