@@ -277,10 +277,12 @@ style_data = [
 	}
 ]
 
-class Person(ndb.Model):
-    name = ndb.StringProperty(required=True)
-    bio = ndb.TextProperty(required=True)
-    posting_keys = ndb.KeyProperty(kind='Posting', repeated=True)
+class SimilarStyle(ndb.Model):
+    img_src = ndb.TextProperty(required=True)
+    item_page = ndb.TextProperty(required=True)
+    description = ndb.TextProperty(required=False)
+    brand = ndb.TextProperty(required=False)
+    price = ndb.FloatProperty(required=False)
 
 class Posting(ndb.Model):
     img_src = ndb.TextProperty(required=True)
@@ -288,10 +290,10 @@ class Posting(ndb.Model):
     date = ndb.DateProperty(required=True)
     similar_style_keys = ndb.KeyProperty(kind='SimilarStyle', repeated=True)
 
-class SimilarStyle(ndb.Model):
-    img_src = ndb.TextProperty(required=True)
-    item_page = ndb.TextProperty(required=True)
-    description = ndb.TextProperty(required=True)
+class Person(ndb.Model):
+    name = ndb.StringProperty(required=True)
+    bio = ndb.TextProperty(required=True)
+    postings = ndb.LocalStructuredProperty(Posting, repeated=True)
 
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
@@ -305,32 +307,55 @@ class HomeHandler(webapp2.RequestHandler):
         ############################################################# BEGIN DATASTORE ####
         logging.info('hello from datastore')
 
-        monocle= SimilarStyle(img_src='/images/monocleandmustache.png', item_page='TODO', description='Comes with a free mustache.')
+        monocle= SimilarStyle(
+                img_src='/images/monocleandmustache.png', 
+                item_page='TODO', 
+                description='Comes with a free mustache.',
+                brand='JCrew',
+                price=19.99)
         monocle_key = monocle.put()
         
-        tophat = SimilarStyle(img_src='/images/tophat.png', item_page='TODO', description='Top hat from club penguin.')
+        tophat = SimilarStyle(
+                img_src='/images/tophat.png', 
+                item_page='TODO', 
+                description='Top hat from club penguin.',
+                brand='Ann Taylor',
+                price=29.99)
         tophat_key = tophat.put()
 
-        posting_one = Posting(img_src='/images/gentlemoncharmaner.png', description='Spotted in downtown aiwefj awoeifj awefjoifj afio jefoief ojifaoi jafljeafkj fdsl jawefoi fjifdsoi jweafeoi jwefi f ej aefoij awefij Cerulean City with a new top hat and monocle.', date=datetime.date(2016, 1, 4))
+        posting_one = Posting(
+                img_src='/images/gentlemoncharmander.png', 
+                description='Spotted in downtown aiwefj awoeifj awefjoifj afio jefoief ojifaoi jafljeafkj fdsl jawefoi fjifdsoi jweafeoi jwefi f ej aefoij awefij Cerulean City with a new top hat and monocle.', 
+                date=datetime.date(2016, 1, 4))
 
         posting_one.similar_style_keys.append(tophat_key)
         posting_one.similar_style_keys.append(monocle_key)
-        posting_one_key = posting_one.put()
 
-        onesie = SimilarStyle(img_src='/images/charmanderonesie.jpg', item_page='TODO', description='Onesies!')
+        onesie = SimilarStyle(
+                img_src='/images/charmanderonesie.jpg', 
+                item_page='TODO', 
+                description='Onesies!',
+                brand='JCrew',
+                price=19.99)
         onesie_key = onesie.put()
-        familyofonesies= SimilarStyle(img_src='/images/familyofcharmanders.jpg', item_page='TODO', description='Because why not.')
+
+        familyofonesies= SimilarStyle(
+                img_src='/images/familyofcharmanders.jpg', 
+                item_page='TODO', 
+                description='Because why not.',
+                brand='Ann Taylor',
+                price=29.99)
         familyofonesies_key = familyofonesies.put()
 
-        posting_two = Posting(img_src='/images/charmanderascharizard.png', description='Dressed as Charizard.', date=datetime.date(2015, 9, 16))
+        posting_two = Posting(img_src='/images/charmanderascharizard.jpg', description='Dressed as Charizard.', date=datetime.date(2015, 9, 16))
 
         posting_two.similar_style_keys.append(onesie_key)
         posting_two.similar_style_keys.append(familyofonesies_key)
-        posting_two_key = posting_two.put()
 
-        charmander = Person(name='Charmander', bio="Charmander is a bipedal, reptilian Pokemon with an orange body, though its underside and soles are cream colored. It has two small fangs visible in its upper and lower jaws and blue eyes. Its arms and legs are short with four fingers and three clawed toes. A fire burns at the tip of this Pokemon's slender tail, and has blazed there since Charmander's birth. The flame can be used as an indication of Charmander's health and mood, burning brightly when the Pokemon is strong, weakly when it is exhausted, wavering when it is happy, and blazing when it is enraged. It is said that Charmander dies if its flame goes out. Charmander can be found in hot, mountainous areas. Howver, it is found far more often in the ownership of Trainers. Charmander exhibits pack behavior, calling others of its species if it finds food.")
-        charmander.posting_keys.append(posting_one_key)
-        charmander.posting_keys.append(posting_two_key)
+        charmander = Person(
+                name='Charmander', 
+                bio="Charmander is a bipedal, reptilian Pokemon with an orange body, though its underside and soles are cream colored. It has two small fangs visible in its upper and lower jaws and blue eyes. Its arms and legs are short with four fingers and three clawed toes. A fire burns at the tip of this Pokemon's slender tail, and has blazed there since Charmander's birth. The flame can be used as an indication of Charmander's health and mood, burning brightly when the Pokemon is strong, weakly when it is exhausted, wavering when it is happy, and blazing when it is enraged. It is said that Charmander dies if its flame goes out. Charmander can be found in hot, mountainous areas. However, it is found far more often in the ownership of Trainers. Charmander exhibits pack behavior, calling others of its species if it finds food.",
+                postings=[posting_one, posting_two])
         charmander.put()
 
         ############################################################### END DATASTORE ####
@@ -350,37 +375,42 @@ class WhoWoreWhatHandler(webapp2.RequestHandler):
 		self.response.write(who_wore_what_template.render(template_vars))
 
 class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
-	def get(self):
-		try: 
-			person_arg = self.request.get('person')
-
-			template_vars = {}
-
-			found_person_data = {}
-
-			for i in person_data:
-				if person_arg == i['id']:
-					found_person_data = i
-					break
-
-			if found_person_data == {}:
-				logging.info('no person data found for person: ' + person_arg)
+    def get(self):
+        try: 
+            person_arg = self.request.get('person') 
+            query = Person.query()
+            query.filter(Person.name == person_arg)
+            results = query.fetch()
+            logging.info(results)
 
 
-			template_vars = {'person_data': found_person_data}
 
-			# Check if it's a valid person.
-			if self.request.get('person') == '':
-				print "didn't get a valid person value in get request."
+            template_vars = {}
 
-			else:
-				# Display normal style guides page.
-				person_template = jinja_environment.get_template('templates/person.html')
-				logging.info('in person handler logging')
-				self.response.write(person_template.render(template_vars))
+            found_person_data = {}
+            for i in person_data:
+                if person_arg == i['id']:
+                    found_person_data = i
+                    break
 
-		except(TypeError, ValueError):
-			self.response.write('<html><body><p>Invalid person."</p></body></html>')
+            if found_person_data == {}:
+                logging.info('no person data found for person: ' + person_arg)
+
+
+            template_vars = {'person_data': found_person_data, 'person': results[0]}
+
+            # Check if it's a valid person.
+            if self.request.get('person') == '':
+                print "didn't get a valid person value in get request."
+
+            else:
+                # Display normal style guides page.
+                person_template = jinja_environment.get_template('templates/person.html')
+                logging.info('in person handler logging')
+                self.response.write(person_template.render(template_vars))
+
+        except(TypeError, ValueError):
+            self.response.write('<html><body><p>Invalid person."</p></body></html>')
 
 class SmartCasualHandler(webapp2.RequestHandler):
 	def get(self):

@@ -10,40 +10,40 @@
 
 {% block content %}
     <div id="path-links">
-        <a href="/whoworewhat" class="button">Who Wore What</a> &gt; {{person_data['display']}} 
+        <a href="/whoworewhat" class="button">Who Wore What</a> &gt; {{person.name}} 
     </div>
 
-    <span id="display-name"><h1>{{person_data['display']}}</h1></span>
-    <p id="biography">{{person_data['bio']}}</p>
+    <span id="display-name"><h1>{{person.name}}</h1></span>
+    <p id="biography">{{person.bio}}</p>
 
     <div id="postings-container">
-        {% for p in person_data['postings'] %}
+        {% for p in person.postings %}
             <div id="posting-table-container">
                 <table class="posting">
                     <tr>
                         <td class="posting-image-cell">
-                            <img class="posting-image" src='{{p['image_src']}}'></img>
+                            <img class="posting-image" src='{{p.img_src}}'></img>
                         </td>
 
                         <td class="posting-info-cell">
                             <div class="posting-info-cell-inner-container">
-                                <div class="posting-info-date">Posted: {{p['date']}}</div>
-                                <div class="posting-info-description">{{p['description']}}</div>
+                                <div class="posting-info-date">Posted: {{p.date}}</div>
+                                <div class="posting-info-description">{{p.description}}</div>
                                 <div class="posting-info-similar-styles">Similar Styles</div>
                                 <div class="similar-styles-table-container">
                                     <table class="similar-styles-outer-container">
                                         <tr>
-                                            {% for i in p['similar_styles'] %}
+                                            {% for i in p.similar_style_keys %}
                                                 <td class="similar-styles-inner-container">
-                                                        <img class="similar-styles-image" src='{{i['image_src']}}'></img>
+                                                        <img class="similar-styles-image" src='{{i.get().img_src}}'></img>
                                                         <div class="similar-styles-description">
-                                                            <div class="brand"><b>Brand: </b>{{i['brand']}}</div>
-                                                            <div class="price"><b>Price: </b>${{i['price']}}</div>
+                                                            <div class="brand"><b>Brand: </b>{{i.get().brand}}</div>
+                                                            <div class="price"><b>Price: </b>${{i.get().price}}</div>
                                                         </div>
                                                 </td>
                                                 <td class="similar-styles-inner-container">
-                                                        <img class="similar-styles-image" src='{{i['image_src']}}'></img>
-                                                        <div class="similar-styles-description">{{i['description']}}</div>
+                                                        <img class="similar-styles-image" src='{{i.get().img_src}}'></img>
+                                                        <div class="similar-styles-description">{{i.get().description}}</div>
                                                 </td>
                                             {% endfor %}
                                         </tr>
