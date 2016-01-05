@@ -14,10 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import webapp2
-import logging
 import jinja2
+import logging
 import os
+import webapp2
+
+import datetime
+from datetime import date
+from google.appengine.ext import ndb
 
 # Sets jinja's relative directory to match the directory name (dirname) of the current __file__, in this case, main.py
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -273,18 +277,63 @@ style_data = [
 	}
 ]
 
+class Person(ndb.Model):
+    name = ndb.StringProperty(required=True)
+    bio = ndb.TextProperty(required=True)
+    posting_keys = ndb.KeyProperty(kind='Posting', repeated=True)
 
+class Posting(ndb.Model):
+    img_src = ndb.TextProperty(required=True)
+    description = ndb.TextProperty(required=True)
+    date = ndb.DateProperty(required=True)
+    similar_style_keys = ndb.KeyProperty(kind='SimilarStyle', repeated=True)
+
+class SimilarStyle(ndb.Model):
+    img_src = ndb.TextProperty(required=True)
+    item_page = ndb.TextProperty(required=True)
+    description = ndb.TextProperty(required=True)
 
 class HomeHandler(webapp2.RequestHandler):
-	def get(self):
-		self.datastore()
+    def get(self):
+        self.datastore()
 
-		home_template = jinja_environment.get_template('templates/home.html')
-		logging.info('in main handler logging')
-		self.response.write(home_template.render())
+        home_template = jinja_environment.get_template('templates/home.html')
+        logging.info('in main handler logging')
+        self.response.write(home_template.render())
 
-	def datastore(self):
-		logging.info('hello from datastore')
+    def datastore(self):
+        ############################################################# BEGIN DATASTORE ####
+        logging.info('hello from datastore')
+
+        monocle= SimilarStyle(img_src='/images/monocleandmustache.png', item_page='TODO', description='Comes with a free mustache.')
+        monocle_key = monocle.put()
+        
+        tophat = SimilarStyle(img_src='/images/tophat.png', item_page='TODO', description='Top hat from club penguin.')
+        tophat_key = tophat.put()
+
+        posting_one = Posting(img_src='/images/gentlemoncharmaner.png', description='Spotted in downtown aiwefj awoeifj awefjoifj afio jefoief ojifaoi jafljeafkj fdsl jawefoi fjifdsoi jweafeoi jwefi f ej aefoij awefij Cerulean City with a new top hat and monocle.', date=datetime.date(2016, 1, 4))
+
+        posting_one.similar_style_keys.append(tophat_key)
+        posting_one.similar_style_keys.append(monocle_key)
+        posting_one_key = posting_one.put()
+
+        onesie = SimilarStyle(img_src='/images/charmanderonesie.jpg', item_page='TODO', description='Onesies!')
+        onesie_key = onesie.put()
+        familyofonesies= SimilarStyle(img_src='/images/familyofcharmanders.jpg', item_page='TODO', description='Because why not.')
+        familyofonesies_key = familyofonesies.put()
+
+        posting_two = Posting(img_src='/images/charmanderascharizard.png', description='Dressed as Charizard.', date=datetime.date(2015, 9, 16))
+
+        posting_two.similar_style_keys.append(onesie_key)
+        posting_two.similar_style_keys.append(familyofonesies_key)
+        posting_two_key = posting_two.put()
+
+        charmander = Person(name='Charmander', bio="Charmander is a bipedal, reptilian Pokemon with an orange body, though its underside and soles are cream colored. It has two small fangs visible in its upper and lower jaws and blue eyes. Its arms and legs are short with four fingers and three clawed toes. A fire burns at the tip of this Pokemon's slender tail, and has blazed there since Charmander's birth. The flame can be used as an indication of Charmander's health and mood, burning brightly when the Pokemon is strong, weakly when it is exhausted, wavering when it is happy, and blazing when it is enraged. It is said that Charmander dies if its flame goes out. Charmander can be found in hot, mountainous areas. Howver, it is found far more often in the ownership of Trainers. Charmander exhibits pack behavior, calling others of its species if it finds food.")
+        charmander.posting_keys.append(posting_one_key)
+        charmander.posting_keys.append(posting_two_key)
+        charmander.put()
+
+        ############################################################### END DATASTORE ####
 
 class ShopHandler(webapp2.RequestHandler):
 	def get(self):
@@ -421,6 +470,7 @@ class StyleGuidesHandler(webapp2.RequestHandler):
 		style_guides_template = jinja_environment.get_template('templates/style_guides.html')
 		logging.info('in style guides handler logging')
 		self.response.write(style_guides_template.render({'industry_names': industry_names, 'style_data': style_data}))
+
 
 app = webapp2.WSGIApplication([
     ('/shop.*', ShopHandler),
