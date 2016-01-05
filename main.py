@@ -277,9 +277,14 @@ style_data = [
 
 class HomeHandler(webapp2.RequestHandler):
 	def get(self):
+		self.datastore()
+
 		home_template = jinja_environment.get_template('templates/home.html')
 		logging.info('in main handler logging')
 		self.response.write(home_template.render())
+
+	def datastore(self):
+		logging.info('hello from datastore')
 
 class ShopHandler(webapp2.RequestHandler):
 	def get(self):
@@ -416,8 +421,6 @@ class StyleGuidesHandler(webapp2.RequestHandler):
 		style_guides_template = jinja_environment.get_template('templates/style_guides.html')
 		logging.info('in style guides handler logging')
 		self.response.write(style_guides_template.render({'industry_names': industry_names, 'style_data': style_data}))
-
-
 
 app = webapp2.WSGIApplication([
     ('/shop.*', ShopHandler),
