@@ -33,17 +33,17 @@
                                 <div class="similar-styles-table-container">
                                     <table class="similar-styles-outer-container">
                                         <tr>
-                                            {% for i in p.similar_style_keys %}
+                                            {% for similar_style in posting_to_similar_styles_dict[p.img_src] %}
                                                 <td class="similar-styles-inner-container">
-                                                        <img class="similar-styles-image" src='{{i.get().img_src}}'></img>
+                                                        <img class="similar-styles-image" src='{{similar_style.img_src}}'></img>
                                                         <div class="similar-styles-description">
-                                                            <div class="brand"><b>Brand: </b>{{i.get().brand}}</div>
-                                                            <div class="price"><b>Price: </b>${{i.get().price}}</div>
+                                                            <div class="brand"><b>Brand: </b>{{similar_style.brand}}</div>
+                                                            <div class="price"><b>Price: </b>${{similar_style.price}}</div>
                                                         </div>
                                                 </td>
                                                 <td class="similar-styles-inner-container">
-                                                        <img class="similar-styles-image" src='{{i.get().img_src}}'></img>
-                                                        <div class="similar-styles-description">{{i.get().description}}</div>
+                                                        <img class="similar-styles-image" src='{{similar_style.img_src}}'></img>
+                                                        <div class="similar-styles-description">{{similar_style.description}}</div>
                                                 </td>
                                             {% endfor %}
                                         </tr>

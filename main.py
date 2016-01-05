@@ -378,26 +378,25 @@ class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
     def get(self):
         try: 
             person_arg = self.request.get('person') 
+
             query = Person.query()
             query.filter(Person.name == person_arg)
             results = query.fetch()
             logging.info(results)
 
+            # Calling get() on similar styles and saving in a dictionary.
+            posting_to_similar_style_dict = {}
+
+            for p in results[0].postings:
+                similar_styles = []
+                for key in p.similar_style_keys:
+                    similar_styles.append(key.get())
+                # Using posting img_src as a unique ID. TODO: define an actual UID.
+                posting_to_similar_style_dict[p.img_src] = similar_styles
 
 
-            template_vars = {}
 
-            found_person_data = {}
-            for i in person_data:
-                if person_arg == i['id']:
-                    found_person_data = i
-                    break
-
-            if found_person_data == {}:
-                logging.info('no person data found for person: ' + person_arg)
-
-
-            template_vars = {'person_data': found_person_data, 'person': results[0]}
+            template_vars = {'person': results[0], 'posting_to_similar_styles_dict': posting_to_similar_style_dict}
 
             # Check if it's a valid person.
             if self.request.get('person') == '':
@@ -410,7 +409,7 @@ class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
                 self.response.write(person_template.render(template_vars))
 
         except(TypeError, ValueError):
-            self.response.write('<html><body><p>Invalid person."</p></body></html>')
+            self.response.write('<html><body><p>Invalid person.</p></body></html>')
 
 class SmartCasualHandler(webapp2.RequestHandler):
 	def get(self):
