@@ -49,7 +49,7 @@ $(function() {
 		confirm: function(event, cover, index) {
 			console.log('Confirm');
             var img = $(cover).children().andSelf().filter('img').last();
-            window.location.href = '/whoworewhat/person?person=' + img.attr('id');
+            window.location.href = '/whoworewhat/person?person=' + img.attr('data-name');
 		},
 
 		change:	function(event, cover) {

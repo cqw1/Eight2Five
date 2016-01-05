@@ -96,55 +96,6 @@ industry_data = [
 	}
 ]
 
-## NOTE: images must be same width x height. otherwise becomes really distorted.
-coverflow_data = [
-	{
-		'caption': 'Bulbasaur',
-		'id': 'bulbasaur',
-		'image_src': '/images/bulbasaurllama.png'
-	},
-	{
-		'caption': 'Ivysaur',
-		'id': 'ivysaur',
-		'image_src': '/images/ivysaurllama.png'
-	},
-	{
-		'caption': 'Venusaur',
-		'id': 'venusaur',
-		'image_src': '/images/venusaurllama.png'
-	},
-	{
-		'caption': 'Charmander',
-		'id': 'charmander',
-		'image_src': '/images/charmanderllama.png'
-	},
-	{
-		'caption': 'Charmeleon',
-		'id': 'charmeleon',
-		'image_src': '/images/charmeleonllama.png'
-	},
-	{
-		'caption': 'Charizard',
-		'id': 'charizard',
-		'image_src': '/images/charizardllama.png'
-	},
-	{
-		'caption': 'Squirtle',
-		'id': 'squirtle',
-		'image_src': '/images/squirtlellama.png'
-	},
-	{
-		'caption': 'Wartortle',
-		'id': 'wartortle',
-		'image_src': '/images/wartortlellama.png'
-	},
-	{
-		'caption': 'Blastoise',
-		'id': 'blastoise',
-		'image_src': '/images/blastoisellama.png'
-	}
-]
-
 style_data = [
 	{
 		'id': 'smartcasual',
@@ -247,6 +198,15 @@ class Person(ndb.Model):
     bio = ndb.TextProperty(required=True)
     postings = ndb.LocalStructuredProperty(Posting, repeated=True)
 
+class Coverflow(ndb.Model):
+    name = ndb.StringProperty(required=True)
+
+    # NOTE: images must be same width x height. otherwise becomes really distorted.
+    img_src = ndb.TextProperty(required=True)
+
+    # Default added to beginning of the coverflow.
+    order_id = ndb.IntegerProperty(required=False, default=0)
+
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
         self.datastore()
@@ -259,7 +219,7 @@ class HomeHandler(webapp2.RequestHandler):
         ############################################################# BEGIN DATASTORE ####
         logging.info('hello from datastore')
 
-        #================================================================ BEGIN PERSON === 
+        #===================================================================== PERSON === 
         monocle= SimilarStyle(
                 img_src='/images/monocleandmustache.png', 
                 item_page='TODO', 
@@ -300,7 +260,10 @@ class HomeHandler(webapp2.RequestHandler):
                 price=29.99)
         familyofonesies_key = familyofonesies.put()
 
-        posting_two = Posting(img_src='/images/charmanderascharizard.jpg', description='Dressed as Charizard.', date=datetime.date(2015, 9, 16))
+        posting_two = Posting(
+                img_src='/images/charmanderascharizard.jpg', 
+                description='Dressed as Charizard.', 
+                date=datetime.date(2015, 9, 16))
 
         posting_two.similar_style_keys.append(onesie_key)
         posting_two.similar_style_keys.append(familyofonesies_key)
@@ -310,7 +273,62 @@ class HomeHandler(webapp2.RequestHandler):
                 bio="Charmander is a bipedal, reptilian Pokemon with an orange body, though its underside and soles are cream colored. It has two small fangs visible in its upper and lower jaws and blue eyes. Its arms and legs are short with four fingers and three clawed toes. A fire burns at the tip of this Pokemon's slender tail, and has blazed there since Charmander's birth. The flame can be used as an indication of Charmander's health and mood, burning brightly when the Pokemon is strong, weakly when it is exhausted, wavering when it is happy, and blazing when it is enraged. It is said that Charmander dies if its flame goes out. Charmander can be found in hot, mountainous areas. However, it is found far more often in the ownership of Trainers. Charmander exhibits pack behavior, calling others of its species if it finds food.",
                 postings=[posting_one, posting_two])
         charmander.put()
-        #================================================================== END PERSON === 
+
+        #================================================================ COVERFLOW === 
+
+        bulbasaur = Coverflow(
+                name='Bulbasaur', 
+                img_src='/images/bulbasaurllama.png', 
+                order_id=0)
+        bulbasaur.put()
+
+        ivysaur = Coverflow(
+                name='Ivysaur', 
+                img_src='/images/ivysaurllama.png',
+                order_id=1)
+        ivysaur.put()
+
+        venusaur = Coverflow(
+                name='Venasaur', 
+                img_src='/images/venusaurllama.png',
+                order_id=2)
+        venusaur.put()
+
+        charmander = Coverflow(
+                name='Charmander', 
+                img_src='/images/charmanderllama.png',
+                order_id=3)
+        charmander.put()
+
+        charmeleon = Coverflow(
+                name='Charmeleon', 
+                img_src='/images/charmeleonllama.png',
+                order_id=4)
+        charmeleon.put()
+
+        charizard = Coverflow(
+                name='Charizard', 
+                img_src='/images/charizardllama.png',
+                order_id=5)
+        charizard.put()
+
+        squirtle = Coverflow(
+                name='Squirtle', 
+                img_src='/images/squirtlellama.png',
+                order_id=6)
+        squirtle.put()
+
+        wartortle = Coverflow(
+                name='Wartortle', 
+                img_src='/images/wartortlellama.png',
+                order_id=7)
+        wartortle.put()
+
+        blastoise = Coverflow(
+                name='Blastoise', 
+                img_src='/images/blastoisellama.png',
+                order_id=8)
+        blastoise.put()
 
         ############################################################### END DATASTORE ####
 
@@ -321,21 +339,25 @@ class ShopHandler(webapp2.RequestHandler):
 		self.response.write(shop_template.render())
 
 class WhoWoreWhatHandler(webapp2.RequestHandler):
-	def get(self):
-		template_vars = {'coverflow_data': coverflow_data}
+    def get(self):
+        coverflow_data = Coverflow.query().order(Coverflow.order_id).fetch()
 
-		who_wore_what_template = jinja_environment.get_template('templates/who_wore_what.html')
-		logging.info('in who wore what handler logging')
-		self.response.write(who_wore_what_template.render(template_vars))
+        template_vars = {'coverflow_data': coverflow_data}
+
+        who_wore_what_template = jinja_environment.get_template('templates/who_wore_what.html')
+        logging.info('in who wore what handler logging')
+        self.response.write(who_wore_what_template.render(template_vars))
 
 class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
     def get(self):
         try: 
             person_arg = self.request.get('person') 
 
-            query = Person.query()
-            query.filter(Person.name == person_arg)
+            logging.info('person_arg:')
+            logging.info(person_arg)
+            query = Person.query(getattr(Person, 'name') == person_arg)
             results = query.fetch()
+            logging.info('results')
             logging.info(results)
 
             # Calling get() on similar styles and saving in a dictionary.
