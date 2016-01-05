@@ -145,54 +145,6 @@ coverflow_data = [
 	}
 ]
 
-person_data = [
-	{
-		'id': 'charmander',
-		'display': 'Charmander',
-		'bio': "Charmander is a bipedal, reptilian Pokemon with an orange body, though its underside and soles are cream-colored. It has two small fangs visible in its upper and lower jaws and blue eyes. Its arms and legs are short with four fingers and three clawed toes. A fire burns at the tip of this Pokemon's slender tail, and has blazed there since Charmander's birth. The flame can be used as an indication of Charmander's health and mood, burning brightly when the Pokemon is strong, weakly when it is exhausted, wavering when it is happy, and blazing when it is enraged. It is said that Charmander dies if its flame goes out. Charmander can be found in hot, mountainous areas. However, it is found far more often in the ownership of Trainers. Charmander exhibits pack behavior, calling others of its species if it finds food.",
-		'postings': [
-			{
-				'image_src': '/images/gentlemoncharmander.png',
-				'date': '2015-12-30',
-				'description': 'Spotted in downtown balw awoiejf laiwjf a oifjaefoi jaeof ijewfoija ifjei oeawif id oieaa oeaijfaoeif efi jeaofi jefi jewaoifj oiewafj Cerulean City with a new top hat and monocle.',
-				'similar_styles': [
-					{
-						'image_src': '/images/tophat.png',
-						'brand': 'Ann Taylor',
-						'price': '29.99',
-						'description': 'Top hat from club penguin.'
-					},
-					{
-						'image_src': '/images/monocleandmustache.png',
-						'brand': 'JCrew',
-						'price': '19.99',
-						'description': 'Comes with a free mustache.'
-					}
-				]
-			},
-			{
-				'image_src': '/images/charmanderascharizard.jpg',
-				'date': '2015-09-07',
-				'description': 'Dressed as Charizard.',
-				'similar_styles': [
-					{
-						'image_src': '/images/charmanderonesie.jpg',
-						'brand': 'Ann Taylor',
-						'price': '29.99',
-						'description': 'Onesies!'
-					},
-					{
-						'image_src': '/images/familyofcharmanders.jpg',
-						'brand': 'JCrew',
-						'price': '19.99',
-						'description': 'Because why not.'
-					}
-				]
-			}
-		]
-	}
-]
-
 style_data = [
 	{
 		'id': 'smartcasual',
@@ -307,6 +259,7 @@ class HomeHandler(webapp2.RequestHandler):
         ############################################################# BEGIN DATASTORE ####
         logging.info('hello from datastore')
 
+        #================================================================ BEGIN PERSON === 
         monocle= SimilarStyle(
                 img_src='/images/monocleandmustache.png', 
                 item_page='TODO', 
@@ -357,6 +310,7 @@ class HomeHandler(webapp2.RequestHandler):
                 bio="Charmander is a bipedal, reptilian Pokemon with an orange body, though its underside and soles are cream colored. It has two small fangs visible in its upper and lower jaws and blue eyes. Its arms and legs are short with four fingers and three clawed toes. A fire burns at the tip of this Pokemon's slender tail, and has blazed there since Charmander's birth. The flame can be used as an indication of Charmander's health and mood, burning brightly when the Pokemon is strong, weakly when it is exhausted, wavering when it is happy, and blazing when it is enraged. It is said that Charmander dies if its flame goes out. Charmander can be found in hot, mountainous areas. However, it is found far more often in the ownership of Trainers. Charmander exhibits pack behavior, calling others of its species if it finds food.",
                 postings=[posting_one, posting_two])
         charmander.put()
+        #================================================================== END PERSON === 
 
         ############################################################### END DATASTORE ####
 
