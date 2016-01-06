@@ -3,9 +3,10 @@
 {% block title %}Person{% endblock %}
 
 {% block content %}
-    <div id="path-links">
-        <a href="/whoworewhat" class="button">Who Wore What</a> &gt; {{person.name}} 
-    </div>
+    <ol class="breadcrumb">
+        <li><a href="/whoworewhat">Who Wore What</a></li>
+        <li class="active">{{person.name}}</a></li>
+    </ol>
 
     <span id="display-name"><h1>{{person.name}}</h1></span>
     <p id="biography">{{person.bio}}</p>

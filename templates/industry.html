@@ -3,9 +3,10 @@
 {% block title %}Style Guides Industry{% endblock %}
 
 {% block content %}
-  <div id="path-links">
-    <a href="/styleguides" class="button">Style Guides</a> &gt; {{industry_data['display']}} 
-  </div>
+  <ol class="breadcrumb">
+    <li><a href="/styleguides">Style Guides</a></li>
+    <li class="active">{{industry_data['display']}}</a></li>
+  </ol>
 
   <div id="industry-select-container">
     Select Industry 
