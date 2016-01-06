@@ -13,7 +13,7 @@
 
     <div id="postings-container">
         {% for p in person.postings %}
-
+<!-- 
             <div id="posting-table-container">
                 <table class="posting">
                     <tr>
@@ -23,7 +23,7 @@
 
                         <td class="posting-info-cell">
                             <div class="posting-info-cell-inner-container">
-                                <div class="posting-info-date">Posted: {{p.date}}</h4> 
+                                <div class="posting-info-date">Posted: {{p.date}}</div> 
                                 <div class="posting-info-description">{{p.description}}</div>
                                 <div class="posting-info-similar-styles">Similar Styles</div>
                                 <div class="similar-styles-table-container">
@@ -48,20 +48,14 @@
 
                             </div>
                         </td>
-
-
                     </tr>
-
-
                 </table>
-
-
             </div>
-
+ -->
 
 
         
-            <!-- <div class="row">
+            <div class="row">
                 <div class="col-md-4">
                     <img class="posting-image" src="{{p.img_src}}">
                 </div>
@@ -89,7 +83,7 @@
                         </table>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
            <hr>
        {% endfor %}
