@@ -35,7 +35,11 @@
 }
 
 .similar-styles-table-container {
-    overflow-x: auto;
+    /* fixed scroll forces it to keep the scroll on  */
+    /* minimize. otherwise, if it fits on a bigger */
+    /* screen initially, it won't have a scroll on a */
+    /* smaller screen. */
+    overflow-x: scroll; 
     width: 100%;
 }
 
