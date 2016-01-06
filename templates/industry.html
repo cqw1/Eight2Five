@@ -2,12 +2,6 @@
 
 {% block title %}Style Guides Industry{% endblock %}
 
-{% block head %}
-  {{ super() }}
-  <script src="/javascript/industry.js"></script>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/industry.css">
-{% endblock %}
-
 {% block content %}
   <div id="path-links">
     <a href="/styleguides" class="button">Style Guides</a> &gt; {{industry_data['display']}} 
@@ -72,4 +66,9 @@
     </table>
   </div>
 
+{% endblock %}
+
+{% block end_body %}
+  <script src="/javascript/industry.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/industry.css">
 {% endblock %}

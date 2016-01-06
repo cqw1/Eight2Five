@@ -2,12 +2,6 @@
 
 {% block title %}Person{% endblock %}
 
-{% block head %}
-    {{ super() }}
-    <!-- <script src="/javascript/person.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="/stylesheets/person.css">
-{% endblock %}
-
 {% block content %}
     <div id="path-links">
         <a href="/whoworewhat" class="button">Who Wore What</a> &gt; {{person.name}} 
@@ -61,3 +55,7 @@
 
 {% endblock %}
 
+{% block end_body %}
+    <!-- <script src="/javascript/person.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/person.css">
+{% endblock %}

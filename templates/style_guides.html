@@ -2,12 +2,6 @@
 
 {% block title %}Style Guides{% endblock %}
 
-{% block head %}
-  {{ super() }}
-  <script src="/javascript/style_guides.js"></script>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/style_guides.css">
-{% endblock %}
-
 {% block content %}
   <div id="industry-select-container">
     Select Industry 
@@ -26,9 +20,14 @@
       <span class="style-image-container">
         <img id={{i['id']}} class="style-image" onclick="selectStyle(this)" title={{i['display']}} alt={{i['display']}} src="{{i['image_src']}}"></a>
       </span>
-
     {% endfor %}
+    
   </div>
 
+{% endblock %}
+
+{% block end_body %}
+  <script src="/javascript/style_guides.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style_guides.css">
 {% endblock %}
 

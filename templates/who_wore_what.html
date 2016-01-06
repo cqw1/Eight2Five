@@ -2,30 +2,12 @@
 
 {% block title %}Who Wore What Page{% endblock %}
 
-{% block head %}
-    {{ super() }}
-
-    <!-- Needed for coverflow stuff. -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.js"></script>
-
-	<!-- Optional: Reflection -->
-	<script type="text/javascript" src="/coverflow/reflection.js"></script>
-
-	<!-- interpolate, depends on jQ 1.8.0+ -->
-	<script src="/coverflow/jquery.interpolate.js"></script>
-    <script src="/coverflow/jquery.coverflow.js"></script>
-
-    <!-- End coverflow stuff. -->
-
-    <script src="/javascript/who_wore_what.js"></script>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/who_wore_what.css">
-{% endblock %}
-
 {% block content %}
     <!-- Kept as 'photos' rather than 'images' for inheritance's sake. -->
     <div id="b-container">
-        <div id="coverflow-photos-container"> <div class="photos"> {% for i in coverflow_data %}
+        <div id="coverflow-photos-container"> 
+            <div class="photos"> 
+                {% for i in coverflow_data %}
                     <img class="cover" data-name={{i.name}} src='{{i.img_src}}'/>
                 {% endfor %}
             </div>
@@ -48,4 +30,22 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block end_body %}
+    <!-- Needed for coverflow stuff. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.js"></script>
+
+    <!-- Optional: Reflection -->
+    <script type="text/javascript" src="/coverflow/reflection.js"></script>
+
+    <!-- interpolate, depends on jQ 1.8.0+ -->
+    <script src="/coverflow/jquery.interpolate.js"></script>
+    <script src="/coverflow/jquery.coverflow.js"></script>
+
+    <!-- End coverflow stuff. -->
+
+    <script src="/javascript/who_wore_what.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/who_wore_what.css">
 {% endblock %}
