@@ -216,11 +216,10 @@ class DropdownSection(ndb.Model):
 
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
-        self.datastore()
+        # self.datastore()
 
-        styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
-
-        template_vars = {'styleguide_sections': styleguide_sections}
+        template_vars = {
+                'styleguide_sections': self.app.config.get('styleguide_sections')}
 
         home_template = jinja_environment.get_template('templates/home.html')
         logging.info('in main handler logging')
@@ -356,19 +355,13 @@ class HomeHandler(webapp2.RequestHandler):
                 order_id=1)
         industry_styles.put()
 
-        testing = DropdownSection(
-                items=['one', 'two'], 
-                dropdown='Style Guides',
-                order_id=2)
-        testing.put()
-
 
         ############################################################### END DATASTORE ####
 
 class ShopHandler(webapp2.RequestHandler):
     def get(self):
-        styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
-        template_vars = {'styleguide_sections': styleguide_sections}
+        template_vars = {
+                'styleguide_sections': self.app.config.get('styleguide_sections')}
 
         shop_template = jinja_environment.get_template('templates/shop.html')
         logging.info('in shop handler logging')
@@ -377,9 +370,10 @@ class ShopHandler(webapp2.RequestHandler):
 class WhoWoreWhatHandler(webapp2.RequestHandler):
     def get(self):
         coverflow_data = Coverflow.query().order(Coverflow.order_id).fetch()
-        styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
 
-        template_vars = {'coverflow_data': coverflow_data, 'styleguide_sections': styleguide_sections}
+        template_vars = {
+                'coverflow_data': coverflow_data,
+                'styleguide_sections': self.app.config.get('styleguide_sections')}
 
         who_wore_what_template = jinja_environment.get_template('templates/who_wore_what.html')
         logging.info('in who wore what handler logging')
@@ -390,7 +384,6 @@ class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
         try: 
             person_arg = self.request.get('person') 
 
-            styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
             query = Person.query(getattr(Person, 'name') == person_arg)
             results = query.fetch()
             logging.info('results')
@@ -406,12 +399,10 @@ class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
                 # Using posting img_src as a unique ID. TODO: define an actual UID.
                 posting_to_similar_style_dict[p.img_src] = similar_styles
 
-
-
             template_vars = {
                     'person': results[0], 
                     'posting_to_similar_styles_dict': posting_to_similar_style_dict, 
-                    'styleguide_sections': styleguide_sections}
+                    'styleguide_sections': self.app.config.get('styleguide_sections')}
 
             # Check if it's a valid person.
             if self.request.get('person') == '':
@@ -441,12 +432,10 @@ class StyleGuidesIndustryHandler(webapp2.RequestHandler):
             if found_industry_data == {}:
                 logging.info('no industry data found for industry: ' + industry_arg)
 
-            styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
-
             template_vars = {
-                'industry_names': industry_names, 
-                'industry_data': found_industry_data, 
-                'styleguide_sections': styleguide_sections}
+                    'industry_names': industry_names, 
+                    'industry_data': found_industry_data, 
+                    'styleguide_sections': self.app.config.get('styleguide_sections')}
 
             # Check if it's a valid industry.
             if self.request.get('industry') == '':
@@ -476,12 +465,10 @@ class StyleGuidesStyleHandler(webapp2.RequestHandler):
             if found_style_data == {}:
                 logging.info('no style data found for style: ' + style_arg)
 
-            styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
-
             template_vars = {
                     'industry_names': industry_names, 
                     'style_data': found_style_data, 
-                    'styleguide_sections': styleguide_sections}
+                    'styleguide_sections': self.app.config.get('styleguide_sections')}
 
             # Check if it's a valid industry.
             if style_arg == '':
@@ -499,18 +486,17 @@ class StyleGuidesStyleHandler(webapp2.RequestHandler):
 
 class StyleGuidesHandler(webapp2.RequestHandler):
     def get(self):
-        styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
         template_vars = {
                 'industry_names': industry_names, 
                 'style_data': style_data, 
-                'styleguide_sections': styleguide_sections}
+                'styleguide_sections': self.app.config.get('styleguide_sections')}
 
         style_guides_template = jinja_environment.get_template('templates/style_guides.html')
         logging.info('in style guides handler logging')
         self.response.write(style_guides_template.render(template_vars))
 
 
-app = webapp2.WSGIApplication([
+app = webapp2.WSGIApplication(routes=[
     ('/shop.*', ShopHandler),
     ('/whoworewhat/person.*', WhoWoreWhatPersonHandler),
     ('/whoworewhat.*', WhoWoreWhatHandler),
@@ -518,4 +504,6 @@ app = webapp2.WSGIApplication([
     ('/styleguides/style.*', StyleGuidesStyleHandler),
     ('/styleguides.*', StyleGuidesHandler),
     ('/.*', HomeHandler)
-], debug=True)
+], debug=True, config={
+    'styleguide_sections': DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch() 
+})

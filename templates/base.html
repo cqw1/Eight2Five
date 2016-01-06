@@ -59,6 +59,24 @@
                     <li class="dropdown-header">{{section.heading}}</li>
                   {% endif %}
 
+                  <!-- Don't alphabetically sort the general styles. -->
+                  {% if section.heading == 'General' %}
+                    {% for item in section.items %}
+                      <li><a href="/styleguides/style?style={{item}}">{{item}}</a></li>
+                    {% endfor %}
+                  {% elif section.heading == 'Industry' %}
+                    {% for item in section.items|sort %}
+                      <li><a href="/styleguides/industry?industry={{item}}">{{item}}</a></li>
+                    {% endfor %}
+                  {% else %}
+                    {% for item in section.items|sort %}
+                      <li><a href="#">{{item}}</a></li>
+                    {% endfor %}
+                  {% endif %}
+
+
+                  <!-- No sort applied. -->
+                  <!--
                   {% for item in section.items %}
                     {% if section.heading == 'General' %}
                       <li><a href="/styleguides/style?style={{item}}">{{item}}</a></li>
@@ -68,6 +86,7 @@
                       <li><a href="#">{{item}}</a></li>
                     {% endif %}
                   {% endfor %}
+                -->
 
                   {% if not loop.last %}
                     <li role="separator" class="divider"></li>
