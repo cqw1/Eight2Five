@@ -207,6 +207,7 @@ class Coverflow(ndb.Model):
     # Default added to beginning of the coverflow.
     order_id = ndb.IntegerProperty(required=False, default=0)
 
+
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
         self.datastore()
@@ -353,8 +354,6 @@ class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
         try: 
             person_arg = self.request.get('person') 
 
-            logging.info('person_arg:')
-            logging.info(person_arg)
             query = Person.query(getattr(Person, 'name') == person_arg)
             results = query.fetch()
             logging.info('results')
