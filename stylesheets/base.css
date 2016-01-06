@@ -1,67 +1,18 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	margin: 0px;
 }
 
-#nav-container ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #333;
-	text-align: center;
+body > .container {
+	/* overriding the default bootstrap padding */
+	padding: 0px;
 }
 
 .navbar {
-	border-radius: 0px;
-}
+	/* overriding the default bootstrap padding */
+	border-radius: 0;
 
-#nav-container ul li {
-	display: inline;
-}
-
-#nav-container ul li a {
-	display: inline-block;
-	color: white;
-	text-align: center;
-	padding: 1em 1.5em;
-	text-decoration: none;
-}
-
-#nav-container ul li a:hover {
-	background-color: #111;
-}
-
-.active {
-	background-color: #4CAF50;
-}
-
-#content {
-	padding: 2em 2em 3em 2em; /* 3em is footer height */
-}
-
-#outer-container, html, body {
-	height: 100%;
-}
-
-body > #outer-container {
-	height: auto;
-	min-height: 100%;
-}
-
-footer {
-	clear: both;
-	position: relative;
-	z-index: 10;
-	height: 3em;
-	margin-top: -3em;
-	background: black;
-}
-
-#footer-placeholder {
-	background-color: #333;
-	padding: 1em;
-	margin: 0 auto;
-	color: white;
-	text-align: center;
+	/* default bootstrap css */
+	min-height: 50px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
 }

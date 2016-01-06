@@ -1,9 +1,7 @@
-styleGuidesInit();
+$(document).ready(function() {
+    console.log("styleguides.js document ready"); 
 
-
-function styleGuidesInit() {
-	console.log("styleguides.js == styleGuidesInit function");
-}
+});
 
 function selectIndustry() {
 	console.log($("#industry-select option:selected").val());
