@@ -28,156 +28,156 @@ jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.di
 
 # For the drop-down select so we don't have to send the whole industry_data over.
 industry_names = [
-	{'id': 'consulting', 'display': 'Consulting'},
-	{'id': 'industry2', 'display': 'Industry 2'}
+    {'id': 'consulting', 'display': 'Consulting'},
+    {'id': 'industry2', 'display': 'Industry 2'}
 ]
 
 # Contains all the info for the style guides > industry pages.
 industry_data = [
-	{
-		'id': 'consulting',
-		'display': 'Consulting',
-		'style_data': [
-			{
-				'name': 'Business Formal',
-				'image_src': '/images/businessformal.png',#TODO: FILLOUT
-				'shop_page': 'about:blank',#TODO: FILLOUT
-				'relevance': 'High',
-				'activities': ['Client site activities'],
-				'attire': ['Dark suit', 'Top']
-			},
-			{
-				'name': 'Business Casual',
-				'image_src': '/images/businesscasual.png',#TODO: FILLOUT
-				'shop_page': 'about:blank',#TODO: FILLOUT
-				'relevance': 'Medium',
-				'activities': ['Casual fridays in office'],
-				'attire': ['Dress pant', 'Shirt']
-			},			
-			{
-				'name': 'Smart Casual',
-				'image_src': '/images/smartcasual.png',#TODO: FILLOUT
-				'shop_page': 'about:blank',#TODO: FILLOUT
-				'relevance': 'Low',
-				'activities': ['Happy hour', 'Social hangouts'],
-				'attire': ['Jeans', 'Blazer']
-			}
-		]
-	},
-	{
-		'id': 'industry2',
-		'display': 'Industry 2',
-		'style_data': [
-			{
-				'name': 'Business Formal',
-				'image_src': '/images/businessformal.png',#TODO: FILLOUT
-				'shop_page': 'about:blank',#TODO: FILLOUT
-				'relevance': 'High',
-				'activities': ['Nothing'],
-				'attire': ['Pants', 'Shirt']
-			},
-			{
-				'name': 'Smart Casual',
-				'image_src': '/images/smartcasual.png',#TODO: FILLOUT
-				'shop_page': 'about:blank',#TODO: FILLOUT
-				'relevance': 'Medium',
-				'activities': ['Something'],
-				'attire': ['Sandals', 'Hat']
-			},			
-			{
-				'name': 'Business Casual',
-				'image_src': '/images/businesscasual.png',#TODO: FILLOUT
-				'shop_page': 'about:blank',#TODO: FILLOUT
-				'relevance': 'Low',
-				'activities': ['Anything'],
-				'attire': ['Socks', 'Gloves']
-			}
-		]
-	}
+    {
+        'id': 'consulting',
+        'display': 'Consulting',
+        'style_data': [
+            {
+                'name': 'Business Formal',
+                'image_src': '/images/businessformal.png',#TODO: FILLOUT
+                'shop_page': 'about:blank',#TODO: FILLOUT
+                'relevance': 'High',
+                'activities': ['Client site activities'],
+                'attire': ['Dark suit', 'Top']
+            },
+            {
+                'name': 'Business Casual',
+                'image_src': '/images/businesscasual.png',#TODO: FILLOUT
+                'shop_page': 'about:blank',#TODO: FILLOUT
+                'relevance': 'Medium',
+                'activities': ['Casual fridays in office'],
+                'attire': ['Dress pant', 'Shirt']
+            },          
+            {
+                'name': 'Smart Casual',
+                'image_src': '/images/smartcasual.png',#TODO: FILLOUT
+                'shop_page': 'about:blank',#TODO: FILLOUT
+                'relevance': 'Low',
+                'activities': ['Happy hour', 'Social hangouts'],
+                'attire': ['Jeans', 'Blazer']
+            }
+        ]
+    },
+    {
+        'id': 'industry2',
+        'display': 'Industry 2',
+        'style_data': [
+            {
+                'name': 'Business Formal',
+                'image_src': '/images/businessformal.png',#TODO: FILLOUT
+                'shop_page': 'about:blank',#TODO: FILLOUT
+                'relevance': 'High',
+                'activities': ['Nothing'],
+                'attire': ['Pants', 'Shirt']
+            },
+            {
+                'name': 'Smart Casual',
+                'image_src': '/images/smartcasual.png',#TODO: FILLOUT
+                'shop_page': 'about:blank',#TODO: FILLOUT
+                'relevance': 'Medium',
+                'activities': ['Something'],
+                'attire': ['Sandals', 'Hat']
+            },          
+            {
+                'name': 'Business Casual',
+                'image_src': '/images/businesscasual.png',#TODO: FILLOUT
+                'shop_page': 'about:blank',#TODO: FILLOUT
+                'relevance': 'Low',
+                'activities': ['Anything'],
+                'attire': ['Socks', 'Gloves']
+            }
+        ]
+    }
 ]
 
 style_data = [
-	{
-		'id': 'smartcasual',
-		'display': 'Smart Casual',
-		'image_src': '/images/smartcasual.png',
-		'styles': [
-			{
-				'look': {
-					'image_src': '/images/smartcasual.png',
-					'descriptions': ['White jeans and top aofeij ef awejf ewafio jawef aewf ijweof ijewf oijewaof jwae', 'Beige blazer']
-				},
-				'occasion': {
-					'image_src': '/images/smartcasual.png',
-					'descriptions': ['Casual fridays']
-				}
-			},
-			{
-				'look': {
-					'image_src': '/images/smartcasual.png',
-					'descriptions': ['Blank']
-				},
-				'occasion': {
-					'image_src': '/images/smartcasual.png',
-					'descriptions': ['The happy hour']
-				}
-			}
-		]
-	},
-	{
-		'id': 'businesscasual',
-		'display': 'Business Casual',
-		'image_src': '/images/businesscasual.png',
-		'styles': [
-			{
-				'look': {
-					'image_src': '/images/businesscasual.png',
-					'descriptions': ['blah']
-				},
-				'occasion': {
-					'image_src': '/images/businesscasual.png',
-					'descriptions': ['Casual fridays']
-				}
-			},
-			{
-				'look': {
-					'image_src': '/images/businesscasual.png',
-					'descriptions': ['Blank', 'Blank']
-				},
-				'occasion': {
-					'image_src': '/images/businesscasual.png',
-					'descriptions': ['The happy hour']
-				}
-			}
-		]
-	},
-	{
-		'id': 'businessformal',
-		'display': 'Business Formal',
-		'image_src': '/images/businessformal.png',
-		'styles': [
-			{
-				'look': {
-					'image_src': '/images/businessformal.png',
-					'descriptions': ['blah']
-				},
-				'occasion': {
-					'image_src': '/images/businessformal.png',
-					'descriptions': ['Casual fridays']
-				}
-			},
-			{
-				'look': {
-					'image_src': '/images/businessformal.png',
-					'descriptions': ['Blank', 'Blank']
-				},
-				'occasion': {
-					'image_src': '/images/businessformal.png',
-					'descriptions': ['The happy hour']
-				}
-			}
-		]
-	}
+    {
+        'id': 'smartcasual',
+        'display': 'Smart Casual',
+        'image_src': '/images/smartcasual.png',
+        'styles': [
+            {
+                'look': {
+                    'image_src': '/images/smartcasual.png',
+                    'descriptions': ['White jeans and top aofeij ef awejf ewafio jawef aewf ijweof ijewf oijewaof jwae', 'Beige blazer']
+                },
+                'occasion': {
+                    'image_src': '/images/smartcasual.png',
+                    'descriptions': ['Casual fridays']
+                }
+            },
+            {
+                'look': {
+                    'image_src': '/images/smartcasual.png',
+                    'descriptions': ['Blank']
+                },
+                'occasion': {
+                    'image_src': '/images/smartcasual.png',
+                    'descriptions': ['The happy hour']
+                }
+            }
+        ]
+    },
+    {
+        'id': 'businesscasual',
+        'display': 'Business Casual',
+        'image_src': '/images/businesscasual.png',
+        'styles': [
+            {
+                'look': {
+                    'image_src': '/images/businesscasual.png',
+                    'descriptions': ['blah']
+                },
+                'occasion': {
+                    'image_src': '/images/businesscasual.png',
+                    'descriptions': ['Casual fridays']
+                }
+            },
+            {
+                'look': {
+                    'image_src': '/images/businesscasual.png',
+                    'descriptions': ['Blank', 'Blank']
+                },
+                'occasion': {
+                    'image_src': '/images/businesscasual.png',
+                    'descriptions': ['The happy hour']
+                }
+            }
+        ]
+    },
+    {
+        'id': 'businessformal',
+        'display': 'Business Formal',
+        'image_src': '/images/businessformal.png',
+        'styles': [
+            {
+                'look': {
+                    'image_src': '/images/businessformal.png',
+                    'descriptions': ['blah']
+                },
+                'occasion': {
+                    'image_src': '/images/businessformal.png',
+                    'descriptions': ['Casual fridays']
+                }
+            },
+            {
+                'look': {
+                    'image_src': '/images/businessformal.png',
+                    'descriptions': ['Blank', 'Blank']
+                },
+                'occasion': {
+                    'image_src': '/images/businessformal.png',
+                    'descriptions': ['The happy hour']
+                }
+            }
+        ]
+    }
 ]
 
 class SimilarStyle(ndb.Model):
@@ -207,14 +207,24 @@ class Coverflow(ndb.Model):
     # Default added to beginning of the coverflow.
     order_id = ndb.IntegerProperty(required=False, default=0)
 
+class DropdownSection(ndb.Model):
+    dropdown = ndb.StringProperty(required=True) # Which dropdown is it in.
+    heading = ndb.StringProperty(required=False, default='')
+    items = ndb.TextProperty(repeated=True)
+    order_id = ndb.IntegerProperty(required=False, default=0)
+
 
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
         self.datastore()
 
+        styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
+
+        template_vars = {'styleguide_sections': styleguide_sections}
+
         home_template = jinja_environment.get_template('templates/home.html')
         logging.info('in main handler logging')
-        self.response.write(home_template.render())
+        self.response.write(home_template.render(template_vars))
 
     def datastore(self):
         ############################################################# BEGIN DATASTORE ####
@@ -331,19 +341,45 @@ class HomeHandler(webapp2.RequestHandler):
                 order_id=8)
         blastoise.put()
 
+        #================================================================== DROPDOWNS === 
+        general_styles = DropdownSection(
+                heading='General', 
+                items=['Smart Casual', 'Business Casual', 'Business Formal'], 
+                dropdown='Style Guides',
+                order_id=0)
+        general_styles.put()
+
+        industry_styles = DropdownSection(
+                heading='Industry', 
+                items=['Consulting', 'Industry 2'], 
+                dropdown='Style Guides',
+                order_id=1)
+        industry_styles.put()
+
+        testing = DropdownSection(
+                items=['one', 'two'], 
+                dropdown='Style Guides',
+                order_id=2)
+        testing.put()
+
+
         ############################################################### END DATASTORE ####
 
 class ShopHandler(webapp2.RequestHandler):
-	def get(self):
-		shop_template = jinja_environment.get_template('templates/shop.html')
-		logging.info('in shop handler logging')
-		self.response.write(shop_template.render())
+    def get(self):
+        styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
+        template_vars = {'styleguide_sections': styleguide_sections}
+
+        shop_template = jinja_environment.get_template('templates/shop.html')
+        logging.info('in shop handler logging')
+        self.response.write(shop_template.render(template_vars))
 
 class WhoWoreWhatHandler(webapp2.RequestHandler):
     def get(self):
         coverflow_data = Coverflow.query().order(Coverflow.order_id).fetch()
+        styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
 
-        template_vars = {'coverflow_data': coverflow_data}
+        template_vars = {'coverflow_data': coverflow_data, 'styleguide_sections': styleguide_sections}
 
         who_wore_what_template = jinja_environment.get_template('templates/who_wore_what.html')
         logging.info('in who wore what handler logging')
@@ -354,6 +390,7 @@ class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
         try: 
             person_arg = self.request.get('person') 
 
+            styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
             query = Person.query(getattr(Person, 'name') == person_arg)
             results = query.fetch()
             logging.info('results')
@@ -371,7 +408,10 @@ class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
 
 
 
-            template_vars = {'person': results[0], 'posting_to_similar_styles_dict': posting_to_similar_style_dict}
+            template_vars = {
+                    'person': results[0], 
+                    'posting_to_similar_styles_dict': posting_to_similar_style_dict, 
+                    'styleguide_sections': styleguide_sections}
 
             # Check if it's a valid person.
             if self.request.get('person') == '':
@@ -386,103 +426,94 @@ class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
         except(TypeError, ValueError):
             self.response.write('<html><body><p>Invalid person.</p></body></html>')
 
-class SmartCasualHandler(webapp2.RequestHandler):
-	def get(self):
-		smart_casual_template = jinja_environment.get_template('templates/smart_casual.html')
-		logging.info('in smart casual handler logging')
-		self.response.write(smart_casual_template.render())
-
-class BusinessCasualHandler(webapp2.RequestHandler):
-	def get(self):
-		business_casual_template = jinja_environment.get_template('templates/business_casual.html')
-		logging.info('in business casual handler logging')
-		self.response.write(business_casual_template.render())
-
-class BusinessFormalHandler(webapp2.RequestHandler):
-	def get(self):
-		business_formal_template = jinja_environment.get_template('templates/business_formal.html')
-		logging.info('in business formal handler logging')
-		self.response.write(business_formal_template.render())
-
 class StyleGuidesIndustryHandler(webapp2.RequestHandler):
-	def get(self):
-		try: 
-			industry_arg = self.request.get('industry')
+    def get(self):
+        try: 
+            industry_arg = self.request.get('industry')
 
-			found_industry_data = {}
+            found_industry_data = {}
 
-			for i in industry_data:
-				if industry_arg == i['id']:
-					found_industry_data = i
-					break
+            for i in industry_data:
+                if industry_arg == i['id']:
+                    found_industry_data = i
+                    break
 
-			if found_industry_data == {}:
-				logging.info('no industry data found for industry: ' + industry_arg)
+            if found_industry_data == {}:
+                logging.info('no industry data found for industry: ' + industry_arg)
 
+            styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
 
-			template_vars = {'industry_names': industry_names, 'industry_data': found_industry_data}
+            template_vars = {
+                'industry_names': industry_names, 
+                'industry_data': found_industry_data, 
+                'styleguide_sections': styleguide_sections}
 
-			# Check if it's a valid industry.
-			if self.request.get('industry') == '':
-				print "didn't get a valid industry value in get request."
+            # Check if it's a valid industry.
+            if self.request.get('industry') == '':
+                print "didn't get a valid industry value in get request."
 
-			else:
-				# Display normal style guides page.
-				industry_template = jinja_environment.get_template('templates/industry.html')
-				logging.info('in industry handler logging')
-				self.response.write(industry_template.render(template_vars))
+            else:
+                # Display normal style guides page.
+                industry_template = jinja_environment.get_template('templates/industry.html')
+                logging.info('in industry handler logging')
+                self.response.write(industry_template.render(template_vars))
 
-		except(TypeError, ValueError):
-			self.response.write('<html><body><p>Invalid industry."</p></body></html>')
+        except(TypeError, ValueError):
+            self.response.write('<html><body><p>Invalid industry."</p></body></html>')
 
 class StyleGuidesStyleHandler(webapp2.RequestHandler):
-	def get(self):
-		try: 
-			style_arg = self.request.get('style')
+    def get(self):
+        try: 
+            style_arg = self.request.get('style')
 
-			found_style_data = {}
+            found_style_data = {}
 
-			for i in style_data:
-				if style_arg == i['id']:
-					found_style_data = i
-					break
+            for i in style_data:
+                if style_arg == i['id']:
+                    found_style_data = i
+                    break
 
-			if found_style_data == {}:
-				logging.info('no style data found for style: ' + style_arg)
+            if found_style_data == {}:
+                logging.info('no style data found for style: ' + style_arg)
 
+            styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
 
-			template_vars = {'industry_names': industry_names, 'style_data': found_style_data}
+            template_vars = {
+                    'industry_names': industry_names, 
+                    'style_data': found_style_data, 
+                    'styleguide_sections': styleguide_sections}
 
-			# Check if it's a valid industry.
-			if style_arg == '':
-				print "didn't get a valid style value in get request."
+            # Check if it's a valid industry.
+            if style_arg == '':
+                print "didn't get a valid style value in get request."
 
-			else:
-				# Display normal industry page.
-				style_template = jinja_environment.get_template('templates/style.html')
-				logging.info('in style handler logging')
-				self.response.write(style_template.render(template_vars))
+            else:
+                # Display normal industry page.
+                style_template = jinja_environment.get_template('templates/style.html')
+                logging.info('in style handler logging')
+                self.response.write(style_template.render(template_vars))
 
-		except(TypeError, ValueError):
-			self.response.write('<html><body><p>Invalid style."</p></body></html>')
+        except(TypeError, ValueError):
+            self.response.write('<html><body><p>Invalid style."</p></body></html>')
 
 
 class StyleGuidesHandler(webapp2.RequestHandler):
-	def get(self):
-		logging.info('created industries list')
+    def get(self):
+        styleguide_sections = DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch()
+        template_vars = {
+                'industry_names': industry_names, 
+                'style_data': style_data, 
+                'styleguide_sections': styleguide_sections}
 
-		style_guides_template = jinja_environment.get_template('templates/style_guides.html')
-		logging.info('in style guides handler logging')
-		self.response.write(style_guides_template.render({'industry_names': industry_names, 'style_data': style_data}))
+        style_guides_template = jinja_environment.get_template('templates/style_guides.html')
+        logging.info('in style guides handler logging')
+        self.response.write(style_guides_template.render(template_vars))
 
 
 app = webapp2.WSGIApplication([
     ('/shop.*', ShopHandler),
     ('/whoworewhat/person.*', WhoWoreWhatPersonHandler),
     ('/whoworewhat.*', WhoWoreWhatHandler),
-    ('/styleguides/smartcasual.*', SmartCasualHandler),
-    ('/styleguides/businesscasual.*', BusinessCasualHandler),
-    ('/styleguides/businessformal.*', BusinessFormalHandler),
     ('/styleguides/industry.*', StyleGuidesIndustryHandler),
     ('/styleguides/style.*', StyleGuidesStyleHandler),
     ('/styleguides.*', StyleGuidesHandler),
