@@ -3,16 +3,24 @@
 }
 
 #biography {
-    padding-left: 10%;
-    padding-right: 10%;
+    /*padding-left: 10%;*/
+    /*padding-right: 10%;*/
 }
 
 #postings-container {
     margin-top: 2em;
-    margin-left: 10%;
-    margin-right: 10%;
+    /*margin-left: 10%;*/
+    /*margin-right: 10%;*/
 }
 
+.row {
+    margin-right: -15px; /* original bootstrap css */
+    margin-left: -15px; /* original bootstrap css */
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    overflow-x: auto;
+}
 
 #posting-table-container {
     width: 80%;

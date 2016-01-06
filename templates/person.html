@@ -13,46 +13,39 @@
 
     <div id="postings-container">
         {% for p in person.postings %}
-            <div id="posting-table-container">
-                <table class="posting">
-                    <tr>
-                        <td class="posting-image-cell">
-                            <img class="posting-image" src='{{p.img_src}}'></img>
-                        </td>
-
-                        <td class="posting-info-cell">
-                            <div class="posting-info-cell-inner-container">
-                                <div class="posting-info-date">Posted: {{p.date}}</div>
-                                <div class="posting-info-description">{{p.description}}</div>
-                                <div class="posting-info-similar-styles">Similar Styles</div>
-                                <div class="similar-styles-table-container">
-                                    <table class="similar-styles-outer-container">
-                                        <tr>
-                                            {% for similar_style in posting_to_similar_styles_dict[p.img_src] %}
-                                                <td class="similar-styles-inner-container">
-                                                        <img class="similar-styles-image" src='{{similar_style.img_src}}'></img>
-                                                        <div class="similar-styles-description">
-                                                            <div class="brand"><b>Brand: </b>{{similar_style.brand}}</div>
-                                                            <div class="price"><b>Price: </b>${{similar_style.price}}</div>
-                                                        </div>
-                                                </td>
-                                                <td class="similar-styles-inner-container">
-                                                        <img class="similar-styles-image" src='{{similar_style.img_src}}'></img>
-                                                        <div class="similar-styles-description">{{similar_style.description}}</div>
-                                                </td>
-                                            {% endfor %}
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="posting-image" src="{{p.img_src}}">
+                </div>
+                <div class="col-md-8">
+                    <h4 class="media-heading posting-info-date">Posted: {{p.date}}</h4> 
+                    <div class="posting-info-description">{{p.description}}</div>
+                    <div class="posting-info-similar-styles">Similar Styles</div>
+                    <div class="similar-styles-table-container">
+                        <table class="similar-styles-outer-container">
+                            <tr>
+                                {% for similar_style in posting_to_similar_styles_dict[p.img_src] %}
+                                    <td class="similar-styles-inner-container">
+                                            <img class="similar-styles-image" src='{{similar_style.img_src}}'></img>
+                                            <div class="similar-styles-description">
+                                                <div class="brand"><b>Brand: </b>{{similar_style.brand}}</div>
+                                                <div class="price"><b>Price: </b>${{similar_style.price}}</div>
+                                            </div>
+                                    </td>
+                                    <td class="similar-styles-inner-container">
+                                            <img class="similar-styles-image" src='{{similar_style.img_src}}'></img>
+                                            <div class="similar-styles-description">{{similar_style.description}}</div>
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
 
-            <hr>
-        {% endfor %}
-    </div>
+           <hr>
+       {% endfor %}
+   </div>
 
 {% endblock %}
 
