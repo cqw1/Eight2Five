@@ -306,7 +306,7 @@ class HomeHandler(webapp2.RequestHandler):
 
         consulting_bc = IndustryStyle(
                 industry='Consulting',
-                style='BUsiness Casual',
+                style='Business Casual',
                 img_src='/images/businesscasual.png',
                 relevance='Medium',
                 activities=['Casual fridays in office'],

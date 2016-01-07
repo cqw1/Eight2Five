@@ -17,6 +17,10 @@ body > .container {
 	border: 1px solid transparent;
 }
 
+.page-title {
+	text-align: center;
+}
+
 /***********************************/
 /****  split-button in navbar ******/
 .nav > li > .split-button {

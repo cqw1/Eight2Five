@@ -20,6 +20,50 @@
 </div>
 -->
 
+  <div class="container">
+    <h3 class="page-title">{{style}}</h3>
+    <hr>
+  </div>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <p class="text-center"><b>The Look</b></p>
+        </div>
+        <div class="col-xs-6">
+            <p class="text-center"><b>The Occasion</b></p>
+        </div>
+    </div>
+
+    {% for style in style_data %}
+        <div class="row-container">
+            <div class="row vertical-center">
+                <div class="col-xs-3">
+                    <img class="look-image" src="{{style.look_img_src}}">
+                </div>
+                <div class="col-xs-3">
+                    <ul>
+                        {% for description in style.look_descriptions %}
+                            <li>{{description}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-xs-3">
+                    <img class="occasion-image" src="{{style.occasion_img_src}}">
+                </div>
+                <div class="col-xs-3">
+                    <ul>
+                        {% for description in style.occasion_descriptions %}
+                            <li>{{description}}</li>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+  </div>
+
+<!--
   <table align="center" id="look-occasion-table">
     <tr>
         <th>The Look</th>
@@ -62,6 +106,7 @@
         </tr>
     {% endfor %}
   </table>
+-->
 
 {% endblock %}
 
