@@ -32,154 +32,6 @@ industry_names = [
     {'id': 'industry2', 'display': 'Industry 2'}
 ]
 
-# Contains all the info for the style guides > industry pages.
-industry_data = [
-    {
-        'id': 'consulting',
-        'display': 'Consulting',
-        'style_data': [
-            {
-                'name': 'Business Formal',
-                'image_src': '/images/businessformal.png',#TODO: FILLOUT
-                'shop_page': 'about:blank',#TODO: FILLOUT
-                'relevance': 'High',
-                'activities': ['Client site activities'],
-                'attire': ['Dark suit', 'Top']
-            },
-            {
-                'name': 'Business Casual',
-                'image_src': '/images/businesscasual.png',#TODO: FILLOUT
-                'shop_page': 'about:blank',#TODO: FILLOUT
-                'relevance': 'Medium',
-                'activities': ['Casual fridays in office'],
-                'attire': ['Dress pant', 'Shirt']
-            },          
-            {
-                'name': 'Smart Casual',
-                'image_src': '/images/smartcasual.png',#TODO: FILLOUT
-                'shop_page': 'about:blank',#TODO: FILLOUT
-                'relevance': 'Low',
-                'activities': ['Happy hour', 'Social hangouts'],
-                'attire': ['Jeans', 'Blazer']
-            }
-        ]
-    },
-    {
-        'id': 'industry2',
-        'display': 'Industry 2',
-        'style_data': [
-            {
-                'name': 'Business Formal',
-                'image_src': '/images/businessformal.png',#TODO: FILLOUT
-                'shop_page': 'about:blank',#TODO: FILLOUT
-                'relevance': 'High',
-                'activities': ['Nothing'],
-                'attire': ['Pants', 'Shirt']
-            },
-            {
-                'name': 'Smart Casual',
-                'image_src': '/images/smartcasual.png',#TODO: FILLOUT
-                'shop_page': 'about:blank',#TODO: FILLOUT
-                'relevance': 'Medium',
-                'activities': ['Something'],
-                'attire': ['Sandals', 'Hat']
-            },          
-            {
-                'name': 'Business Casual',
-                'image_src': '/images/businesscasual.png',#TODO: FILLOUT
-                'shop_page': 'about:blank',#TODO: FILLOUT
-                'relevance': 'Low',
-                'activities': ['Anything'],
-                'attire': ['Socks', 'Gloves']
-            }
-        ]
-    }
-]
-
-style_data = [
-    {
-        'id': 'smartcasual',
-        'display': 'Smart Casual',
-        'image_src': '/images/smartcasual.png',
-        'styles': [
-            {
-                'look': {
-                    'image_src': '/images/smartcasual.png',
-                    'descriptions': ['White jeans and top aofeij ef awejf ewafio jawef aewf ijweof ijewf oijewaof jwae', 'Beige blazer']
-                },
-                'occasion': {
-                    'image_src': '/images/smartcasual.png',
-                    'descriptions': ['Casual fridays']
-                }
-            },
-            {
-                'look': {
-                    'image_src': '/images/smartcasual.png',
-                    'descriptions': ['Blank']
-                },
-                'occasion': {
-                    'image_src': '/images/smartcasual.png',
-                    'descriptions': ['The happy hour']
-                }
-            }
-        ]
-    },
-    {
-        'id': 'businesscasual',
-        'display': 'Business Casual',
-        'image_src': '/images/businesscasual.png',
-        'styles': [
-            {
-                'look': {
-                    'image_src': '/images/businesscasual.png',
-                    'descriptions': ['blah']
-                },
-                'occasion': {
-                    'image_src': '/images/businesscasual.png',
-                    'descriptions': ['Casual fridays']
-                }
-            },
-            {
-                'look': {
-                    'image_src': '/images/businesscasual.png',
-                    'descriptions': ['Blank', 'Blank']
-                },
-                'occasion': {
-                    'image_src': '/images/businesscasual.png',
-                    'descriptions': ['The happy hour']
-                }
-            }
-        ]
-    },
-    {
-        'id': 'businessformal',
-        'display': 'Business Formal',
-        'image_src': '/images/businessformal.png',
-        'styles': [
-            {
-                'look': {
-                    'image_src': '/images/businessformal.png',
-                    'descriptions': ['blah']
-                },
-                'occasion': {
-                    'image_src': '/images/businessformal.png',
-                    'descriptions': ['Casual fridays']
-                }
-            },
-            {
-                'look': {
-                    'image_src': '/images/businessformal.png',
-                    'descriptions': ['Blank', 'Blank']
-                },
-                'occasion': {
-                    'image_src': '/images/businessformal.png',
-                    'descriptions': ['The happy hour']
-                }
-            }
-        ]
-    }
-]
-
 class SimilarStyle(ndb.Model):
     img_src = ndb.TextProperty(required=True)
     item_page = ndb.TextProperty(required=True)
@@ -219,14 +71,30 @@ class LookOccasion(ndb.Model):
     look_descriptions = ndb.TextProperty(repeated=True)
     occasion_img_src = ndb.TextProperty(required=True)
     occasion_descriptions = ndb.TextProperty(repeated=True)
+    order_id = ndb.IntegerProperty(required=False, default=0)
+    shop_page = ndb.TextProperty(required=True)
+
+class IndustryStyle(ndb.Model):
+    industry = ndb.StringProperty(required=True)
+    style = ndb.StringProperty(required=True)
+    img_src = ndb.TextProperty(required=True)
+    relevance = ndb.TextProperty(required=True)
+    activities = ndb.TextProperty(repeated=True)
+    attire = ndb.TextProperty(repeated=True)
+    shop_page = ndb.TextProperty(required=True)
+
+    
+
+
 
 
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
-        # self.datastore()
+        self.datastore()
 
         template_vars = {
                 'styleguide_sections': self.app.config.get('styleguide_sections')}
+        logging.info(self.app.config.get('styleguide_sections'))
 
         home_template = jinja_environment.get_template('templates/home.html')
         logging.info('in main handler logging')
@@ -364,6 +232,128 @@ class HomeHandler(webapp2.RequestHandler):
 
         #=============================================================== LOOKOCCASION === 
         
+        smartcasual_one = LookOccasion(
+                style='Smart Casual',
+                look_img_src='/images/smartcasual.png',
+                look_descriptions=['White jeans and top', 'Beige blazer'],
+                occasion_img_src='/images/smartcasual.png',
+                occasion_descriptions=['Casual Fridays'],
+                order_id=0,
+                shop_page='TODO')
+        smartcasual_one.put()
+
+        smartcasual_two = LookOccasion(
+                style='Smart Casual',
+                look_img_src='/images/smartcasual.png',
+                look_descriptions=['Something', 'Or another'],
+                occasion_img_src='/images/smartcasual.png',
+                occasion_descriptions=['The Happy Hour'],
+                order_id=1,
+                shop_page='TODO')
+        smartcasual_two.put()
+
+        businesscasual_one = LookOccasion(
+                style='Business Casual',
+                look_img_src='/images/businesscasual.png',
+                look_descriptions=['White jeans and top', 'Beige blazer'],
+                occasion_img_src='/images/businesscasual.png',
+                occasion_descriptions=['Casual Fridays'],
+                order_id=0,
+                shop_page='TODO')
+        businesscasual_one.put()
+
+        businesscasual_two = LookOccasion(
+                style='Business Casual',
+                look_img_src='/images/businesscasual.png',
+                look_descriptions=['Something', 'Or another'],
+                occasion_img_src='/images/businesscasual.png',
+                occasion_descriptions=['The Happy Hour'],
+                order_id=1,
+                shop_page='TODO')
+        businesscasual_two.put()
+
+        businessformal_one = LookOccasion(
+                style='Business Formal',
+                look_img_src='/images/businessformal.png',
+                look_descriptions=['White jeans and top', 'Beige blazer'],
+                occasion_img_src='/images/businessformal.png',
+                occasion_descriptions=['Casual Fridays'],
+                order_id=0,
+                shop_page='TODO')
+        businessformal_one.put()
+
+        businessformal_two= LookOccasion(
+                style='Business Formal',
+                look_img_src='/images/businessformal.png',
+                look_descriptions=['Something', 'Or another'],
+                occasion_img_src='/images/businessformal.png',
+                occasion_descriptions=['The Happy Hour'],
+                order_id=1,
+                shop_page='TODO')
+        businessformal_two.put()
+
+        #=========================================================== INDUSTRYSTYLE === 
+
+        consulting_sc = IndustryStyle(
+                industry='Consulting',
+                style='Smart Casual',
+                img_src='/images/smartcasual.png',
+                relevance='Low',
+                activities=['Happy hour', 'Social hangouts'],
+                attire=['Jeans', 'Blazer'],
+                shop_page='TODO')
+        consulting_sc.put()
+
+        consulting_bc = IndustryStyle(
+                industry='Consulting',
+                style='BUsiness Casual',
+                img_src='/images/businesscasual.png',
+                relevance='Medium',
+                activities=['Casual fridays in office'],
+                attire=['Dress pant', 'Shirt'],
+                shop_page='TODO')
+        consulting_bc.put()
+
+        consulting_bf = IndustryStyle(
+                industry='Consulting',
+                style='Business Formal',
+                img_src='/images/businessformal.png',
+                relevance='High',
+                activities=['Client site activities'],
+                attire=['Dark suit', 'Top', 'etc.'],
+                shop_page='TODO')
+        consulting_bf.put()
+
+        industry_sc = IndustryStyle(
+                industry='Industry 2',
+                style='Smart Casual',
+                img_src='/images/smartcasual.png',
+                relevance='High',
+                activities=['Happy hour', 'Social hangouts'],
+                attire=['Jeans', 'Blazer'],
+                shop_page='TODO')
+        industry_sc.put()
+
+        industry_bc = IndustryStyle(
+                industry='Industry 2',
+                style='Business Casual',
+                img_src='/images/businesscasual.png',
+                relevance='Low',
+                activities=['Casual fridays in office'],
+                attire=['Dress pant', 'Shirt'],
+                shop_page='TODO')
+        industry_bc.put()
+
+        industry_bf = IndustryStyle(
+                industry='Industry 2',
+                style='Business Formal',
+                img_src='/images/businessformal.png',
+                relevance='Medium',
+                activities=['Client site activities'],
+                attire=['Dark suit', 'Top', 'etc.'],
+                shop_page='TODO')
+        industry_bf.put()
+
 
         ############################################################### END DATASTORE ####
 
@@ -431,19 +421,28 @@ class StyleGuidesIndustryHandler(webapp2.RequestHandler):
         try: 
             industry_arg = self.request.get('industry')
 
-            found_industry_data = {}
+            industry_results= IndustryStyle.query(getattr(IndustryStyle, 'industry') == industry_arg).fetch()
 
-            for i in industry_data:
-                if industry_arg == i['id']:
-                    found_industry_data = i
-                    break
+            logging.info(industry_results)
 
-            if found_industry_data == {}:
-                logging.info('no industry data found for industry: ' + industry_arg)
+            industry_dict = {}
+
+            for r in industry_results:
+                industry_dict[r.relevance] = r
+
+            logging.info(industry_dict)
+
+            industry_data = [
+                    industry_dict['High'], 
+                    industry_dict['Medium'], 
+                    industry_dict['Low']]
+
+            logging.info(industry_data)
 
             template_vars = {
                     'industry_names': industry_names, 
-                    'industry_data': found_industry_data, 
+                    'industry_data': industry_data, 
+                    'industry': industry_arg,
                     'styleguide_sections': self.app.config.get('styleguide_sections')}
 
             # Check if it's a valid industry.
@@ -464,19 +463,12 @@ class StyleGuidesStyleHandler(webapp2.RequestHandler):
         try: 
             style_arg = self.request.get('style')
 
-            found_style_data = {}
-
-            for i in style_data:
-                if style_arg == i['id']:
-                    found_style_data = i
-                    break
-
-            if found_style_data == {}:
-                logging.info('no style data found for style: ' + style_arg)
+            style_data = LookOccasion.query(getattr(LookOccasion, 'style') == style_arg).order(LookOccasion.order_id).fetch()
 
             template_vars = {
                     'industry_names': industry_names, 
-                    'style_data': found_style_data, 
+                    'style_data': style_data, 
+                    'style': style_arg,
                     'styleguide_sections': self.app.config.get('styleguide_sections')}
 
             # Check if it's a valid industry.
@@ -490,11 +482,17 @@ class StyleGuidesStyleHandler(webapp2.RequestHandler):
                 self.response.write(style_template.render(template_vars))
 
         except(TypeError, ValueError):
-            self.response.write('<html><body><p>Invalid style."</p></body></html>')
+            self.response.write('<html><body><p>Invalid style.</p></body></html>')
 
 
 class StyleGuidesHandler(webapp2.RequestHandler):
     def get(self):
+
+        style_data = [
+                {'name': 'Smart Casual', 'img_src': '/images/smartcasual.png'},
+                {'name': 'Business Casual', 'img_src': '/images/businesscasual.png'},
+                {'name': 'Business Formal', 'img_src': '/images/businessformal.png'}]
+
         template_vars = {
                 'industry_names': industry_names, 
                 'style_data': style_data, 

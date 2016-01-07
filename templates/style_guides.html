@@ -12,8 +12,10 @@
     </select>
 
     <button onclick="selectIndustry()">Go</button>
- -->
+  </div>
+    -->
     <!-- Single button -->
+    <!--
     <div class="btn-group">
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Select <span class="caret"></span>
@@ -30,23 +32,14 @@
           <li><a href="/styleguides/industry?industry={{i['id']}}">{{i['display']}}</a></li>
         {% endfor %}
       </ul>
-    </div>
-
   </div>
+-->
 
-<!--   <div id="style-guides-choices">
-    {% for i in style_data %} 
-      <span class="style-image-container">
-        <img id={{i['id']}} class="style-image" onclick="selectStyle(this)" title={{i['display']}} alt={{i['display']}} src="{{i['image_src']}}"></a>
-      </span>
-    {% endfor %}
-  </div>
- -->
   <div class="container">
     <div class="row">
       {% for i in style_data %} 
         <div class="col-xs-4 text-center">
-          <img id={{i['id']}} class="style-image" onclick="selectStyle(this)" title={{i['display']}} alt={{i['display']}} src="{{i['image_src']}}"></a>
+            <img id='{{i.name}}' class="style-image" onclick="selectStyle(this)" title='{{i.name}}' alt='{{i.name}}' src="{{i.img_src}}"></a>
         </div>
       {% endfor %}
     </div>

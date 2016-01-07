@@ -14,3 +14,8 @@ indexes:
   properties:
   - name: dropdown
   - name: order_id
+
+- kind: LookOccasion
+  properties:
+  - name: style
+  - name: order_id
