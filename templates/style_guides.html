@@ -3,7 +3,7 @@
 {% block title %}Style Guides{% endblock %}
 
 {% block content %}
-  <div id="industry-select-container">
+<!--   <div id="industry-select-container">
     Select Industry 
     <select name="industry-select" id="industry-select">
       {% for i in industry_names %}
@@ -12,16 +12,44 @@
     </select>
 
     <button onclick="selectIndustry()">Go</button>
+ -->
+    <!-- Single button -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li class="dropdown-header">General</li>
+        {% for i in style_data %} 
+          <li><a href="/styleguides/style?style={{i['id']}}">{{i['display']}}</a></li>
+        {% endfor %}
+
+        <li role="separator" class="divider"></li>
+        <li class="dropdown-header">Industry</li>
+        {% for i in industry_names %}
+          <li><a href="/styleguides/industry?industry={{i['id']}}">{{i['display']}}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
 
   </div>
 
-  <div id="style-guides-choices">
+<!--   <div id="style-guides-choices">
     {% for i in style_data %} 
       <span class="style-image-container">
         <img id={{i['id']}} class="style-image" onclick="selectStyle(this)" title={{i['display']}} alt={{i['display']}} src="{{i['image_src']}}"></a>
       </span>
     {% endfor %}
-    
+  </div>
+ -->
+  <div class="container">
+    <div class="row">
+      {% for i in style_data %} 
+        <div class="col-xs-4 text-center">
+          <img id={{i['id']}} class="style-image" onclick="selectStyle(this)" title={{i['display']}} alt={{i['display']}} src="{{i['image_src']}}"></a>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 
 {% endblock %}

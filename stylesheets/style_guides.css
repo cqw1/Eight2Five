@@ -2,12 +2,13 @@
 	margin-top: 30px;
 }
 
-.style-image-container {
+/*.style-image-container {
 	padding: 1.5%;
 }
+*/
 
 .style-image {
     border: 1px solid;
-    width: 30%;
+    width: 100%;
     cursor: pointer;
 }

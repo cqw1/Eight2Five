@@ -1,6 +1,8 @@
 $(document).ready(function() {
     console.log("styleguides.js document ready"); 
 
+    // $('.btn').button();
+
 });
 
 function selectIndustry() {

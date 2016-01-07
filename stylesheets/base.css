@@ -16,3 +16,209 @@ body > .container {
 	margin-bottom: 20px;
 	border: 1px solid transparent;
 }
+
+/***********************************/
+/****  split-button in navbar ******/
+.nav > li > .split-button {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+.nav > li > .split-button > a:hover,
+.nav > li > .split-button > a:focus {
+  text-decoration: none;
+  background-color: #eee;
+}
+.nav > li.disabled > .split-button > a {
+  color: #777;
+}
+.nav > li.disabled > .split-button > a:hover,
+.nav > li.disabled > .split-button > a:focus {
+  color: #777;
+  text-decoration: none;
+  cursor: not-allowed;
+  background-color: transparent;
+}
+.navbar-nav > li > .split-button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+}
+
+@media (max-width: 767px) {
+  .navbar-nav .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .navbar-nav .open .dropdown-menu > li > a,
+  .navbar-nav .open .dropdown-menu .dropdown-header {
+    padding: 5px 15px 5px 25px;
+  }
+  .navbar-nav .open .dropdown-menu > li > .split-button,
+  .navbar-nav .open .dropdown-menu .dropdown-header {
+    padding: 5px 15px 5px 25px;
+  }
+  .navbar-nav .open .dropdown-menu > li > a {
+    line-height: 20px;
+  }
+  .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-nav .open .dropdown-menu > li > a:focus {
+    background-image: none;
+  }
+  .navbar-nav .open .dropdown-menu > li > .split-button > a {
+    line-height: 20px;
+  }
+  .navbar-nav .open .dropdown-menu > li > .split-button > a:hover,
+  .navbar-nav .open .dropdown-menu > li > a:focus {
+    background-image: none;
+  }
+}
+@media (min-width: 768px) {
+  .navbar-nav {
+    float: left;
+    margin: 0;
+  }
+  .navbar-nav > li {
+    float: left;
+  }
+  .navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .navbar-nav > li > .split-button {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+.navbar-nav > li > .split-button > .dropdown-menu {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.navbar-fixed-bottom .navbar-nav > li > .split-button > .dropdown-menu {
+  margin-bottom: 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.navbar-inverse .navbar-nav > li > .split-button > a {
+  color: #9d9d9d;
+}
+.navbar-inverse .navbar-nav > li > .split-button > a:hover,
+.navbar-inverse .navbar-nav > li > .split-button > a:focus {
+  color: #fff;
+  background-color: transparent;
+  text-decoration: none;
+}
+.navbar-inverse .navbar-nav > .active > .split-button > a,
+.navbar-inverse .navbar-nav > .active > .split-button > a:hover,
+.navbar-inverse .navbar-nav > .active > .split-button > a:focus {
+  color: #fff;
+  background-color: #080808;
+}
+.navbar-inverse .navbar-nav > .active,
+.navbar-inverse .navbar-nav > .active:hover ,
+.navbar-inverse .navbar-nav > .active:focus {
+  color: #fff;
+  background-color: #080808;
+}
+.navbar-inverse .navbar-nav > .disabled > .split-button > a,
+.navbar-inverse .navbar-nav > .disabled > .split-button > a:hover,
+.navbar-inverse .navbar-nav > .disabled > .split-button > a:focus {
+  color: #444;
+  background-color: transparent;
+}
+.navbar-inverse .navbar-toggle {
+  border-color: #333;
+}
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: #333;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+  border-color: #101010;
+}
+.navbar-inverse .navbar-nav > li > .open > a,
+.navbar-inverse .navbar-nav > li > .open > a:hover,
+.navbar-inverse .navbar-nav > li > .open > a:focus {
+  color: #fff;
+  background-color: #080808;
+  text-decoration: none;
+}
+
+.navbar-inverse .navbar-nav > li > .open,
+.navbar-inverse .navbar-nav > li > .open:hover,
+.navbar-inverse .navbar-nav > li > .open:focus {
+  color: #fff;
+  background-color: #080808;
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
+    border-color: #080808;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+    background-color: #080808;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #9d9d9d;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #fff;
+    background-color: transparent;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #fff;
+    background-color: #080808;
+  }
+
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active:hover,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active:focus {
+    color: #fff;
+    background-color: #080808;
+  }
+
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #444;
+    background-color: transparent;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > .split-button > a {
+    color: #9d9d9d;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > .split-button > a:hover,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > .split-button > a:focus {
+    color: #fff;
+    background-color: transparent;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > .split-button > a,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > .split-button > a:hover,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > .split-button > a:focus {
+    color: #fff;
+    background-color: #080808;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > .split-button > a,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > .split-button > a:hover,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > .split-button > a:focus {
+    color: #444;
+    background-color: transparent;
+  }
+}
