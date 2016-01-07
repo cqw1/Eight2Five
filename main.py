@@ -213,6 +213,13 @@ class DropdownSection(ndb.Model):
     items = ndb.TextProperty(repeated=True)
     order_id = ndb.IntegerProperty(required=False, default=0)
 
+class LookOccasion(ndb.Model):
+    style = ndb.StringProperty(required=True)
+    look_img_src = ndb.TextProperty(required=True)
+    look_descriptions = ndb.TextProperty(repeated=True)
+    occasion_img_src = ndb.TextProperty(required=True)
+    occasion_descriptions = ndb.TextProperty(repeated=True)
+
 
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
@@ -355,6 +362,8 @@ class HomeHandler(webapp2.RequestHandler):
                 order_id=1)
         industry_styles.put()
 
+        #=============================================================== LOOKOCCASION === 
+        
 
         ############################################################### END DATASTORE ####
 
