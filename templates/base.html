@@ -50,52 +50,63 @@
           <ul class="nav navbar-nav">
             <li id="home"><a href="/home">Home</a></li>
             <li id="whoworewhat"><a href="/whoworewhat">Who Wore What</a></li>
-            <li id="styleguides" class="dropdown">
+
+            <li id="styleguides">
+              <div class="split-button">
+                <a href="/styleguides" class="">Style Guides </a>  
+                &nbsp;
+                <a data-toggle="dropdown" class="dropdown-toggle"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  {% for section in styleguide_sections %} 
+                    {% if section.heading != '' %}
+                      <li class="dropdown-header">{{section.heading}}</li>
+                    {% endif %}
+
+                    <!-- Don't alphabetically sort the general styles. -->
+                    {% if section.heading == 'General' %}
+                      {% for item in section.items %}
+                        <li><a href="/styleguides/style?style={{item}}">{{item}}</a></li>
+                      {% endfor %}
+                    {% elif section.heading == 'Industry' %}
+                      {% for item in section.items|sort %}
+                        <li><a href="/styleguides/industry?industry={{item}}">{{item}}</a></li>
+                      {% endfor %}
+                    {% else %}
+                      {% for item in section.items|sort %}
+                        <li><a href="#">{{item}}</a></li>
+                      {% endfor %}
+                    {% endif %}
+
+
+                    <!-- No sort applied. -->
+                    <!--
+                    {% for item in section.items %}
+                      {% if section.heading == 'General' %}
+                        <li><a href="/styleguides/style?style={{item}}">{{item}}</a></li>
+                      {% elif section.heading == 'Industry' %}
+                        <li><a href="/styleguides/industry?industry={{item}}">{{item}}</a></li>
+                      {% else %}
+                        <li><a href="#">{{item}}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                  -->
+
+                    {% if not loop.last %}
+                      <li role="separator" class="divider"></li>
+                    {% endif %}
+
+                  {% endfor %}
+                </ul>
+              </div>
+            </li>
+
+<!--             <li id="styleguides" class="dropdown">
               <a href="/styleguides" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 Style Guides <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                {% for section in styleguide_sections %} 
-                  {% if section.heading != '' %}
-                    <li class="dropdown-header">{{section.heading}}</li>
-                  {% endif %}
-
-                  <!-- Don't alphabetically sort the general styles. -->
-                  {% if section.heading == 'General' %}
-                    {% for item in section.items %}
-                      <li><a href="/styleguides/style?style={{item}}">{{item}}</a></li>
-                    {% endfor %}
-                  {% elif section.heading == 'Industry' %}
-                    {% for item in section.items|sort %}
-                      <li><a href="/styleguides/industry?industry={{item}}">{{item}}</a></li>
-                    {% endfor %}
-                  {% else %}
-                    {% for item in section.items|sort %}
-                      <li><a href="#">{{item}}</a></li>
-                    {% endfor %}
-                  {% endif %}
-
-
-                  <!-- No sort applied. -->
-                  <!--
-                  {% for item in section.items %}
-                    {% if section.heading == 'General' %}
-                      <li><a href="/styleguides/style?style={{item}}">{{item}}</a></li>
-                    {% elif section.heading == 'Industry' %}
-                      <li><a href="/styleguides/industry?industry={{item}}">{{item}}</a></li>
-                    {% else %}
-                      <li><a href="#">{{item}}</a></li>
-                    {% endif %}
-                  {% endfor %}
-                -->
-
-                  {% if not loop.last %}
-                    <li role="separator" class="divider"></li>
-                  {% endif %}
-
-                {% endfor %}
               </ul>
             </li>
-
+ -->
             <li id="shop" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 Shop <span class="caret"></span></a>
