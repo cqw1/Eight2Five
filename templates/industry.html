@@ -26,7 +26,71 @@
     <hr>
   </div>
 
-  <div id="info-table-container">
+  <div class="container">
+    <!-- Style name -->
+    <div class="row ef-row">
+      <div class="col-xs-1"></div>
+      <div class="col-xs-1 ef-section-header"></div>
+
+      {% for i in industry_data %}
+        <div class="col-xs-3 text-center ef-content"><b>{{i.style}}</b></div>
+      {% endfor %}
+
+      <div class="col-xs-1"></div>
+    </div>
+
+    <!-- Pictures -->
+    <div class="row ef-row">
+      <div class="col-xs-1"></div>
+      <div class="col-xs-1 ef-section-header"></div>
+
+      {% for i in industry_data %}
+        <div class="col-xs-3 text-center ef-content">
+          <img class="ef-style-image" border="1" src={{i.img_src}}>
+        </div>
+      {% endfor %}
+
+      <div class="col-xs-1"></div>
+    </div>
+
+    <!-- Relevance -->
+    <div class="row ef-row">
+      <div class="col-xs-1"></div>
+      <div class="col-xs-1 ef-section-header">Relevance</div>
+
+      {% for i in industry_data %}
+        <div class="col-xs-3 text-center ef-content">{{i.relevance}}</div>
+      {% endfor %}
+
+      <div class="col-xs-1"></div>
+    </div>
+
+    <!-- Activities -->
+    <div class="row ef-row">
+      <div class="col-xs-1"></div>
+      <div class="col-xs-1 ef-section-header">Activities</div>
+
+      {% for i in industry_data %}
+        <div class="col-xs-3 text-center ef-content">{{i.activities | join(', ')}}</div>
+      {% endfor %}
+
+      <div class="col-xs-1"></div>
+    </div>
+
+    <!-- Attire -->
+    <div class="row ef-row">
+      <div class="col-xs-1"></div>
+      <div class="col-xs-1 ef-section-header">Attire</div>
+
+      {% for i in industry_data %}
+        <div class="col-xs-3 text-center ef-content">{{i.attire | join(', ')}}</div>
+      {% endfor %}
+
+      <div class="col-xs-1"></div>
+    </div>
+  </div>
+
+<!--   <div id="info-table-container">
     <table id="info-table">
 
       <tr id="name-row">
@@ -43,7 +107,6 @@
             <div class="style-image-container">
               <img class="style-image" border="1" src={{i.img_src}}>
               <button class="shop-the-look-button" onclick="shopTheLook()">Shop the Look</button>
-              <!-- Implement shop_page -->
             </div>
           </td>
         {% endfor %}
@@ -73,7 +136,7 @@
 
     </table>
   </div>
-
+ -->
 {% endblock %}
 
 {% block end_body %}

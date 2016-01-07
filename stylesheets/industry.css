@@ -1,4 +1,4 @@
-#info-table-container {
+/*#info-table-container {
 	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
@@ -49,10 +49,29 @@
 .style-image {
 	height: 100%;
 }
-
+*/
 .shop-the-look-button {
 	position: absolute;
 	bottom: 5%;
 	left: 50%;
 	margin-left:-50px; /* width of button / 2 */
+}
+
+.ef-style-image {
+	width: 100%;
+}
+
+.ef-section-header {
+	color: #333;
+	font-weight: bold;
+	padding: 8px;
+}
+
+.ef-content {
+	padding: 8px;
+}
+
+.ef-row {
+	display: flex;
+	align-items: center;
 }

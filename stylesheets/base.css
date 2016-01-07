@@ -23,6 +23,15 @@ body > .container {
 
 /***********************************/
 /****  split-button in navbar ******/
+.split-button:hover {
+	cursor: pointer;
+}
+
+.split-button > .dropdown-toggle {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
 .nav > li > .split-button {
   position: relative;
   display: block;
