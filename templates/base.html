@@ -57,12 +57,30 @@
                 &nbsp;
                 <a data-toggle="dropdown" class="dropdown-toggle"><span class="caret"></span></a>
                 <ul class="dropdown-menu">
+
+                  <!-- Hardcoded -->
+                  <li class="dropdown-header">General</li>
+                  <li><a class="ef-dropdown-style" href="#">Smart Casual</a></li>
+                  <li><a class="ef-dropdown-style" href="#">Business Casual</a></li>
+                  <li><a class="ef-dropdown-style" href="#">Business Formal</a></li>
+
+                  <li role="separator" class="divider"></li>
+
+                  <li class="dropdown-header">Industry</li>
+                  <li><a class="ef-dropdown-industry" href="#">Consulting</a></li>
+                  <li><a class="ef-dropdown-industry" href="#">Industry 2</a></li>
+
+
+
+                  <!--
                   {% for section in styleguide_sections %} 
                     {% if section.heading != '' %}
                       <li class="dropdown-header">{{section.heading}}</li>
                     {% endif %}
+                  -->
 
                     <!-- Don't alphabetically sort the general styles. -->
+                    <!--
                     {% if section.heading == 'General' %}
                       {% for item in section.items %}
                         <li><a href="/styleguides/style?style={{item}}">{{item}}</a></li>
@@ -76,6 +94,7 @@
                         <li><a href="#">{{item}}</a></li>
                       {% endfor %}
                     {% endif %}
+                  -->
 
 
                     <!-- No sort applied. -->
@@ -90,23 +109,25 @@
                       {% endif %}
                     {% endfor %}
                   -->
-
+                    <!--
                     {% if not loop.last %}
                       <li role="separator" class="divider"></li>
                     {% endif %}
 
                   {% endfor %}
+                -->
                 </ul>
               </div>
             </li>
 
-<!--             <li id="styleguides" class="dropdown">
+            <!-- Old non-split button dropdowns -->
+<!--             
+            <li id="styleguides" class="dropdown">
               <a href="/styleguides" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 Style Guides <span class="caret"></span></a>
               <ul class="dropdown-menu">
               </ul>
             </li>
- -->
             <li id="shop" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 Shop <span class="caret"></span></a>
@@ -121,6 +142,34 @@
                 <li><a href="#">Skirts</a></li>
               </ul>
             </li>
+ -->
+
+            <li id="styleguides">
+              <div class="split-button">
+                <a href="/shop" class="">Shop </a>  
+                &nbsp;
+                <a data-toggle="dropdown" class="dropdown-toggle"><span class="caret"></span></a>
+                <ul class="dropdown-menu columns">
+                  <!-- Hardcoded -->
+                  <li class="dropdown-header">Men</li>
+                  <li><a class="ef-dropdown-shop-men" href="#">Tops</a></li>
+                  <li><a class="ef-dropdown-shop-men" href="#">Bottoms</a></li>
+                  <li><a class="ef-dropdown-shop-men" href="#">Suits</a></li>
+                  <li><a class="ef-dropdown-shop-men" href="#">Outerwear</a></li>
+
+                  <!-- Blank to keep columns even -->
+                  <li>''</li>
+
+                  <li class="dropdown-header">Women</li>
+                  <li><a class="ef-dropdown-shop-women" href="#">Tops</a></li>
+                  <li><a class="ef-dropdown-shop-women" href="#">Bottoms</a></li>
+                  <li><a class="ef-dropdown-shop-women" href="#">Dresses</a></li>
+                  <li><a class="ef-dropdown-shop-women" href="#">Suits</a></li>
+                  <li><a class="ef-dropdown-shop-women" href="#">Outerwear</a></li>
+                </ul>
+              </div>
+            </li>
+                  
 
           </ul>
         </div><!--/.nav-collapse -->

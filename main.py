@@ -216,6 +216,7 @@ class HomeHandler(webapp2.RequestHandler):
         blastoise.put()
 
         #================================================================== DROPDOWNS === 
+        """
         general_styles = DropdownSection(
                 heading='General', 
                 items=['Smart Casual', 'Business Casual', 'Business Formal'], 
@@ -229,6 +230,21 @@ class HomeHandler(webapp2.RequestHandler):
                 dropdown='Style Guides',
                 order_id=1)
         industry_styles.put()
+
+        men_shop_filters = DropdownSection(
+                heading='Men', 
+                items=['Tops', 'Bottoms', 'Suits', 'Outerwear'], 
+                dropdown='Shop',
+                order_id=0)
+        men_shop_filters.put()
+
+        women_shop_filters = DropdownSection(
+                heading='Women', 
+                items=['Tops', 'Bottoms', 'Dresses', 'Suits', 'Outerwear'], 
+                dropdown='Shop',
+                order_id=1)
+        women_shop_filters.put()
+        """
 
         #=============================================================== LOOKOCCASION === 
         

@@ -2,25 +2,25 @@
 var coverflowTimer = setCoverflowTimer();
 
 $(function() {
-    $('#left-arrow')
+    $('#ef-left-arrow')
         .click(coverflowPrev)
         .mouseover(function() {
-            $('#left-arrow').attr('src', '/images/blackleftarrow.png');
+            $('#ef-left-arrow').attr('src', '/images/blackleftarrow.png');
         })
         .mouseout(function() {
-            $('#left-arrow').attr('src', '/images/grayleftarrow.png');
+            $('#ef-left-arrow').attr('src', '/images/grayleftarrow.png');
         });
 
-    $('#right-arrow')
+    $('#ef-right-arrow')
         .click(coverflowNext)
         .mouseover(function() {
-            $('#right-arrow').attr('src', '/images/blackrightarrow.png');
+            $('#ef-right-arrow').attr('src', '/images/blackrightarrow.png');
         })
         .mouseout(function() {
-            $('#right-arrow').attr('src', '/images/grayrightarrow.png');
+            $('#ef-right-arrow').attr('src', '/images/grayrightarrow.png');
         });
 
-    $('#dots-container > *').click(function() {
+    $('#ef-dots-container > *').click(function() {
         $('.photos').coverflow('index', $(this).index());
 
         clearInterval(coverflowTimer);
@@ -43,7 +43,7 @@ $(function() {
         select: function(event, cover, index) {
             // Set everything to be an empty circle and remove their id. 
             // Add selected-dot id and filled circle image to the img at the selected index.
-            $('#dots-container > *').attr('src', '/images/emptycircle.png').removeAttr('id').eq(index).attr('id', 'current-dot').attr('src', '/images/filledcircle.png');
+            $('#ef-dots-container > *').attr('src', '/images/emptycircle.png').removeAttr('id').eq(index).attr('id', 'ef-current-dot').attr('src', '/images/filledcircle.png');
         },
 		
 		confirm: function(event, cover, index) {

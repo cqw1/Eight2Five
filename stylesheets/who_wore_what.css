@@ -12,31 +12,31 @@
     /*overflow: hidden;*/
 }
 
-#b-container {
+#ef-b-container {
     width: 100%;
 }
 
-#left-arrow {
+#ef-left-arrow {
     cursor: pointer;
 }
 
-#right-arrow {
+#ef-right-arrow {
     cursor: pointer;
 }
 
-#controls-outer-container {
+#ef-controls-outer-container {
     text-align: center;
 }
 
-#controls-inner-container {
+#ef-controls-inner-container {
     display: inline-block;
 }
 
-#dots-container {
+#ef-dots-container {
     margin: 0 auto;
 }
 
-.dot {
+.ef-dot {
     margin-left: 5px;
     margin-right: 5px;
     cursor: pointer;
@@ -46,7 +46,7 @@
     cursor: pointer;
 }
 
-#photos-info {
+#ef-photos-info {
     padding-top: 10px;
     text-align:     center;
     z-index:        1000;

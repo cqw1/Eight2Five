@@ -16,5 +16,41 @@ $(document).ready(function() {
         console.log('caught empty');
     }
 
+
+    // Handle dropdowns
+    $('.ef-dropdown-style').click(function() {
+        redirectStyle($(this).text());
+        return false;
+    });
+
+    $('.ef-dropdown-industry').click(function() {
+        redirectIndustry($(this).text());
+        return false;
+    });
+
+    $('.ef-dropdown-shop-men').click(function() {
+        redirectShopMen($(this).text());
+        return false;
+    });
+
+    $('.ef-dropdown-shop-women').click(function() {
+        redirectShopWomen($(this).text());
+        return false;
+    });
 });
 
+function redirectStyle(arg) {
+    window.location.href='/styleguides/style?style=' + arg;
+}
+
+function redirectIndustry(arg) {
+    window.location.href='/styleguides/industry?industry=' + arg;
+}
+
+function redirectShopMen(arg) {
+    window.location.href='/shop?gender=Men&article=' + arg;
+}
+
+function redirectShopWomen(arg) {
+    window.location.href='/shop?gender=Women&article=' + arg;
+}

@@ -34,7 +34,7 @@ td, th {
     padding: 20px 0px;
 }
 
-.vertical-center {
+.ef-vertical-center {
     display: flex;
     align-items: center;
 }

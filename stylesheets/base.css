@@ -17,7 +17,7 @@ body > .container {
 	border: 1px solid transparent;
 }
 
-.page-title {
+.ef-page-title {
 	text-align: center;
 }
 
@@ -233,5 +233,24 @@ body > .container {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > .split-button > a:focus {
     color: #444;
     background-color: transparent;
+  }
+}
+
+
+
+/* Multicolumns */
+/*@media screen and (max-width: 991px){
+  .columns {
+    height: 200px;
+    overflow:scroll;
+  }
+}
+*/
+@media screen and (min-width: 992px){
+  .columns {
+    -moz-column-count:2; /* Firefox */
+    -webkit-column-count:2; /* Safari and Chrome */
+    column-count:2;
+    width: 250px;
   }
 }
