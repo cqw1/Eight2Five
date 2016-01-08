@@ -1,0 +1,46 @@
+.ef-shop-image {
+    width: 100%;
+}
+
+.ef-filter-container > ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+label {
+    display:inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+
+    /* overriding original bootstrap css. don't want it to be bolded. */
+    font-weight: normal;
+}
+
+.ef-filter-name {
+    font-weight: bold;
+    color: grey;
+}
+
+/* Collapsible filters */
+.ef-filter-name:after {
+    font-family:'Glyphicons Halflings';
+    /* Down arrow */
+    /*content:"\e114";*/ 
+
+    /* Minus sign */
+    content: "\2212"; 
+    float: right;
+    color: grey;
+}
+
+.ef-filter-name.collapsed:after {
+    /* Up arrow */
+    /*content:"\e080";*/
+
+    /* Plus sign */
+    content: "\002b"; 
+}
+
+.ef-buffer-span {
+    padding: 0px 5px;
+}

@@ -1,7 +1,12 @@
 plug in who wore what data
 
+shop
+  integrate shop links
+  add pagination
+  add sorts
+  add persistence of filters
+
 make style guides page with a section for general styles and a section for industries
-create shop page - integrate shop links
 put shop dropdown stuff into datastore
 create cover 
 allow users to signup/login
