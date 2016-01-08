@@ -439,6 +439,7 @@ class ShopHandler(webapp2.RequestHandler):
             }
         ]
 
+
         template_vars = {
                 'styleguide_sections': self.app.config.get('styleguide_sections'),
                 'filters': filters}

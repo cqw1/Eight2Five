@@ -7,4 +7,10 @@ $(document).ready(function() {
         console.log($('#Men').prop('checked'));
     })
 
+    $('.ef-items-option').on('click', function() {
+        console.log($(this).text())
+    })
+
+
+
 });
