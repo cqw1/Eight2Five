@@ -3,12 +3,87 @@
 {% block title %}Shop Page{% endblock %}
 
 {% block content %}
-  <div class="container">
-    <h3 class="ef-page-title">Shop</h3>
-    <hr>
+<div class="container">
+  <h3 class="ef-page-title">Shop</h3>
+  <hr>
+</div>
+
+<div class="container">
+  <div class="row">
+    <!-- Filters -->
+    <div class="col-xs-3">
+
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+          <h4 class="panel-title">Filters</h4>
+        </div>
+        <div class="panel-body">Some caption. maybe currently selected filters.</div>
+
+        <!-- List group -->
+        <ul class="list-group">
+          {% for filter in filters %}
+            <li class="list-group-item">
+              <h5 class="ef-filter-name" data-toggle="collapse" data-target="#{{filter.name}}">{{filter.name}}</h5>
+              <div id="{{filter.name}}" class="collapse in ef-filter-container">
+                <ul>
+                  {% for selection in filter.selections %}
+                    <li>
+                      <input type="checkbox" id="{{selection}}" class="css-checkbox" value="{{selection}}" name="{{selection}}"/>
+                      <label for="{{selection}}" class="css-label"><span class="ef-buffer-span"></span>{{selection}}</label>
+                    </li>
+                  {% endfor %}
+              </div>
+            </li>
+          {% endfor %}
+
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Grid of items -->
+    <div class="col-xs-9">
+      <div class="row">
+        <div class="col-xs-4">
+          <div class="thumbnail">
+            <img class="ef-shop-image" src="/images/charmanderllama.png"></img>
+            <div class="caption">
+              <h4>Caption</h4>
+              <p>some caption</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="thumbnail">
+            <img class="ef-shop-image" src="/images/charmanderllama.png"></img>
+            <div class="caption">
+              <h4>Caption</h4>
+              <p>some caption</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="thumbnail">
+            <img class="ef-shop-image" src="/images/charmanderllama.png"></img>
+            <div class="caption">
+              <h4>Caption</h4>
+              <p>some caption</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
+</div>
+
 {% endblock %}
 
 {% block end_body %}
+  <!-- <script src="/javascript/style.js"></script> -->
+  <link rel="stylesheet" type="text/css" href="/stylesheets/shop.css">
 {% endblock %}
 

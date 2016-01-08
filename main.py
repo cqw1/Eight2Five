@@ -375,8 +375,21 @@ class HomeHandler(webapp2.RequestHandler):
 
 class ShopHandler(webapp2.RequestHandler):
     def get(self):
+
+        filters = [
+            {
+                'name': 'Gender',
+                'selections': ['Men', 'Women']
+            },
+            {
+                'name': 'Type',
+                'selections': ['Tops', 'Bottoms', 'Dresses', 'Suits', 'Overwear']
+            }
+        ]
+
         template_vars = {
-                'styleguide_sections': self.app.config.get('styleguide_sections')}
+                'styleguide_sections': self.app.config.get('styleguide_sections'),
+                'filters': filters}
 
         shop_template = jinja_environment.get_template('templates/shop.html')
         logging.info('in shop handler logging')
