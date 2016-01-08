@@ -26,17 +26,20 @@ from google.appengine.ext import ndb
 # Sets jinja's relative directory to match the directory name (dirname) of the current __file__, in this case, main.py
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
-# For the drop-down select so we don't have to send the whole industry_data over.
-industry_names = [
-    {'id': 'consulting', 'display': 'Consulting'},
-    {'id': 'industry2', 'display': 'Industry 2'}
-]
+GENDERS = ['Men', 'Women']
+ARTICLES = ['Tops', 'Bottoms', 'Dresses', 'Suits', 'Outerwear']
+BRANDS = ['JCrew', 'Ann Taylor']
+SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+STYLES = ['Smart Casual', 'Business Casual', 'Business Formal']
+COLORS = ['Black', 'White', 'Gray', 'Brown', 'Red', 'Green', 'Blue', 'Pink', 'Orange', 'Yellow', 'Purple']
+INDUSTRIES = ['Consulting', 'Industry 2']
+
 
 class SimilarStyle(ndb.Model):
     img_src = ndb.TextProperty(required=True)
     item_page = ndb.TextProperty(required=True)
     description = ndb.TextProperty(required=False)
-    brand = ndb.TextProperty(required=False)
+    brand = ndb.TextProperty(required=False, choices=BRANDS)
     price = ndb.FloatProperty(required=False)
 
 class Posting(ndb.Model):
@@ -66,7 +69,7 @@ class DropdownSection(ndb.Model):
     order_id = ndb.IntegerProperty(required=False, default=0)
 
 class LookOccasion(ndb.Model):
-    style = ndb.StringProperty(required=True)
+    style = ndb.StringProperty(required=True, choices=STYLES)
     look_img_src = ndb.TextProperty(required=True)
     look_descriptions = ndb.TextProperty(repeated=True)
     occasion_img_src = ndb.TextProperty(required=True)
@@ -75,17 +78,41 @@ class LookOccasion(ndb.Model):
     shop_page = ndb.TextProperty(required=True)
 
 class IndustryStyle(ndb.Model):
-    industry = ndb.StringProperty(required=True)
-    style = ndb.StringProperty(required=True)
+    industry = ndb.StringProperty(required=True, choices=INDUSTRIES)
+    style = ndb.StringProperty(required=True, choices=STYLES)
     img_src = ndb.TextProperty(required=True)
     relevance = ndb.TextProperty(required=True)
     activities = ndb.TextProperty(repeated=True)
     attire = ndb.TextProperty(repeated=True)
     shop_page = ndb.TextProperty(required=True)
 
-    
+class Item(ndb.Model):
+    sku_id = ndb.IntegerProperty(required=True)
 
+    name = ndb.StringProperty(required=True)
+    brand = ndb.StringProperty(required=True, choices=BRANDS)
+    gender = ndb.StringProperty(required=True, choices=GENDERS)
+    article = ndb.StringProperty(required=True, choices=ARTICLES)
+    price = ndb.FloatProperty(required=True)
+    colors = ndb.StringProperty(repeated=True, choices=COLORS)
+    industries = ndb.StringProperty(repeated=True, choices=INDUSTRIES)
+    styles = ndb.StringProperty(repeated=True, choices=STYLES)
+    sizes = ndb.StringProperty(repeated=True, choices=SIZES)
 
+    # Description (product info) on item page.
+    description = ndb.TextProperty(required=False, default='Description currently unavailable.')
+
+    # Main image on shopping grid page.
+    img_src = ndb.TextProperty(required=True)
+
+    # Link to outside website.
+    external_src = ndb.TextProperty(required=True)
+
+    # Smaller images shown on item page of different perspectives.
+    smaller_imgs = ndb.TextProperty(repeated=True)
+
+    # Date added to database
+    date = ndb.DateProperty(required=True)
 
 
 class HomeHandler(webapp2.RequestHandler):
@@ -308,7 +335,7 @@ class HomeHandler(webapp2.RequestHandler):
                 shop_page='TODO')
         businessformal_two.put()
 
-        #=========================================================== INDUSTRYSTYLE === 
+        #======================================================= INDUSTRYSTYLE === 
 
         consulting_sc = IndustryStyle(
                 industry='Consulting',
@@ -371,19 +398,44 @@ class HomeHandler(webapp2.RequestHandler):
         industry_bf.put()
 
 
+        #================================================================== ITEM === 
+        for i in range(10):
+            one = Item(
+                    sku_id=0,
+                    name="Default Name",
+                    brand="JCrew",
+                    gender='Women',
+                    article='Tops',
+                    price=49.99,
+                    colors=['Black', 'White', 'Gray'],
+                    sizes=['XS', 'S', 'M', 'L', 'XL'],
+                    industries=['Consulting'],
+                    styles=['Smart Casual', 'Business Casual'],
+                    description='Something I made up.',
+                    img_src='/images/charmanderllama.png',
+                    external_src='TODO',
+                    smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                    date=datetime.date(2016, 1, 7))
+            one.put()
+
         ############################################################### END DATASTORE ####
 
 class ShopHandler(webapp2.RequestHandler):
     def get(self):
+        logging.info('arguments:')
+        logging.info(self.request.arguments())
+        logging.info('get_all')
+        logging.info(self.request.get_all('gender'))
+
 
         filters = [
             {
                 'name': 'Gender',
-                'selections': ['Men', 'Women']
+                'selections': GENDERS
             },
             {
-                'name': 'Type',
-                'selections': ['Tops', 'Bottoms', 'Dresses', 'Suits', 'Overwear']
+                'name': 'Article',
+                'selections': ARTICLES
             }
         ]
 
@@ -469,7 +521,7 @@ class StyleGuidesIndustryHandler(webapp2.RequestHandler):
             logging.info(industry_data)
 
             template_vars = {
-                    'industry_names': industry_names, 
+                    'industry_names': INDUSTRIES, 
                     'industry_data': industry_data, 
                     'industry': industry_arg,
                     'styleguide_sections': self.app.config.get('styleguide_sections')}
@@ -495,7 +547,7 @@ class StyleGuidesStyleHandler(webapp2.RequestHandler):
             style_data = LookOccasion.query(getattr(LookOccasion, 'style') == style_arg).order(LookOccasion.order_id).fetch()
 
             template_vars = {
-                    'industry_names': industry_names, 
+                    'industry_names': INDUSTRIES, 
                     'style_data': style_data, 
                     'style': style_arg,
                     'styleguide_sections': self.app.config.get('styleguide_sections')}
@@ -523,7 +575,7 @@ class StyleGuidesHandler(webapp2.RequestHandler):
                 {'name': 'Business Formal', 'img_src': '/images/businessformal.png'}]
 
         template_vars = {
-                'industry_names': industry_names, 
+                'industry_names': INDUSTRIES, 
                 'style_data': style_data, 
                 'styleguide_sections': self.app.config.get('styleguide_sections')}
 

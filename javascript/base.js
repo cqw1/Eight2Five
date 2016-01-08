@@ -48,9 +48,9 @@ function redirectIndustry(arg) {
 }
 
 function redirectShopMen(arg) {
-    window.location.href='/shop?gender=Men&type=' + arg;
+    window.location.href='/shop?gender=Men&article=' + arg;
 }
 
 function redirectShopWomen(arg) {
-    window.location.href='/shop?gender=Women&type=' + arg;
+    window.location.href='/shop?gender=Women&article=' + arg;
 }
