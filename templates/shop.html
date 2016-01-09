@@ -78,11 +78,11 @@
           Sort By:
           <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{selected_shop_sort}}  <span class="caret"></span>
+              {{selected_shop_sort | title}}  <span class="caret"></span>
             </button>
             <ul class="dropdown-menu ef-no-min-width">
               {% for sort in shop_sorts %}
-                <li><a class="ef-sort-option" href="#">{{sort}}</a></li>
+                <li><a class="ef-sort-option" href="#">{{sort | title}}</a></li>
               {% endfor %}
             </ul>
           </div>

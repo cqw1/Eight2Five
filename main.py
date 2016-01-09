@@ -81,12 +81,12 @@ INDUSTRIES = [
 ]
 
 SHOP_SORTS = [
-    'Name [A - Z]', 
-    'Name [Z - A]', 
-    'Price [Low - High]', 
-    'Price [High - Low]', 
-    'Date [New - Old]', 
-    'Date [Old - New]'
+    'name [a - z]', 
+    'name [z - a]', 
+    'price [low - high]', 
+    'price [high - low]', 
+    'date [new - old]', 
+    'date [old - new]'
 ]
 
 SHOP_SORT_DEFAULT = SHOP_SORTS[0]
