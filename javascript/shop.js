@@ -1,38 +1,34 @@
-globalArgDict = {};
 globalFilters = [];
 
 $(document).ready(function() {
-
     console.log('shop.js document ready');
-    console.log('globalArgDict before');
-    console.log(globalArgDict);
 
-    createArgDict();
+    argDict = createArgDict();
 
-    console.log('globalArgDict after');
-    console.log(globalArgDict);
+    console.log('argDict ');
+    console.log(argDict);
 
-    updateCheckboxes();
+    updateCheckboxes(argDict);
 
-
-
-    // Filters. Capitalization is to match the display name of the filter type in the python dictionary.
+    // Filters. 
     $('.ef-gender-filter').change(function() {
         var argType = 'gender';
         var argValue = $(this).attr('id');
         var checked = $(this).prop('checked');
 
-        updateArgDictCheckbox(argType, argValue, checked, globalArgDict);
+        argDict = updateArgDictCheckbox(argType, argValue, checked, argDict);
 
-
-        //addUrlArg(argType, argValue);
+        updateUrl(argDict);
     })
 
     $('.ef-article-filter').change(function() {
         var argType = 'article';
         var argValue = $(this).attr('id');
+        var checked = $(this).prop('checked');
 
-        addUrlArg(argType, argValue);
+        argDict = updateArgDictCheckbox(argType, argValue, checked, argDict);
+
+        updateUrl(argDict);
     })
 
     // Sorts.
@@ -52,9 +48,10 @@ $(document).ready(function() {
     })
 });
 
-// Modifies global globalArgDict value.
+// Creates arg dictionary from current url.
 function createArgDict() {
     args = window.location.search.substring(1).split('&');
+    argDict = {};
 
     for (var i = 0; i < args.length; i++) {
         // Filter out empty strings.
@@ -63,23 +60,26 @@ function createArgDict() {
             var key = pair[0];
             var value = pair[1];
 
-            if (key in globalArgDict) {
-                globalArgDict[key].push(value);
+            if (key in argDict) {
+                argDict[key].push(value);
             } else {
-                globalArgDict[key] = [value];
+                argDict[key] = [value];
             }
         }
     }
+
+    return argDict;
 }
 
-function updateCheckboxes() {
-    
-
-}
-
-// arg (e.g. 'gender=Men')
-function argExists(arg) {
-    return (window.location.search.indexOf(arg) > -1);
+// Check the checkboxes that the url arguments indicates are selected.
+function updateCheckboxes(argDict) {
+    console.log('in updateCheckboxes');
+    for (var key in argDict) {
+        var filters = argDict[key]
+        for (var i in filters) {
+            $('#' + filters[i]).prop('checked', true);
+        }
+    }
 }
 
 // remove arg if checked is false. insert if checked is true.
@@ -128,16 +128,22 @@ function updateArgDictCheckbox(argType, argValue, checked, argDict) {
     return argDict;
 }
 
-function addUrlArg(argType, argValue) {
-    var url = window.location.href;
+// Construct new url from arg dictionary and redirects there. 
+function updateUrl(argDict) {
+    var url = window.location.origin + window.location.pathname + '?';
 
-    if (url.indexOf('?') < 0) {
-        url += '?';
+    for (var key in argDict) {
+        var values = argDict[key];
+        for (var i in values) {
+            url += '&' + key + '=' + values[i];
+        }
     }
-
-    url += '&' + argType + '=' + argValue;
-
     window.location.href = url;
+}
+
+// arg (e.g. 'gender=Men')
+function argExists(arg) {
+    return (window.location.search.indexOf(arg) > -1);
 }
 
 function initFilters(filters) {
