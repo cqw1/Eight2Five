@@ -22,7 +22,7 @@
 -->
 
   <div class="container">
-    <h3 class="ef-page-title">{{industry}}</h3>
+    <h3 class="ef-page-title">{{industry | title }}</h3>
     <hr>
   </div>
 
@@ -33,7 +33,7 @@
       <div class="col-xs-1 ef-section-header"></div>
 
       {% for i in industry_data %}
-        <div class="col-xs-3 text-center ef-content"><b>{{i.style}}</b></div>
+        <div class="col-xs-3 text-center ef-content"><b>{{i.style | title }}</b></div>
       {% endfor %}
 
       <div class="col-xs-1"></div>
@@ -73,7 +73,7 @@
       <div class="col-xs-1 ef-section-header">Relevance</div>
 
       {% for i in industry_data %}
-        <div class="col-xs-3 text-center ef-content">{{i.relevance}}</div>
+        <div class="col-xs-3 text-center ef-content">{{i.relevance | title }}</div>
       {% endfor %}
 
       <div class="col-xs-1"></div>

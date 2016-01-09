@@ -24,14 +24,14 @@
         <ul class="list-group">
           {% for filter in filters %}
             <li class="list-group-item">
-              <h5 class="ef-filter-name" data-toggle="collapse" data-target="#{{filter.name}}">{{filter.name}}</h5>
+              <h5 class="ef-filter-name" data-toggle="collapse" data-target="#{{filter.name}}">{{filter.name | title }}</h5>
               <div id="{{filter.name}}" class="collapse in ef-filter-container">
                 <ul>
                   {% for selection in filter.selections %}
                     <li>
                       <!-- input id is used for url arguments. if input id differs from the text of the label. change javascript -->
                       <input type="checkbox" id="{{selection}}" class="ef-{{filter.name}}-filter css-checkbox" value="{{selection}}" name="{{selection}}"/>
-                      <label for="{{selection}}" class="css-label"><span class="ef-buffer-span"></span>{{selection}}</label>
+                      <label for="{{selection}}" class="css-label"><span class="ef-buffer-span"></span>{{selection | title }}</label>
                     </li>
                   {% endfor %}
               </div>
@@ -145,6 +145,10 @@
 
 {% block end_body %}
   <script src="/javascript/shop.js"></script>
+  <script type="text/javascript">
+      initFilters({{filters}});
+  </script>
+
   <link rel="stylesheet" type="text/css" href="/stylesheets/shop.css">
 {% endblock %}
 

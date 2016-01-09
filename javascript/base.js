@@ -19,22 +19,22 @@ $(document).ready(function() {
 
     // Handle dropdowns
     $('.ef-dropdown-style').click(function() {
-        redirectStyle($(this).text());
+        redirectStyle($(this).attr('id'));
         return false;
     });
 
     $('.ef-dropdown-industry').click(function() {
-        redirectIndustry($(this).text());
+        redirectIndustry($(this).attr('id'));
         return false;
     });
 
     $('.ef-dropdown-shop-men').click(function() {
-        redirectShopMen($(this).text());
+        redirectShopMen($(this).attr('id'));
         return false;
     });
 
     $('.ef-dropdown-shop-women').click(function() {
-        redirectShopWomen($(this).text());
+        redirectShopWomen($(this).attr('id'));
         return false;
     });
 });
@@ -48,9 +48,9 @@ function redirectIndustry(arg) {
 }
 
 function redirectShopMen(arg) {
-    window.location.href='/shop?gender=Men&article=' + arg;
+    window.location.href='/shop?gender=men&article=' + arg;
 }
 
 function redirectShopWomen(arg) {
-    window.location.href='/shop?gender=Women&article=' + arg;
+    window.location.href='/shop?gender=women&article=' + arg;
 }

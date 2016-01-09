@@ -27,16 +27,16 @@ from google.appengine.ext import ndb
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 GENDERS = [
-    'Men', 
-    'Women'
+    'men', 
+    'women'
 ]
 
 ARTICLES = [
-    'Tops', 
-    'Bottoms', 
-    'Dresses', 
-    'Suits', 
-    'Outerwear'
+    'tops', 
+    'bottoms', 
+    'dresses', 
+    'suits', 
+    'outerwear'
 ]
 
 BRANDS = [
@@ -45,39 +45,39 @@ BRANDS = [
 ]
 
 SIZES = [
-    'XS', 
-    'S', 
-    'M', 
-    'L', 
-    'XL', 
-    'XXL'
+    'xs', 
+    's', 
+    'm', 
+    'l', 
+    'xl', 
+    'xxl'
 ]
 
 STYLES = [
-    'Smart Casual', 
-    'Business Casual', 
-    'Business Formal'
+    'smart casual', 
+    'business casual', 
+    'business formal'
 ]
 
 # Alpha sorted.
 COLORS = [
-    'Black', 
-    'Blue', 
-    'Brown', 
-    'Gray', 
-    'Green', 
-    'Orange', 
-    'Pink', 
-    'Purple'
-    'Red', 
-    'White', 
-    'Yellow', 
+    'black', 
+    'blue', 
+    'brown', 
+    'gray', 
+    'green', 
+    'orange', 
+    'pink', 
+    'purple'
+    'red', 
+    'white', 
+    'yellow', 
 ]
 
 # Alpha sorted.
 INDUSTRIES = [
-    'Consulting', 
-    'Industry 2'
+    'consulting', 
+    'industry 2'
 ]
 
 SHOP_SORTS = [
@@ -95,12 +95,18 @@ ITEMS_PER_PAGE = [
         15, 
         30, 
         90, 
-        'All'
+        'all'
 ]
 
 ITEMS_PER_PAGE_DEFAULT = ITEMS_PER_PAGE[0]
 
 PAGE_DEFAULT = 1
+
+RELEVANCE = [
+    'high',
+    'medium',
+    'low'
+]
 
 
 class SimilarStyle(ndb.Model):
@@ -149,7 +155,7 @@ class IndustryStyle(ndb.Model):
     industry = ndb.StringProperty(required=True, choices=INDUSTRIES)
     style = ndb.StringProperty(required=True, choices=STYLES)
     img_src = ndb.TextProperty(required=True)
-    relevance = ndb.TextProperty(required=True)
+    relevance = ndb.TextProperty(required=True, choices=RELEVANCE)
     activities = ndb.TextProperty(repeated=True)
     attire = ndb.TextProperty(repeated=True)
     shop_page = ndb.TextProperty(required=True)
@@ -314,14 +320,14 @@ class HomeHandler(webapp2.RequestHandler):
         """
         general_styles = DropdownSection(
                 heading='General', 
-                items=['Smart Casual', 'Business Casual', 'Business Formal'], 
+                items=['smart casual', 'business casual', 'business formal'], 
                 dropdown='Style Guides',
                 order_id=0)
         general_styles.put()
 
         industry_styles = DropdownSection(
                 heading='Industry', 
-                items=['Consulting', 'Industry 2'], 
+                items=['consulting', 'industry 2'], 
                 dropdown='Style Guides',
                 order_id=1)
         industry_styles.put()
@@ -344,7 +350,7 @@ class HomeHandler(webapp2.RequestHandler):
         #=============================================================== LOOKOCCASION === 
         
         smartcasual_one = LookOccasion(
-                style='Smart Casual',
+                style='smart casual',
                 look_img_src='/images/smartcasual.png',
                 look_descriptions=['White jeans and top', 'Beige blazer'],
                 occasion_img_src='/images/smartcasual.png',
@@ -354,7 +360,7 @@ class HomeHandler(webapp2.RequestHandler):
         smartcasual_one.put()
 
         smartcasual_two = LookOccasion(
-                style='Smart Casual',
+                style='smart casual',
                 look_img_src='/images/smartcasual.png',
                 look_descriptions=['Something', 'Or another'],
                 occasion_img_src='/images/smartcasual.png',
@@ -364,7 +370,7 @@ class HomeHandler(webapp2.RequestHandler):
         smartcasual_two.put()
 
         businesscasual_one = LookOccasion(
-                style='Business Casual',
+                style='business casual',
                 look_img_src='/images/businesscasual.png',
                 look_descriptions=['White jeans and top', 'Beige blazer'],
                 occasion_img_src='/images/businesscasual.png',
@@ -374,7 +380,7 @@ class HomeHandler(webapp2.RequestHandler):
         businesscasual_one.put()
 
         businesscasual_two = LookOccasion(
-                style='Business Casual',
+                style='business casual',
                 look_img_src='/images/businesscasual.png',
                 look_descriptions=['Something', 'Or another'],
                 occasion_img_src='/images/businesscasual.png',
@@ -384,7 +390,7 @@ class HomeHandler(webapp2.RequestHandler):
         businesscasual_two.put()
 
         businessformal_one = LookOccasion(
-                style='Business Formal',
+                style='business formal',
                 look_img_src='/images/businessformal.png',
                 look_descriptions=['White jeans and top', 'Beige blazer'],
                 occasion_img_src='/images/businessformal.png',
@@ -394,7 +400,7 @@ class HomeHandler(webapp2.RequestHandler):
         businessformal_one.put()
 
         businessformal_two= LookOccasion(
-                style='Business Formal',
+                style='business formal',
                 look_img_src='/images/businessformal.png',
                 look_descriptions=['Something', 'Or another'],
                 occasion_img_src='/images/businessformal.png',
@@ -406,60 +412,60 @@ class HomeHandler(webapp2.RequestHandler):
         #======================================================= INDUSTRYSTYLE === 
 
         consulting_sc = IndustryStyle(
-                industry='Consulting',
-                style='Smart Casual',
+                industry='consulting',
+                style='smart casual',
                 img_src='/images/smartcasual.png',
-                relevance='Low',
+                relevance='low',
                 activities=['Happy hour', 'Social hangouts'],
                 attire=['Jeans', 'Blazer'],
                 shop_page='TODO')
         consulting_sc.put()
 
         consulting_bc = IndustryStyle(
-                industry='Consulting',
-                style='Business Casual',
+                industry='consulting',
+                style='business casual',
                 img_src='/images/businesscasual.png',
-                relevance='Medium',
+                relevance='medium',
                 activities=['Casual fridays in office'],
                 attire=['Dress pant', 'Shirt'],
                 shop_page='TODO')
         consulting_bc.put()
 
         consulting_bf = IndustryStyle(
-                industry='Consulting',
-                style='Business Formal',
+                industry='consulting',
+                style='business formal',
                 img_src='/images/businessformal.png',
-                relevance='High',
+                relevance='high',
                 activities=['Client site activities'],
                 attire=['Dark suit', 'Top', 'etc.'],
                 shop_page='TODO')
         consulting_bf.put()
 
         industry_sc = IndustryStyle(
-                industry='Industry 2',
-                style='Smart Casual',
+                industry='industry 2',
+                style='smart casual',
                 img_src='/images/smartcasual.png',
-                relevance='High',
+                relevance='high',
                 activities=['Happy hour', 'Social hangouts'],
                 attire=['Jeans', 'Blazer'],
                 shop_page='TODO')
         industry_sc.put()
 
         industry_bc = IndustryStyle(
-                industry='Industry 2',
-                style='Business Casual',
+                industry='industry 2',
+                style='business casual',
                 img_src='/images/businesscasual.png',
-                relevance='Low',
+                relevance='low',
                 activities=['Casual fridays in office'],
                 attire=['Dress pant', 'Shirt'],
                 shop_page='TODO')
         industry_bc.put()
 
         industry_bf = IndustryStyle(
-                industry='Industry 2',
-                style='Business Formal',
+                industry='industry 2',
+                style='business formal',
                 img_src='/images/businessformal.png',
-                relevance='Medium',
+                relevance='medium',
                 activities=['Client site activities'],
                 attire=['Dark suit', 'Top', 'etc.'],
                 shop_page='TODO')
@@ -472,13 +478,13 @@ class HomeHandler(webapp2.RequestHandler):
                     sku_id=0,
                     name="Default Name",
                     brand="JCrew",
-                    gender='Women',
-                    article='Tops',
+                    gender='women',
+                    article='tops',
                     price=49.99,
-                    colors=['Black', 'White', 'Gray'],
-                    sizes=['XS', 'S', 'M', 'L', 'XL'],
-                    industries=['Consulting'],
-                    styles=['Smart Casual', 'Business Casual'],
+                    colors=['black', 'white', 'gray'],
+                    sizes=['xs', 's', 'm', 'l', 'xl'],
+                    industries=['consulting'],
+                    styles=['smart casual', 'business casual'],
                     description='Something I made up.',
                     img_src='/images/charmanderllama.png',
                     external_src='TODO',
@@ -498,11 +504,11 @@ class ShopHandler(webapp2.RequestHandler):
 
         filters = [
             {
-                'name': 'Gender',
+                'name': 'gender',
                 'selections': GENDERS
             },
             {
-                'name': 'Article',
+                'name': 'article',
                 'selections': ARTICLES
             }
         ]
@@ -592,9 +598,10 @@ class StyleGuidesIndustryHandler(webapp2.RequestHandler):
             logging.info(industry_dict)
 
             industry_data = [
-                    industry_dict['High'], 
-                    industry_dict['Medium'], 
-                    industry_dict['Low']]
+                    industry_dict['high'], 
+                    industry_dict['medium'], 
+                    industry_dict['low']
+            ]
 
             logging.info(industry_data)
 
@@ -648,9 +655,9 @@ class StyleGuidesHandler(webapp2.RequestHandler):
     def get(self):
 
         style_data = [
-                {'name': 'Smart Casual', 'img_src': '/images/smartcasual.png'},
-                {'name': 'Business Casual', 'img_src': '/images/businesscasual.png'},
-                {'name': 'Business Formal', 'img_src': '/images/businessformal.png'}]
+                {'name': 'smart casual', 'img_src': '/images/smartcasual.png'},
+                {'name': 'business casual', 'img_src': '/images/businesscasual.png'},
+                {'name': 'business formal', 'img_src': '/images/businessformal.png'}]
 
         template_vars = {
                 'industry_names': INDUSTRIES, 
