@@ -58,7 +58,8 @@
                 <a data-toggle="dropdown" class="dropdown-toggle"><span class="caret"></span></a>
                 <ul class="dropdown-menu">
 
-                  <!-- Hardcoded -->
+                    <!-- Hardcoded -->
+                    <!--
                   <li class="dropdown-header">General</li>
                   <li><a class="ef-dropdown-style" id="smart casual" href="#">Smart Casual</a></li>
                   <li><a class="ef-dropdown-style" id="business casual" href="#">Business Casual</a></li>
@@ -69,32 +70,19 @@
                   <li class="dropdown-header">Industry</li>
                   <li><a class="ef-dropdown-industry" id="consulting" href="#">Consulting</a></li>
                   <li><a class="ef-dropdown-industry" id="industry 2" href="#">Industry 2</a></li>
+                  -->
 
 
 
-                  <!--
                   {% for section in styleguide_sections %} 
                     {% if section.heading != '' %}
-                      <li class="dropdown-header">{{section.heading}}</li>
+                      <li class="dropdown-header">{{section.heading | title }}</li>
                     {% endif %}
-                  -->
 
                     <!-- Don't alphabetically sort the general styles. -->
-                    <!--
-                    {% if section.heading == 'General' %}
-                      {% for item in section.items %}
-                        <li><a href="/styleguides/style?style={{item}}">{{item}}</a></li>
-                      {% endfor %}
-                    {% elif section.heading == 'Industry' %}
-                      {% for item in section.items|sort %}
-                        <li><a href="/styleguides/industry?industry={{item}}">{{item}}</a></li>
-                      {% endfor %}
-                    {% else %}
-                      {% for item in section.items|sort %}
-                        <li><a href="#">{{item}}</a></li>
-                      {% endfor %}
-                    {% endif %}
-                  -->
+                    {% for item in section.items %}
+                    <li><a class="ef-dropdown-{{section.heading}}" id="{{item}}" href="#">{{item | title}}</a></li>
+                    {% endfor %}
 
 
                     <!-- No sort applied. -->
@@ -109,13 +97,11 @@
                       {% endif %}
                     {% endfor %}
                   -->
-                    <!--
                     {% if not loop.last %}
                       <li role="separator" class="divider"></li>
                     {% endif %}
 
                   {% endfor %}
-                -->
                 </ul>
               </div>
             </li>
@@ -152,20 +138,20 @@
                 <ul class="dropdown-menu columns">
                   <!-- Hardcoded -->
                   <li class="dropdown-header">Men</li>
-                  <li><a class="ef-dropdown-shop-men" href="#">Tops</a></li>
-                  <li><a class="ef-dropdown-shop-men" href="#">Bottoms</a></li>
-                  <li><a class="ef-dropdown-shop-men" href="#">Suits</a></li>
-                  <li><a class="ef-dropdown-shop-men" href="#">Outerwear</a></li>
+                  <li><a class="ef-dropdown-shop" id="men-tops" href="#">Tops</a></li>
+                  <li><a class="ef-dropdown-shop" id="men-bottoms" href="#">Bottoms</a></li>
+                  <li><a class="ef-dropdown-shop" id="men-suits" href="#">Suits</a></li>
+                  <li><a class="ef-dropdown-shop" id="men-outerwear" href="#">Outerwear</a></li>
 
                   <!-- Blank to keep columns even -->
                   <li>''</li>
 
                   <li class="dropdown-header">Women</li>
-                  <li><a class="ef-dropdown-shop-women" href="#">Tops</a></li>
-                  <li><a class="ef-dropdown-shop-women" href="#">Bottoms</a></li>
-                  <li><a class="ef-dropdown-shop-women" href="#">Dresses</a></li>
-                  <li><a class="ef-dropdown-shop-women" href="#">Suits</a></li>
-                  <li><a class="ef-dropdown-shop-women" href="#">Outerwear</a></li>
+                  <li><a class="ef-dropdown-shop" id="women-tops" href="#">Tops</a></li>
+                  <li><a class="ef-dropdown-shop" id="women-bottoms" href="#">Bottoms</a></li>
+                  <li><a class="ef-dropdown-shop" id="women-dresses" href="#">Dresses</a></li>
+                  <li><a class="ef-dropdown-shop" id="women-suits" href="#">Suits</a></li>
+                  <li><a class="ef-dropdown-shop" id="women-outerwear" href="#">Outerwear</a></li>
                 </ul>
               </div>
             </li>

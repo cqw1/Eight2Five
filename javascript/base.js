@@ -28,15 +28,12 @@ $(document).ready(function() {
         return false;
     });
 
-    $('.ef-dropdown-shop-men').click(function() {
-        redirectShopMen($(this).attr('id'));
+    $('.ef-dropdown-shop').click(function() {
+        var splitId = $(this).attr('id').split('-');
+        redirectShop(splitId[0], splitId[1]);
         return false;
     });
 
-    $('.ef-dropdown-shop-women').click(function() {
-        redirectShopWomen($(this).attr('id'));
-        return false;
-    });
 });
 
 function redirectStyle(arg) {
@@ -47,10 +44,8 @@ function redirectIndustry(arg) {
     window.location.href='/styleguides/industry?industry=' + arg;
 }
 
-function redirectShopMen(arg) {
-    window.location.href='/shop?gender=men&article=' + arg;
+function redirectShop(genderArg, articleArg) {
+    window.location.href='/shop?gender=' + genderArg + '&article=' + articleArg;
 }
 
-function redirectShopWomen(arg) {
-    window.location.href='/shop?gender=women&article=' + arg;
-}
+

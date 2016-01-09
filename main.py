@@ -317,35 +317,33 @@ class HomeHandler(webapp2.RequestHandler):
         blastoise.put()
 
         #================================================================== DROPDOWNS === 
-        """
         general_styles = DropdownSection(
-                heading='General', 
+                heading='style', 
                 items=['smart casual', 'business casual', 'business formal'], 
-                dropdown='Style Guides',
+                dropdown='style guides',
                 order_id=0)
         general_styles.put()
 
         industry_styles = DropdownSection(
-                heading='Industry', 
+                heading='industry', 
                 items=['consulting', 'industry 2'], 
-                dropdown='Style Guides',
+                dropdown='style guides',
                 order_id=1)
         industry_styles.put()
 
         men_shop_filters = DropdownSection(
-                heading='Men', 
-                items=['Tops', 'Bottoms', 'Suits', 'Outerwear'], 
-                dropdown='Shop',
+                heading='men', 
+                items=['tops', 'bottoms', 'suits', 'outerwear'], 
+                dropdown='shop',
                 order_id=0)
         men_shop_filters.put()
 
         women_shop_filters = DropdownSection(
-                heading='Women', 
-                items=['Tops', 'Bottoms', 'Dresses', 'Suits', 'Outerwear'], 
-                dropdown='Shop',
+                heading='women', 
+                items=['tops', 'bottoms', 'dresses', 'suits', 'outerwear'], 
+                dropdown='shop',
                 order_id=1)
         women_shop_filters.put()
-        """
 
         #=============================================================== LOOKOCCASION === 
         
@@ -568,6 +566,8 @@ class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
                     'posting_to_similar_styles_dict': posting_to_similar_style_dict, 
                     'styleguide_sections': self.app.config.get('styleguide_sections')}
 
+            logging.info(self.app.config.get('styleguide_sections'))
+
             # Check if it's a valid person.
             if self.request.get('person') == '':
                 print "didn't get a valid person value in get request."
@@ -678,5 +678,5 @@ app = webapp2.WSGIApplication(routes=[
     ('/styleguides.*', StyleGuidesHandler),
     ('/.*', HomeHandler)
 ], debug=True, config={
-    'styleguide_sections': DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'Style Guides').order(DropdownSection.order_id).fetch() 
+    'styleguide_sections': DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'style guides').order(DropdownSection.order_id).fetch() 
 })
