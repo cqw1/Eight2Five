@@ -26,13 +26,81 @@ from google.appengine.ext import ndb
 # Sets jinja's relative directory to match the directory name (dirname) of the current __file__, in this case, main.py
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
-GENDERS = ['Men', 'Women']
-ARTICLES = ['Tops', 'Bottoms', 'Dresses', 'Suits', 'Outerwear']
-BRANDS = ['JCrew', 'Ann Taylor']
-SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
-STYLES = ['Smart Casual', 'Business Casual', 'Business Formal']
-COLORS = ['Black', 'White', 'Gray', 'Brown', 'Red', 'Green', 'Blue', 'Pink', 'Orange', 'Yellow', 'Purple']
-INDUSTRIES = ['Consulting', 'Industry 2']
+GENDERS = [
+    'Men', 
+    'Women'
+]
+
+ARTICLES = [
+    'Tops', 
+    'Bottoms', 
+    'Dresses', 
+    'Suits', 
+    'Outerwear'
+]
+
+BRANDS = [
+    'JCrew', 
+    'Ann Taylor'
+]
+
+SIZES = [
+    'XS', 
+    'S', 
+    'M', 
+    'L', 
+    'XL', 
+    'XXL'
+]
+
+STYLES = [
+    'Smart Casual', 
+    'Business Casual', 
+    'Business Formal'
+]
+
+# Alpha sorted.
+COLORS = [
+    'Black', 
+    'Blue', 
+    'Brown', 
+    'Gray', 
+    'Green', 
+    'Orange', 
+    'Pink', 
+    'Purple'
+    'Red', 
+    'White', 
+    'Yellow', 
+]
+
+# Alpha sorted.
+INDUSTRIES = [
+    'Consulting', 
+    'Industry 2'
+]
+
+SHOP_SORTS = [
+    'Name [A - Z]', 
+    'Name [Z - A]', 
+    'Price [Low - High]', 
+    'Price [High - Low]', 
+    'Date [New - Old]', 
+    'Date [Old - New]'
+]
+
+SHOP_SORT_DEFAULT = SHOP_SORTS[0]
+
+ITEMS_PER_PAGE = [
+        15, 
+        30, 
+        90, 
+        'All'
+]
+
+ITEMS_PER_PAGE_DEFAULT = ITEMS_PER_PAGE[0]
+
+PAGE_DEFAULT = 1
 
 
 class SimilarStyle(ndb.Model):
@@ -439,10 +507,19 @@ class ShopHandler(webapp2.RequestHandler):
             }
         ]
 
+        selected_shop_sort = SHOP_SORT_DEFAULT
+        selected_items_per_page = ITEMS_PER_PAGE_DEFAULT
+
+
 
         template_vars = {
                 'styleguide_sections': self.app.config.get('styleguide_sections'),
-                'filters': filters}
+                'filters': filters,
+                'shop_sorts': SHOP_SORTS,
+                'selected_shop_sort': selected_shop_sort,
+                'items_per_page': ITEMS_PER_PAGE,
+                'selected_items_per_page': selected_items_per_page 
+        }
 
         shop_template = jinja_environment.get_template('templates/shop.html')
         logging.info('in shop handler logging')

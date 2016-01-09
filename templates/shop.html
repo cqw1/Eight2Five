@@ -29,7 +29,8 @@
                 <ul>
                   {% for selection in filter.selections %}
                     <li>
-                      <input type="checkbox" id="{{selection}}" class="css-checkbox" value="{{selection}}" name="{{selection}}"/>
+                      <!-- input id is used for url arguments. if input id differs from the text of the label. change javascript -->
+                      <input type="checkbox" id="{{selection}}" class="ef-{{filter.name}}-filter css-checkbox" value="{{selection}}" name="{{selection}}"/>
                       <label for="{{selection}}" class="css-label"><span class="ef-buffer-span"></span>{{selection}}</label>
                     </li>
                   {% endfor %}
@@ -44,40 +45,12 @@
 
     <!-- Right side of page -->
     <div class="col-xs-9">
-      <!-- Sorts -->
+
+      <!-- Controls -->
       <div class="row ef-padding">
-        <div class="ef-controls ef-margin-right">
-          Sort By:
-          <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Name [A - Z] <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu ef-no-min-width">
-              <li><a href="#">Name [A - Z]</a></li>
-              <li><a href="#">Name [Z - A]</a></li>
-              <li><a href="#">Price [high - low]</a></li>
-              <li><a href="#">Price [low - high]</a></li>
-              <li><a href="#">Date [old - new]</a></li>
-              <li><a href="#">Date [new - old]</a></li>
-            </ul>
-          </div>
-        </div>
 
-        <div class="ef-controls ef-margin-right">
-          Items per Page:
-          <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              15 <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu ef-no-min-width">
-              <li><a class="ef-items-option" href="#">15</a></li>
-              <li><a class="ef-items-option" href="#">30</a></li>
-              <li><a class="ef-items-option" href="#">90</a></li>
-              <li><a class="ef-items-option" href="#">All</a></li>
-            </ul>
-          </div>
-        </div>
-
+        <!-- Paging controls -->
+        <!-- Put first because Chrome loading sometimes pushes it to a new line? -->
         <div class="ef-controls pull-right">
           Page:
           <div class="btn-group">
@@ -99,6 +72,36 @@
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
           </button>
         </div>
+
+        <!-- Sorts -->
+        <div class="ef-controls ef-margin-right">
+          Sort By:
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{selected_shop_sort}}  <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu ef-no-min-width">
+              {% for sort in shop_sorts %}
+                <li><a class="ef-sort-option" href="#">{{sort}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="ef-controls ef-margin-right">
+          Items per Page:
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{selected_items_per_page}}  <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu ef-no-min-width">
+              {% for i in items_per_page %}
+                <li><a class="ef-items-option" href="#">{{i}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
       </div>
 
       <!-- Grid of items -->
