@@ -1,4 +1,7 @@
 globalFilters = [];
+globalDefaultSort = 'defaultSort';
+globalDefaultItems = 'defaultItems';
+globalDefaultPage = 0;
 
 $(document).ready(function() {
     console.log('shop.js document ready');
@@ -17,7 +20,6 @@ $(document).ready(function() {
         var checked = $(this).prop('checked');
 
         argDict = updateArgDictCheckbox(argType, argValue, checked, argDict);
-
         updateUrl(argDict);
     })
 
@@ -27,24 +29,25 @@ $(document).ready(function() {
         var checked = $(this).prop('checked');
 
         argDict = updateArgDictCheckbox(argType, argValue, checked, argDict);
-
         updateUrl(argDict);
     })
 
     // Sorts.
-    $('.ef-items-option').on('click', function() {
+    $('.ef-items-option').on('click', function(event) {
+        event.preventDefault();
         var argType = 'items';
-        var argValue = $(this).text();
+        var argValue = $(this).text().toLowerCase().replace(/ /g, "%20");
 
-        addUrlArg(argType, argValue);
+        argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
     })
 
     // Display number of items on a page.
-    $('.ef-sort-option').on('click', function() {
+    $('.ef-sort-option').on('click', function(event) {
+        event.preventDefault();
         var argType = 'sort';
-        var argValue = $(this).text();
+        var argValue = $(this).text().toLowerCase().replace(/ /g, "%20");
 
-        addUrlArg(argType, argValue);
+        argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
     })
 });
 
@@ -71,13 +74,16 @@ function createArgDict() {
     return argDict;
 }
 
-// Check the checkboxes that the url arguments indicates are selected.
+// Set checkboxes and dropdowns from previous user selections. Info from url args.
 function updateCheckboxes(argDict) {
     console.log('in updateCheckboxes');
     for (var key in argDict) {
-        var filters = argDict[key]
+        var filters = argDict[key];
         for (var i in filters) {
-            $('#' + filters[i]).prop('checked', true);
+            if (globalFilters.indexOf(filters[i]) > -1) {
+                // Checkbox arg and not a dropdown arg.
+                $('#' + filters[i]).prop('checked', true);
+            }
         }
     }
 }
@@ -128,6 +134,35 @@ function updateArgDictCheckbox(argType, argValue, checked, argDict) {
     return argDict;
 }
 
+function updateArgDictDropdownAndUrl(argType, argValue, argDict) {
+    if (argType in argDict) {
+        // Should only have one value.
+        var value = argDict[argType][0];
+
+        if (value == argValue) {
+            // Sort already applied. Do nothing.
+            console.log('sort already applied');
+        } else if (argValue == globalDefaultItems || argValue == globalDefaultSort) {
+            // Selected default. remove whatever is currently applied.
+            delete argDict[argType];
+            updateUrl(argDict);
+        } else {
+            // Change to new sort.
+            argDict[argType] = [argValue];
+            updateUrl(argDict);
+        }
+    } else if (argValue == globalDefaultItems || argValue == globalDefaultSort) {
+        // Selected default and no selection is currently applied. Do nothing.
+        console.log('selected default.');
+    } else {
+        // Want to apply a new sort.
+        argDict[argType] = [argValue];
+        updateUrl(argDict);
+    }
+
+    return argDict;
+}
+
 // Construct new url from arg dictionary and redirects there. 
 function updateUrl(argDict) {
     var url = window.location.origin + window.location.pathname + '?';
@@ -141,18 +176,18 @@ function updateUrl(argDict) {
     window.location.href = url;
 }
 
-// arg (e.g. 'gender=Men')
-function argExists(arg) {
-    return (window.location.search.indexOf(arg) > -1);
-}
-
-function initFilters(filters) {
+function initGlobals(filters, defaultSort, defaultItems, defaultPage) {
     for (var i in filters) {
         globalFilters = globalFilters.concat(filters[i].selections);
     }
 
-    console.log('new global filters: ');
-    console.log(globalFilters);
+    globalDefaultSort = defaultSort.replace(/ /g, '%20');
+    globalDefaultItems = defaultItems;
+    globalDefaultPage = defaultPage;
+
+    console.log(globalDefaultSort);
+    console.log(globalDefaultItems);
+    console.log(globalDefaultPage);
 }
 
 

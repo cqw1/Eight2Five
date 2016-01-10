@@ -56,6 +56,7 @@
           <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               1 <span class="caret"></span>
+
             </button>
             <ul class="dropdown-menu ef-no-min-width">
               <li><a href="#">2</a></li>
@@ -77,7 +78,7 @@
         <div class="ef-controls ef-margin-right">
           Sort By:
           <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" id="sort" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{selected_shop_sort | title}}  <span class="caret"></span>
             </button>
             <ul class="dropdown-menu ef-no-min-width">
@@ -91,12 +92,12 @@
         <div class="ef-controls ef-margin-right">
           Items per Page:
           <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{selected_items_per_page}}  <span class="caret"></span>
+            <button type="button" id="items" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{selected_items_per_page | title}}  <span class="caret"></span>
             </button>
             <ul class="dropdown-menu ef-no-min-width">
               {% for i in items_per_page %}
-                <li><a class="ef-items-option" href="#">{{i}}</a></li>
+                <li><a class="ef-items-option" href="#">{{i | title}}</a></li>
               {% endfor %}
             </ul>
           </div>
@@ -146,7 +147,7 @@
 {% block end_body %}
   <script src="/javascript/shop.js"></script>
   <script type="text/javascript">
-      initFilters({{filters}});
+      initGlobals({{filters}}, '{{default_shop_sort}}', {{default_items_per_page}}, {{default_page}});
   </script>
 
   <link rel="stylesheet" type="text/css" href="/stylesheets/shop.css">

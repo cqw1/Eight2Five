@@ -496,8 +496,25 @@ class ShopHandler(webapp2.RequestHandler):
     def get(self):
         logging.info('arguments:')
         logging.info(self.request.arguments())
-        logging.info('get_all')
-        logging.info(self.request.get_all('gender'))
+
+        args = self.request.arguments()
+        argDict = {}
+
+        for key in args:
+            argDict[key] = self.request.get_all(key)
+
+        logging.info('argDict')
+        logging.info(argDict)
+
+        if 'sort' in argDict:
+            selected_shop_sort = argDict['sort'][0]
+        else:
+            selected_shop_sort = SHOP_SORT_DEFAULT
+
+        if 'items' in argDict:
+            selected_items_per_page = argDict['items'][0]
+        else:
+            selected_items_per_page = ITEMS_PER_PAGE_DEFAULT
 
 
         filters = [
@@ -511,18 +528,16 @@ class ShopHandler(webapp2.RequestHandler):
             }
         ]
 
-        selected_shop_sort = SHOP_SORT_DEFAULT
-        selected_items_per_page = ITEMS_PER_PAGE_DEFAULT
-
-
-
         template_vars = {
                 'styleguide_sections': self.app.config.get('styleguide_sections'),
                 'filters': filters,
                 'shop_sorts': SHOP_SORTS,
                 'selected_shop_sort': selected_shop_sort,
+                'default_shop_sort': SHOP_SORT_DEFAULT,
                 'items_per_page': ITEMS_PER_PAGE,
-                'selected_items_per_page': selected_items_per_page 
+                'selected_items_per_page': selected_items_per_page,
+                'default_items_per_page': ITEMS_PER_PAGE_DEFAULT,
+                'default_page': PAGE_DEFAULT
         }
 
         shop_template = jinja_environment.get_template('templates/shop.html')
