@@ -3,8 +3,8 @@ plug in who wore what data
 shop
   integrate shop links
   add pagination
-  add sorts
-  add persistence of filters
+  think about thumbnail sizes
+  apply backend query filters based on args
 
 make style guides page with a section for general styles and a section for industries
 put shop dropdown stuff into datastore
