@@ -2,6 +2,7 @@ globalFilters = [];
 globalDefaultSort = 'defaultSort';
 globalDefaultItems = 'defaultItems';
 globalDefaultPage = 0;
+globalNumPages = 1;
 
 $(document).ready(function() {
     console.log('shop.js document ready');
@@ -60,6 +61,33 @@ $(document).ready(function() {
 
         argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
     })
+
+    $('#ef-prev-page').on('click', function(event) {
+        event.preventDefault();
+        var currentPage = parseInt($('#ef-current-page').text());
+        if (currentPage == 2) {
+            delete argDict['page'];
+            updateUrl(argDict);
+        } else if (currentPage > 2) {
+            argDict['page'] = [currentPage - 1];
+            updateUrl(argDict);
+        }
+    })
+
+    $('#ef-next-page').on('click', function(event) {
+        console.log('next page');
+        event.preventDefault();
+        var currentPage = parseInt($('#ef-current-page').text());
+        console.log('currentpage: ' + currentPage);
+
+        if (currentPage < globalNumPages) {
+            console.log('entered if statement');
+            argDict['page'] = [currentPage + 1];
+            updateUrl(argDict);
+        }
+    })
+
+
 });
 
 // Creates arg dictionary from current url.
@@ -196,7 +224,7 @@ function updateUrl(argDict) {
     window.location.href = url;
 }
 
-function initGlobals(filters, defaultSort, defaultItems, defaultPage) {
+function initGlobals(filters, defaultSort, defaultItems, defaultPage, numPages) {
     for (var i in filters) {
         globalFilters = globalFilters.concat(filters[i].selections);
     }
@@ -204,10 +232,12 @@ function initGlobals(filters, defaultSort, defaultItems, defaultPage) {
     globalDefaultSort = defaultSort.replace(/ /g, '%20');
     globalDefaultItems = defaultItems;
     globalDefaultPage = defaultPage;
+    globalNumPages = numPages.length
 
     console.log(globalDefaultSort);
     console.log(globalDefaultItems);
     console.log(globalDefaultPage);
+
 }
 
 
