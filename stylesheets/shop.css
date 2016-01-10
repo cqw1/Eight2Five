@@ -7,6 +7,18 @@
     padding-left: 10px;
 }
 
+/* In case screen is too small and filter labels get cut off. */
+.ef-filter-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* In case screen is too small and content gets cut off. */
+.panel-body {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 label {
     display:inline-block;
     max-width: 100%;

@@ -31,7 +31,7 @@
                     <li>
                       <!-- input id is used for url arguments. if input id differs from the text of the label. change javascript -->
                       <input type="checkbox" id="{{selection}}" class="ef-{{filter.name}}-filter css-checkbox" value="{{selection}}" name="{{selection}}"/>
-                      <label for="{{selection}}" class="css-label"><span class="ef-buffer-span"></span>{{selection | title }}</label>
+                      <label for="{{selection}}" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection | title }}</label>
                     </li>
                   {% endfor %}
               </div>
@@ -47,11 +47,11 @@
     <div class="col-xs-9">
 
       <!-- Controls -->
-      <div class="row ef-padding">
+      <div class="row">
 
         <!-- Paging controls -->
         <!-- Put first because Chrome loading sometimes pushes it to a new line? -->
-        <div class="ef-controls pull-right">
+        <div class="ef-controls pull-right ef-padding">
           Page:
           <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,7 +75,7 @@
         </div>
 
         <!-- Sorts -->
-        <div class="ef-controls ef-margin-right">
+        <div class="ef-controls ef-padding">
           Sort By:
           <div class="btn-group">
             <button type="button" id="sort" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -89,7 +89,7 @@
           </div>
         </div>
 
-        <div class="ef-controls ef-margin-right">
+        <div class="ef-controls ef-padding">
           Items per Page:
           <div class="btn-group">
             <button type="button" id="items" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
