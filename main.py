@@ -584,6 +584,26 @@ class ShopHandler(webapp2.RequestHandler):
             {
                 'name': 'article',
                 'selections': ARTICLES
+            },
+            {
+                'name': 'color',
+                'selections': COLORS 
+            },
+            {
+                'name': 'size',
+                'selections': SIZES 
+            },
+            {
+                'name': 'brand',
+                'selections': BRANDS 
+            },
+            {
+                'name': 'style',
+                'selections': STYLES 
+            },
+            {
+                'name': 'industry',
+                'selections': INDUSTRIES 
             }
         ]
 

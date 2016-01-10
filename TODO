@@ -2,9 +2,7 @@ plug in who wore what data
 
 shop
   integrate shop links
-  add pagination
   think about thumbnail sizes
-  apply backend query filters based on args
 
 make style guides page with a section for general styles and a section for industries
 put shop dropdown stuff into datastore
@@ -14,7 +12,6 @@ don't link datastore to home handler
 try deploying
 integrate icon somewhere?
 let styles load first before content. annoying flash of horrible css
-style guides dropdown not loading initially?
 
 cleanup old comments of non-bootstrapped stuff.
 
