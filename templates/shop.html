@@ -54,17 +54,16 @@
         <div class="ef-controls pull-right ef-padding">
           Page:
           <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              1 <span class="caret"></span>
-
+            <button type="button" id="page" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{selected_page | title}} <span class="caret"></span>
             </button>
             <ul class="dropdown-menu ef-no-min-width">
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
+              {% for page in num_pages %}
+                <li><a class="ef-page-option" href="#">{{page | title}}</a></li>
+              {% endfor %}
             </ul>
           </div>
-           of 4
+          of {{num_pages | length}}
            <span class="ef-buffer-span"></span>
            <button type="button" class="btn btn-default">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -147,7 +146,7 @@
 {% block end_body %}
   <script src="/javascript/shop.js"></script>
   <script type="text/javascript">
-      initGlobals({{filters}}, '{{default_shop_sort}}', {{default_items_per_page}}, {{default_page}});
+      initGlobals({{filters}}, '{{default_shop_sort}}', '{{default_items_per_page}}', '{{default_page}}');
   </script>
 
   <link rel="stylesheet" type="text/css" href="/stylesheets/shop.css">

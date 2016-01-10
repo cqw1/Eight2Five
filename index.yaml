@@ -15,6 +15,16 @@ indexes:
   - name: dropdown
   - name: order_id
 
+- kind: Item
+  properties:
+  - name: gender
+  - name: name
+
+- kind: Item
+  properties:
+  - name: gender
+  - name: price
+
 - kind: LookOccasion
   properties:
   - name: style

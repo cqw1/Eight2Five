@@ -20,6 +20,7 @@ $(document).ready(function() {
         var checked = $(this).prop('checked');
 
         argDict = updateArgDictCheckbox(argType, argValue, checked, argDict);
+        delete argDict['page'];
         updateUrl(argDict);
     })
 
@@ -29,23 +30,33 @@ $(document).ready(function() {
         var checked = $(this).prop('checked');
 
         argDict = updateArgDictCheckbox(argType, argValue, checked, argDict);
+        delete argDict['page'];
         updateUrl(argDict);
     })
 
     // Sorts.
-    $('.ef-items-option').on('click', function(event) {
+    $('.ef-sort-option').on('click', function(event) {
         event.preventDefault();
-        var argType = 'items';
+        var argType = 'sort';
         var argValue = $(this).text().toLowerCase().replace(/ /g, "%20");
 
         argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
     })
 
     // Display number of items on a page.
-    $('.ef-sort-option').on('click', function(event) {
+    $('.ef-items-option').on('click', function(event) {
         event.preventDefault();
-        var argType = 'sort';
-        var argValue = $(this).text().toLowerCase().replace(/ /g, "%20");
+        var argType = 'items';
+        var argValue = $(this).text().toLowerCase();
+
+        argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
+    })
+
+    // Page.
+    $('.ef-page-option').on('click', function(event) {
+        event.preventDefault();
+        var argType = 'page';
+        var argValue = $(this).text();
 
         argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
     })
@@ -140,23 +151,32 @@ function updateArgDictDropdownAndUrl(argType, argValue, argDict) {
         var value = argDict[argType][0];
 
         if (value == argValue) {
-            // Sort already applied. Do nothing.
-            console.log('sort already applied');
-        } else if (argValue == globalDefaultItems || argValue == globalDefaultSort) {
+            // Value already selected. Do nothing.
+            console.log('value already selected');
+        } else if (argValue == globalDefaultItems || argValue == globalDefaultSort || argValue == globalDefaultPage) {
             // Selected default. remove whatever is currently applied.
             delete argDict[argType];
+            if (argType != 'page') {
+                delete argDict['page'];
+            }
             updateUrl(argDict);
         } else {
-            // Change to new sort.
+            // Change to new selection.
             argDict[argType] = [argValue];
+            if (argType != 'page') {
+                delete argDict['page'];
+            }
             updateUrl(argDict);
         }
-    } else if (argValue == globalDefaultItems || argValue == globalDefaultSort) {
+    } else if (argValue == globalDefaultItems || argValue == globalDefaultSort || argValue == globalDefaultPage) {
         // Selected default and no selection is currently applied. Do nothing.
         console.log('selected default.');
     } else {
-        // Want to apply a new sort.
+        // Want to apply a new selection.
         argDict[argType] = [argValue];
+        if (argType != 'page') {
+            delete argDict['page'];
+        }
         updateUrl(argDict);
     }
 

@@ -161,6 +161,7 @@ class IndustryStyle(ndb.Model):
     shop_page = ndb.TextProperty(required=True)
 
 class Item(ndb.Model):
+    # Must be unique.
     sku_id = ndb.IntegerProperty(required=True)
 
     name = ndb.StringProperty(required=True)
@@ -471,14 +472,68 @@ class HomeHandler(webapp2.RequestHandler):
 
 
         #================================================================== ITEM === 
-        for i in range(10):
-            one = Item(
+        one = Item(
+                sku_id=0,
+                name="Default Name",
+                brand="JCrew",
+                gender='women',
+                article='tops',
+                price=49.99,
+                colors=['black', 'white', 'gray'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Something I made up.',
+                img_src='/images/charmanderllama.png',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 7))
+        one.put()
+
+        two = Item(
+                sku_id=0,
+                name="A",
+                brand="JCrew",
+                gender='women',
+                article='tops',
+                price=49.99,
+                colors=['black', 'white', 'gray'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Something I made up.',
+                img_src='/images/charmanderllama.png',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 7))
+        two.put()
+
+        three = Item(
+                sku_id=0,
+                name="B",
+                brand="JCrew",
+                gender='men',
+                article='bottoms',
+                price=39.99,
+                colors=['black', 'white', 'gray'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Something I made up.',
+                img_src='/images/charmanderllama.png',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        three.put()
+
+        for i in range(40):
+            four = Item(
                     sku_id=0,
-                    name="Default Name",
+                    name="C",
                     brand="JCrew",
-                    gender='women',
-                    article='tops',
-                    price=49.99,
+                    gender='men',
+                    article='suits',
+                    price=45.99,
                     colors=['black', 'white', 'gray'],
                     sizes=['xs', 's', 'm', 'l', 'xl'],
                     industries=['consulting'],
@@ -487,9 +542,8 @@ class HomeHandler(webapp2.RequestHandler):
                     img_src='/images/charmanderllama.png',
                     external_src='TODO',
                     smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
-                    date=datetime.date(2016, 1, 7))
-            one.put()
-
+                    date=datetime.date(2015, 1, 9))
+            four.put()
         ############################################################### END DATASTORE ####
 
 class ShopHandler(webapp2.RequestHandler):
@@ -516,6 +570,11 @@ class ShopHandler(webapp2.RequestHandler):
         else:
             selected_items_per_page = ITEMS_PER_PAGE_DEFAULT
 
+        if 'page' in argDict:
+            selected_page = argDict['page'][0]
+        else:
+            selected_page = PAGE_DEFAULT
+
 
         filters = [
             {
@@ -528,6 +587,49 @@ class ShopHandler(webapp2.RequestHandler):
             }
         ]
 
+        # create query filters.
+        query = Item.query()
+        query = self.applySort(query, argDict)
+        query = self.applyCheckboxes(query, filters, argDict)
+
+        logging.info(query)
+
+
+        all_results = query.fetch()
+        num_results = len(all_results)
+
+        # calculating offset for results.
+        if selected_items_per_page == 'all':
+            selected_page = 1
+            num_pages = [1]
+            results = all_results
+        elif num_results < int(selected_items_per_page):
+            # Not enough results to offset or have multiple pages.
+            selected_page = 1
+            num_pages = [1]
+            results = all_results
+        else:
+            selected_items_per_page = int(selected_items_per_page)
+            start = (int(selected_page) - 1) * selected_items_per_page
+            stop = start + selected_items_per_page
+            offset_results = all_results[start:stop]
+            results = offset_results
+
+            # calculating pages.
+            if num_results % selected_items_per_page == 0:
+                pages = num_results / selected_items_per_page
+            else:
+                pages = num_results / selected_items_per_page + 1
+
+            num_pages = [i for i in range(1, pages + 1)]
+    
+        logging.info('================= RESULTS =====================')
+        for r in results:
+            logging.info(r)
+            logging.info('----------------------')
+
+        logging.info('======================================')
+
         template_vars = {
                 'styleguide_sections': self.app.config.get('styleguide_sections'),
                 'filters': filters,
@@ -537,12 +639,50 @@ class ShopHandler(webapp2.RequestHandler):
                 'items_per_page': ITEMS_PER_PAGE,
                 'selected_items_per_page': selected_items_per_page,
                 'default_items_per_page': ITEMS_PER_PAGE_DEFAULT,
-                'default_page': PAGE_DEFAULT
+                'selected_page': selected_page,
+                'default_page': PAGE_DEFAULT,
+                'num_pages': num_pages
         }
 
         shop_template = jinja_environment.get_template('templates/shop.html')
         logging.info('in shop handler logging')
         self.response.write(shop_template.render(template_vars))
+
+    def applySort(self, query, argDict):
+        if 'sort' in argDict:
+            sortType = argDict['sort'][0]
+
+            if sortType ==  'name [a - z]':
+                query = query.order(Item.name)
+            elif sortType == 'name [z - a]':
+                query = query.order(-Item.name)
+            elif sortType == 'price [low - high]':
+                query = query.order(Item.price)
+            elif sortType == 'price [high - low]':
+                query = query.order(-Item.price)
+            elif sortType == 'date [new - old]':
+                query = query.order(-Item.date)
+            elif sortType == 'date [old - new]':
+                query = query.order(Item.date)
+            else:
+                logging.info('invalid sort: ')
+                logging.info(sortType)
+
+        else:
+            # Default sort.
+            query = query.order(Item.name)
+
+        return query
+
+    def applyCheckboxes(self, query, filters, argDict):
+        # TODO: verify this works for repeated properties as well? (e.g. colors, industries, etc.)
+        for f in filters:
+            if f['name'] in argDict:
+                fValues = argDict[f['name']]
+                for i in fValues:
+                    query = query.filter(getattr(Item, f['name']) == i)
+
+        return query
 
 class WhoWoreWhatHandler(webapp2.RequestHandler):
     def get(self):
