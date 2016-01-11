@@ -17,6 +17,75 @@ indexes:
 
 - kind: Item
   properties:
+  - name: article
+  - name: gender
+  - name: industries
+  - name: sizes
+  - name: name
+
+- kind: Item
+  properties:
+  - name: brand
+  - name: gender
+  - name: industries
+  - name: name
+
+- kind: Item
+  properties:
+  - name: brand
+  - name: gender
+  - name: industries
+  - name: styles
+  - name: name
+
+- kind: Item
+  properties:
+  - name: brand
+  - name: gender
+  - name: name
+
+- kind: Item
+  properties:
+  - name: brand
+  - name: gender
+  - name: sizes
+  - name: name
+
+- kind: Item
+  properties:
+  - name: brand
+  - name: gender
+  - name: sizes
+  - name: styles
+  - name: name
+
+- kind: Item
+  properties:
+  - name: brand
+  - name: industries
+  - name: styles
+  - name: name
+
+- kind: Item
+  properties:
+  - name: brand
+  - name: name
+
+- kind: Item
+  properties:
+  - name: brand
+  - name: styles
+  - name: name
+
+- kind: Item
+  properties:
+  - name: gender
+  - name: industries
+  - name: sizes
+  - name: name
+
+- kind: Item
+  properties:
   - name: gender
   - name: name
 
@@ -24,6 +93,19 @@ indexes:
   properties:
   - name: gender
   - name: price
+
+- kind: Item
+  properties:
+  - name: gender
+  - name: sizes
+  - name: name
+
+- kind: Item
+  properties:
+  - name: gender
+  - name: sizes
+  - name: styles
+  - name: name
 
 - kind: LookOccasion
   properties:

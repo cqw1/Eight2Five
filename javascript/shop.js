@@ -16,23 +16,32 @@ $(document).ready(function() {
 
     // Filters. 
     $('.ef-gender-filter').change(function() {
-        var argType = 'gender';
-        var argValue = $(this).attr('id');
-        var checked = $(this).prop('checked');
-
-        argDict = updateArgDictCheckbox(argType, argValue, checked, argDict);
-        delete argDict['page'];
-        updateUrl(argDict);
+        checkboxSelected('gender', $(this));
     })
 
     $('.ef-article-filter').change(function() {
-        var argType = 'article';
-        var argValue = $(this).attr('id');
-        var checked = $(this).prop('checked');
+        checkboxSelected('article', $(this));
+    })
 
-        argDict = updateArgDictCheckbox(argType, argValue, checked, argDict);
-        delete argDict['page'];
-        updateUrl(argDict);
+    $('.ef-colors-filter').change(function() {
+        checkboxSelected('colors', $(this));
+    })
+
+    $('.ef-sizes-filter').change(function() {
+        checkboxSelected('sizes', $(this));
+    })
+
+    $('.ef-brand-filter').change(function() {
+        checkboxSelected('brand', $(this));
+    })
+
+    $('.ef-styles-filter').change(function() {
+        checkboxSelected('styles', $(this));
+    })
+
+    $('.ef-industries-filter').change(function() {
+        console.log('industries');
+        checkboxSelected('industries', $(this));
     })
 
     // Sorts.
@@ -90,6 +99,18 @@ $(document).ready(function() {
 
 });
 
+function checkboxSelected(argType, checkbox) {
+    var argValue = checkbox.attr('id').replace(/-/g, '%20').split('_')[0];
+    console.log(argValue);
+    var checked = checkbox.prop('checked');
+    console.log(checked);
+
+    argDict = updateArgDictCheckbox(argType, argValue, checked, argDict);
+    delete argDict['page'];
+    console.log(argDict);
+    updateUrl(argDict);
+}
+
 // Creates arg dictionary from current url.
 function createArgDict() {
     args = window.location.search.substring(1).split('&');
@@ -116,12 +137,17 @@ function createArgDict() {
 // Set checkboxes and dropdowns from previous user selections. Info from url args.
 function updateCheckboxes(argDict) {
     console.log('in updateCheckboxes');
+    console.log(globalFilters);
+    console.log(argDict);
     for (var key in argDict) {
         var filters = argDict[key];
         for (var i in filters) {
-            if (globalFilters.indexOf(filters[i]) > -1) {
+            console.log(filters[i]);
+            console.log(filters[i].replace(/%20/g, '-'));
+            if (globalFilters.indexOf(filters[i].replace(/%20/g, ' ')) > -1) {
+                // global filters comes in with spaces, but ids replace the spaces with dashes.
                 // Checkbox arg and not a dropdown arg.
-                $('#' + filters[i]).prop('checked', true);
+                $('#' + filters[i].replace(/%20/g, '-') + '_filter').prop('checked', true);
             }
         }
     }
@@ -130,8 +156,11 @@ function updateCheckboxes(argDict) {
 // remove arg if checked is false. insert if checked is true.
 // returns upated arg dictionary.
 function updateArgDictCheckbox(argType, argValue, checked, argDict) {
+    console.log(argDict);
+    console.log(argValue);
     if (argType in argDict) {
         var values = argDict[argType];
+        console.log(values);
 
         // TODO: array.indexOf not supported in IE8 and earlier.
         var index = values.indexOf(argValue);

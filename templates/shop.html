@@ -30,8 +30,14 @@
                   {% for selection in filter.selections %}
                     <li>
                       <!-- input id is used for url arguments. if input id differs from the text of the label. change javascript -->
-                      <input type="checkbox" id="{{selection}}" class="ef-{{filter.name}}-filter css-checkbox" value="{{selection}}" name="{{selection}}"/>
-                      <label for="{{selection}}" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection | title }}</label>
+                      <input type="checkbox" id="{{selection | replace(' ', '-')}}_filter" class="ef-{{filter.name}}-filter css-checkbox"/>
+                      {% if filter.name == 'sizes' %}
+                        <label for="{{selection | replace(' ', '-')}}_filter" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection | upper}}</label>
+                      {% elif filter.name == 'brand' %}
+                        <label for="{{selection | replace(' ', '-')}}_filter" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection}}</label>
+                      {% else %}
+                        <label for="{{selection | replace(' ', '-')}}_filter" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection | title }}</label>
+                      {% endif %}
                     </li>
                   {% endfor %}
               </div>

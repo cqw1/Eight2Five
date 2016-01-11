@@ -68,7 +68,7 @@ COLORS = [
     'green', 
     'orange', 
     'pink', 
-    'purple'
+    'purple',
     'red', 
     'white', 
     'yellow', 
@@ -586,11 +586,11 @@ class ShopHandler(webapp2.RequestHandler):
                 'selections': ARTICLES
             },
             {
-                'name': 'color',
+                'name': 'colors',
                 'selections': COLORS 
             },
             {
-                'name': 'size',
+                'name': 'sizes',
                 'selections': SIZES 
             },
             {
@@ -598,11 +598,11 @@ class ShopHandler(webapp2.RequestHandler):
                 'selections': BRANDS 
             },
             {
-                'name': 'style',
+                'name': 'styles',
                 'selections': STYLES 
             },
             {
-                'name': 'industry',
+                'name': 'industries',
                 'selections': INDUSTRIES 
             }
         ]
