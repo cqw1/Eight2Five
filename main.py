@@ -833,9 +833,25 @@ class StyleGuidesHandler(webapp2.RequestHandler):
                 {'name': 'smart casual', 'img_src': '/images/smartcasual.png'},
                 {'name': 'business casual', 'img_src': '/images/businesscasual.png'},
                 {'name': 'business formal', 'img_src': '/images/businessformal.png'}]
+        
+
+        test_industries = [
+                'display1', 
+                'display2', 
+                'display3', 
+                'display4', 
+                'display5', 
+                'display6',
+                'display7', 
+                'display8', 
+                'display9', 
+                'display10'
+        ]
+
 
         template_vars = {
                 'industry_names': INDUSTRIES, 
+                'test_industries': test_industries,
                 'style_data': style_data, 
                 'styleguide_sections': self.app.config.get('styleguide_sections')}
 
