@@ -52,7 +52,7 @@
     <!-- Right side of page -->
     <div class="col-xs-9">
 
-      <!-- Controls -->
+      <!-- Top Controls -->
       <div class="row">
 
         <!-- Paging controls -->
@@ -60,7 +60,7 @@
         <div class="ef-controls pull-right ef-padding">
           Page:
           <div class="btn-group">
-            <button type="button" id="ef-current-page" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-default dropdown-toggle ef-current-page" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{selected_page | title}} <span class="caret"></span>
             </button>
             <ul class="dropdown-menu ef-no-min-width">
@@ -71,10 +71,10 @@
           </div>
           of {{num_pages | length}}
            <span class="ef-buffer-span"></span>
-           <button type="button" id="ef-prev-page" class="btn btn-default">
+           <button type="button" class="btn btn-default ef-prev-page">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
            </button>
-           <button type="button" id="ef-next-page" class="btn btn-default">
+           <button type="button" class="btn btn-default ef-next-page">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
           </button>
         </div>
@@ -83,7 +83,7 @@
         <div class="ef-controls ef-padding">
           Sort By:
           <div class="btn-group">
-            <button type="button" id="sort" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{selected_shop_sort | title}}  <span class="caret"></span>
             </button>
             <ul class="dropdown-menu ef-no-min-width">
@@ -97,7 +97,7 @@
         <div class="ef-controls ef-padding">
           Items per Page:
           <div class="btn-group">
-            <button type="button" id="items" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{selected_items_per_page | title}}  <span class="caret"></span>
             </button>
             <ul class="dropdown-menu ef-no-min-width">
@@ -141,6 +141,64 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Bottom Controls -->
+      <div class="row">
+
+        <!-- Paging controls -->
+        <!-- Put first because Chrome loading sometimes pushes it to a new line? -->
+        <div class="ef-controls pull-right ef-padding">
+          Page:
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle ef-current-page" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{selected_page | title}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu ef-no-min-width">
+              {% for page in num_pages %}
+                <li><a class="ef-page-option" href="#">{{page | title}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          of {{num_pages | length}}
+           <span class="ef-buffer-span"></span>
+           <button type="button" class="btn btn-default ef-prev-page">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+           </button>
+           <button type="button" class="btn btn-default ef-next-page">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <!-- Sorts -->
+        <div class="ef-controls ef-padding">
+          Sort By:
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{selected_shop_sort | title}}  <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu ef-no-min-width">
+              {% for sort in shop_sorts %}
+                <li><a class="ef-sort-option" href="#">{{sort | title}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="ef-controls ef-padding">
+          Items per Page:
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{selected_items_per_page | title}}  <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu ef-no-min-width">
+              {% for i in items_per_page %}
+                <li><a class="ef-items-option" href="#">{{i | title}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
       </div>
 
     </div>

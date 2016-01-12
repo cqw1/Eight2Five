@@ -71,9 +71,9 @@ $(document).ready(function() {
         argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
     })
 
-    $('#ef-prev-page').on('click', function(event) {
+    $('.ef-prev-page').on('click', function(event) {
         event.preventDefault();
-        var currentPage = parseInt($('#ef-current-page').text());
+        var currentPage = parseInt($('.ef-current-page').text());
         if (currentPage == 2) {
             delete argDict['page'];
             updateUrl(argDict);
@@ -83,10 +83,13 @@ $(document).ready(function() {
         }
     })
 
-    $('#ef-next-page').on('click', function(event) {
+    $('.ef-next-page').on('click', function(event) {
         console.log('next page');
         event.preventDefault();
-        var currentPage = parseInt($('#ef-current-page').text());
+        var currentPage = parseInt($('.ef-current-page').text());
+
+        console.log($('.ef-current-page').text());
+
         console.log('currentpage: ' + currentPage);
 
         if (currentPage < globalNumPages) {
