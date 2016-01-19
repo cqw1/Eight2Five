@@ -35,13 +35,27 @@ body > .container {
 .nav > li > .split-button {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  /*padding: 10px 15px;*/
+}
+
+.nav > li > .split-button > a.dropdown-toggle {
+  padding: 15px 15px 15px 5px;
+}
+.nav > li > .split-button > a {
+  padding: 15px 0px 15px 15px;
 }
 .nav > li > .split-button > a:hover,
 .nav > li > .split-button > a:focus {
   text-decoration: none;
   background-color: #eee;
 }
+
+.nav > li > .split-button > a:hover,
+.nav > li > .split-button > a:focus {
+  text-decoration: none;
+  background-color: #eee;
+}
+
 .nav > li.disabled > .split-button > a {
   color: #777;
 }
