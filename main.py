@@ -41,7 +41,8 @@ ARTICLES = [
 
 BRANDS = [
     'JCrew', 
-    'Ann Taylor'
+    'Ann Taylor',
+    'Zara'
 ]
 
 SIZES = [
@@ -123,11 +124,13 @@ class Posting(ndb.Model):
     similar_style_keys = ndb.KeyProperty(kind='SimilarStyle', repeated=True)
 
 class Person(ndb.Model):
+    # Name must match coverflow name.
     name = ndb.StringProperty(required=True)
     bio = ndb.TextProperty(required=True)
     postings = ndb.LocalStructuredProperty(Posting, repeated=True)
 
 class Coverflow(ndb.Model):
+    # Name must match person name.
     name = ndb.StringProperty(required=True)
 
     # NOTE: images must be same width x height. otherwise becomes really distorted.
@@ -206,7 +209,9 @@ class HomeHandler(webapp2.RequestHandler):
         ############################################################# BEGIN DATASTORE ####
         logging.info('hello from datastore')
 
+        
         #===================================================================== PERSON === 
+        """
         monocle= SimilarStyle(
                 img_src='/images/monocleandmustache.png', 
                 item_page='TODO', 
@@ -260,8 +265,148 @@ class HomeHandler(webapp2.RequestHandler):
                 bio="Charmander is a bipedal, reptilian Pokemon with an orange body, though its underside and soles are cream colored. It has two small fangs visible in its upper and lower jaws and blue eyes. Its arms and legs are short with four fingers and three clawed toes. A fire burns at the tip of this Pokemon's slender tail, and has blazed there since Charmander's birth. The flame can be used as an indication of Charmander's health and mood, burning brightly when the Pokemon is strong, weakly when it is exhausted, wavering when it is happy, and blazing when it is enraged. It is said that Charmander dies if its flame goes out. Charmander can be found in hot, mountainous areas. However, it is found far more often in the ownership of Trainers. Charmander exhibits pack behavior, calling others of its species if it finds food.",
                 postings=[posting_one, posting_two])
         charmander.put()
+        """
+
+        one_a_marissa_mayer = SimilarStyle(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_1_a.jpg', 
+                item_page='https://www.jcrew.com/womens_category/dresses/weartowork/PRDOVR~E4684/E4684.jsp?color_name=black', 
+                description='Insert description.',
+                brand='JCrew',
+                price=228)
+        one_a_key_marissa_mayer = one_a_marissa_mayer.put()
+
+        one_b_marissa_mayer = SimilarStyle(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_1_b.jpg', 
+                item_page='http://www.zara.com/us/en/sale/woman/dresses/view-all/long-tube-dress-c732061p2922083.html', 
+                description='Insert description.',
+                brand='Zara',
+                price=22.99)
+        one_b_key_marissa_mayer = one_b_marissa_mayer.put()
+
+        posting_one_marissa_mayer = Posting(
+            img_src='/images/who_wore_what/marissa_mayer/Marissa_1.jpg',
+            description='Insert description.',
+            date=datetime.date(2016, 1, 18))
+        posting_one_marissa_mayer.similar_style_keys.append(one_a_key_marissa_mayer)
+        posting_one_marissa_mayer.similar_style_keys.append(one_b_key_marissa_mayer)
+
+        two_a_marissa_mayer = SimilarStyle(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_2_a.jpg', 
+                item_page='http://www.anntaylor.com/tropical-wool-sheath-dress/391849?skuId=20147327&defaultColor=6600&colorExplode=false&catid=cata000012', 
+                description='Insert description.',
+                brand='Ann Taylor',
+                price=169)
+        two_a_key_marissa_mayer = two_a_marissa_mayer.put()
+
+        two_b_marissa_mayer = SimilarStyle(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_2_b.jpg', 
+                item_page='http://www.anntaylor.com/wrap-flare-dress/392036?skuId=19992945&defaultColor=1246&colorExplode=false&catid=cata000012', 
+                description='Insert description.',
+                brand='Ann Taylor',
+                price=129)
+        two_b_key_marissa_mayer = two_b_marissa_mayer.put()
+
+        posting_two_marissa_mayer = Posting(
+            img_src='/images/who_wore_what/marissa_mayer/Marissa_2.jpg',
+            description='Insert description.',
+            date=datetime.date(2016, 1, 18))
+        posting_two_marissa_mayer.similar_style_keys.append(two_a_key_marissa_mayer)
+        posting_two_marissa_mayer.similar_style_keys.append(two_b_key_marissa_mayer)
+
+        three_a_marissa_mayer = SimilarStyle(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_3_a.jpg', 
+                item_page='http://www.anntaylor.com/long-sleeve-dress-shrug/391465?skuId=19924830&defaultColor=6600&colorExplode=false&catid=cata000011', 
+                description='Insert description.',
+                brand='Ann Taylor',
+                price=64.99)
+        three_a_key_marissa_mayer = three_a_marissa_mayer.put()
+
+        posting_three_marissa_mayer = Posting(
+            img_src='/images/who_wore_what/marissa_mayer/Marissa_3.jpg',
+            description='Insert description.',
+            date=datetime.date(2016, 1, 18))
+        posting_three_marissa_mayer.similar_style_keys.append(three_a_key_marissa_mayer)
+
+        marissa_mayer_person = Person(
+            name='Marissa Mayer',
+            bio='CEO and President, Yahoo',
+            postings=[posting_one_marissa_mayer, posting_two_marissa_mayer, posting_three_marissa_mayer])
+        marissa_mayer_person.put()
+
+        #---------------------
+
+        one_a_indra_nooyi = SimilarStyle(
+                img_src='/images/who_wore_what/indra_nooyi/Indra_1_a.jpg', 
+                item_page='https://www.jcrew.com/womens_category/outerwear_sm/wool/PRDOVR~C8552/C8552.jsp', 
+                description='Insert description.',
+                brand='JCrew',
+                price=350)
+        one_a_key_indra_nooyi = one_a_indra_nooyi.put()
+
+        posting_one_indra_nooyi = Posting(
+            img_src='/images/who_wore_what/indra_nooyi/Indra_1.jpg',
+            description='Insert description.',
+            date=datetime.date(2016, 1, 18))
+        posting_one_indra_nooyi.similar_style_keys.append(one_a_key_indra_nooyi)
+
+        two_a_indra_nooyi = SimilarStyle(
+                img_src='/images/who_wore_what/indra_nooyi/Indra_2_a.jpg', 
+                item_page='https://www.jcrew.com/womens_category/blazers/regent/PRDOVR~B0323/B0323.jsp?color_name=BOHEMIAN%20RED&styles=B0323-RD6013', 
+                description='Insert description.',
+                brand='JCrew',
+                price=198)
+        two_a_key_indra_nooyi = two_a_indra_nooyi.put()
+
+        posting_two_indra_nooyi = Posting(
+            img_src='/images/who_wore_what/indra_nooyi/Indra_2.jpg',
+            description='Insert description.',
+            date=datetime.date(2016, 1, 18))
+        posting_two_indra_nooyi.similar_style_keys.append(two_a_key_indra_nooyi)
+
+        indra_nooyi_person = Person(
+            name='Indra Nooyi',
+            bio='CEO and Chairman, PepsiCo',
+            postings=[posting_one_indra_nooyi, posting_two_indra_nooyi])
+        indra_nooyi_person.put()
+
+        #-----------------------------------------
+
+        one_a_sheryl_sandberg = SimilarStyle(
+                img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1_a.jpg', 
+                item_page='https://www.jcrew.com/womens_category/sweaters/cardigans/PRDOVR~E2078/E2078.jsp', 
+                description='Insert description.',
+                brand='JCrew',
+                price=198)
+        one_a_key_sheryl_sandberg = one_a_sheryl_sandberg.put()
+
+        posting_one_sheryl_sandberg = Posting(
+            img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1.jpg',
+            description='Insert description.',
+            date=datetime.date(2016, 1, 18))
+        posting_one_sheryl_sandberg.similar_style_keys.append(one_a_key_sheryl_sandberg)
+
+        two_a_sheryl_sandberg = SimilarStyle(
+                img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_2_a.jpg', 
+                item_page='http://www.anntaylor.com/all-season-stretch-one-button-jacket/379001?skuId=19195995&defaultColor=1878&colorExplode=false&catid=cata000013', 
+                description='Insert description.',
+                brand='Ann Taylor',
+                price=169)
+        two_a_key_sheryl_sandberg = two_a_sheryl_sandberg.put()
+
+        posting_two_sheryl_sandberg = Posting(
+            img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_2.jpg',
+            description='Insert description.',
+            date=datetime.date(2016, 1, 18))
+        posting_two_sheryl_sandberg.similar_style_keys.append(two_a_key_sheryl_sandberg)
+
+        sheryl_sandberg_person = Person(
+            name='Sheryl Sandberg',
+            bio='COO, Facebook',
+            postings=[posting_one_sheryl_sandberg, posting_two_sheryl_sandberg])
+        sheryl_sandberg_person.put()
 
         #================================================================ COVERFLOW === 
+        """
 
         bulbasaur = Coverflow(
                 name='Bulbasaur', 
@@ -316,6 +461,25 @@ class HomeHandler(webapp2.RequestHandler):
                 img_src='/images/blastoisellama.png',
                 order_id=8)
         blastoise.put()
+        """
+
+        marissa_mayer_coverflow = Coverflow(
+            name='Marissa Mayer',
+            img_src='/images/who_wore_what/marissa_mayer/Marissa.jpg',
+            order_id=0)
+        marissa_mayer_coverflow.put()
+
+        indra_nooyi_coverflow = Coverflow(
+            name='Indra Nooyi',
+            img_src='/images/who_wore_what/indra_nooyi/Indra.jpg',
+            order_id=1)
+        indra_nooyi_coverflow.put()
+
+        sheryl_sandberg_coverflow = Coverflow(
+            name='Sheryl Sandberg',
+            img_src='/images/who_wore_what/sheryl_sandberg/Sheryl.jpg',
+            order_id=2)
+        sheryl_sandberg_coverflow.put()
 
         #================================================================== DROPDOWNS === 
         general_styles = DropdownSection(
@@ -707,6 +871,7 @@ class ShopHandler(webapp2.RequestHandler):
 class WhoWoreWhatHandler(webapp2.RequestHandler):
     def get(self):
         coverflow_data = Coverflow.query().order(Coverflow.order_id).fetch()
+        logging.info(coverflow_data)
 
         template_vars = {
                 'coverflow_data': coverflow_data,

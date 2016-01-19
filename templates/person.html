@@ -12,7 +12,8 @@
  -->
     <div class="container">
         <h3 class="ef-page-title">{{person.name}}</h3>
-        <p id="ef-biography">{{person.bio}}</p>
+        <!-- <p id="ef-biography text-center">{{person.bio}}</p> -->
+        <div id="ef-biography" class="text-center">{{person.bio}}</p>
         <hr>
     </div>
 
@@ -79,10 +80,12 @@
                                                     <div class="price"><b>Price: </b>${{similar_style.price}}</div>
                                                 </div>
                                         </td>
-                                        <td class="ef-similar-styles-inner-container">
+
+<!--                                         <td class="ef-similar-styles-inner-container">
                                                 <img class="ef-similar-styles-image" src='{{similar_style.img_src}}'></img>
                                                 <div class="ef-similar-styles-description">{{similar_style.description}}</div>
                                         </td>
+ -->                                    
                                     {% endfor %}
                                 </tr>
                             </table>

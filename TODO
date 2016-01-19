@@ -1,4 +1,6 @@
-plug in who wore what data
+who wore what
+  boostrap ui?
+  connect similar style image to shopping page
 
 shop
   integrate shop links
@@ -9,7 +11,6 @@ put shop dropdown stuff into datastore
 create cover 
 allow users to signup/login
 don't link datastore to home handler
-try deploying
 integrate icon somewhere?
 let styles load first before content. annoying flash of horrible css
 
