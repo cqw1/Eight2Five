@@ -5,4 +5,8 @@ $(document).ready(function() {
         window.location.href='/styleguides/style?style=' + $(this).attr('id');
     })
 
+    $('.ef-industry-thumbnail').on('click', function() {
+        window.location.href='/styleguides/industry?industry=' + $(this).attr('id');
+    })
+
 });

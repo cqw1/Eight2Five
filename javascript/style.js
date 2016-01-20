@@ -1,9 +1,13 @@
-styleInit();
+$(document).ready(function() {
+    console.log("document ready for style.js");
+
+    $('.ef-shop-button').on('click', function() {
+        window.location.href = '/shop?&styles=' + $(this).attr('id');
+    })
 
 
-function styleInit() {
-    console.log("style.js == styleInit function");
-}
+});
+
 
 function selectIndustry() {
     console.log($("#industry-select option:selected").val());

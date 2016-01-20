@@ -107,6 +107,22 @@ indexes:
   - name: styles
   - name: name
 
+- kind: Item
+  properties:
+  - name: industries
+  - name: name
+
+- kind: Item
+  properties:
+  - name: industries
+  - name: styles
+  - name: name
+
+- kind: Item
+  properties:
+  - name: styles
+  - name: name
+
 - kind: LookOccasion
   properties:
   - name: style
