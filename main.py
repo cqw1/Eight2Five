@@ -192,20 +192,8 @@ class Item(ndb.Model):
     # Date added to database
     date = ndb.DateProperty(required=True)
 
-
-class HomeHandler(webapp2.RequestHandler):
+class DatastoreHandler(webapp2.RequestHandler):
     def get(self):
-        self.datastore()
-
-        template_vars = {
-                'styleguide_sections': self.app.config.get('styleguide_sections')}
-        logging.info(self.app.config.get('styleguide_sections'))
-
-        home_template = jinja_environment.get_template('templates/home.html')
-        logging.info('in main handler logging')
-        self.response.write(home_template.render(template_vars))
-
-    def datastore(self):
         ############################################################# BEGIN DATASTORE ####
         logging.info('hello from datastore')
 
@@ -710,6 +698,17 @@ class HomeHandler(webapp2.RequestHandler):
             four.put()
         ############################################################### END DATASTORE ####
 
+
+class HomeHandler(webapp2.RequestHandler):
+    def get(self):
+        template_vars = {
+                'styleguide_sections': self.app.config.get('styleguide_sections')}
+        logging.info(self.app.config.get('styleguide_sections'))
+
+        home_template = jinja_environment.get_template('templates/home.html')
+        logging.info('in main handler logging')
+        self.response.write(home_template.render(template_vars))
+
 class ShopHandler(webapp2.RequestHandler):
     def get(self):
         logging.info('arguments:')
@@ -998,25 +997,11 @@ class StyleGuidesHandler(webapp2.RequestHandler):
                 {'name': 'smart casual', 'img_src': '/images/smartcasual.png'},
                 {'name': 'business casual', 'img_src': '/images/businesscasual.png'},
                 {'name': 'business formal', 'img_src': '/images/businessformal.png'}]
-        
 
-        test_industries = [
-                'display1', 
-                'display2', 
-                'display3', 
-                'display4', 
-                'display5', 
-                'display6',
-                'display7', 
-                'display8', 
-                'display9', 
-                'display10'
-        ]
-
+        logging.info(self.app.config.get('styleguide_sections'))
 
         template_vars = {
                 'industry_names': INDUSTRIES, 
-                'test_industries': test_industries,
                 'style_data': style_data, 
                 'styleguide_sections': self.app.config.get('styleguide_sections')}
 
@@ -1024,15 +1009,23 @@ class StyleGuidesHandler(webapp2.RequestHandler):
         logging.info('in style guides handler logging')
         self.response.write(style_guides_template.render(template_vars))
 
+class PageNotFoundHandler(webapp2.RequestHandler):
+    def get(self):
+            self.response.write('<html><body><p>Error 404. Page not found.</p></body></html>')
+
+
 
 app = webapp2.WSGIApplication(routes=[
-    ('/shop.*', ShopHandler),
-    ('/whoworewhat/person.*', WhoWoreWhatPersonHandler),
-    ('/whoworewhat.*', WhoWoreWhatHandler),
-    ('/styleguides/industry.*', StyleGuidesIndustryHandler),
-    ('/styleguides/style.*', StyleGuidesStyleHandler),
-    ('/styleguides.*', StyleGuidesHandler),
-    ('/.*', HomeHandler)
+    ('/shop', ShopHandler),
+    ('/whoworewhat/person', WhoWoreWhatPersonHandler),
+    ('/whoworewhat', WhoWoreWhatHandler),
+    ('/styleguides/industry', StyleGuidesIndustryHandler),
+    ('/styleguides/style', StyleGuidesStyleHandler),
+    ('/styleguides', StyleGuidesHandler),
+    ('/populatedatastore', DatastoreHandler),
+    ('/', HomeHandler),
+    ('/home', HomeHandler),
+    ('/.*', PageNotFoundHandler)
 ], debug=True, config={
     'styleguide_sections': DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'style guides').order(DropdownSection.order_id).fetch() 
 })

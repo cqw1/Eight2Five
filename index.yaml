@@ -25,6 +25,23 @@ indexes:
 
 - kind: Item
   properties:
+  - name: article
+  - name: gender
+  - name: name
+
+- kind: Item
+  properties:
+  - name: article
+  - name: name
+
+- kind: Item
+  properties:
+  - name: article
+  - name: price
+    direction: desc
+
+- kind: Item
+  properties:
   - name: brand
   - name: gender
   - name: industries
