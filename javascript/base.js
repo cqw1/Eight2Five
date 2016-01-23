@@ -29,8 +29,7 @@ $(document).ready(function() {
     });
 
     $('.ef-dropdown-shop').click(function() {
-        var splitId = $(this).attr('id').split('-');
-        redirectShop(splitId[0], splitId[1]);
+        redirectShop($(this).attr('id'));
         return false;
     });
 
@@ -44,8 +43,7 @@ function redirectIndustry(arg) {
     window.location.href='/styleguides/industry?industry=' + arg;
 }
 
-function redirectShop(genderArg, articleArg) {
-    window.location.href='/shop?gender=' + genderArg + '&article=' + articleArg;
+function redirectShop(arg) {
+    window.location.href='/shop?&article=' + arg;
 }
-
 

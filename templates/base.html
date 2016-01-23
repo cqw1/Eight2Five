@@ -80,7 +80,7 @@
 
                     <!-- Don't alphabetically sort the general styles. -->
                     {% for item in section.items %}
-                    <li><a class="ef-dropdown-{{section.heading}}" id="{{item}}" href="#">{{item | title}}</a></li>
+                      <li><a class="ef-dropdown-{{section.heading}}" id="{{item}}" href="#">{{item | title}}</a></li>
                     {% endfor %}
 
 
@@ -133,23 +133,12 @@
               <div class="split-button">
                 <a href="/shop" class="">Shop </a>  
                 <a data-toggle="dropdown" class="dropdown-toggle"><span class="caret"></span></a>
-                <ul class="dropdown-menu columns">
-                  <!-- Hardcoded -->
-                  <li class="dropdown-header">Men</li>
-                  <li><a class="ef-dropdown-shop" id="men-tops" href="#">Tops</a></li>
-                  <li><a class="ef-dropdown-shop" id="men-bottoms" href="#">Bottoms</a></li>
-                  <li><a class="ef-dropdown-shop" id="men-suits" href="#">Suits</a></li>
-                  <li><a class="ef-dropdown-shop" id="men-outerwear" href="#">Outerwear</a></li>
-
-                  <!-- Blank to keep columns even -->
-                  <li>''</li>
-
-                  <li class="dropdown-header">Women</li>
-                  <li><a class="ef-dropdown-shop" id="women-tops" href="#">Tops</a></li>
-                  <li><a class="ef-dropdown-shop" id="women-bottoms" href="#">Bottoms</a></li>
-                  <li><a class="ef-dropdown-shop" id="women-dresses" href="#">Dresses</a></li>
-                  <li><a class="ef-dropdown-shop" id="women-suits" href="#">Suits</a></li>
-                  <li><a class="ef-dropdown-shop" id="women-outerwear" href="#">Outerwear</a></li>
+                <ul class="dropdown-menu">
+                  <li><a class="ef-dropdown-shop" id="tops" href="#">Tops</a></li>
+                  <li><a class="ef-dropdown-shop" id="bottoms" href="#">Bottoms</a></li>
+                  <li><a class="ef-dropdown-shop" id="dresses" href="#">Dresses</a></li>
+                  <li><a class="ef-dropdown-shop" id="suits" href="#">Suits</a></li>
+                  <li><a class="ef-dropdown-shop" id="outerwear" href="#">Outerwear</a></li>
                 </ul>
               </div>
             </li>

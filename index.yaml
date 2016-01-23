@@ -18,6 +18,12 @@ indexes:
 - kind: Item
   properties:
   - name: article
+  - name: colors
+  - name: name
+
+- kind: Item
+  properties:
+  - name: article
   - name: gender
   - name: industries
   - name: sizes

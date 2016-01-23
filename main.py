@@ -26,11 +26,6 @@ from google.appengine.ext import ndb
 # Sets jinja's relative directory to match the directory name (dirname) of the current __file__, in this case, main.py
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
-GENDERS = [
-    'men', 
-    'women'
-]
-
 ARTICLES = [
     'tops', 
     'bottoms', 
@@ -169,7 +164,6 @@ class Item(ndb.Model):
 
     name = ndb.StringProperty(required=True)
     brand = ndb.StringProperty(required=True, choices=BRANDS)
-    gender = ndb.StringProperty(required=True, choices=GENDERS)
     article = ndb.StringProperty(required=True, choices=ARTICLES)
     price = ndb.FloatProperty(required=True)
     colors = ndb.StringProperty(repeated=True, choices=COLORS)
@@ -484,19 +478,11 @@ class DatastoreHandler(webapp2.RequestHandler):
                 order_id=1)
         industry_styles.put()
 
-        men_shop_filters = DropdownSection(
-                heading='men', 
-                items=['tops', 'bottoms', 'suits', 'outerwear'], 
-                dropdown='shop',
-                order_id=0)
-        men_shop_filters.put()
-
-        women_shop_filters = DropdownSection(
-                heading='women', 
+        shop_filters = DropdownSection(
                 items=['tops', 'bottoms', 'dresses', 'suits', 'outerwear'], 
                 dropdown='shop',
                 order_id=1)
-        women_shop_filters.put()
+        shop_filters.put()
 
         #=============================================================== LOOKOCCASION === 
         
@@ -628,7 +614,6 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=0,
                 name="Default Name",
                 brand="JCrew",
-                gender='women',
                 article='tops',
                 price=49.99,
                 colors=['black', 'white', 'gray'],
@@ -646,7 +631,6 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=0,
                 name="A",
                 brand="JCrew",
-                gender='women',
                 article='tops',
                 price=49.99,
                 colors=['black', 'white', 'gray'],
@@ -664,7 +648,6 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=0,
                 name="B",
                 brand="JCrew",
-                gender='men',
                 article='bottoms',
                 price=39.99,
                 colors=['black', 'white', 'gray'],
@@ -683,7 +666,6 @@ class DatastoreHandler(webapp2.RequestHandler):
                     sku_id=0,
                     name="C",
                     brand="JCrew",
-                    gender='men',
                     article='suits',
                     price=45.99,
                     colors=['black', 'white', 'gray'],
@@ -740,10 +722,6 @@ class ShopHandler(webapp2.RequestHandler):
 
 
         filters = [
-            {
-                'name': 'gender',
-                'selections': GENDERS
-            },
             {
                 'name': 'article',
                 'selections': ARTICLES
