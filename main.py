@@ -133,7 +133,7 @@ class Coverflow(ndb.Model):
     # Name must match person name.
     name = ndb.StringProperty(required=True)
 
-    # NOTE: images must be same width x height. otherwise becomes really distorted.
+    # NOTE: images must be same width x height. otherwise becomes really distorted. Or flows out of div.
     img_src = ndb.TextProperty(required=True)
 
     # Default added to beginning of the coverflow.
@@ -453,19 +453,19 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         marissa_mayer_coverflow = Coverflow(
             name='Marissa Mayer',
-            img_src='/images/who_wore_what/marissa_mayer/Marissa.jpg',
+            img_src='/images/who_wore_what/marissa_mayer/Marissa.png',
             order_id=0)
         marissa_mayer_coverflow.put()
 
         indra_nooyi_coverflow = Coverflow(
             name='Indra Nooyi',
-            img_src='/images/who_wore_what/indra_nooyi/Indra.jpg',
+            img_src='/images/who_wore_what/indra_nooyi/Indra.png',
             order_id=1)
         indra_nooyi_coverflow.put()
 
         sheryl_sandberg_coverflow = Coverflow(
             name='Sheryl Sandberg',
-            img_src='/images/who_wore_what/sheryl_sandberg/Sheryl.jpg',
+            img_src='/images/who_wore_what/sheryl_sandberg/Sheryl.png',
             order_id=2)
         sheryl_sandberg_coverflow.put()
 
