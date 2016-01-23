@@ -683,9 +683,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
-        template_vars = {
-                'styleguide_sections': self.app.config.get('styleguide_sections')}
-        logging.info(self.app.config.get('styleguide_sections'))
+        template_vars = {}
 
         home_template = jinja_environment.get_template('templates/home.html')
         logging.info('in main handler logging')
@@ -792,7 +790,6 @@ class ShopHandler(webapp2.RequestHandler):
         logging.info('======================================')
 
         template_vars = {
-                'styleguide_sections': self.app.config.get('styleguide_sections'),
                 'filters': filters,
                 'shop_sorts': SHOP_SORTS,
                 'selected_shop_sort': selected_shop_sort,
@@ -852,9 +849,8 @@ class WhoWoreWhatHandler(webapp2.RequestHandler):
         logging.info(coverflow_data)
 
         template_vars = {
-                'coverflow_data': coverflow_data,
-                'styleguide_sections': self.app.config.get('styleguide_sections')}
-
+                'coverflow_data': coverflow_data
+        }
         who_wore_what_template = jinja_environment.get_template('templates/who_wore_what.html')
         logging.info('in who wore what handler logging')
         self.response.write(who_wore_what_template.render(template_vars))
@@ -881,10 +877,8 @@ class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
 
             template_vars = {
                     'person': results[0], 
-                    'posting_to_similar_styles_dict': posting_to_similar_style_dict, 
-                    'styleguide_sections': self.app.config.get('styleguide_sections')}
-
-            logging.info(self.app.config.get('styleguide_sections'))
+                    'posting_to_similar_styles_dict': posting_to_similar_style_dict
+            }
 
             # Check if it's a valid person.
             if self.request.get('person') == '':
@@ -926,8 +920,8 @@ class StyleGuidesIndustryHandler(webapp2.RequestHandler):
             template_vars = {
                     'industry_names': INDUSTRIES, 
                     'industry_data': industry_data, 
-                    'industry': industry_arg,
-                    'styleguide_sections': self.app.config.get('styleguide_sections')}
+                    'industry': industry_arg
+            }
 
             # Check if it's a valid industry.
             if self.request.get('industry') == '':
@@ -952,8 +946,8 @@ class StyleGuidesStyleHandler(webapp2.RequestHandler):
             template_vars = {
                     'industry_names': INDUSTRIES, 
                     'style_data': style_data, 
-                    'style': style_arg,
-                    'styleguide_sections': self.app.config.get('styleguide_sections')}
+                    'style': style_arg
+            }
 
             # Check if it's a valid industry.
             if style_arg == '':
@@ -977,12 +971,11 @@ class StyleGuidesHandler(webapp2.RequestHandler):
                 {'name': 'business casual', 'img_src': '/images/businesscasual.png'},
                 {'name': 'business formal', 'img_src': '/images/businessformal.png'}]
 
-        logging.info(self.app.config.get('styleguide_sections'))
 
         template_vars = {
                 'industry_names': INDUSTRIES, 
-                'style_data': style_data, 
-                'styleguide_sections': self.app.config.get('styleguide_sections')}
+                'style_data': style_data
+        }
 
         style_guides_template = jinja_environment.get_template('templates/style_guides.html')
         logging.info('in style guides handler logging')
@@ -1005,6 +998,4 @@ app = webapp2.WSGIApplication(routes=[
     ('/', HomeHandler),
     ('/home', HomeHandler),
     ('/.*', PageNotFoundHandler)
-], debug=True, config={
-    'styleguide_sections': DropdownSection.query(getattr(DropdownSection, 'dropdown') == 'style guides').order(DropdownSection.order_id).fetch() 
-})
+], debug=True)

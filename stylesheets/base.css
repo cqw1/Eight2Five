@@ -21,6 +21,10 @@ body > .container {
 	text-align: center;
 }
 
+.ef-logo {
+  height: 100%;
+}
+
 /***********************************/
 /****  split-button in navbar ******/
 .split-button:hover {

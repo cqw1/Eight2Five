@@ -19,12 +19,14 @@ $(document).ready(function() {
 
     // Handle dropdowns
     $('.ef-dropdown-style').click(function() {
-        redirectStyle($(this).attr('id'));
+        redirectStyle($(this).attr('id').split('-').join(' '));
+        //redirectStyle($(this).attr('id'));
         return false;
     });
 
     $('.ef-dropdown-industry').click(function() {
-        redirectIndustry($(this).attr('id'));
+        redirectIndustry($(this).attr('id').split('-').join(' '));
+        //redirectIndustry($(this).attr('id'));
         return false;
     });
 
