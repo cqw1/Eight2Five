@@ -13,7 +13,7 @@
     <div class="container">
         <h3 class="ef-page-title">{{person.name}}</h3>
         <!-- <p id="ef-biography text-center">{{person.bio}}</p> -->
-        <div id="ef-biography" class="text-center">{{person.bio}}</p>
+        <div id="ef-biography" class="text-center">{{person.bio}}</div>
         <hr>
     </div>
 
@@ -60,12 +60,12 @@
  -->
 
 
-            <div class="container">
+            <div class="well">
                 <div class="row ef-vertical-center">
-                    <div class="col-xs-3">
+                    <div class="col-xs-6">
                         <img class="ef-posting-image" src="{{p.img_src}}">
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-6">
                         <h4 class="media-heading ef-posting-info-date">Posted: {{p.date}}</h4> 
                         <div class="ef-posting-info-description">{{p.description}}</div>
                         <div class="ef-posting-info-similar-styles">Similar Styles</div>
@@ -79,6 +79,7 @@
                                                     <div class="brand"><b>Brand: </b>{{similar_style.brand}}</div>
                                                     <div class="price">
                                                         <b>Price: </b>
+                                                        <!-- Otherwise prints out $123.0 if $123 -->
                                                         {% if (similar_style.price % 1) == 0 %}
                                                             ${{similar_style.price | int}}
                                                         {% else %}
