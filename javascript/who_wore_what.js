@@ -33,7 +33,7 @@ $(function() {
 
 	$('.photos').coverflow({
 		duration:		'slow',
-		index:			3,
+		index:			1,
 		width:			312,
 		height:			312,
 		visible:		'density',

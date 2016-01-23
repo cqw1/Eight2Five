@@ -824,7 +824,8 @@ class ShopHandler(webapp2.RequestHandler):
                 'default_items_per_page': ITEMS_PER_PAGE_DEFAULT,
                 'selected_page': selected_page,
                 'default_page': PAGE_DEFAULT,
-                'num_pages': num_pages
+                'num_pages': num_pages,
+                'results': results
         }
 
         shop_template = jinja_environment.get_template('templates/shop.html')

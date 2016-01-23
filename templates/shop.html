@@ -111,37 +111,48 @@
       </div>
 
       <!-- Grid of items -->
-      <div class="row">
-        <div class="col-xs-4">
-          <div class="thumbnail">
-            <img class="ef-shop-image" src="/images/charmanderllama.png"></img>
-            <div class="caption">
-              <h4>Caption</h4>
-              <p>some caption</p>
+      {% for i in results %} 
+
+        {% if (loop.index - 1) % 3 == 0 %}
+          <div class="row">
+            <div class="col-xs-4 text-center">
+              <div id="{{i.name}}" class="thumbnail ef-industry-thumbnail"> 
+                <img class="ef-shop-image" src="{{i.img_src}}"></img>
+                <div class="caption">
+                  {{i.name | title}}
+                </div>
+              </div>
+            </div>
+
+        <!-- Catch the last element in a row -->
+        {% elif (loop.index - 1) % 3 == 2 %}
+          <div class="col-xs-4 text-center">
+            <div id="{{i.name}}" class="thumbnail ef-industry-thumbnail"> 
+              <img class="ef-shop-image" src="{{i.img_src}}"></img>
+              <div class="caption">
+                {{i.name | title}}
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="col-xs-4">
-          <div class="thumbnail">
-            <img class="ef-shop-image" src="/images/charmanderllama.png"></img>
-            <div class="caption">
-              <h4>Caption</h4>
-              <p>some caption</p>
+        {% else %}
+          <div class="col-xs-4 text-center">
+            <div id="{{i.name}}" class="thumbnail ef-industry-thumbnail"> 
+              <img class="ef-shop-image" src="{{i.img_src}}"></img>
+              <div class="caption">
+                {{i.name | title}}
+              </div>
             </div>
           </div>
-        </div>
+        {% endif %}
 
-        <div class="col-xs-4">
-          <div class="thumbnail">
-            <img class="ef-shop-image" src="/images/charmanderllama.png"></img>
-            <div class="caption">
-              <h4>Caption</h4>
-              <p>some caption</p>
-            </div>
+        <!-- Close of the row div -->
+        {% if loop.last %}
           </div>
-        </div>
-      </div>
+        {% endif %}
+
+      {% endfor %}
 
       <!-- Bottom Controls -->
       <div class="row">

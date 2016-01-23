@@ -77,7 +77,15 @@
                                                 <img class="ef-similar-styles-image" src='{{similar_style.img_src}}'></img>
                                                 <div class="ef-similar-styles-description">
                                                     <div class="brand"><b>Brand: </b>{{similar_style.brand}}</div>
-                                                    <div class="price"><b>Price: </b>${{similar_style.price}}</div>
+                                                    <div class="price">
+                                                        <b>Price: </b>
+                                                        {% if (similar_style.price % 1) == 0 %}
+                                                            ${{similar_style.price | int}}
+                                                        {% else %}
+                                                            ${{similar_style.price}}
+                                                        {% endif %}
+
+                                                    </div>
                                                 </div>
                                         </td>
 
