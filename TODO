@@ -1,3 +1,8 @@
+search bar
+login/signup 
+  save user preferences for filters
+newsletter/subscription
+
 who wore what
   boostrap ui?
   connect similar style image to shopping page
@@ -6,12 +11,8 @@ shop
   integrate shop links
   think about thumbnail sizes
 
-make style guides page with a section for general styles and a section for industries
-put shop dropdown stuff into datastore
 create cover 
 allow users to signup/login
-don't link datastore to home handler
-integrate icon somewhere?
 let styles load first before content. annoying flash of horrible css
 
 cleanup old comments of non-bootstrapped stuff.
