@@ -14,14 +14,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+import datetime
 import jinja2
 import logging
 import os
+import time
 import webapp2
+import webapp2_extras.appengine.auth.models
 
-import datetime
 from datetime import date
 from google.appengine.ext import ndb
+from webapp2_extras import security
+from webapp2_extras import sessions
+from webapp2_extras import auth
+
 
 # Sets jinja's relative directory to match the directory name (dirname) of the current __file__, in this case, main.py
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -103,6 +109,101 @@ RELEVANCE = [
     'medium',
     'low'
 ]
+
+# Taken from blog.abahgat.com/2013/01/07/user-authentication-with-webapp2-on-google-app-engine/
+class User(webapp2_extras.appengine.auth.models.User):
+    def set_password(self, raw_password):
+        """Sets the password for the current User
+        :param raw_password:
+            The raw password which will be hashed and stored.
+        """
+        self.password = security.generate_password_hash(raw_password, length=12)
+
+    def get_by_auth_token(cls, user_id, token, subject='auth'):
+        """Returns a user object based on a user ID and token.
+
+        :param user_id:
+            The user_id of the requesting user.
+        :param token:
+            The token string to be verified.
+        :returns:
+            A tuple (User, timestamp), with a user object and the token 
+            timestamp, or (None, None) if both were not found.
+        """
+        token_key = cls.token_model.get_key(user_id, subject, token)
+        user_key = ndb.Key(cls, user_id)
+        # Use get_multi() to save a RPC call
+        valid_token, user = ndb.get_multi([token_key, user_key])
+        if valid_token and user:
+            timestamp = int(time.mktime(valid_token.created.timetuple()))
+            return user, timestamp
+
+        return None, None
+
+class BaseHandler(webapp2.RequestHandler):
+    @webapp2.cached_property
+    def auth(self):
+        """Shortcut to access the auth instance as a property."""
+        return auth.get_auth()
+
+    @webapp2.cached_property
+    def user_info(self):
+        """Shortcut to access a subset of the user attributes that are stored
+        in the session.
+
+        The list of attributes to store in the session is specified in 
+        config['webapp2_extras.auth']['user_attributes'].
+
+        :returns
+            A dictionary with most user information.
+        """
+        return self.auth.get_user_by_session()
+
+    @webapp2.cached_property
+    def user(self):
+        """Shortcut to access the current logged in user.
+
+        Unlike user_info, it fetches information from the persistence layer and
+        returns an instance of the underlying model.
+
+        :returns
+            The instance of the user model associated to the logged in user.
+        """
+        u = self.user_info
+        return self.user_model.get_by_id(u['user_id']) if u else None
+
+    @webapp2.cached_property
+    def user_model(self):
+        """Returns the implementation of the user model.
+
+        It is consistent with config['webapp2_extras.auth']['user_model'], if set.
+        """
+        return self.auth.store.user_model
+
+    @webapp2.cached_property
+    def session(self):
+        """Shortcut to access the current session."""
+        return self.session_store.get_session(backend="datastore")
+
+    def render_template(self, view_filename, params={}):
+        user = self.user_info
+        params['user'] = user
+
+        template = jinja_environment.get_template(view_filename)
+        self.response.write(template.render(params))
+
+    def dispatch(self):
+        # Get a session store for this request.
+        self.session_store = sessions.get_store(request=self.request)
+
+        try:
+            # Dispatch the request.
+            webapp2.RequestHandler.dispatch(self)
+        finally:
+            # Save all sessions
+            self.session_store.save_sessions(self.response)
+
+##################################################################################
 
 
 class SimilarStyle(ndb.Model):
@@ -612,7 +713,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         #================================================================== ITEM === 
         one = Item(
                 sku_id=0,
-                name="Default Name",
+                name="default name",
                 brand="JCrew",
                 article='tops',
                 price=49.99,
@@ -629,7 +730,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         two = Item(
                 sku_id=0,
-                name="A",
+                name="a",
                 brand="JCrew",
                 article='tops',
                 price=49.99,
@@ -646,7 +747,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         three = Item(
                 sku_id=0,
-                name="B",
+                name="b",
                 brand="JCrew",
                 article='bottoms',
                 price=39.99,
@@ -664,7 +765,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         for i in range(40):
             four = Item(
                     sku_id=0,
-                    name="C",
+                    name="c",
                     brand="JCrew",
                     article='suits',
                     price=45.99,
@@ -681,15 +782,12 @@ class DatastoreHandler(webapp2.RequestHandler):
         ############################################################### END DATASTORE ####
 
 
-class HomeHandler(webapp2.RequestHandler):
+class HomeHandler(BaseHandler):
     def get(self):
-        template_vars = {}
-
-        home_template = jinja_environment.get_template('templates/home.html')
         logging.info('in main handler logging')
-        self.response.write(home_template.render(template_vars))
+        self.render_template('templates/home.html')
 
-class ShopHandler(webapp2.RequestHandler):
+class ShopHandler(BaseHandler):
     def get(self):
         logging.info('arguments:')
         logging.info(self.request.arguments())
@@ -803,9 +901,7 @@ class ShopHandler(webapp2.RequestHandler):
                 'results': results
         }
 
-        shop_template = jinja_environment.get_template('templates/shop.html')
-        logging.info('in shop handler logging')
-        self.response.write(shop_template.render(template_vars))
+        self.render_template('templates/shop.html', template_vars)
 
     def applySort(self, query, argDict):
         if 'sort' in argDict:
@@ -843,7 +939,7 @@ class ShopHandler(webapp2.RequestHandler):
 
         return query
 
-class WhoWoreWhatHandler(webapp2.RequestHandler):
+class WhoWoreWhatHandler(BaseHandler):
     def get(self):
         coverflow_data = Coverflow.query().order(Coverflow.order_id).fetch()
         logging.info(coverflow_data)
@@ -851,11 +947,11 @@ class WhoWoreWhatHandler(webapp2.RequestHandler):
         template_vars = {
                 'coverflow_data': coverflow_data
         }
-        who_wore_what_template = jinja_environment.get_template('templates/who_wore_what.html')
-        logging.info('in who wore what handler logging')
-        self.response.write(who_wore_what_template.render(template_vars))
 
-class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
+        logging.info('in who wore what handler logging')
+        self.render_template('templates/who_wore_what.html', template_vars)
+
+class WhoWoreWhatPersonHandler(BaseHandler):
     def get(self):
         try: 
             person_arg = self.request.get('person') 
@@ -886,14 +982,14 @@ class WhoWoreWhatPersonHandler(webapp2.RequestHandler):
 
             else:
                 # Display normal style guides page.
-                person_template = jinja_environment.get_template('templates/person.html')
                 logging.info('in person handler logging')
-                self.response.write(person_template.render(template_vars))
+                self.render_template('templates/person.html', template_vars)
 
         except(TypeError, ValueError):
-            self.response.write('<html><body><p>Invalid person.</p></body></html>')
+            template_vars['message'] = "Invalid person."
+            self.render_template('templates/danger_message.html', template_vars)
 
-class StyleGuidesIndustryHandler(webapp2.RequestHandler):
+class StyleGuidesIndustryHandler(BaseHandler):
     def get(self):
         try: 
             industry_arg = self.request.get('industry')
@@ -929,14 +1025,14 @@ class StyleGuidesIndustryHandler(webapp2.RequestHandler):
 
             else:
                 # Display normal style guides page.
-                industry_template = jinja_environment.get_template('templates/industry.html')
                 logging.info('in industry handler logging')
-                self.response.write(industry_template.render(template_vars))
+                self.render_template('templates/industry.html', template_vars)
 
         except(TypeError, ValueError):
-            self.response.write('<html><body><p>Invalid industry."</p></body></html>')
+            template_vars['message'] = "Invalid industry."
+            self.render_template('templates/danger_message.html', template_vars)
 
-class StyleGuidesStyleHandler(webapp2.RequestHandler):
+class StyleGuidesStyleHandler(BaseHandler):
     def get(self):
         try: 
             style_arg = self.request.get('style')
@@ -955,15 +1051,15 @@ class StyleGuidesStyleHandler(webapp2.RequestHandler):
 
             else:
                 # Display normal industry page.
-                style_template = jinja_environment.get_template('templates/style.html')
                 logging.info('in style handler logging')
-                self.response.write(style_template.render(template_vars))
+                self.render_template('templates/style.html', template_vars)
 
         except(TypeError, ValueError):
-            self.response.write('<html><body><p>Invalid style.</p></body></html>')
+            template_vars['message'] = "Invalid style."
+            self.render_template('templates/danger_message.html', template_vars)
 
 
-class StyleGuidesHandler(webapp2.RequestHandler):
+class StyleGuidesHandler(BaseHandler):
     def get(self):
 
         style_data = [
@@ -977,14 +1073,19 @@ class StyleGuidesHandler(webapp2.RequestHandler):
                 'style_data': style_data
         }
 
-        style_guides_template = jinja_environment.get_template('templates/style_guides.html')
         logging.info('in style guides handler logging')
-        self.response.write(style_guides_template.render(template_vars))
+        self.render_template('templates/style_guides.html', template_vars)
 
-class PageNotFoundHandler(webapp2.RequestHandler):
+class PageNotFoundHandler(BaseHandler):
     def get(self):
-            self.response.write('<html><body><p>Error 404. Page not found.</p></body></html>')
+            template_vars = {
+                'message': 'Error 404. Page not found.'
+            }
+            self.render_template('templates/danger_message.html', template_vars)
 
+class CreateAccountHandler(BaseHandler):
+    def get(self):
+            self.render_template('templates/create_account.html')
 
 
 app = webapp2.WSGIApplication(routes=[
@@ -995,7 +1096,16 @@ app = webapp2.WSGIApplication(routes=[
     ('/styleguides/style', StyleGuidesStyleHandler),
     ('/styleguides', StyleGuidesHandler),
     ('/populatedatastore', DatastoreHandler),
+    ('/createaccount', CreateAccountHandler),
     ('/', HomeHandler),
     ('/home', HomeHandler),
     ('/.*', PageNotFoundHandler)
-], debug=True)
+], debug=True, config={
+    'webapp2_extras.auth': {
+        'user_model': 'models.User',
+        'user_attributes': ['name']
+    },
+    'webapp2_extras.sessions': {
+        'secret_key': 'YOUR_SECRET_KEY'
+    }
+})

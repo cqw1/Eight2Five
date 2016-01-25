@@ -35,6 +35,11 @@ $(document).ready(function() {
         return false;
     });
 
+    $('#create-account').click(function() {
+        window.location.href='/createaccount';
+        return false;
+    })
+
 });
 
 function redirectStyle(arg) {

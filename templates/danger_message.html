@@ -1,0 +1,16 @@
+{% extends "templates/base.html" %}
+
+{% block title %}Error Message{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="alert alert-danger" role="alert">
+        {{message}}
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block end_body %}
+{% endblock %}
+
