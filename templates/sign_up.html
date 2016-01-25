@@ -1,10 +1,10 @@
 {% extends "templates/base.html" %}
 
-{% block title %}Create Account{% endblock %}
+{% block title %}Sign Up{% endblock %}
 
 {% block content %}
 <div class="container">
-  <h3 class="ef-page-title">Create Account</h3>
+  <h3 class="ef-page-title">Sign Up</h3>
   <hr>
 </div>
 
@@ -24,14 +24,14 @@
         <!-- Email -->
         <div class="input-group"> 
           <span class="input-group-addon" id="email">Email</span> 
-          <input type="text" class="form-control" placeholder="email@example.com" aria-describedby="email" required>
+          <input type="email" class="form-control" placeholder="email@example.com" aria-describedby="email" required>
         </div> 
         <br>
 
         <!-- Email Again -->
         <div class="input-group"> 
           <span class="input-group-addon" id="email-again">Email Again</span> 
-          <input type="text" class="form-control" aria-describedby="email-again" required>
+          <input type="email" class="form-control" aria-describedby="email-again" required>
         </div> 
         <br>
 
@@ -66,5 +66,5 @@
 
 {% block end_body %}
   <!-- <script src="/javascript/style_guides.js"></script> -->
-  <link rel="stylesheet" type="text/css" href="/stylesheets/create_account.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/sign_up.css">
 {% endblock %}

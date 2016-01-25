@@ -25,6 +25,14 @@ body > .container {
   height: 100%;
 }
 
+.ef-sign-in{
+  padding: 15px;
+}
+
+.ef-sign-in > li > form > input {
+  margin-bottom: 10px;
+}
+
 /***********************************/
 /****  split-button in navbar ******/
 .split-button:hover {

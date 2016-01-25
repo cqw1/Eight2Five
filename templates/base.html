@@ -157,22 +157,29 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <!-- Signup / Login -->
-            <li id="user">
-              <div class="split-button">
-                <a href="#">
+            <!-- Signup / Sign in-->
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <!--                   
                   <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                   Guest
+                  -->                
+                  Sign In <span class="caret"></span>
                 </a>
-                <a data-toggle="dropdown" class="dropdown-toggle"><span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a class="" id="" href="#">Login</a></li>
-
-                  <li role="separator" class="divider"></li>
-
-                  <li><a id="create-account" href="#">Create Account</a></li>
+                <ul class="dropdown-menu ef-sign-in">
+                  <li>
+                    <form>
+                      <input type="email" class="form-control" placeholder="Username">
+                      <input type="password" class="form-control" placeholder="Password">
+                      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    </form>
+                  </li>
                 </ul>
-              </div>
+            </li>
+            
+            <li>
+              <a href="/signup" class="">Sign Up</a>  
             </li>
 
           </ul>

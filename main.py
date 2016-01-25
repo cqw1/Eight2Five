@@ -1083,9 +1083,9 @@ class PageNotFoundHandler(BaseHandler):
             }
             self.render_template('templates/danger_message.html', template_vars)
 
-class CreateAccountHandler(BaseHandler):
+class SignUpHandler(BaseHandler):
     def get(self):
-            self.render_template('templates/create_account.html')
+            self.render_template('templates/sign_up.html')
 
 
 app = webapp2.WSGIApplication(routes=[
@@ -1096,7 +1096,7 @@ app = webapp2.WSGIApplication(routes=[
     ('/styleguides/style', StyleGuidesStyleHandler),
     ('/styleguides', StyleGuidesHandler),
     ('/populatedatastore', DatastoreHandler),
-    ('/createaccount', CreateAccountHandler),
+    ('/signup', SignUpHandler),
     ('/', HomeHandler),
     ('/home', HomeHandler),
     ('/.*', PageNotFoundHandler)

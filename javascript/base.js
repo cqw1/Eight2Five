@@ -20,25 +20,17 @@ $(document).ready(function() {
     // Handle dropdowns
     $('.ef-dropdown-style').click(function() {
         redirectStyle($(this).attr('id').split('-').join(' '));
-        //redirectStyle($(this).attr('id'));
         return false;
     });
 
     $('.ef-dropdown-industry').click(function() {
         redirectIndustry($(this).attr('id').split('-').join(' '));
-        //redirectIndustry($(this).attr('id'));
-        return false;
     });
 
     $('.ef-dropdown-shop').click(function() {
         redirectShop($(this).attr('id'));
         return false;
     });
-
-    $('#create-account').click(function() {
-        window.location.href='/createaccount';
-        return false;
-    })
 
 });
 
