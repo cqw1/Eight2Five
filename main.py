@@ -785,7 +785,8 @@ class DatastoreHandler(webapp2.RequestHandler):
 class HomeHandler(BaseHandler):
     def get(self):
         logging.info('in main handler logging')
-        self.render_template('templates/home.html')
+        #self.render_template('templates/home.html')
+        self.render_template('templates/index7.html')
 
 class ShopHandler(BaseHandler):
     def get(self):

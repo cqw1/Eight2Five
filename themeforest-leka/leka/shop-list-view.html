@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <title>Leka - Shop List View</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/chosen.css">
+    <link rel="stylesheet" href="css/superslides.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="">
+    <header class="header">
+        <div class="top-header">
+            <div class="container">
+                <div class="top-header-menu">
+                    <a href="#"><i class="fa fa-phone"></i> +84 868.8568</a> 
+                    <a href="#"><i class="fa fa-clock-o"></i> MON - SAT: 08 am - 17 pm</a>
+                    <a href="#"><i class="fa fa-envelope-o"></i> Support@wpelite.com</a> 
+                </div>
+                <div class="top-header-right">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-key"></i> LOGIN</a></li>
+                        <li><a href="#"><i class="fa fa-user"></i> REGISTER</a></li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#"><i class="fa fa-cog"></i> SETTINGS</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">MY ACCOUNT</a></li>
+                                <li><a href="#">My Wishlist</a></li>
+                                <li><a href="#">PAYMENT</a></li>
+                                <li><a href="#">POLICY</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#">USD</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="current" href="#">USD</a></li>
+                                <li><a href="#">Euro</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown language">
+                            <a data-toggle="dropdown" href="#"><img src="images/en.jpg" alt=""/>ENGLISH</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="current" href="#">ENGLISH</a></li>
+                                <li><a href="#">French<img src="images/fr.jpg" alt="" /></a></li>
+                                <li><a href="#">GERMANY<img src="images/gren.jpg" alt="" /></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container main-header-inner">
+                <div id="form-search" class="form-search">
+                    <form>
+                        <input type="text" placeholder="YOU CAN SEARCH HERE..." />
+                        <button class="btn-search"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="row">
+                    <div  class="col-sm-12">
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 main-menu-wapper">
+                        <a href="#" class="mobile-navigation"><i class="fa fa-bars"></i></a>
+                        <nav id="main-menu" class="main-menu">
+                            <ul class="navigation">
+                                <li class="menu-item-has-children">
+                                    <a href="index.html">Home</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="index.html">Home Version 01</a></li>
+                                        <li><a href="index2.html">Home Version 02</a></li>
+                                        <li><a href="index3.html">Home Version 03</a></li>
+                                        <li><a href="index4.html">Home Version 04</a></li>
+                                        <li><a href="index5.html">Home Version 05</a></li>
+                                        <li><a href="index6.html">Home Version 06</a></li>
+                                        <li><a href="index7.html">Home Version 07</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children item-mega-menu">
+                                    <a href="#">Pages</a>
+                                    <div class="sub-menu mega-menu">
+                                        <div class="row">
+                                            <div class="col-sm-1"></div>
+                                            <div class="col-sm-2">
+                                                <div class="widget">
+                                                    <h3 class="widgettitle">Shop pages</h3>
+                                                    <ul>
+                                                        <li><a href="shop-fullwidth.html">Shop fullwidth</a></li>
+                                                        <li><a href="shop-with-colection.html">Shop with Colection</a></li>
+                                                        <li><a href="shop-left-sidebar.html">Shop left sidebar</a></li>
+                                                        <li><a href="shop-list-view.html">Shop list view</a></li>
+                                                        <li><a href="cart.html">Cart page</a></li>
+                                                        <li><a href="checkout.html">Checkout page</a></li>
+                                                        <li><a href="single-product.html">Product page</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="widget">
+                                                    <h3 class="widgettitle">Inner page</h3>
+                                                    <ul><li><a href="about.html">About Us</a></li>
+                                                        <li><a href="contact.html">Contact Us</a></li>
+                                                        <li><a href="faq.html">Faq</a></li>
+                                                        <li><a href="typography.html">Typography</a></li>
+                                                        <li><a href="columns.html">Columns</a></li>
+                                                        <li><a href="#">Jackets</a></li>
+                                                        <li><a href="#">Parkas</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="widget">
+                                                    <a href="#"><img src="images/megamenus/banner1.jpg" alt="" /></a>
+                                                </div>
+                                                <div class="widget">
+                                                    <a href="#"><img src="images/megamenus/banner2.jpg" alt="" /></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="widget">
+                                                    <a href="#"><img src="images/megamenus/banner3.jpg" alt="" /></a>
+                                                </div>
+                                                <div class="widget">
+                                                    <a href="#"><img src="images/megamenus/banner4.jpg" alt="" /></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="menu-item-has-children item-mega-menu">
+                                    <a href="#">Category</a>
+                                    <div class="sub-menu mega-menu style2">
+                                        <div class="row">
+                                            <div class="col-sm-1"></div>
+                                            <div class="col-sm-2">
+                                                <div class="widget">
+                                                    <h3 class="widgettitle">FASHION</h3>
+                                                    <ul>
+                                                        <li><a href="#">MEN'S</a></li>
+                                                        <li><a href="#">WOMAN</a></li>
+                                                        <li><a href="#">KID'S</a></li>
+                                                        <li><a href="#">BAG & SHOES</a></li>
+                                                        <li><a href="#">LOOKBOOK</a></li>
+                                                        <li><a href="#">ACCESORIES</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="widget">
+                                                    <h3 class="widgettitle">FURNITURE</h3>
+                                                    <ul>
+                                                        <li><a href="#">COLLECTIONS</a></li>
+                                                        <li><a href="#">ACCESSOREIS</a></li>
+                                                        <li><a href="#">LAMBS</a></li>
+                                                        <li><a href="#">PICTURES</a></li>
+                                                        <li><a href="#">HANDI CRAFT</a></li>
+                                                        <li><a href="#">PRESS ROOM</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="widget">
+                                                    <h3 class="widgettitle">ELECTRONIC</h3>
+                                                    <ul>
+                                                        <li><a href="#">TV</a></li>
+                                                        <li><a href="#">PHONE</a></li>
+                                                        <li><a href="#">TABLET</a></li>
+                                                        <li><a href="#">SMART WATCH</a></li>
+                                                        <li><a href="#">WASH MACHINE</a></li>
+                                                        <li><a href="#">AUDIO</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="widget">
+                                                    <a href="#"><img src="images/megamenus/banner5.jpg" alt="" /></a>
+                                                </div>
+                                                <div class="widget">
+                                                    <a href="#"><img src="images/megamenus/banner6.jpg" alt="" /></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li><a href="#">Products</a></li>
+                                <li class="menu-item-has-children">
+                                    <a href="#">PORTFOLIO</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="portfolio-fullwidth.html">Portfolio fullwidth</a></li>
+                                        <li><a href="portfolio-3columns.html">Portfolio 3 clumns</a></li>
+                                        <li><a href="portfolio-masonry.html">Portfolio masonry</a></li>
+                                        <li><a href="portfolio-detail.html">Portfolio detail</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">ELEMENTS</a></li>
+                                <li class="menu-item-has-children">
+                                    <a href="blog-list.html">Blog</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="blog-list.html">Blog list</a></li>
+                                        <li><a href="blog-grid-2columns.html">Blog Grid 2 columns</a></li>
+                                        <li><a href="blog-grid-3columns.html">Blog Grid 3 columns</a></li>
+                                        <li><a href="blog-masonry.html">Blog masonry</a></li>
+                                        <li><a href="blog-detail.html">Blog Single post</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-sm-2">
+                        <!-- Icon search -->
+                        <div class="icon-search">
+                            <span class="icon"><i class="fa fa-search"></i></span>
+                        </div>
+                        <!-- ./Icon search -->
+                        <!-- Mini cart -->
+                        <div class="mini-cart">
+                            <a class="icon" href="#">Cart <span class="count">2</span></a>
+                            <div class="mini-cart-content">
+                                <ul class="list-cart-product">
+                                    <li>
+                                        
+                                        <div class="product-thumb">
+                                            <a href="#"><img src="images/products/product-cart1.jpg" alt="" /></a>
+                                        </div>
+                                        <div class="product-info">
+                                            <h5 class="product-name"><a href="#">Ledtead Predae</a></h5>
+                                            <span class="price">$90.00</span>
+                                            <span class="qty">Qty: 1 - Size: L</span>
+                                            <a href="#" class="remove">remove</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        
+                                        <div class="product-thumb">
+                                            <a href="#"><img src="images/products/product-cart2.jpg" alt="" /></a>
+                                        </div>
+                                        <div class="product-info">
+                                            <h5 class="product-name"><a href="#">Ledtead Predae</a></h5>
+                                            <span class="price">$90.00</span>
+                                            <span class="qty">Qty: 1 - Size: M</span>
+                                            <a href="#" class="remove">remove</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <p class="sub-toal-wapper">
+                                    <span>SUBTOTAL</span>
+                                    <span class="sub-toal">$180.00</span>
+                                </p>
+                                <a href="#" class="btn-view-cart">VIEW SHOPPING CART</a>
+                                <a href="#" class="btn-check-out">PROCESS TO CHECK OUT</a>
+                            </div>
+                        </div>
+                        <!-- ./Mini cart -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="banner bg-parallax">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="banner-content text-center">
+                <h2 class="page-title">SHOP LIST VIEW</h2>
+                <div class="breadcrumbs">
+                    <a href="#">Home</a>
+                    <a href="#">Shop</a>
+                    <span>SHOP LIST VIEW</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="maincontainer left-sidebar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-9 main-content">
+                    <!-- Shop slider -->
+                    <div class="shop-slider owl-carousel" data-dots="false" data-autoplay="true" data-nav = "false" data-margin = "0" data-items="1">
+                        <a href="#"><img src="images/shop-slider.jpg" alt="" /></a>
+                        <a href="#"><img src="images/shop-slider.jpg" alt="" /></a>
+                    </div>
+                    <!-- ./Shop slider -->
+                    <!-- Sortbar -->
+                    <div class="sortBar">
+                        <div class="sortBar-left">
+                            <form class="ordering">
+                                <select>
+                                    <option value="">SHORT BY</option>
+                                    <option value="">Sort by popularity</option>
+                                    <option value="">Sort by average rating</option>
+                                    <option value="">Sort by price: low to high</option>
+                                </select>
+                                <select>
+                                    <option value="">Postion</option>
+                                    <option value="">Sort by popularity</option>
+                                    <option value="">Sort by average rating</option>
+                                    <option value="">Sort by price: low to high</option>
+                                </select>
+                            </form>
+                            <div class="display-product-option">
+                                <a href="#" class="view-as-grid"><i class="fa fa-th-large"></i></a>
+                                <a href="#" class="view-as-list selected"><i class="fa fa-th-list"></i></a>
+                            </div>
+                        </div>
+                        <div class="sortBar-right">
+                            <div class="result-count">
+                                SHOW ITEMS 1 to 12 of 36 total
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./ SortBar -->
+                    <!-- List products -->
+                    <ul class="products products-list-view">
+                        <li class="product">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="product-thumb">
+                    					<a href="single-product.html">
+                    						<img src="images/products/p19.jpg" alt="">
+                    					</a>
+                    				</div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="product-info">
+                    					<h3><a href="#">Ledtead Predae</a></h3>
+                    					<span class="product-price">$89.00</span>
+                    					<div class="product-desc">
+                                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+                                        </div>
+                                        <div class="product-button">
+                                            <a href="#" class="button-add-to-cart">ADD TO CART</a>
+                    						<a href="#" class="button-compare">Compare</a>
+                    						<a href="#" class="button-wishlist">Wishlist</a>
+                    					</div>
+                    				</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="product">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="product-thumb">
+                    					<a href="single-product.html">
+                    						<img src="images/products/p20.jpg" alt="">
+                    					</a>
+                    				</div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="product-info">
+                    					<h3><a href="#">Ledtead Predae</a></h3>
+                    					<span class="product-price">$89.00</span>
+                    					<div class="product-desc">
+                                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+                                        </div>
+                                        <div class="product-button">
+                                            <a href="#" class="button-add-to-cart">ADD TO CART</a>
+                    						<a href="#" class="button-compare">Compare</a>
+                    						<a href="#" class="button-wishlist">Wishlist</a>
+                    					</div>
+                    				</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="product">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="product-thumb">
+                    					<a href="single-product.html">
+                    						<img src="images/products/p21.jpg" alt="">
+                    					</a>
+                    				</div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="product-info">
+                    					<h3><a href="#">Ledtead Predae</a></h3>
+                    					<span class="product-price">$89.00</span>
+                    					<div class="product-desc">
+                                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+                                        </div>
+                                        <div class="product-button">
+                                            <a href="#" class="button-add-to-cart">ADD TO CART</a>
+                    						<a href="#" class="button-compare">Compare</a>
+                    						<a href="#" class="button-wishlist">Wishlist</a>
+                    					</div>
+                    				</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="product">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="product-thumb">
+                    					<a href="single-product.html">
+                    						<img src="images/products/p22.jpg" alt="">
+                    					</a>
+                    				</div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="product-info">
+                    					<h3><a href="#">Ledtead Predae</a></h3>
+                    					<span class="product-price">$89.00</span>
+                    					<div class="product-desc">
+                                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+                                        </div>
+                                        <div class="product-button">
+                                            <a href="#" class="button-add-to-cart">ADD TO CART</a>
+                    						<a href="#" class="button-compare">Compare</a>
+                    						<a href="#" class="button-wishlist">Wishlist</a>
+                    					</div>
+                    				</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <nav class="pagination">
+                        <ul>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                    <!-- ./ List Products -->
+                </div>
+                <!-- Sildebar -->
+                <div class="col-sm-4 col-md-3 sidebar">
+                    <!-- Product category -->
+                    <div class="widget widget_product_categories">
+                        <h2 class="widget-title">By Categories</h2>
+                        <ul class="product-categories">
+                            <li class="cat-parent current-cat-parent">
+                                <a href="#">Accessories</a>
+                                <ul class="children">
+                                    <li class="current-cat"><a href="#">Men</a></li>
+                                    <li><a href="#">Women</a></li>
+                                    <li><a href="#">Kids</a></li>
+                                </ul>
+                            </li>
+                            <li class="cat-parent">
+                                <a href="#">Handbags</a>
+                                <ul class="children">
+                                    <li><a href="#">Men bags</a></li>
+                                    <li><a href="#">Women bags</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Mencare</a></li>
+                            <li><a href="#">Watches</a></li>
+                            <li><a href="#">Clothings</a></li>
+                            <li><a href="#">Jackets</a></li>
+                            <li><a href="#">Jeans</a></li>
+                            <li><a href="#">T-Shirts</a></li>
+                            <li><a href="#">Shoes</a></li>
+                        </ul>
+                    </div>
+                    <!-- ./Product category -->
+                    <!-- Filter color -->
+                    <div class="widget widget_layered_nav">
+                        <h2 class="widget-title">BY COLORS</h2>
+                        <ul>
+                            <li><a href="#">RED</a></li>
+                            <li><a href="#">BLUE</a></li>
+                            <li><a href="#">CYAN</a></li>
+                            <li><a href="#">ORANGER</a></li>
+                            <li><a href="#">BLACK & WHITE</a></li>
+                            <li><a href="#">PURPULE</a></li>
+                        </ul>
+                    </div>
+                    <!-- ./Filter color -->
+                    <!-- Filter price -->
+                    <div class="widget widget_price_filter">
+                        <h2 class="widget-title">BY PRICES</h2>
+                        <div class="price_slider_wrapper">
+                            <div class="amount-range-price">$50 - $350</div>
+                            <div data-label-reasult="" data-min="0" data-max="500" data-unit="$" class="slider-range-price" data-value-min="50" data-value-max="350"></div>
+                            <button class="button">Filter</button>
+                        </div>
+                    </div>
+                    <!-- ./Filter price -->
+                    
+                    <!-- Compare products -->
+                    <div class="widget yith-woocompare-widget">
+                        <h2 class="widget-title">COMPARE PRODUCTS</h2>
+                        <div class="no-product">
+                            NO PRODUCTS HAVE COMPARE
+                        </div>
+                    </div>
+                    <!-- ./Compare products -->
+                    
+                    <!-- Product tags -->
+                    <div class="widget widget_product_tag_cloud">
+                        <h2 class="widget-title">POPULAR TAGS</h2>
+                        <div class="tagcloud">
+                            <a href="#">Cotton</a>
+                            <a href="#">Leggings</a>
+                            <a href="#">Men</a>
+                            <a href="#">Shirt</a>
+                            <a href="#">T-shirt</a>
+                            <a href="#">COSMETIC</a>
+                            <a href="#">SOFT WEAR</a>
+                            <a href="#">ACCESSORIES</a>
+                            <a href="#">LIFE STYLE</a>
+                        </div>
+                    </div>
+                    <!-- ./Product tags -->
+                    <!-- Product tags -->
+                    <div class="widget widget_custom_image">
+                        <a href="#"><img src="images/b/b9.jpg" alt="" /></a>
+                    </div>
+                    <!-- ./Product tags -->
+                </div>
+                <!-- ./Sidebar -->
+            </div>
+            
+            
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <a href="#"><img src="images/logo-footer.png" alt=""></a>
+                </div>
+                <div class="col-sm-4">
+                    <div class="widget">
+                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 
+                    </div>
+                    <div class="widget widget-social">
+                        <div class="list-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-skype"></i></a>
+                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                    <div class="widget widget-newaletter">
+                    <form>
+                        <input type="text" class="newaletter-email" placeholder="EMAIL FOR NEWSLETTER">
+                        <span><button type="submit" class="newaletter-button"><i class="fa fa-envelope-o"></i></button></span>
+                    </form>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                    <div class="widget widget_nav_menu">
+                        <h3 class="widget-title">COMPANY</h3>
+                        <ul>
+                            <li><a href="#">ABOUT US</a></li>
+                            <li><a href="#">OFFICES</a></li>
+                            <li><a href="#">STORES</a></li>
+                            <li><a href="#">WORK WITH US</a></li>
+                            <li><a href="#">CONTACT</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                    <div class="widget widget_nav_menu">
+                        <h3 class="widget-title">SHOPPING GUIDE</h3>
+                        <ul>
+                            <li><a href="#">HOW TO BUY</a></li>
+                            <li><a href="#">INFOMATION</a></li>
+                            <li><a href="#">PAYMENT</a></li>
+                            <li><a href="#">SHIPPING</a></li>
+                            <li><a href="#">EXCHANGES</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                    <div class="widget widget_nav_menu">
+                        <h3 class="widget-title">COMPANY</h3>
+                        <ul>
+                            <li><a href="#">ABOUT US</a></li>
+                            <li><a href="#">OFFICES</a></li>
+                            <li><a href="#">STORES</a></li>
+                            <li><a href="#">WORK WITH US</a></li>
+                            <li><a href="#">CONTACT</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                    <div class="widget widget_nav_menu">
+                        <h3 class="widget-title">SHOPPING GUIDE</h3>
+                        <ul>
+                            <li><a href="#">HOW TO BUY</a></li>
+                            <li><a href="#">INFOMATION</a></li>
+                            <li><a href="#">PAYMENT</a></li>
+                            <li><a href="#">SHIPPING</a></li>
+                            <li><a href="#">EXCHANGES</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="coppyright">
+                    <p>© 2015 LEKA E-COMMERCE TEMPLATE. Powered By WPELITE</p>
+                </div>
+                <div class="payment_methods">
+                    <img src="images/payment_methods.png" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="scroll_top" title="Scroll to Top">Scroll</a>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
+    <script type="text/javascript" src="js/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="js/isotope.pkgd.js"></script>
+    <script type="text/javascript" src="js/packery-mode.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.superslides.min.js"></script>
+    <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="js/Modernizr.js"></script>
+    <script type="text/javascript" src="js/jquery.actual.min.js"></script>
+    <script type="text/javascript" src="js/blog-masonry.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+</body>
+</html>
