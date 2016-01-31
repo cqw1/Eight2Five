@@ -22,7 +22,7 @@ $(document).ready(function() {
 
     $('.etf-prev-page').on('click', function(event) {
         event.preventDefault();
-        var currentPage = parseInt($('.ef-current-page').text());
+        var currentPage = parseInt($('.etf-current-page').text());
         if (currentPage == 2) {
             delete argDict['page'];
             updateUrl(argDict);
@@ -35,9 +35,9 @@ $(document).ready(function() {
     $('.etf-next-page').on('click', function(event) {
         console.log('next page');
         event.preventDefault();
-        var currentPage = parseInt($('.ef-current-page').text());
+        var currentPage = parseInt($('.etf-current-page').text());
 
-        console.log($('.ef-current-page').text());
+        console.log($('.etf-current-page').text());
 
         console.log('currentpage: ' + currentPage);
 
@@ -144,12 +144,12 @@ function updatePageNumber(argDict) {
     var li_pages = $('.pagination > ul > li');
     if ('page' in argDict) {
         var page = parseInt(argDict['page']);
-        console.log(page);
-        console.log(li_pages.get(3));
-        li_pages.get(3).addClass('active');
+        $(li_pages.get(page)).addClass('active');
+        $(li_pages.get(page)).addClass('etf-current-page');
 
     } else {
-        li_pages.get(1).addClass('active');
+        $(li_pages.get(1)).addClass('active');
+        $(li_pages.get(1)).addClass('etf-current-page');
 
     }
 }
