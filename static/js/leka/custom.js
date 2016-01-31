@@ -126,7 +126,7 @@
         // Vertical menu width
         auto_width_vertical();
         // Init popup
-        init_popup();
+        //init_popup();
         Scrollbar_header_sidebar();
         stick_header();
         //MANSORY LOOKBOOK

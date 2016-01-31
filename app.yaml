@@ -16,6 +16,8 @@ handlers:
   static_dir: static/images
 - url: /coverflow
   static_dir: coverflow 
+- url: /fonts
+  static_dir: static/fonts 
 - url: /bootstrap
   static_dir: bootstrap 
 

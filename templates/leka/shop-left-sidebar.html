@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+{% from "templates/macros.html" import main_menu %}
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <title>Eight2Five - Shop</title>
+    <link rel="stylesheet" href="css/leka/bootstrap.min.css">
+    <link rel="stylesheet" href="css/leka/font-awesome.min.css">
+    <link rel="stylesheet" href="css/leka/owl.carousel.css">
+    <link rel="stylesheet" href="css/leka/chosen.css">
+    <link rel="stylesheet" href="css/leka/superslides.css">
+    <link rel="stylesheet" href="css/leka/magnific-popup.css">
+    <link rel="stylesheet" href="css/leka/jquery.mCustomScrollbar.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/leka/style.css">
+</head>
+<body class="">
+    <header class="header">
+        <div class="top-header">
+            <div class="container">
+                <div class="top-header-menu">
+                    <a href="#"><i class="fa fa-phone"></i> +84 868.8568</a> 
+                    <a href="#"><i class="fa fa-clock-o"></i> MON - SAT: 08 am - 17 pm</a>
+                    <a href="#"><i class="fa fa-envelope-o"></i> Support@wpelite.com</a> 
+                </div>
+                <div class="top-header-right">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-key"></i> LOGIN</a></li>
+                        <li><a href="#"><i class="fa fa-user"></i> REGISTER</a></li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#"><i class="fa fa-cog"></i> SETTINGS</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">MY ACCOUNT</a></li>
+                                <li><a href="#">My Wishlist</a></li>
+                                <li><a href="#">PAYMENT</a></li>
+                                <li><a href="#">POLICY</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#">USD</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="current" href="#">USD</a></li>
+                                <li><a href="#">Euro</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown language">
+                            <a data-toggle="dropdown" href="#"><img src="images/leka/en.jpg" alt=""/>ENGLISH</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="current" href="#">ENGLISH</a></li>
+                                <li><a href="#">French<img src="images/leka/fr.jpg" alt="" /></a></li>
+                                <li><a href="#">GERMANY<img src="images/leka/gren.jpg" alt="" /></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container main-header-inner">
+                <div id="form-search" class="form-search">
+                    <form>
+                        <input type="text" placeholder="YOU CAN SEARCH HERE..." />
+                        <button class="btn-search"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="row">
+                    <div  class="col-sm-12">
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo_64x64.svg" alt="" /></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 main-menu-wapper">
+                        <a href="#" class="mobile-navigation"><i class="fa fa-bars"></i></a>
+                        {{ main_menu() }}
+                    </div>
+                    <div class="col-sm-2">
+                        <!-- Icon search -->
+                        <div class="icon-search">
+                            <span class="icon"><i class="fa fa-search"></i></span>
+                        </div>
+                        <!-- ./Icon search -->
+                        <!-- Mini cart -->
+                        <!--
+                        <div class="mini-cart">
+                            <a class="icon" href="#">Cart <span class="count">2</span></a>
+                            <div class="mini-cart-content">
+                                <ul class="list-cart-product">
+                                    <li>
+                                        
+                                        <div class="product-thumb">
+                                            <a href="#"><img src="images/leka/products/product-cart1.jpg" alt="" /></a>
+                                        </div>
+                                        <div class="product-info">
+                                            <h5 class="product-name"><a href="#">Ledtead Predae</a></h5>
+                                            <span class="price">$90.00</span>
+                                            <span class="qty">Qty: 1 - Size: L</span>
+                                            <a href="#" class="remove">remove</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        
+                                        <div class="product-thumb">
+                                            <a href="#"><img src="images/leka/products/product-cart2.jpg" alt="" /></a>
+                                        </div>
+                                        <div class="product-info">
+                                            <h5 class="product-name"><a href="#">Ledtead Predae</a></h5>
+                                            <span class="price">$90.00</span>
+                                            <span class="qty">Qty: 1 - Size: M</span>
+                                            <a href="#" class="remove">remove</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <p class="sub-toal-wapper">
+                                    <span>SUBTOTAL</span>
+                                    <span class="sub-toal">$180.00</span>
+                                </p>
+                                <a href="#" class="btn-view-cart">VIEW SHOPPING CART</a>
+                                <a href="#" class="btn-check-out">PROCESS TO CHECK OUT</a>
+                            </div>
+                        </div>
+                        -->
+                        <!-- ./Mini cart -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--
+    <section class="banner bg-parallax">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="banner-content text-center">
+                <h2 class="page-title">SHOP LEFT SIDEBAR</h2>
+                <div class="breadcrumbs">
+                    <a href="#">Home</a>
+                    <a href="#">Shop</a>
+                    <span>SHOP LEFT SIDEBAR</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+    <div class="maincontainer left-sidebar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-9 main-content">
+                    <!-- Sortbar -->
+                    <div class="sortBar">
+                        <div class="sortBar-left">
+                            <form class="ordering">
+                                SORT BY: &nbsp;
+                                <select>
+                                    {% for sort in shop_sorts %}
+                                        <option value="">{{sort | title}}</option>
+                                    {% endfor %}
+                                </select>
+                                ITEMS PER PAGE: &nbsp;
+                                <select>
+                                    {% for i in items_per_page %}
+                                        <option value="">{{i | title}}</option>
+                                    {% endfor %}
+                                </select>
+                            </form>
+                            <!--
+                            <div class="display-product-option">
+                                <a href="#" class="view-as-grid selected"><i class="fa fa-th-large"></i></a>
+                                <a href="#" class="view-as-list"><i class="fa fa-th-list"></i></a>
+                            </div>
+                            -->
+                        </div>
+                        <div class="sortBar-right">
+                            <div class="result-count">
+                                SHOW ITEMS 1 to 12 of 36 total
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ./ SortBar -->
+                    <!-- List products -->
+                    <ul class="products row">
+                        {% for i in results %}
+                            <li class="product col-sm-6 col-md-4">
+                                <div class="product-thumb">
+                                    <a href="single-product.html">
+                                        <img src="images/leka/products/p27.jpg" alt="">
+                                    </a>
+                                    <div class="product-button">
+                                        <a href="#" class="button-compare">Compare</a>
+                                        <a href="#" class="button-wishlist">Wishlist</a>
+                                        <a href="#" class="button-quickview">Quick view</a>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h3><a href="#">{{i.name | title}}</a></h3>
+                                    <span class="product-price">${{i.price}}</span>
+                                    <a href="#" class="button-add-to-cart">ADD TO CART</a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                        <!--
+                        <li class="product col-sm-6 col-md-4">
+            				<div class="product-thumb">
+            					<a href="single-product.html">
+            						<img src="images/leka/products/p27.jpg" alt="">
+            					</a>
+            					<div class="product-button">
+            						<a href="#" class="button-compare">Compare</a>
+            						<a href="#" class="button-wishlist">Wishlist</a>
+            						<a href="#" class="button-quickview">Quick view</a>
+            					</div>
+            				</div>
+            				<div class="product-info">
+            					<h3><a href="#">Ledtead Predae</a></h3>
+            					<span class="product-price">$89.00</span>
+            					<a href="#" class="button-add-to-cart">ADD TO CART</a>
+            				</div>
+                        </li>
+                        -->
+                    </ul>
+                    <nav class="pagination">
+                        <ul>
+                            <li><a href="#" class="etf-prev-page">Prev</a></li>
+                            {% for page in num_pages %}
+                                <li><a href="#" class="etf-page-option">{{page}}</a></li>
+                            {% endfor %}
+                            <li><a href="#" class="etf-next-page">Next</a></li>
+
+                            <!--
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">Next</a></li>
+                            -->
+                        </ul>
+                    </nav>
+                    <!-- ./ List Products -->
+                </div>
+                <!-- Sliderbar -->
+                <div class="col-sm-4 col-md-3 sidebar">
+                    <div class="widget widget_product_categories">
+                        <h2 class="widget-title">Filters</h2>
+                        <ul class="product-categories">
+                            {% for filter in filters %}
+                                <li class="cat-parent current-cat-parent">
+                                    <a href="#"><b>{{filter.name | title}}</b></a>
+                                    <ul class="children">
+                                        {% for selection in filter.selections %}
+                                            <li><a href="#">{{selection}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- Product category -->
+                    <!--
+                    <div class="widget widget_product_categories">
+                        <h2 class="widget-title">By Categories</h2>
+                        <ul class="product-categories">
+                            <li class="cat-parent current-cat-parent">
+                                <a href="#">Accessories</a>
+                                <ul class="children">
+                                    <li class="current-cat"><a href="#">Men</a></li>
+                                    <li><a href="#">Women</a></li>
+                                    <li><a href="#">Kids</a></li>
+                                </ul>
+                            </li>
+                            <li class="cat-parent">
+                                <a href="#">Handbags</a>
+                                <ul class="children">
+                                    <li><a href="#">Men bags</a></li>
+                                    <li><a href="#">Women bags</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Mencare</a></li>
+                            <li><a href="#">Watches</a></li>
+                            <li><a href="#">Clothings</a></li>
+                            <li><a href="#">Jackets</a></li>
+                            <li><a href="#">Jeans</a></li>
+                            <li><a href="#">T-Shirts</a></li>
+                            <li><a href="#">Shoes</a></li>
+                        </ul>
+                    </div>
+                    -->
+                    <!-- ./Product category -->
+                    <!-- Filter color -->
+                    <!--
+                    <div class="widget widget_layered_nav">
+                        <h2 class="widget-title">BY COLORS</h2>
+                        <ul>
+                            <li><a href="#">RED</a></li>
+                            <li><a href="#">BLUE</a></li>
+                            <li><a href="#">CYAN</a></li>
+                            <li><a href="#">ORANGER</a></li>
+                            <li><a href="#">BLACK & WHITE</a></li>
+                            <li><a href="#">PURPULE</a></li>
+                        </ul>
+                    </div>
+                    -->
+                    <!-- ./Filter color -->
+                    <!-- Filter price -->
+                    <!--
+                    <div class="widget widget_price_filter">
+                        <h2 class="widget-title">BY PRICES</h2>
+                        <div class="price_slider_wrapper">
+                            <div class="amount-range-price">$50 - $350</div>
+                            <div data-label-reasult="" data-min="0" data-max="500" data-unit="$" class="slider-range-price" data-value-min="50" data-value-max="350"></div>
+                            <button class="button">Filter</button>
+                        </div>
+                    </div>
+                    -->
+                    <!-- ./Filter price -->
+                    
+                    <!-- Compare products -->
+                    <!--
+                    <div class="widget yith-woocompare-widget">
+                        <h2 class="widget-title">COMPARE PRODUCTS</h2>
+                        <div class="no-product">
+                            NO PRODUCTS HAVE COMPARE
+                        </div>
+                    </div>
+                    -->
+                    <!-- ./Compare products -->
+                    
+                    <!-- Product tags -->
+                    <!--
+                    <div class="widget widget_product_tag_cloud">
+                        <h2 class="widget-title">POPULAR TAGS</h2>
+                        <div class="tagcloud">
+                            <a href="#">Cotton</a>
+                            <a href="#">Leggings</a>
+                            <a href="#">Men</a>
+                            <a href="#">Shirt</a>
+                            <a href="#">T-shirt</a>
+                            <a href="#">COSMETIC</a>
+                            <a href="#">SOFT WEAR</a>
+                            <a href="#">ACCESSORIES</a>
+                            <a href="#">LIFE STYLE</a>
+                        </div>
+                    </div>
+                    -->
+                    <!-- ./Product tags -->
+                    <!-- Product tags -->
+                    <!--
+                    <div class="widget widget_custom_image">
+                        <a href="#"><img src="images/leka/b/b9.jpg" alt="" /></a>
+                    </div>
+                    -->
+                    <!-- ./Product tags -->
+                </div>
+                <!-- ./Sidebar -->
+            </div>
+            
+            
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <a href="#"><img src="images/leka/logo-footer.png" alt=""></a>
+                </div>
+                <div class="col-sm-4">
+                    <div class="widget">
+                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 
+                    </div>
+                    <div class="widget widget-social">
+                        <div class="list-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-skype"></i></a>
+                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                    <div class="widget widget-newaletter">
+                    <form>
+                        <input type="text" class="newaletter-email" placeholder="EMAIL FOR NEWSLETTER">
+                        <span><button type="submit" class="newaletter-button"><i class="fa fa-envelope-o"></i></button></span>
+                    </form>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                    <div class="widget widget_nav_menu">
+                        <h3 class="widget-title">COMPANY</h3>
+                        <ul>
+                            <li><a href="#">ABOUT US</a></li>
+                            <li><a href="#">OFFICES</a></li>
+                            <li><a href="#">STORES</a></li>
+                            <li><a href="#">WORK WITH US</a></li>
+                            <li><a href="#">CONTACT</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                    <div class="widget widget_nav_menu">
+                        <h3 class="widget-title">SHOPPING GUIDE</h3>
+                        <ul>
+                            <li><a href="#">HOW TO BUY</a></li>
+                            <li><a href="#">INFOMATION</a></li>
+                            <li><a href="#">PAYMENT</a></li>
+                            <li><a href="#">SHIPPING</a></li>
+                            <li><a href="#">EXCHANGES</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                    <div class="widget widget_nav_menu">
+                        <h3 class="widget-title">COMPANY</h3>
+                        <ul>
+                            <li><a href="#">ABOUT US</a></li>
+                            <li><a href="#">OFFICES</a></li>
+                            <li><a href="#">STORES</a></li>
+                            <li><a href="#">WORK WITH US</a></li>
+                            <li><a href="#">CONTACT</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                    <div class="widget widget_nav_menu">
+                        <h3 class="widget-title">SHOPPING GUIDE</h3>
+                        <ul>
+                            <li><a href="#">HOW TO BUY</a></li>
+                            <li><a href="#">INFOMATION</a></li>
+                            <li><a href="#">PAYMENT</a></li>
+                            <li><a href="#">SHIPPING</a></li>
+                            <li><a href="#">EXCHANGES</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="coppyright">
+                    <p>© 2015 LEKA E-COMMERCE TEMPLATE. Powered By WPELITE</p>
+                </div>
+                <div class="payment_methods">
+                    <img src="images/leka/payment_methods.png" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="scroll_top" title="Scroll to Top">Scroll</a>
+    <script type="text/javascript" src="js/leka/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/leka/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/leka/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="js/leka/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="js/leka/jquery.parallax-1.1.3.js"></script>
+    <script type="text/javascript" src="js/leka/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="js/leka/isotope.pkgd.js"></script>
+    <script type="text/javascript" src="js/leka/packery-mode.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/leka/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/leka/jquery.superslides.min.js"></script>
+    <script type="text/javascript" src="js/leka/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="js/leka/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="js/leka/Modernizr.js"></script>
+    <script type="text/javascript" src="js/leka/jquery.actual.min.js"></script>
+    <script type="text/javascript" src="js/leka/blog-masonry.js"></script>
+    <script type="text/javascript" src="js/leka/custom.js"></script>
+
+    <!-- Own Javascript -->
+    <script type="text/javascript" src="/js/macros.js"></script>
+    <script type="text/javascript" src="/js/leka/shop.js"></script>
+</body>
+</html>
