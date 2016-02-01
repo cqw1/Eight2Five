@@ -154,15 +154,15 @@
                         <div class="sortBar-left">
                             <form class="ordering">
                                 SORT BY: &nbsp;
-                                <select class="etf-sort-option">>
+                                <select class="etf-sort-option">
                                     {% for sort in shop_sorts %}
-                                        <option value="">{{sort | title}}</option>
+                                        <option value="">{{sort}}</option>
                                     {% endfor %}
                                 </select>
                                 ITEMS PER PAGE: &nbsp;
                                 <select class="etf-items-option">
                                     {% for i in items_per_page %}
-                                        <option value="">{{i | title}}</option>
+                                        <option value="">{{i}}</option>
                                     {% endfor %}
                                 </select>
                             </form>
@@ -175,7 +175,7 @@
                         </div>
                         <div class="sortBar-right">
                             <div class="result-count">
-                                SHOW ITEMS 1 to 12 of 36 total
+                                SHOW ITEMS {{showing_from}} to {{showing_to}} of {{showing_total}} total
                             </div>
                         </div>
                     </div>
@@ -468,6 +468,8 @@
     <script type="text/javascript" src="/js/leka/shop.js"></script>
     <script type="text/javascript">
         initGlobals({{filters}}, '{{default_shop_sort}}', '{{default_items_per_page}}', '{{default_page}}', {{num_pages}});
+        setSortOption('{{selected_shop_sort}}');
+        setItemOption('{{selected_items_per_page}}');
     </script>
 </body>
 </html>

@@ -856,6 +856,9 @@ class ShopHandler(BaseHandler):
         all_results = query.fetch()
         num_results = len(all_results)
 
+        showing_from = 1
+        showing_to = num_results
+
         # calculating offset for results.
         if selected_items_per_page == 'all':
             selected_page = 1
@@ -880,6 +883,9 @@ class ShopHandler(BaseHandler):
                 pages = num_results / selected_items_per_page + 1
 
             num_pages = [i for i in range(1, pages + 1)]
+
+            showing_from = start + 1
+            showing_to = stop
     
         logging.info('================= RESULTS =====================')
         for r in results:
@@ -899,7 +905,10 @@ class ShopHandler(BaseHandler):
                 'selected_page': selected_page,
                 'default_page': PAGE_DEFAULT,
                 'num_pages': num_pages,
-                'results': results
+                'results': results,
+                'showing_from': showing_from,
+                'showing_to': showing_to,
+                'showing_total': num_results
         }
 
         #self.render_template('templates/shop.html', template_vars)

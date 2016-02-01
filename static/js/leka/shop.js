@@ -15,9 +15,9 @@ $(document).ready(function() {
         event.preventDefault();
         console.log('etf-sort-option clicked');
         var argType = 'sort';
-        //var argValue = $(this).text().toLowerCase().replace(/ /g, '%20');
-        var argValue = $(this).find(':selected').val().toLowerCase().replace(/ /g, '%20');
-        //argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
+        var argValue = $('.etf-sort-option option:selected').text().toLowerCase().replace(/ /g, '%20');
+        console.log(argValue);
+        argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
     })
 
     // Number of items on a page.
@@ -25,9 +25,9 @@ $(document).ready(function() {
         event.preventDefault();
         console.log('etf-items-option clicked');
         var argType = 'items';
-        //var argValue = $(this).text().toLowerCase();
-        var argValue = '' + $(this).find(':selected').val().toLowerCase();
-        //argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
+        var argValue = $('.etf-items-option option:selected').text().toLowerCase();
+        console.log(argValue);
+        argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
     })
 
     // Page.
@@ -171,4 +171,15 @@ function updatePageNumber(argDict) {
         $(li_pages.get(1)).addClass('etf-current-page');
 
     }
+}
+
+function setSortOption(selectedSort) {
+    console.log(selectedSort);
+    $('.etf-sort-option option:contains("' + selectedSort + '")').prop('selected', true);
+    console.log($('.etf-sort-option option:eq(1)').selected);
+}
+
+function setItemOption(selectedItemsPerPage) {
+    $('.etf-items-option option:contains("' + selectedItemsPerPage + '")').prop('selected', true);
+    console.log($('.etf-items-option option:eq(1)').selected);
 }
