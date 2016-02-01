@@ -10,6 +10,25 @@ $(document).ready(function() {
 
     updatePageNumber(argDict);
 
+    // Sorts.
+    $('.etf-sort-option').on('change', function(event) {
+        event.preventDefault();
+        console.log('etf-sort-option clicked');
+        var argType = 'sort';
+        //var argValue = $(this).text().toLowerCase().replace(/ /g, '%20');
+        var argValue = $(this).find(':selected').val().toLowerCase().replace(/ /g, '%20');
+        //argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
+    })
+
+    // Number of items on a page.
+    $('.etf-items-option').on('change', function(event) {
+        event.preventDefault();
+        console.log('etf-items-option clicked');
+        var argType = 'items';
+        //var argValue = $(this).text().toLowerCase();
+        var argValue = '' + $(this).find(':selected').val().toLowerCase();
+        //argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
+    })
 
     // Page.
     $('.etf-page-option').on('click', function(event) {

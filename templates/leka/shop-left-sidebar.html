@@ -154,13 +154,13 @@
                         <div class="sortBar-left">
                             <form class="ordering">
                                 SORT BY: &nbsp;
-                                <select>
+                                <select class="etf-sort-option">>
                                     {% for sort in shop_sorts %}
                                         <option value="">{{sort | title}}</option>
                                     {% endfor %}
                                 </select>
                                 ITEMS PER PAGE: &nbsp;
-                                <select>
+                                <select class="etf-items-option">
                                     {% for i in items_per_page %}
                                         <option value="">{{i | title}}</option>
                                     {% endfor %}
