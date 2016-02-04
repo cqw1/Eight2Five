@@ -911,8 +911,8 @@ class ShopHandler(BaseHandler):
                 'showing_total': num_results
         }
 
-        #self.render_template('templates/shop.html', template_vars)
-        self.render_template('templates/leka/shop-left-sidebar.html', template_vars)
+        self.render_template('templates/shop.html', template_vars)
+        #self.render_template('templates/leka/shop-left-sidebar.html', template_vars)
 
     def applySort(self, query, argDict):
         if 'sort' in argDict:
