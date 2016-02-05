@@ -629,7 +629,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         businessformal_one = LookOccasion(
                 style='business formal',
-                look_img_src='/images/businessformal.png',
+                look_img_src='/images/bizformaltest.png',
                 look_descriptions=['White jeans and top', 'Beige blazer'],
                 occasion_img_src='/images/businessformal.png',
                 occasion_descriptions=['Casual Fridays'],
