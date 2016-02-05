@@ -35,7 +35,7 @@ jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.di
 ARTICLES = [
     'tops', 
     'bottoms', 
-    'dresses', 
+    'dress', 
     'suits', 
     'outerwear'
 ]
