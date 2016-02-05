@@ -631,7 +631,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 style='business formal',
                 look_img_src='/images/bizformaltest.png',
                 look_descriptions=['White jeans and top', 'Beige blazer'],
-                occasion_img_src='/images/businessformal.png',
+                occasion_img_src='/images/bizformaltest.png',
                 occasion_descriptions=['Casual Fridays'],
                 order_id=0,
                 shop_page='TODO')
@@ -639,9 +639,9 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         businessformal_two= LookOccasion(
                 style='business formal',
-                look_img_src='/images/businessformal.png',
+                look_img_src='/images/bizformaltest.png',
                 look_descriptions=['Something', 'Or another'],
-                occasion_img_src='/images/businessformal.png',
+                occasion_img_src='/images/bizformaltest.png',
                 occasion_descriptions=['The Happy Hour'],
                 order_id=1,
                 shop_page='TODO')
@@ -672,7 +672,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         consulting_bf = IndustryStyle(
                 industry='consulting',
                 style='business formal',
-                img_src='/images/businessformal.png',
+                img_src='/images/bizformaltest.png',
                 relevance='high',
                 activities=['Client site activities'],
                 attire=['Dark suit', 'Top', 'etc.'],
@@ -702,7 +702,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         industry_bf = IndustryStyle(
                 industry='industry 2',
                 style='business formal',
-                img_src='/images/businessformal.png',
+                img_src='/images/bizformaltest.png',
                 relevance='medium',
                 activities=['Client site activities'],
                 attire=['Dark suit', 'Top', 'etc.'],
