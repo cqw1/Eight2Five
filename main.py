@@ -1076,7 +1076,7 @@ class StyleGuidesHandler(BaseHandler):
         style_data = [
                 {'name': 'smart casual', 'img_src': '/images/smartcasual.png'},
                 {'name': 'business casual', 'img_src': '/images/businesscasual.png'},
-                {'name': 'business formal', 'img_src': '/images/businessformal.png'}]
+                {'name': 'business formal', 'img_src': '/images/bizformaltest.png'}]
 
 
         template_vars = {
