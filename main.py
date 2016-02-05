@@ -35,7 +35,7 @@ jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.di
 ARTICLES = [
     'tops', 
     'bottoms', 
-    'dress', 
+    'dresses', 
     'suits', 
     'outerwear'
 ]
@@ -716,7 +716,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=0,
                 name="denim shirtdress",
                 brand="Ann Taylor",
-                article='dress',
+                article='dresses',
                 price=139,
                 colors=['navy'],
                 sizes=['xs', 's', 'm', 'l', 'xl'],
@@ -733,7 +733,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=1,
                 name="tropical whool sheath dress",
                 brand="Ann Taylor",
-                article='dress',
+                article='dresses',
                 price=169,
                 colors=['navy', 'black'],
                 sizes=['xs', 's', 'm', 'l', 'xl'],
@@ -750,7 +750,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=2,
                 name="sleeveless shirtdress",
                 brand="Ann Taylor",
-                article='dress',
+                article='dresses',
                 price=129,
                 colors=['navy', 'red'],
                 sizes=['xs', 's', 'm', 'l', 'xl'],
