@@ -723,7 +723,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 industries=['consulting'],
                 styles=['smart casual'],
                 description='Demin Shirtdress',
-                img_src='/images/charmanderllama.png',
+                img_src='/images/items/AT01.jpg',
                 external_src='TODO',
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 7))
@@ -740,7 +740,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 industries=['consulting'],
                 styles=['business formal', 'business casual'],
                 description='tropical whool sheath dress',
-                img_src='/images/businessformal.png',
+                img_src='/images/items/AT02.jpg',
                 external_src='TODO',
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 7))
@@ -757,14 +757,114 @@ class DatastoreHandler(webapp2.RequestHandler):
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
                 description='Classy shirtdress',
-                img_src='/images/charmanderllama.png',
+                img_src='/images/items/AT04.jpg',
                 external_src='TODO',
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         three.put()
-
-        for i in range(40):
-            four = Item(
+      four = Item(
+                sku_id=3,
+                name="stripe double v sheath dress",
+                brand="Ann Taylor",
+                article='dresses',
+                price=129,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Classy v-neck dress',
+                img_src='/images/items/AT03.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        four.put()
+        
+        five = Item(
+                sku_id=3,
+                name="wrap flare dress",
+                brand="Ann Taylor",
+                article='dresses',
+                price=129,
+                colors=['navy'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Classy wrap dress',
+                img_src='/images/items/AT05.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        five.put()
+     
+       six = Item(
+                sku_id=3,
+                name="mesh stitch sweter dress",
+                brand="Ann Taylor",
+                article='dresses',
+                price=139,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Classy sweater dress',
+                img_src='/images/items/AT06.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        six.put()   
+       seven = Item(
+                sku_id=3,
+                name="cotton sateen sheath dress",
+                brand="Ann Taylor",
+                article='dresses',
+                price=129,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Classy sweater dress',
+                img_src='/images/items/AT07.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        seven.put()   
+        
+        eight = Item(
+                sku_id=3,
+                name="structured peplum short sleeve top",
+                brand="Ann Taylor",
+                article='tops',
+                price=59.50,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Peplum top',
+                img_src='/images/items/AT09.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        eight.put()   
+        
+        night = Item(
+                sku_id=3,
+                name="shadow floral pencil skirt",
+                brand="Ann Taylor",
+                article='bottoms',
+                price=89,
+                colors=['navy'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Floral pencil skirt',
+                img_src='/images/items/AT10.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        night.put() 
+        
+        for i in range(30):
+            ten = Item(
                     sku_id=0,
                     name="c",
                     brand="JCrew",
@@ -779,7 +879,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                     external_src='TODO',
                     smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                     date=datetime.date(2015, 1, 9))
-            four.put()
+            ten.put()
         ############################################################### END DATASTORE ####
 
 
