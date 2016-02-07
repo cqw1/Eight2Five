@@ -79,8 +79,7 @@ COLORS = [
 
 # Alpha sorted.
 INDUSTRIES = [
-    'consulting', 
-    'industry 2'
+    'consulting'
 ]
 
 SHOP_SORTS = [
@@ -369,7 +368,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         posting_one_marissa_mayer = Posting(
             img_src='/images/who_wore_what/marissa_mayer/Marissa_1.jpg',
-            description='Insert description.',
+            description='Marissa wearing a knee-length navy dress and blue short cardigan.',
             date=datetime.date(2016, 1, 18))
         posting_one_marissa_mayer.similar_style_keys.append(one_a_key_marissa_mayer)
         posting_one_marissa_mayer.similar_style_keys.append(one_b_key_marissa_mayer)
@@ -392,7 +391,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         posting_two_marissa_mayer = Posting(
             img_src='/images/who_wore_what/marissa_mayer/Marissa_2.jpg',
-            description='Insert description.',
+            description='Marissa wearing a short-sleeve, black dress.',
             date=datetime.date(2016, 1, 18))
         posting_two_marissa_mayer.similar_style_keys.append(two_a_key_marissa_mayer)
         posting_two_marissa_mayer.similar_style_keys.append(two_b_key_marissa_mayer)
@@ -407,7 +406,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         posting_three_marissa_mayer = Posting(
             img_src='/images/who_wore_what/marissa_mayer/Marissa_3.jpg',
-            description='Insert description.',
+            description='Marissa sporting a black short cardigan over a green dress.',
             date=datetime.date(2016, 1, 18))
         posting_three_marissa_mayer.similar_style_keys.append(three_a_key_marissa_mayer)
 
@@ -429,7 +428,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         posting_one_indra_nooyi = Posting(
             img_src='/images/who_wore_what/indra_nooyi/Indra_1.jpg',
-            description='Insert description.',
+            description='Indra posing in a sky blue coat.',
             date=datetime.date(2016, 1, 18))
         posting_one_indra_nooyi.similar_style_keys.append(one_a_key_indra_nooyi)
 
@@ -443,7 +442,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         posting_two_indra_nooyi = Posting(
             img_src='/images/who_wore_what/indra_nooyi/Indra_2.jpg',
-            description='Insert description.',
+            description='Indra outside wearing a grapefruit-red jacket.',
             date=datetime.date(2016, 1, 18))
         posting_two_indra_nooyi.similar_style_keys.append(two_a_key_indra_nooyi)
 
@@ -600,9 +599,9 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         smartcasual_two = LookOccasion(
                 style='smart casual',
-                look_img_src='/images/Casual Friday.jpg',
+                look_img_src='/images/casual_friday.jpg',
                 look_descriptions=['Dark wash jeans with striped tank top and black cotton blazer'],
-                occasion_img_src='/images/Casual Friday.jpg',
+                occasion_img_src='/images/casual_friday.jpg',
                 occasion_descriptions=['Go from casual Friday in the office to after work drinks.  This outfit does it all!'],
                 order_id=1,
                 shop_page='TODO')
@@ -620,9 +619,9 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         businesscasual_two = LookOccasion(
                 style='business casual',
-                look_img_src='/images/Biz Casual skirt.jpg',
+                look_img_src='/images/biz_casual_skirt.jpg',
                 look_descriptions=['Beige pencil skirt with navy long sleeve button down shirt'],
-                occasion_img_src='/images/Biz Casual skirt.jpg',
+                occasion_img_src='/images/biz_casual_skirt.jpg',
                 occasion_descriptions=['Great outfit for the office, presenting to the team, and going out for lunch meetings.'],
                 order_id=1,
                 shop_page='TODO')
@@ -640,10 +639,10 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         businessformal_two= LookOccasion(
                 style='business formal',
-                look_img_src='/images/Biz formal skirtsuit.jpg',
+                look_img_src='/images/biz_formal_skirtsuit.jpg',
                 look_descriptions=['Grey suit jacket with matching skirt and a navy top'],
-                occasion_img_src='/images/Biz formal skirtsuit.jpg',
-                occasion_descriptions=['This skirt suit is great for big meetings, first day on a important job, or sales presentations.],
+                occasion_img_src='/images/biz_formal_skirtsuit.jpg',
+                occasion_descriptions=['This skirt suit is great for big meetings, first day on a important job, or sales presentations.'],
                 order_id=1,
                 shop_page='TODO')
         businessformal_two.put()
@@ -680,6 +679,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 shop_page='TODO')
         consulting_bf.put()
 
+        """
         industry_sc = IndustryStyle(
                 industry='industry 2',
                 style='smart casual',
@@ -709,6 +709,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 attire=['Dark suit', 'Top', 'etc.'],
                 shop_page='TODO')
         industry_bf.put()
+        """
 
 
         #================================================================== ITEM === 
@@ -762,7 +763,8 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         three.put()
-      four = Item(
+
+        four = Item(
                 sku_id=3,
                 name="stripe double v sheath dress",
                 brand="Ann Taylor",
@@ -780,7 +782,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         four.put()
         
         five = Item(
-                sku_id=3,
+                sku_id=4,
                 name="wrap flare dress",
                 brand="Ann Taylor",
                 article='dresses',
@@ -796,8 +798,8 @@ class DatastoreHandler(webapp2.RequestHandler):
                 date=datetime.date(2016, 1, 10))
         five.put()
      
-       six = Item(
-                sku_id=3,
+        six = Item(
+                sku_id=5,
                 name="mesh stitch sweter dress",
                 brand="Ann Taylor",
                 article='dresses',
@@ -812,8 +814,9 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         six.put()   
-       seven = Item(
-                sku_id=3,
+
+        seven = Item(
+                sku_id=6,
                 name="cotton sateen sheath dress",
                 brand="Ann Taylor",
                 article='dresses',
@@ -830,7 +833,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         seven.put()   
         
         eight = Item(
-                sku_id=3,
+                sku_id=7,
                 name="structured peplum short sleeve top",
                 brand="Ann Taylor",
                 article='tops',
@@ -846,8 +849,8 @@ class DatastoreHandler(webapp2.RequestHandler):
                 date=datetime.date(2016, 1, 10))
         eight.put()   
         
-        night = Item(
-                sku_id=3,
+        nine = Item(
+                sku_id=8,
                 name="shadow floral pencil skirt",
                 brand="Ann Taylor",
                 article='bottoms',
@@ -861,7 +864,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 external_src='TODO',
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
-        night.put() 
+        nine.put() 
         
         for i in range(30):
             ten = Item(
