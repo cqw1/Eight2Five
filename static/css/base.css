@@ -33,6 +33,10 @@ body > .container {
   margin-bottom: 10px;
 }
 
+.ef-normal-pointer {
+    cursor: default;
+}
+
 /***********************************/
 /****  split-button in navbar ******/
 .split-button:hover {
