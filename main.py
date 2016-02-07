@@ -41,9 +41,10 @@ ARTICLES = [
 ]
 
 BRANDS = [
-    'JCrew', 
+    'J. Crew', 
     'Ann Taylor',
-    'Zara'
+    'Zara',
+    'Banana Republic'
 ]
 
 SIZES = [
@@ -290,71 +291,13 @@ class Item(ndb.Model):
 class DatastoreHandler(webapp2.RequestHandler):
     def get(self):
         ############################################################# BEGIN DATASTORE ####
-        logging.info('hello from datastore')
-
-        
-        #===================================================================== PERSON === 
-        """
-        monocle= SimilarStyle(
-                img_src='/images/monocleandmustache.png', 
-                item_page='TODO', 
-                description='Comes with a free mustache.',
-                brand='JCrew',
-                price=19.99)
-        monocle_key = monocle.put()
-        
-        tophat = SimilarStyle(
-                img_src='/images/tophat.png', 
-                item_page='TODO', 
-                description='Top hat from club penguin.',
-                brand='Ann Taylor',
-                price=29.99)
-        tophat_key = tophat.put()
-
-        posting_one = Posting(
-                img_src='/images/gentlemoncharmander.png', 
-                description='Spotted in downtown aiwefj awoeifj awefjoifj afio jefoief ojifaoi jafljeafkj fdsl jawefoi fjifdsoi jweafeoi jwefi f ej aefoij awefij Cerulean City with a new top hat and monocle.', 
-                date=datetime.date(2016, 1, 4))
-
-        posting_one.similar_style_keys.append(tophat_key)
-        posting_one.similar_style_keys.append(monocle_key)
-
-        onesie = SimilarStyle(
-                img_src='/images/charmanderonesie.jpg', 
-                item_page='TODO', 
-                description='Onesies!',
-                brand='JCrew',
-                price=19.99)
-        onesie_key = onesie.put()
-
-        familyofonesies= SimilarStyle(
-                img_src='/images/familyofcharmanders.jpg', 
-                item_page='TODO', 
-                description='Because why not.',
-                brand='Ann Taylor',
-                price=29.99)
-        familyofonesies_key = familyofonesies.put()
-
-        posting_two = Posting(
-                img_src='/images/charmanderascharizard.jpg', 
-                description='Dressed as Charizard.', 
-                date=datetime.date(2015, 9, 16))
-
-        posting_two.similar_style_keys.append(onesie_key)
-        posting_two.similar_style_keys.append(familyofonesies_key)
-
-        charmander = Person(
-                name='Charmander', 
-                bio="Charmander is a bipedal, reptilian Pokemon with an orange body, though its underside and soles are cream colored. It has two small fangs visible in its upper and lower jaws and blue eyes. Its arms and legs are short with four fingers and three clawed toes. A fire burns at the tip of this Pokemon's slender tail, and has blazed there since Charmander's birth. The flame can be used as an indication of Charmander's health and mood, burning brightly when the Pokemon is strong, weakly when it is exhausted, wavering when it is happy, and blazing when it is enraged. It is said that Charmander dies if its flame goes out. Charmander can be found in hot, mountainous areas. However, it is found far more often in the ownership of Trainers. Charmander exhibits pack behavior, calling others of its species if it finds food.",
-                postings=[posting_one, posting_two])
-        charmander.put()
-        """
+        logging.info('hello from the datastore')
 
         one_a_marissa_mayer = SimilarStyle(
                 img_src='/images/who_wore_what/marissa_mayer/Marissa_1_a.jpg', 
                 item_page='https://www.jcrew.com/womens_category/dresses/weartowork/PRDOVR~E4684/E4684.jsp?color_name=black', 
                 description='Insert description.',
-                brand='JCrew',
+                brand='J. Crew',
                 price=228)
         one_a_key_marissa_mayer = one_a_marissa_mayer.put()
 
@@ -422,7 +365,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 img_src='/images/who_wore_what/indra_nooyi/Indra_1_a.jpg', 
                 item_page='https://www.jcrew.com/womens_category/outerwear_sm/wool/PRDOVR~C8552/C8552.jsp', 
                 description='Insert description.',
-                brand='JCrew',
+                brand='J. Crew',
                 price=350)
         one_a_key_indra_nooyi = one_a_indra_nooyi.put()
 
@@ -436,7 +379,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 img_src='/images/who_wore_what/indra_nooyi/Indra_2_a.jpg', 
                 item_page='https://www.jcrew.com/womens_category/blazers/regent/PRDOVR~B0323/B0323.jsp?color_name=BOHEMIAN%20RED&styles=B0323-RD6013', 
                 description='Insert description.',
-                brand='JCrew',
+                brand='J. Crew',
                 price=198)
         two_a_key_indra_nooyi = two_a_indra_nooyi.put()
 
@@ -458,7 +401,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1_a.jpg', 
                 item_page='https://www.jcrew.com/womens_category/sweaters/cardigans/PRDOVR~E2078/E2078.jsp', 
                 description='Insert description.',
-                brand='JCrew',
+                brand='J. Crew',
                 price=198)
         one_a_key_sheryl_sandberg = one_a_sheryl_sandberg.put()
 
@@ -489,62 +432,6 @@ class DatastoreHandler(webapp2.RequestHandler):
         sheryl_sandberg_person.put()
 
         #================================================================ COVERFLOW === 
-        """
-
-        bulbasaur = Coverflow(
-                name='Bulbasaur', 
-                img_src='/images/bulbasaurllama.png', 
-                order_id=0)
-        bulbasaur.put()
-
-        ivysaur = Coverflow(
-                name='Ivysaur', 
-                img_src='/images/ivysaurllama.png',
-                order_id=1)
-        ivysaur.put()
-
-        venusaur = Coverflow(
-                name='Venasaur', 
-                img_src='/images/venusaurllama.png',
-                order_id=2)
-        venusaur.put()
-
-        charmander = Coverflow(
-                name='Charmander', 
-                img_src='/images/charmanderllama.png',
-                order_id=3)
-        charmander.put()
-
-        charmeleon = Coverflow(
-                name='Charmeleon', 
-                img_src='/images/charmeleonllama.png',
-                order_id=4)
-        charmeleon.put()
-
-        charizard = Coverflow(
-                name='Charizard', 
-                img_src='/images/charizardllama.png',
-                order_id=5)
-        charizard.put()
-
-        squirtle = Coverflow(
-                name='Squirtle', 
-                img_src='/images/squirtlellama.png',
-                order_id=6)
-        squirtle.put()
-
-        wartortle = Coverflow(
-                name='Wartortle', 
-                img_src='/images/wartortlellama.png',
-                order_id=7)
-        wartortle.put()
-
-        blastoise = Coverflow(
-                name='Blastoise', 
-                img_src='/images/blastoisellama.png',
-                order_id=8)
-        blastoise.put()
-        """
 
         marissa_mayer_coverflow = Coverflow(
             name='Marissa Mayer',
@@ -865,6 +752,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         nine.put() 
+
         ten = Item(
                 sku_id=9,
                 name="v-neck fit-and-flare dress",
@@ -881,6 +769,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         ten.put() 
+
         eleven = Item(
                 sku_id=10,
                 name="faux-leather fit-and-flare dress",
@@ -897,6 +786,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         eleven.put() 
+
         twelve = Item(
                 sku_id=11,
                 name="Print Jacquard Fit-and-Flare Dress",
@@ -913,6 +803,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         twelve.put() 
+
         thirteen = Item(
                 sku_id=12,
                 name="short-sleeve flounce dress",
@@ -929,6 +820,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         thirteen.put() 
+
         fourteen = Item(
                 sku_id=13,
                 name="foulard flounce dress",
@@ -945,6 +837,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         fourteen.put() 
+
         fifteen = Item(
                 sku_id=14,
                 name="v-neck lace dress",
@@ -978,7 +871,8 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         sixteen.put()
-          seventeen = Item(
+
+        seventeen = Item(
                 sku_id=16,
                 name="belted layer dress",
                 brand="Banana Republic",
@@ -994,6 +888,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         seventeen.put()
+
         eighteen = Item(
                 sku_id=17,
                 name="heritage floral silk ruffle dress",
@@ -1010,7 +905,8 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         eighteen.put()
-         nineteen = Item(
+
+        nineteen = Item(
                 sku_id=18,
                 name="br monogram flocked fit-and-flare dress",
                 brand="Banana Republic",
@@ -1026,6 +922,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         nineteen.put()
+
         twenty = Item(
                 sku_id=19,
                 name="floral drop-waist dress",
@@ -1077,7 +974,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 date=datetime.date(2016, 1, 10))
         twentytwo.put()
         
-         twentythree = Item(
+        twentythree = Item(
                 sku_id=22,
                 name="long-sleeve tweed dress with fringe",
                 brand="J. Crew",
@@ -1093,7 +990,8 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         twentythree.put()
-         twentyfour = Item(
+
+        twentyfour = Item(
                 sku_id=23,
                 name="9am dress in super 120s wool",
                 brand="J. Crew",
@@ -1109,6 +1007,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         twentyfour.put()
+
         twentyfive = Item(
                 sku_id=24,
                 name="sleeveless sheath dress with eyelet trim",
@@ -1125,7 +1024,8 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         twentyfive.put()
-         twentysix = Item(
+
+        twentysix = Item(
                 sku_id=25,
                 name="herringbone sheath dress",
                 brand="J. Crew",
@@ -1141,7 +1041,8 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         twentysix.put()
-          twentyseven = Item(
+
+        twentyseven = Item(
                 sku_id=26,
                 name="sheath dress with faux leather",
                 brand="J. Crew",
@@ -1157,7 +1058,8 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         twentyseven.put()
-         twentyeight = Item(
+
+        twentyeight = Item(
                 sku_id=27,
                 name="sheath dress with faux leather white",
                 brand="J. Crew",
@@ -1173,6 +1075,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         twentyeight.put()
+
         twentynine = Item(
                 sku_id=28,
                 name="dolman dress in double-serge wool",
@@ -1206,6 +1109,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         thirty.put()
+
         thirtyone = Item(
                 sku_id=30,
                 name="cap-sleeve shirtdress in super 120s wool",
@@ -1222,6 +1126,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         thirtyone.put()
+
         thirtytwo = Item(
                 sku_id=31,
                 name="double-faced wool crepe dress",
@@ -1238,23 +1143,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         thirtytwo.put()
-        for i in range(2):
-            thirtythree = Item(
-                    sku_id=0,
-                    name="z",
-                    brand="JCrew",
-                    article='suits',
-                    price=45.99,
-                    colors=['black', 'white', 'grey'],
-                    sizes=['xs', 's', 'm', 'l', 'xl'],
-                    industries=['consulting'],
-                    styles=['smart casual', 'business casual'],
-                    description='Something I made up.',
-                    img_src='/images/charmanderllama.png',
-                    external_src='TODO',
-                    smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
-                    date=datetime.date(2015, 1, 9))
-            thirtythree.put()
+
         ############################################################### END DATASTORE ####
 
 
