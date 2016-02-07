@@ -740,7 +740,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 industries=['consulting'],
                 styles=['business formal', 'business casual'],
                 description='tropical whool sheath dress',
-                img_src='/images/01Businessformal.png',
+                img_src='/images/businessformal.png',
                 external_src='TODO',
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 7))
