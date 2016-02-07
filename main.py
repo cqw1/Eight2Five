@@ -67,7 +67,7 @@ COLORS = [
     'blue', 
     'navy',
     'brown', 
-    'gray', 
+    'grey', 
     'green', 
     'orange', 
     'pink', 
@@ -1238,7 +1238,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         thirtytwo.put()
-        for i in range(1):
+        for i in range(2):
             thirtythree = Item(
                     sku_id=0,
                     name="Z",
