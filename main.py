@@ -630,9 +630,9 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         businessformal_one = LookOccasion(
                 style='business formal',
-                look_img_src='/images/01Businessformal.png',
+                look_img_src='/images/businessformal.png',
                 look_descriptions=['White jeans and top', 'Beige blazer'],
-                occasion_img_src='/images/01Businessformal.png',
+                occasion_img_src='/images/businessformal.png',
                 occasion_descriptions=['Casual Fridays'],
                 order_id=0,
                 shop_page='TODO')
@@ -640,9 +640,9 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         businessformal_two= LookOccasion(
                 style='business formal',
-                look_img_src='/images/01Businessformal.png',
+                look_img_src='/images/businessformal.png',
                 look_descriptions=['Something', 'Or another'],
-                occasion_img_src='/images/01Businessformal.png',
+                occasion_img_src='/images/businessformal.png',
                 occasion_descriptions=['The Happy Hour'],
                 order_id=1,
                 shop_page='TODO')
@@ -673,7 +673,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         consulting_bf = IndustryStyle(
                 industry='consulting',
                 style='business formal',
-                img_src='/images/01Businessformal.png',
+                img_src='/images/businessformal.png',
                 relevance='high',
                 activities=['Client site activities'],
                 attire=['Dark suit', 'Top', 'etc.'],
@@ -703,7 +703,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         industry_bf = IndustryStyle(
                 industry='industry 2',
                 style='business formal',
-                img_src='/images/01Businessformal.png',
+                img_src='/images/businessformal.png',
                 relevance='medium',
                 activities=['Client site activities'],
                 attire=['Dark suit', 'Top', 'etc.'],
@@ -1077,7 +1077,7 @@ class StyleGuidesHandler(BaseHandler):
         style_data = [
                 {'name': 'smart casual', 'img_src': '/images/smartcasual.png'},
                 {'name': 'business casual', 'img_src': '/images/businesscasual.png'},
-                {'name': 'business formal', 'img_src': '/images/01Businessformal.png'}]
+                {'name': 'business formal', 'img_src': '/images/businessformal.png'}]
 
 
         template_vars = {
