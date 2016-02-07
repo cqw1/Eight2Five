@@ -591,19 +591,19 @@ class DatastoreHandler(webapp2.RequestHandler):
         smartcasual_one = LookOccasion(
                 style='smart casual',
                 look_img_src='/images/smartcasual.png',
-                look_descriptions=['White jeans and top', 'Beige blazer'],
+                look_descriptions=['White and blue stripe fit and flare dress'],
                 occasion_img_src='/images/smartcasual.png',
-                occasion_descriptions=['Casual Fridays'],
+                occasion_descriptions=['This dress is perfect for casual Fridays, a summer happy hour, or an outdoor work BBQ!'],
                 order_id=0,
                 shop_page='TODO')
         smartcasual_one.put()
 
         smartcasual_two = LookOccasion(
                 style='smart casual',
-                look_img_src='/images/smartcasual.png',
-                look_descriptions=['Something', 'Or another'],
-                occasion_img_src='/images/smartcasual.png',
-                occasion_descriptions=['The Happy Hour'],
+                look_img_src='/images/Casual Friday.jpg',
+                look_descriptions=['Dark wash jeans with striped tank top and black cotton blazer'],
+                occasion_img_src='/images/Casual Friday.jpg',
+                occasion_descriptions=['Go from casual Friday in the office to after work drinks.  This outfit does it all!'],
                 order_id=1,
                 shop_page='TODO')
         smartcasual_two.put()
@@ -611,19 +611,19 @@ class DatastoreHandler(webapp2.RequestHandler):
         businesscasual_one = LookOccasion(
                 style='business casual',
                 look_img_src='/images/businesscasual.png',
-                look_descriptions=['White jeans and top', 'Beige blazer'],
+                look_descriptions=['Tan slacks with silk white top and a decorative neck tie'],
                 occasion_img_src='/images/businesscasual.png',
-                occasion_descriptions=['Casual Fridays'],
+                occasion_descriptions=['Wear this outfit for everyday meetings or traveling to and from client site.'],
                 order_id=0,
                 shop_page='TODO')
         businesscasual_one.put()
 
         businesscasual_two = LookOccasion(
                 style='business casual',
-                look_img_src='/images/businesscasual.png',
-                look_descriptions=['Something', 'Or another'],
-                occasion_img_src='/images/businesscasual.png',
-                occasion_descriptions=['The Happy Hour'],
+                look_img_src='/images/Biz Casual skirt.jpg',
+                look_descriptions=['Beige pencil skirt with navy long sleeve button down shirt'],
+                occasion_img_src='/images/Biz Casual skirt.jpg',
+                occasion_descriptions=['Great outfit for the office, presenting to the team, and going out for lunch meetings.'],
                 order_id=1,
                 shop_page='TODO')
         businesscasual_two.put()
@@ -631,19 +631,19 @@ class DatastoreHandler(webapp2.RequestHandler):
         businessformal_one = LookOccasion(
                 style='business formal',
                 look_img_src='/images/businessformal.png',
-                look_descriptions=['White jeans and top', 'Beige blazer'],
+                look_descriptions=['Black suit jacket with matching pant and a white silk top'],
                 occasion_img_src='/images/businessformal.png',
-                occasion_descriptions=['Casual Fridays'],
+                occasion_descriptions=['Wear this suit for big presentations, executive meetings, or any time you need to make a great impression!'],
                 order_id=0,
                 shop_page='TODO')
         businessformal_one.put()
 
         businessformal_two= LookOccasion(
                 style='business formal',
-                look_img_src='/images/businessformal.png',
-                look_descriptions=['Something', 'Or another'],
-                occasion_img_src='/images/businessformal.png',
-                occasion_descriptions=['The Happy Hour'],
+                look_img_src='/images/Biz formal skirtsuit.jpg',
+                look_descriptions=['Grey suit jacket with matching skirt and a navy top'],
+                occasion_img_src='/images/Biz formal skirtsuit.jpg',
+                occasion_descriptions=['This skirt suit is great for big meetings, first day on a important job, or sales presentations.],
                 order_id=1,
                 shop_page='TODO')
         businessformal_two.put()
@@ -740,7 +740,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 industries=['consulting'],
                 styles=['business formal', 'business casual'],
                 description='tropical whool sheath dress',
-                img_src='/images/01Businessformal.png',
+                img_src='/images/businessformal.png',
                 external_src='TODO',
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 7))
