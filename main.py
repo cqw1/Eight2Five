@@ -1012,7 +1012,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         eighteen.put()
          nineteen = Item(
                 sku_id=18,
-                name="BR Monogram Flocked Fit-and-Flare Dress",
+                name="br monogram flocked fit-and-flare dress",
                 brand="Banana Republic",
                 article='dresses',
                 price=178,
@@ -1079,7 +1079,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         
          twentythree = Item(
                 sku_id=22,
-                name="Long-sleeve tweed dress with fringe",
+                name="long-sleeve tweed dress with fringe",
                 brand="J. Crew",
                 article='dresses',
                 price=178,
@@ -1095,7 +1095,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         twentythree.put()
          twentyfour = Item(
                 sku_id=23,
-                name="9am dress in Super 120s wool",
+                name="9am dress in super 120s wool",
                 brand="J. Crew",
                 article='dresses',
                 price=228,
@@ -1111,7 +1111,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         twentyfour.put()
         twentyfive = Item(
                 sku_id=24,
-                name="Sleeveless sheath dress with eyelet trim",
+                name="sleeveless sheath dress with eyelet trim",
                 brand="J. Crew",
                 article='dresses',
                 price=198,
@@ -1127,7 +1127,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         twentyfive.put()
          twentysix = Item(
                 sku_id=25,
-                name="Herringbone sheath dress",
+                name="herringbone sheath dress",
                 brand="J. Crew",
                 article='dresses',
                 price=178,
@@ -1143,7 +1143,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         twentysix.put()
           twentyseven = Item(
                 sku_id=26,
-                name="Sheath dress with faux leather",
+                name="sheath dress with faux leather",
                 brand="J. Crew",
                 article='dresses',
                 price=168,
@@ -1159,7 +1159,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         twentyseven.put()
          twentyeight = Item(
                 sku_id=27,
-                name="Sheath dress with faux leather",
+                name="sheath dress with faux leather white",
                 brand="J. Crew",
                 article='dresses',
                 price=168,
@@ -1175,7 +1175,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         twentyeight.put()
         twentynine = Item(
                 sku_id=28,
-                name="Dolman dress in double-serge wool",
+                name="dolman dress in double-serge wool",
                 brand="J. Crew",
                 article='dresses',
                 price=99.99,
@@ -1192,7 +1192,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         
         thirty = Item(
                 sku_id=29,
-                name="Sheath dress in Italian stretch wool",
+                name="sheath dress in italian stretch wool",
                 brand="J. Crew",
                 article='dresses',
                 price=188,
@@ -1208,7 +1208,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         thirty.put()
         thirtyone = Item(
                 sku_id=30,
-                name="Cap-sleeve shirtdress in Super 120s wool",
+                name="cap-sleeve shirtdress in super 120s wool",
                 brand="J. Crew",
                 article='dresses',
                 price=228,
@@ -1224,7 +1224,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         thirtyone.put()
         thirtytwo = Item(
                 sku_id=31,
-                name="Double-faced wool crepe dress",
+                name="double-faced wool crepe dress",
                 brand="J. Crew",
                 article='dresses',
                 price=228,
@@ -1241,7 +1241,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         for i in range(2):
             thirtythree = Item(
                     sku_id=0,
-                    name="Z",
+                    name="z",
                     brand="JCrew",
                     article='suits',
                     price=45.99,
