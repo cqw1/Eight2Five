@@ -1245,7 +1245,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                     brand="JCrew",
                     article='suits',
                     price=45.99,
-                    colors=['black', 'white', 'gray'],
+                    colors=['black', 'white', 'grey'],
                     sizes=['xs', 's', 'm', 'l', 'xl'],
                     industries=['consulting'],
                     styles=['smart casual', 'business casual'],
