@@ -1310,8 +1310,13 @@ class ShopHandler(BaseHandler):
         for f in filters:
             if f['name'] in argDict:
                 fValues = argDict[f['name']]
+
+                query = query.filter(getattr(Item, f['name']).IN(fValues))
+
+                """
                 for i in fValues:
                     query = query.filter(getattr(Item, f['name']) == i)
+                """
 
         return query
 

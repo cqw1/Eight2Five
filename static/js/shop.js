@@ -150,7 +150,11 @@ function updateCheckboxes(argDict) {
             if (globalFilters.indexOf(filters[i].replace(/%20/g, ' ')) > -1) {
                 // global filters comes in with spaces, but ids replace the spaces with dashes.
                 // Checkbox arg and not a dropdown arg.
+                var id = '' + filters[i].replace(/%20/g, '-') + '_filter';
                 $('#' + filters[i].replace(/%20/g, '-') + '_filter').prop('checked', true);
+
+                // Sometimes the jquery selector doesn't find it? Specifically for J. Crew for some reason.
+                document.getElementById(id).checked = true;
             }
         }
     }
