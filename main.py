@@ -41,9 +41,10 @@ ARTICLES = [
 ]
 
 BRANDS = [
-    'JCrew', 
+    'J. Crew', 
     'Ann Taylor',
-    'Zara'
+    'Zara',
+    'Banana Republic'
 ]
 
 SIZES = [
@@ -67,7 +68,7 @@ COLORS = [
     'blue', 
     'navy',
     'brown', 
-    'gray', 
+    'grey', 
     'green', 
     'orange', 
     'pink', 
@@ -79,8 +80,7 @@ COLORS = [
 
 # Alpha sorted.
 INDUSTRIES = [
-    'consulting', 
-    'industry 2'
+    'consulting'
 ]
 
 SHOP_SORTS = [
@@ -291,71 +291,13 @@ class Item(ndb.Model):
 class DatastoreHandler(webapp2.RequestHandler):
     def get(self):
         ############################################################# BEGIN DATASTORE ####
-        logging.info('hello from datastore')
-
-        
-        #===================================================================== PERSON === 
-        """
-        monocle= SimilarStyle(
-                img_src='/images/monocleandmustache.png', 
-                item_page='TODO', 
-                description='Comes with a free mustache.',
-                brand='JCrew',
-                price=19.99)
-        monocle_key = monocle.put()
-        
-        tophat = SimilarStyle(
-                img_src='/images/tophat.png', 
-                item_page='TODO', 
-                description='Top hat from club penguin.',
-                brand='Ann Taylor',
-                price=29.99)
-        tophat_key = tophat.put()
-
-        posting_one = Posting(
-                img_src='/images/gentlemoncharmander.png', 
-                description='Spotted in downtown aiwefj awoeifj awefjoifj afio jefoief ojifaoi jafljeafkj fdsl jawefoi fjifdsoi jweafeoi jwefi f ej aefoij awefij Cerulean City with a new top hat and monocle.', 
-                date=datetime.date(2016, 1, 4))
-
-        posting_one.similar_style_keys.append(tophat_key)
-        posting_one.similar_style_keys.append(monocle_key)
-
-        onesie = SimilarStyle(
-                img_src='/images/charmanderonesie.jpg', 
-                item_page='TODO', 
-                description='Onesies!',
-                brand='JCrew',
-                price=19.99)
-        onesie_key = onesie.put()
-
-        familyofonesies= SimilarStyle(
-                img_src='/images/familyofcharmanders.jpg', 
-                item_page='TODO', 
-                description='Because why not.',
-                brand='Ann Taylor',
-                price=29.99)
-        familyofonesies_key = familyofonesies.put()
-
-        posting_two = Posting(
-                img_src='/images/charmanderascharizard.jpg', 
-                description='Dressed as Charizard.', 
-                date=datetime.date(2015, 9, 16))
-
-        posting_two.similar_style_keys.append(onesie_key)
-        posting_two.similar_style_keys.append(familyofonesies_key)
-
-        charmander = Person(
-                name='Charmander', 
-                bio="Charmander is a bipedal, reptilian Pokemon with an orange body, though its underside and soles are cream colored. It has two small fangs visible in its upper and lower jaws and blue eyes. Its arms and legs are short with four fingers and three clawed toes. A fire burns at the tip of this Pokemon's slender tail, and has blazed there since Charmander's birth. The flame can be used as an indication of Charmander's health and mood, burning brightly when the Pokemon is strong, weakly when it is exhausted, wavering when it is happy, and blazing when it is enraged. It is said that Charmander dies if its flame goes out. Charmander can be found in hot, mountainous areas. However, it is found far more often in the ownership of Trainers. Charmander exhibits pack behavior, calling others of its species if it finds food.",
-                postings=[posting_one, posting_two])
-        charmander.put()
-        """
+        logging.info('hello from the datastore')
 
         one_a_marissa_mayer = SimilarStyle(
                 img_src='/images/who_wore_what/marissa_mayer/Marissa_1_a.jpg', 
                 item_page='https://www.jcrew.com/womens_category/dresses/weartowork/PRDOVR~E4684/E4684.jsp?color_name=black', 
                 description='Insert description.',
-                brand='JCrew',
+                brand='J. Crew',
                 price=228)
         one_a_key_marissa_mayer = one_a_marissa_mayer.put()
 
@@ -369,7 +311,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         posting_one_marissa_mayer = Posting(
             img_src='/images/who_wore_what/marissa_mayer/Marissa_1.jpg',
-            description='Insert description.',
+            description='Marissa wearing a knee-length navy dress and blue short cardigan.',
             date=datetime.date(2016, 1, 18))
         posting_one_marissa_mayer.similar_style_keys.append(one_a_key_marissa_mayer)
         posting_one_marissa_mayer.similar_style_keys.append(one_b_key_marissa_mayer)
@@ -392,7 +334,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         posting_two_marissa_mayer = Posting(
             img_src='/images/who_wore_what/marissa_mayer/Marissa_2.jpg',
-            description='Insert description.',
+            description='Marissa wearing a short-sleeve, black dress.',
             date=datetime.date(2016, 1, 18))
         posting_two_marissa_mayer.similar_style_keys.append(two_a_key_marissa_mayer)
         posting_two_marissa_mayer.similar_style_keys.append(two_b_key_marissa_mayer)
@@ -407,7 +349,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         posting_three_marissa_mayer = Posting(
             img_src='/images/who_wore_what/marissa_mayer/Marissa_3.jpg',
-            description='Insert description.',
+            description='Marissa sporting a black short cardigan over a green dress.',
             date=datetime.date(2016, 1, 18))
         posting_three_marissa_mayer.similar_style_keys.append(three_a_key_marissa_mayer)
 
@@ -423,13 +365,13 @@ class DatastoreHandler(webapp2.RequestHandler):
                 img_src='/images/who_wore_what/indra_nooyi/Indra_1_a.jpg', 
                 item_page='https://www.jcrew.com/womens_category/outerwear_sm/wool/PRDOVR~C8552/C8552.jsp', 
                 description='Insert description.',
-                brand='JCrew',
+                brand='J. Crew',
                 price=350)
         one_a_key_indra_nooyi = one_a_indra_nooyi.put()
 
         posting_one_indra_nooyi = Posting(
             img_src='/images/who_wore_what/indra_nooyi/Indra_1.jpg',
-            description='Insert description.',
+            description='Indra posing in a sky blue coat.',
             date=datetime.date(2016, 1, 18))
         posting_one_indra_nooyi.similar_style_keys.append(one_a_key_indra_nooyi)
 
@@ -437,13 +379,13 @@ class DatastoreHandler(webapp2.RequestHandler):
                 img_src='/images/who_wore_what/indra_nooyi/Indra_2_a.jpg', 
                 item_page='https://www.jcrew.com/womens_category/blazers/regent/PRDOVR~B0323/B0323.jsp?color_name=BOHEMIAN%20RED&styles=B0323-RD6013', 
                 description='Insert description.',
-                brand='JCrew',
+                brand='J. Crew',
                 price=198)
         two_a_key_indra_nooyi = two_a_indra_nooyi.put()
 
         posting_two_indra_nooyi = Posting(
             img_src='/images/who_wore_what/indra_nooyi/Indra_2.jpg',
-            description='Insert description.',
+            description='Indra outside wearing a grapefruit-red jacket.',
             date=datetime.date(2016, 1, 18))
         posting_two_indra_nooyi.similar_style_keys.append(two_a_key_indra_nooyi)
 
@@ -459,7 +401,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1_a.jpg', 
                 item_page='https://www.jcrew.com/womens_category/sweaters/cardigans/PRDOVR~E2078/E2078.jsp', 
                 description='Insert description.',
-                brand='JCrew',
+                brand='J. Crew',
                 price=198)
         one_a_key_sheryl_sandberg = one_a_sheryl_sandberg.put()
 
@@ -490,62 +432,6 @@ class DatastoreHandler(webapp2.RequestHandler):
         sheryl_sandberg_person.put()
 
         #================================================================ COVERFLOW === 
-        """
-
-        bulbasaur = Coverflow(
-                name='Bulbasaur', 
-                img_src='/images/bulbasaurllama.png', 
-                order_id=0)
-        bulbasaur.put()
-
-        ivysaur = Coverflow(
-                name='Ivysaur', 
-                img_src='/images/ivysaurllama.png',
-                order_id=1)
-        ivysaur.put()
-
-        venusaur = Coverflow(
-                name='Venasaur', 
-                img_src='/images/venusaurllama.png',
-                order_id=2)
-        venusaur.put()
-
-        charmander = Coverflow(
-                name='Charmander', 
-                img_src='/images/charmanderllama.png',
-                order_id=3)
-        charmander.put()
-
-        charmeleon = Coverflow(
-                name='Charmeleon', 
-                img_src='/images/charmeleonllama.png',
-                order_id=4)
-        charmeleon.put()
-
-        charizard = Coverflow(
-                name='Charizard', 
-                img_src='/images/charizardllama.png',
-                order_id=5)
-        charizard.put()
-
-        squirtle = Coverflow(
-                name='Squirtle', 
-                img_src='/images/squirtlellama.png',
-                order_id=6)
-        squirtle.put()
-
-        wartortle = Coverflow(
-                name='Wartortle', 
-                img_src='/images/wartortlellama.png',
-                order_id=7)
-        wartortle.put()
-
-        blastoise = Coverflow(
-                name='Blastoise', 
-                img_src='/images/blastoisellama.png',
-                order_id=8)
-        blastoise.put()
-        """
 
         marissa_mayer_coverflow = Coverflow(
             name='Marissa Mayer',
@@ -591,19 +477,19 @@ class DatastoreHandler(webapp2.RequestHandler):
         smartcasual_one = LookOccasion(
                 style='smart casual',
                 look_img_src='/images/smartcasual.png',
-                look_descriptions=['White jeans and top', 'Beige blazer'],
+                look_descriptions=['White and blue stripe fit and flare dress'],
                 occasion_img_src='/images/smartcasual.png',
-                occasion_descriptions=['Casual Fridays'],
+                occasion_descriptions=['This dress is perfect for casual Fridays, a summer happy hour, or an outdoor work BBQ!'],
                 order_id=0,
                 shop_page='TODO')
         smartcasual_one.put()
 
         smartcasual_two = LookOccasion(
                 style='smart casual',
-                look_img_src='/images/smartcasual.png',
-                look_descriptions=['Something', 'Or another'],
-                occasion_img_src='/images/smartcasual.png',
-                occasion_descriptions=['The Happy Hour'],
+                look_img_src='/images/casual_friday.jpg',
+                look_descriptions=['Dark wash jeans with striped tank top and black cotton blazer'],
+                occasion_img_src='/images/casual_friday.jpg',
+                occasion_descriptions=['Go from casual Friday in the office to after work drinks.  This outfit does it all!'],
                 order_id=1,
                 shop_page='TODO')
         smartcasual_two.put()
@@ -611,39 +497,39 @@ class DatastoreHandler(webapp2.RequestHandler):
         businesscasual_one = LookOccasion(
                 style='business casual',
                 look_img_src='/images/businesscasual.png',
-                look_descriptions=['White jeans and top', 'Beige blazer'],
+                look_descriptions=['Tan slacks with silk white top and a decorative neck tie'],
                 occasion_img_src='/images/businesscasual.png',
-                occasion_descriptions=['Casual Fridays'],
+                occasion_descriptions=['Wear this outfit for everyday meetings or traveling to and from client site.'],
                 order_id=0,
                 shop_page='TODO')
         businesscasual_one.put()
 
         businesscasual_two = LookOccasion(
                 style='business casual',
-                look_img_src='/images/businesscasual.png',
-                look_descriptions=['Something', 'Or another'],
-                occasion_img_src='/images/businesscasual.png',
-                occasion_descriptions=['The Happy Hour'],
+                look_img_src='/images/biz_casual_skirt.jpg',
+                look_descriptions=['Beige pencil skirt with navy long sleeve button down shirt'],
+                occasion_img_src='/images/biz_casual_skirt.jpg',
+                occasion_descriptions=['Great outfit for the office, presenting to the team, and going out for lunch meetings.'],
                 order_id=1,
                 shop_page='TODO')
         businesscasual_two.put()
 
         businessformal_one = LookOccasion(
                 style='business formal',
-                look_img_src='/images/01Businessformal.png',
-                look_descriptions=['White jeans and top', 'Beige blazer'],
-                occasion_img_src='/images/01Businessformal.png',
-                occasion_descriptions=['Casual Fridays'],
+                look_img_src='/images/businessformal.png',
+                look_descriptions=['Black suit jacket with matching pant and a white silk top'],
+                occasion_img_src='/images/businessformal.png',
+                occasion_descriptions=['Wear this suit for big presentations, executive meetings, or any time you need to make a great impression!'],
                 order_id=0,
                 shop_page='TODO')
         businessformal_one.put()
 
         businessformal_two= LookOccasion(
                 style='business formal',
-                look_img_src='/images/01Businessformal.png',
-                look_descriptions=['Something', 'Or another'],
-                occasion_img_src='/images/01Businessformal.png',
-                occasion_descriptions=['The Happy Hour'],
+                look_img_src='/images/biz_formal_skirtsuit.jpg',
+                look_descriptions=['Grey suit jacket with matching skirt and a navy top'],
+                occasion_img_src='/images/biz_formal_skirtsuit.jpg',
+                occasion_descriptions=['This skirt suit is great for big meetings, first day on a important job, or sales presentations.'],
                 order_id=1,
                 shop_page='TODO')
         businessformal_two.put()
@@ -673,13 +559,14 @@ class DatastoreHandler(webapp2.RequestHandler):
         consulting_bf = IndustryStyle(
                 industry='consulting',
                 style='business formal',
-                img_src='/images/01Businessformal.png',
+                img_src='/images/businessformal.png',
                 relevance='high',
                 activities=['Client site activities'],
                 attire=['Dark suit', 'Top', 'etc.'],
                 shop_page='TODO')
         consulting_bf.put()
 
+        """
         industry_sc = IndustryStyle(
                 industry='industry 2',
                 style='smart casual',
@@ -703,12 +590,13 @@ class DatastoreHandler(webapp2.RequestHandler):
         industry_bf = IndustryStyle(
                 industry='industry 2',
                 style='business formal',
-                img_src='/images/01Businessformal.png',
+                img_src='/images/businessformal.png',
                 relevance='medium',
                 activities=['Client site activities'],
                 attire=['Dark suit', 'Top', 'etc.'],
                 shop_page='TODO')
         industry_bf.put()
+        """
 
 
         #================================================================== ITEM === 
@@ -723,7 +611,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 industries=['consulting'],
                 styles=['smart casual'],
                 description='Demin Shirtdress',
-                img_src='/images/charmanderllama.png',
+                img_src='/images/items/AT01.jpg',
                 external_src='TODO',
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 7))
@@ -740,7 +628,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 industries=['consulting'],
                 styles=['business formal', 'business casual'],
                 description='tropical whool sheath dress',
-                img_src='/images/01Businessformal.png',
+                img_src='/images/items/AT02.jpg',
                 external_src='TODO',
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 7))
@@ -757,29 +645,505 @@ class DatastoreHandler(webapp2.RequestHandler):
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
                 description='Classy shirtdress',
-                img_src='/images/charmanderllama.png',
+                img_src='/images/items/AT04.jpg',
                 external_src='TODO',
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         three.put()
 
-        for i in range(40):
-            four = Item(
-                    sku_id=0,
-                    name="c",
-                    brand="JCrew",
-                    article='suits',
-                    price=45.99,
-                    colors=['black', 'white', 'gray'],
-                    sizes=['xs', 's', 'm', 'l', 'xl'],
-                    industries=['consulting'],
-                    styles=['smart casual', 'business casual'],
-                    description='Something I made up.',
-                    img_src='/images/charmanderllama.png',
-                    external_src='TODO',
-                    smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
-                    date=datetime.date(2015, 1, 9))
-            four.put()
+        four = Item(
+                sku_id=3,
+                name="stripe double v sheath dress",
+                brand="Ann Taylor",
+                article='dresses',
+                price=129,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Classy v-neck dress',
+                img_src='/images/items/AT03.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        four.put()
+        
+        five = Item(
+                sku_id=4,
+                name="wrap flare dress",
+                brand="Ann Taylor",
+                article='dresses',
+                price=129,
+                colors=['navy'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Classy wrap dress',
+                img_src='/images/items/AT05.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        five.put()
+     
+        six = Item(
+                sku_id=5,
+                name="mesh stitch sweter dress",
+                brand="Ann Taylor",
+                article='dresses',
+                price=139,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Classy sweater dress',
+                img_src='/images/items/AT06.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        six.put()   
+
+        seven = Item(
+                sku_id=6,
+                name="cotton sateen sheath dress",
+                brand="Ann Taylor",
+                article='dresses',
+                price=129,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Classy sweater dress',
+                img_src='/images/items/AT07.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        seven.put()   
+        
+        eight = Item(
+                sku_id=7,
+                name="structured peplum short sleeve top",
+                brand="Ann Taylor",
+                article='tops',
+                price=59.50,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Peplum top',
+                img_src='/images/items/AT09.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        eight.put()   
+        
+        nine = Item(
+                sku_id=8,
+                name="shadow floral pencil skirt",
+                brand="Ann Taylor",
+                article='bottoms',
+                price=89,
+                colors=['navy'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Floral pencil skirt',
+                img_src='/images/items/AT10.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        nine.put() 
+
+        ten = Item(
+                sku_id=9,
+                name="v-neck fit-and-flare dress",
+                brand="Banana Republic",
+                article='dresses',
+                price=138,
+                colors=['red'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='V-neck dress',
+                img_src='/images/items/BR01.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        ten.put() 
+
+        eleven = Item(
+                sku_id=10,
+                name="faux-leather fit-and-flare dress",
+                brand="Banana Republic",
+                article='dresses',
+                price=158,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Faux-leather dress',
+                img_src='/images/items/BR02.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        eleven.put() 
+
+        twelve = Item(
+                sku_id=11,
+                name="Print Jacquard Fit-and-Flare Dress",
+                brand="Banana Republic",
+                article='dresses',
+                price=158,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Jacquard dress',
+                img_src='/images/items/BR03.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        twelve.put() 
+
+        thirteen = Item(
+                sku_id=12,
+                name="short-sleeve flounce dress",
+                brand="Banana Republic",
+                article='dresses',
+                price=138,
+                colors=['yellow'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Short-sleeve dress',
+                img_src='/images/items/BR04.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        thirteen.put() 
+
+        fourteen = Item(
+                sku_id=13,
+                name="foulard flounce dress",
+                brand="Banana Republic",
+                article='dresses',
+                price=138,
+                colors=['red'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Short-sleeve dress',
+                img_src='/images/items/BR05.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        fourteen.put() 
+
+        fifteen = Item(
+                sku_id=14,
+                name="v-neck lace dress",
+                brand="Banana Republic",
+                article='dresses',
+                price=168,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='V-neck lace dress',
+                img_src='/images/items/BR06.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        fifteen.put()
+        
+        sixteen = Item(
+                sku_id=15,
+                name="heritage lace-trim dress",
+                brand="Banana Republic",
+                article='dresses',
+                price=168,
+                colors=['white'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Flounce lace trim dress',
+                img_src='/images/items/BR07.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        sixteen.put()
+
+        seventeen = Item(
+                sku_id=16,
+                name="belted layer dress",
+                brand="Banana Republic",
+                article='dresses',
+                price=158,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Floral layer dress',
+                img_src='/images/items/BR08.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        seventeen.put()
+
+        eighteen = Item(
+                sku_id=17,
+                name="heritage floral silk ruffle dress",
+                brand="Banana Republic",
+                article='dresses',
+                price=198,
+                colors=['green'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Floral silk ruffle dress',
+                img_src='/images/items/BR09.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        eighteen.put()
+
+        nineteen = Item(
+                sku_id=18,
+                name="br monogram flocked fit-and-flare dress",
+                brand="Banana Republic",
+                article='dresses',
+                price=178,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Fit-and-flare  dress',
+                img_src='/images/items/BR10.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        nineteen.put()
+
+        twenty = Item(
+                sku_id=19,
+                name="floral drop-waist dress",
+                brand="Banana Republic",
+                article='dresses',
+                price=138,
+                colors=['blue'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Floral drop-waist dress',
+                img_src='/images/items/BR11.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        twenty.put()
+        
+        twentyone = Item(
+                sku_id=20,
+                name="drop-waist shift",
+                brand="Banana Republic",
+                article='dresses',
+                price=138,
+                colors=['black'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Drop-waist shift dress',
+                img_src='/images/items/BR12.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        twentyone.put()
+        
+        twentytwo = Item(
+                sku_id=21,
+                name="long-sleeve multicolored tweed dress with fringe",
+                brand="J. Crew",
+                article='dresses',
+                price=188,
+                colors=['grey'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Long-sleeve multicolored tweed dress',
+                img_src='/images/items/JC01.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        twentytwo.put()
+        
+        twentythree = Item(
+                sku_id=22,
+                name="long-sleeve tweed dress with fringe",
+                brand="J. Crew",
+                article='dresses',
+                price=178,
+                colors=['blue'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Long-sleeve tweed dress',
+                img_src='/images/items/JC02.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        twentythree.put()
+
+        twentyfour = Item(
+                sku_id=23,
+                name="9am dress in super 120s wool",
+                brand="J. Crew",
+                article='dresses',
+                price=228,
+                colors=['blue'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Cap sleeve pleated wool dress',
+                img_src='/images/items/JC03.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        twentyfour.put()
+
+        twentyfive = Item(
+                sku_id=24,
+                name="sleeveless sheath dress with eyelet trim",
+                brand="J. Crew",
+                article='dresses',
+                price=198,
+                colors=['red'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Sleeveless sheath dress',
+                img_src='/images/items/JC04.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        twentyfive.put()
+
+        twentysix = Item(
+                sku_id=25,
+                name="herringbone sheath dress",
+                brand="J. Crew",
+                article='dresses',
+                price=178,
+                colors=['blue'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Cap sleeve sheath dress',
+                img_src='/images/items/JC05.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        twentysix.put()
+
+        twentyseven = Item(
+                sku_id=26,
+                name="sheath dress with faux leather",
+                brand="J. Crew",
+                article='dresses',
+                price=168,
+                colors=['grey'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Sheath dress with leather detail',
+                img_src='/images/items/JC06.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        twentyseven.put()
+
+        twentyeight = Item(
+                sku_id=27,
+                name="sheath dress with faux leather white",
+                brand="J. Crew",
+                article='dresses',
+                price=168,
+                colors=['white'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Sheath dress with leather detail',
+                img_src='/images/items/JC07.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        twentyeight.put()
+
+        twentynine = Item(
+                sku_id=28,
+                name="dolman dress in double-serge wool",
+                brand="J. Crew",
+                article='dresses',
+                price=99.99,
+                colors=['blue'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Short sleeve wool dress',
+                img_src='/images/items/JC08.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        twentynine.put()
+        
+        thirty = Item(
+                sku_id=29,
+                name="sheath dress in italian stretch wool",
+                brand="J. Crew",
+                article='dresses',
+                price=188,
+                colors=['grey'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Sheath wool dress',
+                img_src='/images/items/JC09.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        thirty.put()
+
+        thirtyone = Item(
+                sku_id=30,
+                name="cap-sleeve shirtdress in super 120s wool",
+                brand="J. Crew",
+                article='dresses',
+                price=228,
+                colors=['grey'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Cap sleeve wool shirtdress',
+                img_src='/images/items/JC10.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        thirtyone.put()
+
+        thirtytwo = Item(
+                sku_id=31,
+                name="double-faced wool crepe dress",
+                brand="J. Crew",
+                article='dresses',
+                price=228,
+                colors=['white'],
+                sizes=['xs', 's', 'm', 'l', 'xl'],
+                industries=['consulting'],
+                styles=['smart casual', 'business casual'],
+                description='Wool crepe dress',
+                img_src='/images/items/JC11.jpg',
+                external_src='TODO',
+                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                date=datetime.date(2016, 1, 10))
+        thirtytwo.put()
+
         ############################################################### END DATASTORE ####
 
 
@@ -946,8 +1310,13 @@ class ShopHandler(BaseHandler):
         for f in filters:
             if f['name'] in argDict:
                 fValues = argDict[f['name']]
+
+                query = query.filter(getattr(Item, f['name']).IN(fValues))
+
+                """
                 for i in fValues:
                     query = query.filter(getattr(Item, f['name']) == i)
+                """
 
         return query
 
@@ -1077,7 +1446,7 @@ class StyleGuidesHandler(BaseHandler):
         style_data = [
                 {'name': 'smart casual', 'img_src': '/images/smartcasual.png'},
                 {'name': 'business casual', 'img_src': '/images/businesscasual.png'},
-                {'name': 'business formal', 'img_src': '/images/01Businessformal.png'}]
+                {'name': 'business formal', 'img_src': '/images/businessformal.png'}]
 
 
         template_vars = {

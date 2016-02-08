@@ -1,35 +1,9 @@
-/*#look-occasion-table {
-    width: 80%;
-    margin-top: 2em;
-}
-*/
 .look-image, .occasion-image {
     width: 100%;
     border: 1px solid;
     display: inline-block;
 }
-/*
-.look-description, .occasion-description {
-    display: inline-block;
-    width: 50%;
-}
 
-.look-image-container, .occasion-image-container {
-    width: 40%;
-}
-
-.look-inner-container, .occasion-inner-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-td, th {
-    padding: 10px 0px 10px 0px;
-    width: 50%;
-}
-*/
 .ef-row-container {
     padding: 20px 0px;
 }
@@ -41,4 +15,22 @@ td, th {
 
 .ef-shop-the-look {
     margin: 0 auto;
+}
+
+.ef-shop-button {
+    margin-bottom: 20px;
+}
+
+.ef-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.ef-description {
+    text-indent: 2em;
+}
+
+.ef-image {
+    display: block;
+    margin: auto;
 }
