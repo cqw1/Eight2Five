@@ -25,7 +25,7 @@ body > .container {
   height: 100%;
 }
 
-.ef-sign-in{
+.ef-sign-in {
   padding: 15px;
 }
 
@@ -36,6 +36,21 @@ body > .container {
 .ef-normal-pointer {
     cursor: default;
 }
+
+.ef-inline-block {
+    display: inline-block;
+}
+
+.ef-social-media-icons {
+    margin: 15px 0;
+    float: right;
+}
+
+.ef-icon {
+    padding: 0 5px;
+    cursor: pointer;
+}
+
 
 /***********************************/
 /****  split-button in navbar ******/
