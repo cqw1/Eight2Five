@@ -61,3 +61,7 @@
 .clearfix {
     clear: both;
 }
+
+.ef-look-thumbnail {
+    cursor: pointer;
+}

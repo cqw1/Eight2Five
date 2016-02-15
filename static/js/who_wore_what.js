@@ -2,6 +2,12 @@
 var coverflowTimer = setCoverflowTimer();
 
 $(function() {
+    $('.ef-look-thumbnail').click(function() {
+        window.location.href = '/whoworewhat/look?id=' + $(this).attr('id');
+    });
+
+    // Coverflow stuff below =====================
+    
     $('#ef-left-arrow')
         .click(coverflowPrev)
         .mouseover(function() {

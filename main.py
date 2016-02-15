@@ -233,6 +233,9 @@ class Look(ndb.Model):
     similar_style_keys=ndb.KeyProperty(kind='SimilarStyle', repeated=True)
     person = ndb.LocalStructuredProperty(Person)
 
+    # Unique id for each look.
+    id = ndb.IntegerProperty(required=True)
+
 class Coverflow(ndb.Model):
     # Name must match person name.
     name = ndb.StringProperty(required=True)
@@ -325,7 +328,8 @@ class DatastoreHandler(webapp2.RequestHandler):
             img_src='/images/who_wore_what/marissa_mayer/Marissa_1.jpg',
             description='Marissa wearing a knee-length navy dress and blue short cardigan.',
             date=datetime.date(2016, 1, 18),
-            person=marissa_mayer_person)
+            person=marissa_mayer_person,
+            id=0)
         look_one_marissa_mayer.similar_style_keys.append(one_a_key_marissa_mayer)
         look_one_marissa_mayer.similar_style_keys.append(one_b_key_marissa_mayer)
         look_one_marissa_mayer.put()
@@ -350,7 +354,8 @@ class DatastoreHandler(webapp2.RequestHandler):
             img_src='/images/who_wore_what/marissa_mayer/Marissa_2.jpg',
             description='Marissa wearing a short-sleeve, black dress.',
             date=datetime.date(2016, 1, 18),
-            person=marissa_mayer_person)
+            person=marissa_mayer_person,
+            id=1)
         look_two_marissa_mayer.similar_style_keys.append(two_a_key_marissa_mayer)
         look_two_marissa_mayer.similar_style_keys.append(two_b_key_marissa_mayer)
         look_two_marissa_mayer.put()
@@ -367,7 +372,8 @@ class DatastoreHandler(webapp2.RequestHandler):
             img_src='/images/who_wore_what/marissa_mayer/Marissa_3.jpg',
             description='Marissa sporting a black short cardigan over a green dress.',
             date=datetime.date(2016, 1, 18),
-            person=marissa_mayer_person)
+            person=marissa_mayer_person,
+            id=2)
         look_three_marissa_mayer.similar_style_keys.append(three_a_key_marissa_mayer)
         look_three_marissa_mayer.put()
 
@@ -390,7 +396,8 @@ class DatastoreHandler(webapp2.RequestHandler):
             img_src='/images/who_wore_what/indra_nooyi/Indra_1.jpg',
             description='Indra posing in a sky blue coat.',
             date=datetime.date(2016, 1, 18),
-            person=indra_nooyi_person)
+            person=indra_nooyi_person,
+            id=3)
         look_one_indra_nooyi.similar_style_keys.append(one_a_key_indra_nooyi)
         look_one_indra_nooyi.put()
 
@@ -406,7 +413,8 @@ class DatastoreHandler(webapp2.RequestHandler):
             img_src='/images/who_wore_what/indra_nooyi/Indra_2.jpg',
             description='Indra outside wearing a grapefruit-red jacket.',
             date=datetime.date(2016, 1, 18),
-            person=indra_nooyi_person)
+            person=indra_nooyi_person,
+            id=4)
         look_two_indra_nooyi.similar_style_keys.append(two_a_key_indra_nooyi)
         look_two_indra_nooyi.put()
 
@@ -429,7 +437,8 @@ class DatastoreHandler(webapp2.RequestHandler):
             img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1.jpg',
             description='Insert description.',
             date=datetime.date(2016, 1, 18),
-            person=sheryl_sandberg_person)
+            person=sheryl_sandberg_person,
+            id=5)
         look_one_sheryl_sandberg.similar_style_keys.append(one_a_key_sheryl_sandberg)
         look_one_sheryl_sandberg.put()
 
@@ -445,7 +454,8 @@ class DatastoreHandler(webapp2.RequestHandler):
             img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_2.jpg',
             description='Insert description.',
             date=datetime.date(2016, 1, 18),
-            person=sheryl_sandberg_person)
+            person=sheryl_sandberg_person,
+            id=6)
         look_two_sheryl_sandberg.similar_style_keys.append(two_a_key_sheryl_sandberg)
         look_two_sheryl_sandberg.put()
 
@@ -1495,7 +1505,7 @@ class WhoWoreWhatHandler(BaseHandler):
         self.render_template('templates/who_wore_what.html', template_vars)
         """
 
-        look_data = Look.query().fetch()
+        look_data = Look.query().order(Look.id).fetch()
         logging.info(look_data)
 
         template_vars = {
@@ -1504,6 +1514,38 @@ class WhoWoreWhatHandler(BaseHandler):
 
         logging.info('in who wore what handler logging')
         self.render_template('templates/who_wore_what.html', template_vars)
+
+class WhoWoreWhatLookHandler(BaseHandler):
+    def get(self):
+        try: 
+            id_arg= self.request.get('id') 
+
+            query = Look.query(getattr(Look, 'id') == int(id_arg))
+            result = query.fetch()[0]
+            logging.info('result')
+            logging.info(result)
+
+            similar_styles = []
+            for key in result.similar_style_keys:
+                similar_styles.append(key.get())
+
+            template_vars = {
+                    'look': result, 
+                    'similar_styles': similar_styles
+            }
+
+            # Check if it's a valid person.
+            if self.request.get('id') == '':
+                print "didn't get a valid look id value in get request."
+
+            else:
+                # Display normal style guides page.
+                logging.info('in look handler logging')
+                self.render_template('templates/look.html', template_vars)
+
+        except(TypeError, ValueError):
+            template_vars['message'] = "Invalid look."
+            self.render_template('templates/danger_message.html', template_vars)
 
 class WhoWoreWhatPersonHandler(BaseHandler):
     def get(self):
@@ -1644,6 +1686,7 @@ class SignUpHandler(BaseHandler):
 
 app = webapp2.WSGIApplication(routes=[
     ('/shop', ShopHandler),
+    ('/whoworewhat/look', WhoWoreWhatLookHandler),
     ('/whoworewhat/person', WhoWoreWhatPersonHandler),
     ('/whoworewhat', WhoWoreWhatHandler),
     ('/styleguides/industry', StyleGuidesIndustryHandler),
