@@ -33,6 +33,11 @@ label {
     color: grey;
 }
 
+.ef-section-name {
+    font-weight: bold;
+    color: grey;
+}
+
 /* Collapsible filters */
 .ef-filter-name:after {
     font-family:'Glyphicons Halflings';
@@ -71,4 +76,8 @@ label {
 
 .ef-no-min-width {
     min-width: 0px;
+}
+
+.ef-search-form {
+    padding-right: 0px;
 }
