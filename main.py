@@ -224,7 +224,14 @@ class Person(ndb.Model):
     # Name must match coverflow name.
     name = ndb.StringProperty(required=True)
     bio = ndb.TextProperty(required=True)
-    postings = ndb.LocalStructuredProperty(Posting, repeated=True)
+    # postings = ndb.LocalStructuredProperty(Posting, repeated=True)
+
+class Look(ndb.Model):
+    img_src = ndb.TextProperty(required=True)
+    description = ndb.TextProperty(required=True)
+    date = ndb.DateProperty(required=True)
+    similar_style_keys=ndb.KeyProperty(kind='SimilarStyle', repeated=True)
+    person = ndb.LocalStructuredProperty(Person)
 
 class Coverflow(ndb.Model):
     # Name must match person name.
@@ -293,6 +300,159 @@ class DatastoreHandler(webapp2.RequestHandler):
         ############################################################# BEGIN DATASTORE ####
         logging.info('hello from the datastore')
 
+        marissa_mayer_person = Person(
+            name='Marissa Mayer',
+            bio='CEO and President, Yahoo')
+        marissa_mayer_person.put()
+
+        one_a_marissa_mayer = SimilarStyle(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_1_a.jpg', 
+                item_page='https://www.jcrew.com/womens_category/dresses/weartowork/PRDOVR~E4684/E4684.jsp?color_name=black', 
+                description='Insert description.',
+                brand='J. Crew',
+                price=228)
+        one_a_key_marissa_mayer = one_a_marissa_mayer.put()
+
+        one_b_marissa_mayer = SimilarStyle(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_1_b.jpg', 
+                item_page='http://www.zara.com/us/en/sale/woman/dresses/view-all/long-tube-dress-c732061p2922083.html', 
+                description='Insert description.',
+                brand='Zara',
+                price=22.99)
+        one_b_key_marissa_mayer = one_b_marissa_mayer.put()
+
+        look_one_marissa_mayer = Look(
+            img_src='/images/who_wore_what/marissa_mayer/Marissa_1.jpg',
+            description='Marissa wearing a knee-length navy dress and blue short cardigan.',
+            date=datetime.date(2016, 1, 18),
+            person=marissa_mayer_person)
+        look_one_marissa_mayer.similar_style_keys.append(one_a_key_marissa_mayer)
+        look_one_marissa_mayer.similar_style_keys.append(one_b_key_marissa_mayer)
+        look_one_marissa_mayer.put()
+
+        two_a_marissa_mayer = SimilarStyle(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_2_a.jpg', 
+                item_page='http://www.anntaylor.com/tropical-wool-sheath-dress/391849?skuId=20147327&defaultColor=6600&colorExplode=false&catid=cata000012', 
+                description='Insert description.',
+                brand='Ann Taylor',
+                price=169)
+        two_a_key_marissa_mayer = two_a_marissa_mayer.put()
+
+        two_b_marissa_mayer = SimilarStyle(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_2_b.jpg', 
+                item_page='http://www.anntaylor.com/wrap-flare-dress/392036?skuId=19992945&defaultColor=1246&colorExplode=false&catid=cata000012', 
+                description='Insert description.',
+                brand='Ann Taylor',
+                price=129)
+        two_b_key_marissa_mayer = two_b_marissa_mayer.put()
+
+        look_two_marissa_mayer = Look(
+            img_src='/images/who_wore_what/marissa_mayer/Marissa_2.jpg',
+            description='Marissa wearing a short-sleeve, black dress.',
+            date=datetime.date(2016, 1, 18),
+            person=marissa_mayer_person)
+        look_two_marissa_mayer.similar_style_keys.append(two_a_key_marissa_mayer)
+        look_two_marissa_mayer.similar_style_keys.append(two_b_key_marissa_mayer)
+        look_two_marissa_mayer.put()
+
+        three_a_marissa_mayer = SimilarStyle(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_3_a.jpg', 
+                item_page='http://www.anntaylor.com/long-sleeve-dress-shrug/391465?skuId=19924830&defaultColor=6600&colorExplode=false&catid=cata000011', 
+                description='Insert description.',
+                brand='Ann Taylor',
+                price=64.99)
+        three_a_key_marissa_mayer = three_a_marissa_mayer.put()
+
+        look_three_marissa_mayer = Look(
+            img_src='/images/who_wore_what/marissa_mayer/Marissa_3.jpg',
+            description='Marissa sporting a black short cardigan over a green dress.',
+            date=datetime.date(2016, 1, 18),
+            person=marissa_mayer_person)
+        look_three_marissa_mayer.similar_style_keys.append(three_a_key_marissa_mayer)
+        look_three_marissa_mayer.put()
+
+        #---------------------
+
+        indra_nooyi_person = Person(
+            name='Indra Nooyi',
+            bio='CEO and Chairman, PepsiCo')
+        indra_nooyi_person.put()
+
+        one_a_indra_nooyi = SimilarStyle(
+                img_src='/images/who_wore_what/indra_nooyi/Indra_1_a.jpg', 
+                item_page='https://www.jcrew.com/womens_category/outerwear_sm/wool/PRDOVR~C8552/C8552.jsp', 
+                description='Insert description.',
+                brand='J. Crew',
+                price=350)
+        one_a_key_indra_nooyi = one_a_indra_nooyi.put()
+
+        look_one_indra_nooyi = Look(
+            img_src='/images/who_wore_what/indra_nooyi/Indra_1.jpg',
+            description='Indra posing in a sky blue coat.',
+            date=datetime.date(2016, 1, 18),
+            person=indra_nooyi_person)
+        look_one_indra_nooyi.similar_style_keys.append(one_a_key_indra_nooyi)
+        look_one_indra_nooyi.put()
+
+        two_a_indra_nooyi = SimilarStyle(
+                img_src='/images/who_wore_what/indra_nooyi/Indra_2_a.jpg', 
+                item_page='https://www.jcrew.com/womens_category/blazers/regent/PRDOVR~B0323/B0323.jsp?color_name=BOHEMIAN%20RED&styles=B0323-RD6013', 
+                description='Insert description.',
+                brand='J. Crew',
+                price=198)
+        two_a_key_indra_nooyi = two_a_indra_nooyi.put()
+
+        look_two_indra_nooyi = Look(
+            img_src='/images/who_wore_what/indra_nooyi/Indra_2.jpg',
+            description='Indra outside wearing a grapefruit-red jacket.',
+            date=datetime.date(2016, 1, 18),
+            person=indra_nooyi_person)
+        look_two_indra_nooyi.similar_style_keys.append(two_a_key_indra_nooyi)
+        look_two_indra_nooyi.put()
+
+        #-----------------------------------------
+
+        sheryl_sandberg_person = Person(
+            name='Sheryl Sandberg',
+            bio='COO, Facebook')
+        sheryl_sandberg_person.put()
+
+        one_a_sheryl_sandberg = SimilarStyle(
+                img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1_a.jpg', 
+                item_page='https://www.jcrew.com/womens_category/sweaters/cardigans/PRDOVR~E2078/E2078.jsp', 
+                description='Insert description.',
+                brand='J. Crew',
+                price=198)
+        one_a_key_sheryl_sandberg = one_a_sheryl_sandberg.put()
+
+        look_one_sheryl_sandberg = Look(
+            img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1.jpg',
+            description='Insert description.',
+            date=datetime.date(2016, 1, 18),
+            person=sheryl_sandberg_person)
+        look_one_sheryl_sandberg.similar_style_keys.append(one_a_key_sheryl_sandberg)
+        look_one_sheryl_sandberg.put()
+
+        two_a_sheryl_sandberg = SimilarStyle(
+                img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_2_a.jpg', 
+                item_page='http://www.anntaylor.com/all-season-stretch-one-button-jacket/379001?skuId=19195995&defaultColor=1878&colorExplode=false&catid=cata000013', 
+                description='Insert description.',
+                brand='Ann Taylor',
+                price=169)
+        two_a_key_sheryl_sandberg = two_a_sheryl_sandberg.put()
+
+        look_two_sheryl_sandberg = Look(
+            img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_2.jpg',
+            description='Insert description.',
+            date=datetime.date(2016, 1, 18),
+            person=sheryl_sandberg_person)
+        look_two_sheryl_sandberg.similar_style_keys.append(two_a_key_sheryl_sandberg)
+        look_two_sheryl_sandberg.put()
+
+
+
+
+        """
         one_a_marissa_mayer = SimilarStyle(
                 img_src='/images/who_wore_what/marissa_mayer/Marissa_1_a.jpg', 
                 item_page='https://www.jcrew.com/womens_category/dresses/weartowork/PRDOVR~E4684/E4684.jsp?color_name=black', 
@@ -430,6 +590,7 @@ class DatastoreHandler(webapp2.RequestHandler):
             bio='COO, Facebook',
             postings=[posting_one_sheryl_sandberg, posting_two_sheryl_sandberg])
         sheryl_sandberg_person.put()
+        """
 
         #================================================================ COVERFLOW === 
 
@@ -1322,11 +1483,23 @@ class ShopHandler(BaseHandler):
 
 class WhoWoreWhatHandler(BaseHandler):
     def get(self):
+        """
         coverflow_data = Coverflow.query().order(Coverflow.order_id).fetch()
         logging.info(coverflow_data)
 
         template_vars = {
                 'coverflow_data': coverflow_data
+        }
+
+        logging.info('in who wore what handler logging')
+        self.render_template('templates/who_wore_what.html', template_vars)
+        """
+
+        look_data = Look.query().fetch()
+        logging.info(look_data)
+
+        template_vars = {
+                'look_data': look_data 
         }
 
         logging.info('in who wore what handler logging')

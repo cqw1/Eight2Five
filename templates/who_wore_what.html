@@ -9,7 +9,7 @@
 </div>
 
 <!-- Kept as 'photos' rather than 'images' for inheritance's sake. -->
-
+<!--
 <div id="ef-b-container">
   <div id="ef-coverflow-photos-container"> 
     <div class="photos"> 
@@ -34,6 +34,16 @@
   <div id="ef-photos-info">
     <div id="photos-name"></div>
   </div>
+</div>
+-->
+<div class="row">
+  {% for i in look_data %} 
+    <div class="col-xs-3 text-center">
+      <div class="thumbnail ef-industry-thumbnail"> 
+        <img src="{{i.img_src}}"></img>
+      </div>
+    </div>
+  {% endfor %}
 </div>
 
 {% endblock %}
