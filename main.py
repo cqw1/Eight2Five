@@ -83,6 +83,12 @@ INDUSTRIES = [
     'consulting'
 ]
 
+# Alpha sorted.
+OCCASIONS = [
+    'client meeting',
+    'interview'
+]
+
 SHOP_SORTS = [
     'name [a - z]', 
     'name [z - a]', 
@@ -282,6 +288,7 @@ class Item(ndb.Model):
     industries = ndb.StringProperty(repeated=True, choices=INDUSTRIES)
     styles = ndb.StringProperty(repeated=True, choices=STYLES)
     sizes = ndb.StringProperty(repeated=True, choices=SIZES)
+    occasions = ndb.StringProperty(repeated=True, choices=OCCASIONS)
 
     # Description (product info) on item page.
     description = ndb.TextProperty(required=False, default='Description currently unavailable.')
@@ -781,6 +788,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual'],
+                occasions=['client meeting'],
                 description='Demin Shirtdress',
                 img_src='/images/items/AT01.jpg',
                 external_src='TODO',
@@ -798,6 +806,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['business formal', 'business casual'],
+                occasions=['client meeting'],
                 description='tropical whool sheath dress',
                 img_src='/images/items/AT02.jpg',
                 external_src='TODO',
@@ -815,6 +824,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Classy shirtdress',
                 img_src='/images/items/AT04.jpg',
                 external_src='TODO',
@@ -832,6 +842,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Classy v-neck dress',
                 img_src='/images/items/AT03.jpg',
                 external_src='TODO',
@@ -849,6 +860,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Classy wrap dress',
                 img_src='/images/items/AT05.jpg',
                 external_src='TODO',
@@ -866,6 +878,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Classy sweater dress',
                 img_src='/images/items/AT06.jpg',
                 external_src='TODO',
@@ -883,6 +896,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Classy sweater dress',
                 img_src='/images/items/AT07.jpg',
                 external_src='TODO',
@@ -900,6 +914,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Peplum top',
                 img_src='/images/items/AT09.jpg',
                 external_src='TODO',
@@ -917,6 +932,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Floral pencil skirt',
                 img_src='/images/items/AT10.jpg',
                 external_src='TODO',
@@ -934,6 +950,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='V-neck dress',
                 img_src='/images/items/BR01.jpg',
                 external_src='TODO',
@@ -951,6 +968,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Faux-leather dress',
                 img_src='/images/items/BR02.jpg',
                 external_src='TODO',
@@ -968,6 +986,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Jacquard dress',
                 img_src='/images/items/BR03.jpg',
                 external_src='TODO',
@@ -985,6 +1004,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Short-sleeve dress',
                 img_src='/images/items/BR04.jpg',
                 external_src='TODO',
@@ -1002,6 +1022,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Short-sleeve dress',
                 img_src='/images/items/BR05.jpg',
                 external_src='TODO',
@@ -1019,6 +1040,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='V-neck lace dress',
                 img_src='/images/items/BR06.jpg',
                 external_src='TODO',
@@ -1036,6 +1058,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Flounce lace trim dress',
                 img_src='/images/items/BR07.jpg',
                 external_src='TODO',
@@ -1053,6 +1076,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Floral layer dress',
                 img_src='/images/items/BR08.jpg',
                 external_src='TODO',
@@ -1070,6 +1094,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Floral silk ruffle dress',
                 img_src='/images/items/BR09.jpg',
                 external_src='TODO',
@@ -1087,6 +1112,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Fit-and-flare  dress',
                 img_src='/images/items/BR10.jpg',
                 external_src='TODO',
@@ -1104,6 +1130,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Floral drop-waist dress',
                 img_src='/images/items/BR11.jpg',
                 external_src='TODO',
@@ -1121,6 +1148,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Drop-waist shift dress',
                 img_src='/images/items/BR12.jpg',
                 external_src='TODO',
@@ -1138,6 +1166,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Long-sleeve multicolored tweed dress',
                 img_src='/images/items/JC01.jpg',
                 external_src='TODO',
@@ -1155,6 +1184,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Long-sleeve tweed dress',
                 img_src='/images/items/JC02.jpg',
                 external_src='TODO',
@@ -1172,6 +1202,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Cap sleeve pleated wool dress',
                 img_src='/images/items/JC03.jpg',
                 external_src='TODO',
@@ -1189,6 +1220,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Sleeveless sheath dress',
                 img_src='/images/items/JC04.jpg',
                 external_src='TODO',
@@ -1206,6 +1238,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Cap sleeve sheath dress',
                 img_src='/images/items/JC05.jpg',
                 external_src='TODO',
@@ -1223,6 +1256,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Sheath dress with leather detail',
                 img_src='/images/items/JC06.jpg',
                 external_src='TODO',
@@ -1240,6 +1274,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Sheath dress with leather detail',
                 img_src='/images/items/JC07.jpg',
                 external_src='TODO',
@@ -1257,6 +1292,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Short sleeve wool dress',
                 img_src='/images/items/JC08.jpg',
                 external_src='TODO',
@@ -1274,6 +1310,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Sheath wool dress',
                 img_src='/images/items/JC09.jpg',
                 external_src='TODO',
@@ -1291,6 +1328,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Cap sleeve wool shirtdress',
                 img_src='/images/items/JC10.jpg',
                 external_src='TODO',
@@ -1308,6 +1346,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sizes=['xs', 's', 'm', 'l', 'xl'],
                 industries=['consulting'],
                 styles=['smart casual', 'business casual'],
+                occasions=['client meeting'],
                 description='Wool crepe dress',
                 img_src='/images/items/JC11.jpg',
                 external_src='TODO',
@@ -1378,6 +1417,10 @@ class ShopHandler(BaseHandler):
             {
                 'name': 'industries',
                 'selections': INDUSTRIES 
+            },
+            {
+                'name': 'occasions',
+                'selections': OCCASIONS 
             }
         ]
 

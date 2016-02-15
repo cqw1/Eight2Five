@@ -44,6 +44,11 @@ $(document).ready(function() {
         checkboxSelected('industries', $(this));
     })
 
+    $('.ef-occasions-filter').change(function() {
+        console.log('occasions');
+        checkboxSelected('occasions', $(this));
+    })
+
     // Sorts.
     $('.ef-sort-option').on('click', function(event) {
         event.preventDefault();
