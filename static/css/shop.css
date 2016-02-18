@@ -1,5 +1,6 @@
 .ef-shop-image {
     width: 100%;
+    cursor: pointer;
 }
 
 .ef-filter-container > ul {

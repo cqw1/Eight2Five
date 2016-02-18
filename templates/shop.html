@@ -127,51 +127,18 @@
       </div>
 
       <!-- Grid of items -->
-      {% set closed = false %}
-      {% for i in results %} 
-
-        {% if (loop.index - 1) % 3 == 0 %}
-          <div class="row">
-            <div class="col-xs-4 text-center">
-              <div id="{{i.name}}" class="thumbnail ef-industry-thumbnail"> 
-                <img class="ef-shop-image" src="{{i.img_src}}"></img>
-                <div class="caption">
-                  {{i.name | upper}}
-                </div>
-              </div>
-            </div>
-            {% set closed = false %}
-
-        <!-- Catch the last element in a row -->
-        {% elif (loop.index - 1) % 3 == 2 %}
+      <div class="row">
+        {% for i in results %} 
           <div class="col-xs-4 text-center">
             <div id="{{i.name}}" class="thumbnail ef-industry-thumbnail"> 
-              <img class="ef-shop-image" src="{{i.img_src}}"></img>
+              <img class="ef-shop-image" src="{{i.img_src}}" onclick="window.location='{{i.external_src}}'"></img>
               <div class="caption">
                 {{i.name | upper}}
               </div>
             </div>
           </div>
-        </div>
-        {% set closed = true %}
-
-        {% else %}
-          <div class="col-xs-4 text-center">
-            <div id="{{i.name}}" class="thumbnail ef-industry-thumbnail"> 
-              <img class="ef-shop-image" src="{{i.img_src}}"></img>
-              <div class="caption">
-                {{i.name | upper}}
-              </div>
-            </div>
-          </div>
-        {% endif %}
-
-        <!-- Close of the row div -->
-        {% if loop.last and not closed %}
-          </div>
-        {% endif %}
-
-      {% endfor %}
+        {% endfor %}
+      </div>
 
       <!-- Bottom Controls -->
       <div class="row">
