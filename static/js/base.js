@@ -32,6 +32,17 @@ $(document).ready(function() {
         return false;
     });
 
+    // Handle social media icons.
+    $('#ef-facebook-icon').click(function() {
+        window.location.href = 'https://www.facebook.com/skirttheceiling'
+    });
+    $('#ef-twitter-icon').click(function() {
+        window.location.href = 'https://www.twitter.com/skirttheceiling'
+    });
+    $('#ef-instagram-icon').click(function() {
+        window.location.href = 'https://www.instagram.com/skirttheceiling'
+    });
+
 });
 
 function redirectStyle(arg) {
