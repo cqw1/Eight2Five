@@ -14,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+import csv
 import datetime
 import jinja2
 import logging
@@ -33,9 +34,9 @@ from webapp2_extras import auth
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 APPARELS = [
-    'tops', 
-    'bottoms', 
-    'dresses', 
+    'top', 
+    'bottom', 
+    'dress', 
     'suits', 
     'outerwear'
 ]
@@ -49,8 +50,8 @@ BRANDS = [
 
 DRESS_CODES = [
     'smart casual', 
-    'business casual', 
-    'business formal'
+    'biz casual', 
+    'biz formal'
 ]
 
 # Alpha sorted.
@@ -91,6 +92,21 @@ RELEVANCE = [
     'medium',
     'low'
 ]
+
+
+with open('categories.csv', 'rb') as csvfile:
+    reader = csv.reader(csvfile)
+    for row in reader:
+        values = row[1: len(row)]
+        values = [v for v in values if v] # Remove empty strings from list.
+
+        if row[0] == 'apparel':
+            APPARELS = values #Take everything except first element which is the key
+        elif row[0] == 'occasion':
+            OCCASIONS = values
+        elif row[0] == 'dress_code':
+            DRESS_CODES = values
+        logging.info(row)
 
 # Taken from blog.abahgat.com/2013/01/07/user-authentication-with-webapp2-on-google-app-engine/
 class User(webapp2_extras.appengine.auth.models.User):
@@ -605,7 +621,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         #================================================================== DROPDOWNS === 
         general_styles = DropdownSection(
                 heading='style', 
-                items=['smart casual', 'business casual', 'business formal'], 
+                items=['smart casual', 'biz casual', 'biz formal'], 
                 dropdown='style guides',
                 order_id=0)
         general_styles.put()
@@ -618,7 +634,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         industry_styles.put()
 
         shop_filters = DropdownSection(
-                items=['tops', 'bottoms', 'dresses', 'suits', 'outerwear'], 
+                items=['top', 'bottom', 'dress', 'suit', 'outerwear'], 
                 dropdown='shop',
                 order_id=1)
         shop_filters.put()
@@ -646,7 +662,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         smartcasual_two.put()
 
         businesscasual_one = LookOccasion(
-                dress_code='business casual',
+                dress_code='biz casual',
                 look_img_src='/images/businesscasual.png',
                 look_descriptions=['Tan slacks with silk white top and a decorative neck tie'],
                 occasion_img_src='/images/businesscasual.png',
@@ -656,7 +672,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         businesscasual_one.put()
 
         businesscasual_two = LookOccasion(
-                dress_code='business casual',
+                dress_code='biz casual',
                 look_img_src='/images/biz_casual_skirt.jpg',
                 look_descriptions=['Beige pencil skirt with navy long sleeve button down shirt'],
                 occasion_img_src='/images/biz_casual_skirt.jpg',
@@ -666,7 +682,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         businesscasual_two.put()
 
         businessformal_one = LookOccasion(
-                dress_code='business formal',
+                dress_code='biz formal',
                 look_img_src='/images/businessformal.png',
                 look_descriptions=['Black suit jacket with matching pant and a white silk top'],
                 occasion_img_src='/images/businessformal.png',
@@ -676,7 +692,7 @@ class DatastoreHandler(webapp2.RequestHandler):
         businessformal_one.put()
 
         businessformal_two= LookOccasion(
-                dress_code='business formal',
+                dress_code='biz formal',
                 look_img_src='/images/biz_formal_skirtsuit.jpg',
                 look_descriptions=['Grey suit jacket with matching skirt and a navy top'],
                 occasion_img_src='/images/biz_formal_skirtsuit.jpg',
@@ -699,7 +715,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         consulting_bc = IndustryStyle(
                 industry='consulting',
-                dress_code='business casual',
+                dress_code='biz casual',
                 img_src='/images/businesscasual.png',
                 relevance='medium',
                 activities=['Casual fridays in office'],
@@ -709,7 +725,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         consulting_bf = IndustryStyle(
                 industry='consulting',
-                dress_code='business formal',
+                dress_code='biz formal',
                 img_src='/images/businessformal.png',
                 relevance='high',
                 activities=['Client site activities'],
@@ -730,7 +746,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         industry_bc = IndustryStyle(
                 industry='industry 2',
-                dress_code='business casual',
+                dress_code='biz casual',
                 img_src='/images/businesscasual.png',
                 relevance='low',
                 activities=['Casual fridays in office'],
@@ -740,7 +756,7 @@ class DatastoreHandler(webapp2.RequestHandler):
 
         industry_bf = IndustryStyle(
                 industry='industry 2',
-                dress_code='business formal',
+                dress_code='biz formal',
                 img_src='/images/businessformal.png',
                 relevance='medium',
                 activities=['Client site activities'],
@@ -751,12 +767,13 @@ class DatastoreHandler(webapp2.RequestHandler):
 
 
         #================================================================== ITEM === 
+        """
         
         one = Item(
                 sku_id=0,
                 name="denim shirtdress",
                 brand="Ann Taylor",
-                apparel='dresses',
+                apparel='dress',
                 price=139,
                 industries=['consulting'],
                 dress_codes=['smart casual'],
@@ -772,10 +789,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=1,
                 name="tropical whool sheath dress",
                 brand="Ann Taylor",
-                apparel='dresses',
+                apparel='dress',
                 price=169,
                 industries=['consulting'],
-                dress_codes=['business formal', 'business casual'],
+                dress_codes=['biz formal', 'biz casual'],
                 occasions=['client meeting'],
                 description='tropical whool sheath dress',
                 img_src='/images/items/AT02.jpg',
@@ -788,10 +805,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=2,
                 name="sleeveless shirtdress",
                 brand="Ann Taylor",
-                apparel='dresses',
+                apparel='dress',
                 price=129,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Classy shirtdress',
                 img_src='/images/items/AT04.jpg',
@@ -804,10 +821,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=3,
                 name="stripe double v sheath dress",
                 brand="Ann Taylor",
-                apparel='dresses',
+                apparel='dress',
                 price=129,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Classy v-neck dress',
                 img_src='/images/items/AT03.jpg',
@@ -820,10 +837,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=4,
                 name="wrap flare dress",
                 brand="Ann Taylor",
-                apparel='dresses',
+                apparel='dress',
                 price=129,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Classy wrap dress',
                 img_src='/images/items/AT05.jpg',
@@ -836,10 +853,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=5,
                 name="mesh stitch sweter dress",
                 brand="Ann Taylor",
-                apparel='dresses',
+                apparel='dress',
                 price=139,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Classy sweater dress',
                 img_src='/images/items/AT06.jpg',
@@ -852,10 +869,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=6,
                 name="cotton sateen sheath dress",
                 brand="Ann Taylor",
-                apparel='dresses',
+                apparel='dress',
                 price=129,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Classy sweater dress',
                 img_src='/images/items/AT07.jpg',
@@ -868,10 +885,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=7,
                 name="structured peplum short sleeve top",
                 brand="Ann Taylor",
-                apparel='tops',
+                apparel='top',
                 price=59.50,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Peplum top',
                 img_src='/images/items/AT09.jpg',
@@ -884,10 +901,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=8,
                 name="shadow floral pencil skirt",
                 brand="Ann Taylor",
-                apparel='bottoms',
+                apparel='bottom',
                 price=89,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Floral pencil skirt',
                 img_src='/images/items/AT10.jpg',
@@ -900,10 +917,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=9,
                 name="v-neck fit-and-flare dress",
                 brand="Banana Republic",
-                apparel='dresses',
+                apparel='dress',
                 price=138,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='V-neck dress',
                 img_src='/images/items/BR01.jpg',
@@ -916,10 +933,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=10,
                 name="faux-leather fit-and-flare dress",
                 brand="Banana Republic",
-                apparel='dresses',
+                apparel='dress',
                 price=158,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Faux-leather dress',
                 img_src='/images/items/BR02.jpg',
@@ -932,10 +949,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=11,
                 name="Print Jacquard Fit-and-Flare Dress",
                 brand="Banana Republic",
-                apparel='dresses',
+                apparel='dress',
                 price=158,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Jacquard dress',
                 img_src='/images/items/BR03.jpg',
@@ -948,10 +965,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=12,
                 name="short-sleeve flounce dress",
                 brand="Banana Republic",
-                apparel='dresses',
+                apparel='dress',
                 price=138,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Short-sleeve dress',
                 img_src='/images/items/BR04.jpg',
@@ -964,10 +981,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=13,
                 name="foulard flounce dress",
                 brand="Banana Republic",
-                apparel='dresses',
+                apparel='dress',
                 price=138,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Short-sleeve dress',
                 img_src='/images/items/BR05.jpg',
@@ -980,10 +997,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=14,
                 name="v-neck lace dress",
                 brand="Banana Republic",
-                apparel='dresses',
+                apparel='dress',
                 price=168,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='V-neck lace dress',
                 img_src='/images/items/BR06.jpg',
@@ -996,10 +1013,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=15,
                 name="heritage lace-trim dress",
                 brand="Banana Republic",
-                apparel='dresses',
+                apparel='dress',
                 price=168,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Flounce lace trim dress',
                 img_src='/images/items/BR07.jpg',
@@ -1012,10 +1029,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=16,
                 name="belted layer dress",
                 brand="Banana Republic",
-                apparel='dresses',
+                apparel='dress',
                 price=158,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Floral layer dress',
                 img_src='/images/items/BR08.jpg',
@@ -1028,10 +1045,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=17,
                 name="heritage floral silk ruffle dress",
                 brand="Banana Republic",
-                apparel='dresses',
+                apparel='dress',
                 price=198,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Floral silk ruffle dress',
                 img_src='/images/items/BR09.jpg',
@@ -1044,10 +1061,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=18,
                 name="br monogram flocked fit-and-flare dress",
                 brand="Banana Republic",
-                apparel='dresses',
+                apparel='dress',
                 price=178,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Fit-and-flare  dress',
                 img_src='/images/items/BR10.jpg',
@@ -1060,10 +1077,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=19,
                 name="floral drop-waist dress",
                 brand="Banana Republic",
-                apparel='dresses',
+                apparel='dress',
                 price=138,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Floral drop-waist dress',
                 img_src='/images/items/BR11.jpg',
@@ -1076,10 +1093,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=20,
                 name="drop-waist shift",
                 brand="Banana Republic",
-                apparel='dresses',
+                apparel='dress',
                 price=138,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Drop-waist shift dress',
                 img_src='/images/items/BR12.jpg',
@@ -1092,10 +1109,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=21,
                 name="long-sleeve multicolored tweed dress with fringe",
                 brand="J. Crew",
-                apparel='dresses',
+                apparel='dress',
                 price=188,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Long-sleeve multicolored tweed dress',
                 img_src='/images/items/JC01.jpg',
@@ -1108,10 +1125,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=22,
                 name="long-sleeve tweed dress with fringe",
                 brand="J. Crew",
-                apparel='dresses',
+                apparel='dress',
                 price=178,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Long-sleeve tweed dress',
                 img_src='/images/items/JC02.jpg',
@@ -1124,10 +1141,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=23,
                 name="9am dress in super 120s wool",
                 brand="J. Crew",
-                apparel='dresses',
+                apparel='dress',
                 price=228,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Cap sleeve pleated wool dress',
                 img_src='/images/items/JC03.jpg',
@@ -1140,10 +1157,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=24,
                 name="sleeveless sheath dress with eyelet trim",
                 brand="J. Crew",
-                apparel='dresses',
+                apparel='dress',
                 price=198,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Sleeveless sheath dress',
                 img_src='/images/items/JC04.jpg',
@@ -1156,10 +1173,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=25,
                 name="herringbone sheath dress",
                 brand="J. Crew",
-                apparel='dresses',
+                apparel='dress',
                 price=178,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Cap sleeve sheath dress',
                 img_src='/images/items/JC05.jpg',
@@ -1172,10 +1189,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=26,
                 name="sheath dress with faux leather",
                 brand="J. Crew",
-                apparel='dresses',
+                apparel='dress',
                 price=168,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Sheath dress with leather detail',
                 img_src='/images/items/JC06.jpg',
@@ -1188,10 +1205,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=27,
                 name="sheath dress with faux leather white",
                 brand="J. Crew",
-                apparel='dresses',
+                apparel='dress',
                 price=168,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Sheath dress with leather detail',
                 img_src='/images/items/JC07.jpg',
@@ -1204,10 +1221,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=28,
                 name="dolman dress in double-serge wool",
                 brand="J. Crew",
-                apparel='dresses',
+                apparel='dress',
                 price=99.99,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Short sleeve wool dress',
                 img_src='/images/items/JC08.jpg',
@@ -1220,10 +1237,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=29,
                 name="sheath dress in italian stretch wool",
                 brand="J. Crew",
-                apparel='dresses',
+                apparel='dress',
                 price=188,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Sheath wool dress',
                 img_src='/images/items/JC09.jpg',
@@ -1236,10 +1253,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=30,
                 name="cap-sleeve shirtdress in super 120s wool",
                 brand="J. Crew",
-                apparel='dresses',
+                apparel='dress',
                 price=228,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Cap sleeve wool shirtdress',
                 img_src='/images/items/JC10.jpg',
@@ -1252,10 +1269,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                 sku_id=31,
                 name="double-faced wool crepe dress",
                 brand="J. Crew",
-                apparel='dresses',
+                apparel='dress',
                 price=228,
                 industries=['consulting'],
-                dress_codes=['smart casual', 'business casual'],
+                dress_codes=['smart casual', 'biz casual'],
                 occasions=['client meeting'],
                 description='Wool crepe dress',
                 img_src='/images/items/JC11.jpg',
@@ -1263,8 +1280,43 @@ class DatastoreHandler(webapp2.RequestHandler):
                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                 date=datetime.date(2016, 1, 10))
         thirtytwo.put()
-        
+        """
 
+        with open('test_data.csv', 'rb') as csvfile:
+            reader = csv.reader(csvfile)
+            first = True
+            keys = []
+            for row in reader:
+                if (first):
+                    keys = row
+                    first = False
+                else:
+                    # Make dictionary first
+                    d = {}
+                    for r in range(len(row)):
+                        if keys[r] == 'occasion' or keys[r] == 'dress_code':
+                            d[keys[r]] = row[r].split(', ')
+                        else:
+                            d[keys[r]] = row[r]
+
+                    logging.info("new item: ")
+                    logging.info(d)
+
+                    item = Item(
+                        sku_id=int(d['sku_id']),
+                        name=d['name'],
+                        brand=d['brand'],
+                        apparel=d['apparel'],
+                        price=int(d['price']),
+                        industries=['consulting'],
+                        dress_codes=d['dress_code'],
+                        occasions=d['occasion'],
+                        description='Insert description.',
+                        img_src='/images/items/' + d['image_1'],
+                        external_src=d['url'],
+                        smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                        date=datetime.date(2016, 1, 10))
+                    item.put()
         ############################################################### END DATASTORE ####
 
 
@@ -1606,8 +1658,8 @@ class StyleGuidesHandler(BaseHandler):
 
         dress_code_data = [
                 {'name': 'smart casual', 'img_src': '/images/smartcasual.png'},
-                {'name': 'business casual', 'img_src': '/images/businesscasual.png'},
-                {'name': 'business formal', 'img_src': '/images/businessformal.png'}]
+                {'name': 'biz casual', 'img_src': '/images/businesscasual.png'},
+                {'name': 'biz formal', 'img_src': '/images/businessformal.png'}]
 
 
         template_vars = {

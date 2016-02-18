@@ -1,0 +1,4 @@
+sku_id,brand,name,image_1,image_2,price,apparel,occasion,dress_code,url
+0,Ann Taylor,Denim Shirtdress,AT01.jpg,,139,dress,casual friday,"biz casual, smart casual",http://www.anntaylor.com/denim-shirtdress/392026?skuId=20225964&defaultColor=1246&colorExplode=false&catid=cata000012
+1,Ann Taylor,Tropical Wool Sheath Dress,AT02.jpg,,169,dress,"first day, client meeting","biz casual, biz formal",http://www.anntaylor.com/tropical-wool-sheath-dress/391849?skuId=20009502&defaultColor=6600&colorExplode=false&catid=cata000012
+2,Ann Taylor,Striped Double V Sheath Dress,AT03.jpg,,129,dress,"happy hour, day to day",biz casual,http://www.anntaylor.com/striped-double-v-sheath-dress/391312?skuId=20006396&defaultColor=1246&colorExplode=false&catid=cata000012
