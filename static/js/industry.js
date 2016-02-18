@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     $('.ef-shop-button').on('click', function() {
         var ids = $(this).attr('id').split('-');
-        window.location.href = '/shop?&industries=' + ids[0] + '&styles=' + ids[1] ;
+        window.location.href = '/shop?&industries=' + ids[0] + '&dress_code=' + ids[1] ;
     })
 
 });

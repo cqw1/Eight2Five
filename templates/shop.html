@@ -42,16 +42,14 @@
         <ul class="list-group">
           {% for filter in filters %}
             <li class="list-group-item">
-              <h5 class="ef-filter-name" data-toggle="collapse" data-target="#{{filter.name}}">{{filter.name | title }}</h5>
-              <div id="{{filter.name}}" class="collapse in ef-filter-container">
+              <h5 class="ef-filter-name" data-toggle="collapse" data-target="#{{filter.name | replace(' ', '-')}}">{{filter.name | title }}</h5>
+              <div id="{{filter.name | replace(' ', '-')}}" class="collapse in ef-filter-container">
                 <ul>
                   {% for selection in filter.selections %}
                     <li>
                       <!-- input id is used for url arguments. if input id differs from the text of the label. change javascript -->
-                      <input type="checkbox" id="{{selection | replace(' ', '-')}}_filter" class="ef-{{filter.name}}-filter css-checkbox"/>
-                      {% if filter.name == 'sizes' %}
-                        <label for="{{selection | replace(' ', '-')}}_filter" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection | upper}}</label>
-                      {% elif filter.name == 'brand' %}
+                      <input type="checkbox" id="{{selection | replace(' ', '-')}}_filter" class="ef-{{filter.name | replace(' ', '-')}}-filter css-checkbox"/>
+                      {% if filter.name == 'brand' %}
                         <label for="{{selection | replace(' ', '-')}}_filter" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection}}</label>
                       {% else %}
                         <label for="{{selection | replace(' ', '-')}}_filter" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection | title }}</label>

@@ -20,6 +20,8 @@ handlers:
   static_dir: static/fonts 
 - url: /bootstrap
   static_dir: bootstrap 
+- url: /csv
+  static_dir: csv
 
 - url: .*
   script: main.app

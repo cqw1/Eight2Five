@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 
     // Handle dropdowns
-    $('.ef-dropdown-style').click(function() {
+    $('.ef-dropdown-dress-code').click(function() {
         redirectStyle($(this).attr('id').split('-').join(' '));
         return false;
     });
@@ -35,7 +35,7 @@ $(document).ready(function() {
 });
 
 function redirectStyle(arg) {
-    window.location.href='/styleguides/style?style=' + arg;
+    window.location.href='/styleguides/style?dress_code=' + arg;
 }
 
 function redirectIndustry(arg) {

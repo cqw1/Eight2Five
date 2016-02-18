@@ -19,24 +19,16 @@ $(document).ready(function() {
         checkboxSelected('gender', $(this));
     })
 
-    $('.ef-article-filter').change(function() {
+    $('.ef-apparel-filter').change(function() {
         checkboxSelected('article', $(this));
-    })
-
-    $('.ef-colors-filter').change(function() {
-        checkboxSelected('colors', $(this));
-    })
-
-    $('.ef-sizes-filter').change(function() {
-        checkboxSelected('sizes', $(this));
     })
 
     $('.ef-brand-filter').change(function() {
         checkboxSelected('brand', $(this));
     })
 
-    $('.ef-styles-filter').change(function() {
-        checkboxSelected('styles', $(this));
+    $('.ef-dress-code-filter').change(function() {
+        checkboxSelected('dress_code', $(this));
     })
 
     $('.ef-industries-filter').change(function() {

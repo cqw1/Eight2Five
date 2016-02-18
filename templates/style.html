@@ -21,7 +21,7 @@
 -->
 
   <div class="container">
-    <h3 class="ef-page-title">{{style | title }}</h3>
+    <h3 class="ef-page-title">{{dress_code | title }}</h3>
     <hr>
   </div>
 
@@ -64,16 +64,16 @@
     -->
 
     <div class="container">
-        {% for style in style_data %}
+        {% for dress_code in dress_code_data %}
             <div class="row ef-vertical-center">
                 <div class="col-xs-6">
-                    <img class="ef-image" src="{{style.look_img_src}}">
+                    <img class="ef-image" src="{{dress_code.look_img_src}}">
                 </div>
 
                 <div class="col-xs-6">
                     <h4 class="media-heading ef-header">The Look</h4>
                     <div class="ef-description">
-                        {% for description in style.look_descriptions %}
+                        {% for description in dress_code.look_descriptions %}
                             <p>{{description}}</p>
                         {% endfor %}
                     </div>
@@ -82,7 +82,7 @@
 
                     <h4 class="media-heading ef-header">The Occasion</h4>
                     <div class="ef-description">
-                        {% for description in style.occasion_descriptions %}
+                        {% for description in dress_code.occasion_descriptions %}
                             <p>{{description}}</p>
                         {% endfor %}
                     </div>
@@ -94,7 +94,7 @@
     </div>
 
     <div class="row ef-row-container text-center">
-        <button type="button" id="{{style}}" class="btn btn-default ef-shop-button">Shop the Look</button>
+        <button type="button" id="{{dress_code}}" class="btn btn-default ef-shop-button">Shop the Look</button>
     </div>
 
   </div>

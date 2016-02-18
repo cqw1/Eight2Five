@@ -1,8 +1,8 @@
 $(document).ready(function() {
     console.log("styleguides.js document ready"); 
 
-    $('.ef-style-image').on('click', function() {
-        window.location.href='/styleguides/style?style=' + $(this).attr('id');
+    $('.ef-dress-code-image').on('click', function() {
+        window.location.href='/styleguides/style?dress_code=' + $(this).attr('id');
     })
 
     $('.ef-industry-thumbnail').on('click', function() {

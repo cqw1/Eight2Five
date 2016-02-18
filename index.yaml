@@ -2,174 +2,106 @@ indexes:
 
 - kind: Item
   properties:
-  - name: article
+  - name: apparel
   - name: date
     direction: desc
 
 - kind: Item
   properties:
-  - name: article
+  - name: apparel
   - name: date
 
 - kind: Item
   properties:
-  - name: article
+  - name: apparel
   - name: price
     direction: desc
 
 - kind: Item
   properties:
-  - name: article
+  - name: apparel
   - name: price
 
 - kind: Item
   properties:
-  - name: article
+  - name: apparel
   - name: name
     direction: desc
 
 - kind: Item
   properties:
-  - name: article
-  - name: name
-
-###########################
-- kind: Item
-  properties:
-  - name: brand
-  - name: date
-    direction: desc
-
-- kind: Item
-  properties:
-  - name: brand
-  - name: date
-
-- kind: Item
-  properties:
-  - name: brand
-  - name: price
-    direction: desc
-
-- kind: Item
-  properties:
-  - name: brand
-  - name: price
-
-- kind: Item
-  properties:
-  - name: brand
-  - name: name
-    direction: desc
-
-- kind: Item
-  properties:
-  - name: brand
+  - name: apparel
   - name: name
 
 ###########################
 - kind: Item
   properties:
-  - name: colors
+  - name: brand
   - name: date
     direction: desc
 
 - kind: Item
   properties:
-  - name: colors
+  - name: brand
   - name: date
 
 - kind: Item
   properties:
-  - name: colors
+  - name: brand
   - name: price
     direction: desc
 
 - kind: Item
   properties:
-  - name: colors
+  - name: brand
   - name: price
 
 - kind: Item
   properties:
-  - name: colors
+  - name: brand
   - name: name
     direction: desc
 
 - kind: Item
   properties:
-  - name: colors
+  - name: brand
   - name: name
 
-###########################
 - kind: Item
   properties:
-  - name: sizes
+  - name: dress_codes
   - name: date
     direction: desc
 
 - kind: Item
   properties:
-  - name: sizes
+  - name: dress_codes
   - name: date
 
 - kind: Item
   properties:
-  - name: sizes
+  - name: dress_codes
   - name: price
     direction: desc
 
 - kind: Item
   properties:
-  - name: sizes
+  - name: dress_codes
   - name: price
 
 - kind: Item
   properties:
-  - name: sizes
+  - name: dress_codes
   - name: name
     direction: desc
 
 - kind: Item
   properties:
-  - name: sizes
-  - name: name
-
-###########################
-- kind: Item
-  properties:
-  - name: styles
-  - name: date
-    direction: desc
-
-- kind: Item
-  properties:
-  - name: styles
-  - name: date
-
-- kind: Item
-  properties:
-  - name: styles
-  - name: price
-    direction: desc
-
-- kind: Item
-  properties:
-  - name: styles
-  - name: price
-
-- kind: Item
-  properties:
-  - name: styles
-  - name: name
-    direction: desc
-
-- kind: Item
-  properties:
-  - name: styles
+  - name: dress_codes
   - name: name
 
 ###########################
+
 - kind: Item
   properties:
   - name: industries
@@ -249,5 +181,5 @@ indexes:
 
 - kind: LookOccasion
   properties:
-  - name: style
+  - name: dress_code
   - name: order_id

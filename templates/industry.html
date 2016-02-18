@@ -33,7 +33,7 @@
       <div class="col-xs-1 ef-section-header"></div>
 
       {% for i in industry_data %}
-        <div class="col-xs-3 text-center ef-content"><b>{{i.style | title }}</b></div>
+        <div class="col-xs-3 text-center ef-content"><b>{{i.dress_code | title }}</b></div>
       {% endfor %}
 
       <div class="col-xs-1"></div>
@@ -46,7 +46,7 @@
 
       {% for i in industry_data %}
         <div class="col-xs-3 text-center ef-content">
-          <img class="ef-style-image" border="1" src={{i.img_src}}>
+          <img class="ef-dress-code-image" border="1" src={{i.img_src}}>
         </div>
       {% endfor %}
 
@@ -60,7 +60,7 @@
 
       {% for i in industry_data %}
         <div class="col-xs-3 text-center ef-content">
-            <button type="button" id="{{industry}}-{{i.style}}" class="btn btn-default ef-shop-button">Shop the Look</button>
+            <button type="button" id="{{industry}}-{{i.dress_code}}" class="btn btn-default ef-shop-button">Shop the Look</button>
         </div>
       {% endfor %}
 

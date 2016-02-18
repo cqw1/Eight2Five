@@ -2,7 +2,7 @@ $(document).ready(function() {
     console.log("document ready for style.js");
 
     $('.ef-shop-button').on('click', function() {
-        window.location.href = '/shop?&styles=' + $(this).attr('id');
+        window.location.href = '/shop?&dress_code=' + $(this).attr('id');
     })
 
 
@@ -21,5 +21,5 @@ function selectIndustry() {
 function selectStyle(img) {
     console.log(img);
     console.log(img.id);
-    window.location.href='/styleguides/style?style=' + img.id;
+    window.location.href='/styleguides/style?dress_code=' + img.id;
 }
