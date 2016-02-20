@@ -1,3 +1,18 @@
 .ef-cover-image {
     text-align: center;
 }
+
+.ef-header-image {
+    width: 100%;
+}
+
+.ef-frame-image {
+    width: 100%;
+    padding-left: 0 10px;
+    border: 10px solid #DBD8D3;
+}
+
+.ef-image-caption {
+    padding: 5px;
+    text-align: center;
+}

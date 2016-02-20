@@ -45,16 +45,16 @@
             <span class="icon-bar"></span>
           </button>
           <!--<a class="navbar-brand" href="/home">Eight2Five</a>-->
-          <a class="navbar-brand" href="/home"><img alt="Logo" class="ef-logo" src="/images/logo_inverted.svg"></a>
+          <a class="" href="/home"><img alt="Logo" class="ef-logo" src="/images/s_logo.png"></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li id="home"><a href="/home">Home</a></li>
-            <li id="whoworewhat"><a href="/whoworewhat">Who Wore What</a></li>
+            <li id="home"><a href="/home">HOME</a></li>
+            <li id="whoworewhat"><a href="/whoworewhat">WHO WORE WHAT</a></li>
 
             <li id="styleguides">
               <div class="split-button">
-                <a href="/styleguides" class="">Style Guides </a>  
+                <a href="/styleguides" class="">STYLE GUIDES </a>  
                 <a data-toggle="dropdown" class="dropdown-toggle"><span class="caret"></span></a>
                 <ul class="dropdown-menu">
 
@@ -131,7 +131,7 @@
  -->
             <li id="shop">
               <div class="split-button">
-                <a href="/shop" class="">Shop </a>  
+                <a href="/shop" class="">SHOP </a>  
                 <a data-toggle="dropdown" class="dropdown-toggle"><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a class="ef-dropdown-shop" id="tops" href="#">Tops</a></li>
@@ -167,7 +167,7 @@
                   <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                   Guest
                   -->                
-                  Sign In <span class="caret"></span>
+                  SIGN IN <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu ef-sign-in">
                   <li>
@@ -181,7 +181,7 @@
             </li>
             
             <li>
-              <a href="/signup" class="">Sign Up</a>  
+              <a href="/signup" class="">SIGN UP</a>  
             </li>
 
           </ul>
@@ -191,6 +191,8 @@
     </nav>
 
     <!-- Begin page content -->
+    {% block nocontainer_content %}{% endblock %}
+
     <div class="container">
       <div id="content">{% block content %}{% endblock %}</div>
     </div>

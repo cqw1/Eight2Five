@@ -13,7 +13,7 @@ body > .container {
 
 	/* default bootstrap css */
 	min-height: 50px;
-	margin-bottom: 20px;
+	margin-bottom: 0px;
 	border: 1px solid transparent;
 }
 
@@ -22,7 +22,8 @@ body > .container {
 }
 
 .ef-logo {
-  height: 100%;
+  width: 100%;
+  /*height: 100%;*/
 }
 
 .ef-sign-in {
