@@ -822,7 +822,7 @@ class ShopHandler(BaseHandler):
                 'selections': BRANDS 
             },
             {
-                'name': 'dress code',
+                'name': 'dress codes',
                 'selections': DRESS_CODES 
             },
             {

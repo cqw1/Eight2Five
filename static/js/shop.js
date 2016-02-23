@@ -20,7 +20,7 @@ $(document).ready(function() {
     })
 
     $('.ef-apparel-filter').change(function() {
-        checkboxSelected('article', $(this));
+        checkboxSelected('apparel', $(this));
     })
 
     $('.ef-brand-filter').change(function() {
