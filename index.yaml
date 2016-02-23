@@ -2,35 +2,35 @@ indexes:
 
 - kind: Item
   properties:
-  - name: apparel
+  - name: apparels
   - name: date
     direction: desc
 
 - kind: Item
   properties:
-  - name: apparel
+  - name: apparels
   - name: date
 
 - kind: Item
   properties:
-  - name: apparel
+  - name: apparels
   - name: price
     direction: desc
 
 - kind: Item
   properties:
-  - name: apparel
+  - name: apparels
   - name: price
 
 - kind: Item
   properties:
-  - name: apparel
+  - name: apparels
   - name: name
     direction: desc
 
 - kind: Item
   properties:
-  - name: apparel
+  - name: apparels
   - name: name
 
 ###########################

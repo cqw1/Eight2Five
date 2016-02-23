@@ -811,26 +811,31 @@ class ShopHandler(BaseHandler):
         else:
             selected_page = PAGE_DEFAULT
 
-
+        # Check shop.js filters.
         filters = [
             {
-                'name': 'apparel',
+                'property_name': 'apparels',
+                'display_name': 'apparel',
                 'selections': APPARELS
             },
             {
-                'name': 'brand',
+                'property_name': 'brand',
+                'display_name': 'brand',
                 'selections': BRANDS 
             },
             {
-                'name': 'dress codes',
+                'property_name': 'dress_codes',
+                'display_name': 'dress code',
                 'selections': DRESS_CODES 
             },
             {
-                'name': 'industries',
+                'property_name': 'industries',
+                'display_name': 'industry',
                 'selections': INDUSTRIES 
             },
             {
-                'name': 'occasions',
+                'property_name': 'occasions',
+                'display_name': 'occasion',
                 'selections': OCCASIONS 
             }
         ]
@@ -933,10 +938,10 @@ class ShopHandler(BaseHandler):
     def applyCheckboxes(self, query, filters, argDict):
         # TODO: verify this works for repeated properties as well? (e.g. colors, industries, etc.)
         for f in filters:
-            if f['name'] in argDict:
-                fValues = argDict[f['name']]
+            if f['property_name'] in argDict:
+                fValues = argDict[f['property_name']]
 
-                query = query.filter(getattr(Item, f['name']).IN(fValues))
+                query = query.filter(getattr(Item, f['property_name']).IN(fValues))
 
                 """
                 for i in fValues:
