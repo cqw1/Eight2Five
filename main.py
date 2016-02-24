@@ -1164,8 +1164,8 @@ class StyleGuidesStyleHandler(BaseHandler):
         dress_code_arg = self.request.get('dress_code')
 
         #dress_code_data = LookOccasion.query(getattr(LookOccasion, 'dress_code') == dress_code_arg).order(LookOccasion.order_id).fetch()
-        dress_code_data = StyleInfo.query(getattr(StyleInfo, 'name') == dress_code_arg).fetch()
-        data = dress_code_data[0]
+        dress_code_data = StyleInfo.query(getattr(StyleInfo, 'name') == dress_code_arg).get()
+        data = dress_code_data
         logging.info(data)
 
         template_vars = {

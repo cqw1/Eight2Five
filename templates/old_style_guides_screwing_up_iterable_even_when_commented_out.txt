@@ -1,0 +1,33 @@
+
+    <!-- Look Occasion text -->
+    <!-- 
+    <div class="container">
+        {% for dress_code in dress_code_data %}
+            <div class="row ef-vertical-center">
+                <div class="col-xs-6">
+                    <img class="ef-image" src="{{dress_code.look_img_src}}">
+                </div>
+
+                <div class="col-xs-6">
+                    <h4 class="media-heading ef-header">The Look</h4>
+                    <div class="ef-description">
+                        {% for description in dress_code.look_descriptions %}
+                            <p>{{description}}</p>
+                        {% endfor %}
+                    </div>
+
+                    <br>
+
+                    <h4 class="media-heading ef-header">The Occasion</h4>
+                    <div class="ef-description">
+                        {% for description in dress_code.occasion_descriptions %}
+                            <p>{{description}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+        {% endfor %}
+    </div>
+    -->
