@@ -63,6 +63,8 @@
     {% endfor %}
     -->
 
+    <!-- Look Occasion text -->
+    <!-- 
     <div class="container">
         {% for dress_code in dress_code_data %}
             <div class="row ef-vertical-center">
@@ -91,6 +93,25 @@
 
             <hr>
         {% endfor %}
+    </div>
+    -->
+
+    <div class="container">
+        <div class="row ef-vertical-center">
+            <div class="col-xs-6">
+                <img class="ef-image" src="{{dress_code_data.look_1_img}}">
+            </div>
+
+            <div class="col-xs-6">
+                <h4 class="media-heading ef-header">Name </h4> {{dress_code_data.look_1_name}}
+                <br>
+                <h4 class="media-heading ef-header">Brand </h4> {{dress_code_data.look_1_brand}}
+                <br>
+                <h4 class="media-heading ef-header">Tip </h4> {{dress_code_data.look_1_tip}}
+            </div>
+        </div>
+
+        <hr>
     </div>
 
     <div class="row ef-row-container text-center">
