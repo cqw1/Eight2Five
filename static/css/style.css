@@ -24,6 +24,7 @@
 .ef-header {
     font-weight: bold;
     margin-bottom: 10px;
+    display: inline-block;
 }
 
 .ef-description {

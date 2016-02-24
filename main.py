@@ -743,7 +743,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                 reader = csv.reader(csvfile)
                 first = True
                 keys = []
-                prefix = 'images/style_guides/'
+                prefix = '/images/style_guides/'
                 for row in reader:
                     if (first):
                         keys = row
