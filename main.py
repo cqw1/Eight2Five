@@ -51,7 +51,8 @@ BRANDS = [
 DRESS_CODES = [
     'smart casual', 
     'biz casual', 
-    'biz formal'
+    'biz formal',
+    'tech casual'
 ]
 
 # Alpha sorted.
@@ -214,11 +215,20 @@ class SimilarStyle(ndb.Model):
     brand = ndb.TextProperty(required=False, choices=BRANDS)
     price = ndb.FloatProperty(required=False)
 
+"""
 class Posting(ndb.Model):
     img_src = ndb.TextProperty(required=True)
     description = ndb.TextProperty(required=True)
     date = ndb.DateProperty(required=True)
     similar_style_keys = ndb.KeyProperty(kind='SimilarStyle', repeated=True)
+"""
+
+class Posting(ndb.Model):
+    id = ndb.IntegerProperty(required=True) # Unique id
+    date = ndb.DateProperty(required=True)
+    title = ndb.TextProperty(required=True)
+    img_src = ndb.TextProperty(required=True)
+    description = ndb.TextProperty(required=True)
 
 class Person(ndb.Model):
     # Name must match coverflow name.
@@ -336,6 +346,7 @@ class DatastoreHandler(webapp2.RequestHandler):
             populated = True
             logging.info(populated)
 
+            """
             marissa_mayer_person = Person(
                 name='Marissa Mayer',
                 bio='CEO and President, Yahoo')
@@ -491,6 +502,44 @@ class DatastoreHandler(webapp2.RequestHandler):
                 id=6)
             look_two_sheryl_sandberg.similar_style_keys.append(two_a_key_sheryl_sandberg)
             look_two_sheryl_sandberg.put()
+            """
+
+            with open('www_database.csv', 'rb') as csvfile:
+                reader = csv.reader(csvfile)
+                first = True
+                keys = []
+                prefix = '/images/who_wore_what/'
+                for row in reader:
+                    logging.info('row: ')
+                    logging.info(row)
+                    if (first):
+                        keys = row
+                        first = False
+
+                    elif any(row):
+                        # Make dictionary first
+                        d = {}
+                        for r in range(len(row)):
+                            if keys[r] == 'date':
+                                date_split = row[r].split('/')
+                                logging.info(date_split)
+                                d['month'] = int(date_split[0])
+                                d['day'] = int(date_split[1])
+                                d['year'] = int(date_split[2])
+                            else:
+                                d[keys[r]] = row[r]
+
+                        posting = Posting(
+                            id=int(d['id']),
+                            date=datetime.date(d['year'], d['month'], d['day']),
+                            title=d['title'],
+                            img_src=prefix + d['img_src'],
+                            description='Insert description.')
+                        posting.put()
+
+                    else:
+                        logging.info('row caught: ')
+                        logging.info(row)
 
 
 
@@ -824,6 +873,11 @@ class DatastoreHandler(webapp2.RequestHandler):
                         # Make dictionary first
                         d = {}
                         for r in range(len(row)):
+                            # Brands are case sensitive. but others aren't.
+                            if keys[r] != 'brand':
+                                row[r] = row[r].lower()
+
+                            # List of properties
                             if keys[r] == 'occasion' or keys[r] == 'dress_code' or keys[r] == 'apparel':
                                 d[keys[r]] = row[r].split(', ')
                             else:
@@ -1035,11 +1089,14 @@ class WhoWoreWhatHandler(BaseHandler):
         self.render_template('templates/who_wore_what.html', template_vars)
         """
 
-        look_data = Look.query().order(Look.id).fetch()
-        logging.info(look_data)
+        #look_data = Look.query().order(Look.id).fetch()
+        #logging.info(look_data)
+
+        posting_data = Posting.query().order(Posting.date).fetch()
+        logging.info(posting_data)
 
         template_vars = {
-                'look_data': look_data 
+                'posting_data': posting_data 
         }
 
         logging.info('in who wore what handler logging')
@@ -1196,9 +1253,10 @@ class StyleGuidesHandler(BaseHandler):
     def get(self):
 
         dress_code_data = [
-                {'name': 'smart casual', 'img_src': '/images/smartcasual.png'},
+                {'name': 'biz formal', 'img_src': '/images/businessformal.png'},
                 {'name': 'biz casual', 'img_src': '/images/businesscasual.png'},
-                {'name': 'biz formal', 'img_src': '/images/businessformal.png'}]
+                {'name': 'smart casual', 'img_src': '/images/smartcasual.png'},
+                {'name': 'tech casual', 'img_src': '/images/pikachullama.png'}]
 
 
         template_vars = {

@@ -4,47 +4,17 @@
 
 {% block content %}
 <div class="container">
-  <h3 class="ef-page-title">Who Wore What</h3>
-  <hr>
+    <h3 class="ef-page-title">Who Wore What</h3>
+    <hr>
 </div>
 
-<!-- Kept as 'photos' rather than 'images' for inheritance's sake. -->
-<!--
-<div id="ef-b-container">
-  <div id="ef-coverflow-photos-container"> 
-    <div class="photos"> 
-      {% for i in coverflow_data %}
-        <img class="cover" data-name="{{i.name}}" src='{{i.img_src}}'/>
-      {% endfor %}
-    </div>
-  </div>
 
-  <div id="ef-controls-outer-container">
-    <div id="ef-controls-inner-container">
-      <img id="ef-left-arrow" src="/images/grayleftarrow.png">
-      <span id="ef-dots-container">
-        {% for i in coverflow_data %}
-          <img class="ef-dot" id="ef-current-dot" src='/images/emptycircle.png'/>
-        {% endfor %}
-      </span>
-      <img id="ef-right-arrow" src="/images/grayrightarrow.png">
-    </div>
-  </div>
+{% for p in postings %}
+    <div>
 
-  <div id="ef-photos-info">
-    <div id="photos-name"></div>
-  </div>
-</div>
--->
-<div class="row">
-  {% for i in look_data %} 
-    <div class="col-xs-3 text-center">
-        <div id="{{i.id}}" class="thumbnail ef-look-thumbnail"> 
-        <img src="{{i.img_src}}"></img>
-      </div>
+
     </div>
-  {% endfor %}
-</div>
+{% endfor %}
 
 {% endblock %}
 
