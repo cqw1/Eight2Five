@@ -1,3 +1,7 @@
+hr {
+    border-color: black;
+}
+
 #outer-container {
     /*position: relative;*/
     /*overflow: auto;*/
@@ -64,4 +68,9 @@
 
 .ef-look-thumbnail {
     cursor: pointer;
+}
+
+.ef-posting-image {
+    display: block;
+    margin: auto;
 }

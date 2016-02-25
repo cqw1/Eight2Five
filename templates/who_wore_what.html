@@ -2,19 +2,43 @@
 
 {% block title %}Who Wore What{% endblock %}
 
+{% block head %}
+<script src="/js/who_wore_what.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/who_wore_what.css">
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <h3 class="ef-page-title">Who Wore What</h3>
     <hr>
-</div>
 
 
-{% for p in postings %}
+    {% for p in posting_data %}
     <div>
+        <div class="ef-posting-date ef-text-center">
+            {{p.date}}
+        </div>
 
+        <div class="ef-posting-title ef-text-center">
+            {{p.title}}
+        </div>
 
+        <div class="ef-posting-image-container">
+            <img class="ef-posting-image" src="{{p.img_src}}">
+        </div>
+
+        <div class="ef-posting-description ef-text-center">
+            {{p.description}}
+        </div>
     </div>
-{% endfor %}
+
+    {% if not loop.last %}
+    <hr>
+    {% endif %}
+
+    {% endfor %}
+
+</div>
 
 {% endblock %}
 
@@ -31,7 +55,4 @@
 <script src="/coverflow/jquery.coverflow.js"></script>
 
 <!-- End coverflow stuff. -->
-
-<script src="/js/who_wore_what.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/who_wore_what.css">
 {% endblock %}

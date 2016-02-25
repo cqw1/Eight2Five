@@ -2,6 +2,11 @@
 
 {% block title %}Style Guides{% endblock %}
 
+{% block head %}
+  <script src="/js/style_guides.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/style_guides.css">
+{% endblock %}
+
 {% block content %}
 <!--   <div id="industry-select-container">
     Select Industry 
@@ -74,10 +79,5 @@
 
   </div>
 
-{% endblock %}
-
-{% block end_body %}
-  <script src="/js/style_guides.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/style_guides.css">
 {% endblock %}
 

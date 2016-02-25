@@ -2,6 +2,11 @@
 
 {% block title %}Main Page{% endblock %}
 
+{% block head %}
+  <!-- <script src="/js/style.js"></script> -->
+  <link rel="stylesheet" type="text/css" href="/css/home.css">
+{% endblock %}
+
 {% block nocontainer_content %}
 <img class="ef-header-image" src="/images/home/header_3.png"></img>
 {% endblock %}
@@ -55,9 +60,4 @@
 </div>
 
 
-{% endblock %}
-
-{% block end_body %}
-  <!-- <script src="/js/style.js"></script> -->
-  <link rel="stylesheet" type="text/css" href="/css/home.css">
 {% endblock %}

@@ -2,6 +2,15 @@
 
 {% block title %}Shop Page{% endblock %}
 
+{% block head %}
+  <script src="/js/shop.js"></script>
+  <script type="text/javascript">
+      initGlobals({{filters}}, '{{default_shop_sort}}', '{{default_items_per_page}}', '{{default_page}}', {{num_pages}});
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="/css/shop.css">
+{% endblock %}
+
 {% block content %}
 <div class="container">
   <h3 class="ef-page-title">Shop</h3>
@@ -204,14 +213,5 @@
   </div>
 </div>
 
-{% endblock %}
-
-{% block end_body %}
-  <script src="/js/shop.js"></script>
-  <script type="text/javascript">
-      initGlobals({{filters}}, '{{default_shop_sort}}', '{{default_items_per_page}}', '{{default_page}}', {{num_pages}});
-  </script>
-
-  <link rel="stylesheet" type="text/css" href="/css/shop.css">
 {% endblock %}
 

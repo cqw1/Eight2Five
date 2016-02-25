@@ -874,7 +874,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                         d = {}
                         for r in range(len(row)):
                             # Brands are case sensitive. but others aren't.
-                            if keys[r] != 'brand':
+                            if keys[r] != 'brand' and keys[r] != 'image_1':
                                 row[r] = row[r].lower()
 
                             # List of properties

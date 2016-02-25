@@ -30,6 +30,21 @@
     <![endif]-->
     <title>{% block title %}{% endblock %}</title>
     <!-- <link rel="stylesheet" type="text/css" href="/css/base.css"> -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/checkbox-style.css">
+    <script src="/js/base.js"></script>
+
+    {% block head %}{% endblock %}
   </head>
 
   <body>
@@ -60,9 +75,13 @@
 
                    <!-- Hardcoded -->
                   <li class="dropdown-header ef-normal-pointer">Dress Code</li>
+                  <li><a class="ef-dropdown-dress-code" id="biz-formal" 
+                      href="#">Biz Formal</a></li>
+                  <li><a class="ef-dropdown-dress-code" id="bis-casual" 
+                      href="#">Biz Casual</a></li>
                   <li><a class="ef-dropdown-dress-code" id="smart-casual" href="#">Smart Casual</a></li>
-                  <li><a class="ef-dropdown-dress-code" id="business-casual" href="#">Business Casual</a></li>
-                  <li><a class="ef-dropdown-dress-code" id="business-formal" href="#">Business Formal</a></li>
+                  <li><a class="ef-dropdown-dress-code" id="tech-casual" 
+                      href="#">Tech Casual</a></li>
 
                   <li role="separator" class="divider"></li>
 
@@ -217,18 +236,5 @@
       </div>
     </footer>
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/css/checkbox-style.css">
-    <script src="/js/base.js"></script>
     {% block end_body %}{%endblock %}
 </html>
