@@ -42,14 +42,14 @@
         <ul class="list-group">
           {% for filter in filters %}
             <li class="list-group-item">
-              <h5 class="ef-filter-name" data-toggle="collapse" data-target="#{{filter.name | replace(' ', '-')}}">{{filter.name | title }}</h5>
-              <div id="{{filter.name | replace(' ', '-')}}" class="collapse in ef-filter-container">
+              <h5 class="ef-filter-name" data-toggle="collapse" data-target="#{{filter.property_name}}">{{filter.display_name | title }}</h5>
+              <div id="{{filter.property_name}}" class="collapse in ef-filter-container">
                 <ul>
                   {% for selection in filter.selections %}
                     <li>
                       <!-- input id is used for url arguments. if input id differs from the text of the label. change javascript -->
-                      <input type="checkbox" id="{{selection | replace(' ', '-')}}_filter" class="ef-{{filter.name | replace(' ', '-')}}-filter css-checkbox"/>
-                      {% if filter.name == 'brand' %}
+                      <input type="checkbox" id="{{selection | replace(' ', '-')}}_filter" class="ef-{{filter.property_name}}-filter css-checkbox"/>
+                      {% if filter.display_name == 'brand' %}
                         <label for="{{selection | replace(' ', '-')}}_filter" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection}}</label>
                       {% else %}
                         <label for="{{selection | replace(' ', '-')}}_filter" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection | title }}</label>
@@ -129,9 +129,11 @@
       <!-- Grid of items -->
       <div class="row">
         {% for i in results %} 
-          <div class="col-xs-4 text-center">
-            <div id="{{i.name}}" class="thumbnail ef-industry-thumbnail"> 
-              <img class="ef-shop-image" src="{{i.img_src}}" onclick="window.location='{{i.external_src}}'"></img>
+          <div class="col-xs-6 text-center">
+              <div id="{{i.name}}" class="thumbnail ef-industry-thumbnail"> 
+                  <a href="{{i.external_src}}" target="_blank">
+                      <img class="ef-shop-image" src="{{i.img_src}}"></img>
+                  </a>
               <div class="caption">
                 {{i.name | upper}}
               </div>

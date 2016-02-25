@@ -93,6 +93,7 @@ RELEVANCE = [
     'low'
 ]
 
+populated = False
 
 with open('categories.csv', 'rb') as csvfile:
     reader = csv.reader(csvfile)
@@ -251,6 +252,31 @@ class DropdownSection(ndb.Model):
     items = ndb.TextProperty(repeated=True)
     order_id = ndb.IntegerProperty(required=False, default=0)
 
+class StyleInfo(ndb.Model):
+    name = ndb.StringProperty(required=True)
+    # Really need to find a better way to do this if it grows too large.
+    look_1_img = ndb.StringProperty(required=True)
+    look_1_name = ndb.StringProperty(required=True)
+    look_1_brand = ndb.StringProperty(required=True)
+    look_1_tip = ndb.StringProperty(required=True)
+    look_2_img = ndb.StringProperty(required=True)
+    look_2_name = ndb.StringProperty(required=True)
+    look_2_brand = ndb.StringProperty(required=True)
+    look_2_tip = ndb.StringProperty(required=True)
+    look_3_img = ndb.StringProperty(required=True)
+    look_3_name = ndb.StringProperty(required=True)
+    look_3_brand = ndb.StringProperty(required=True)
+    look_3_tip = ndb.StringProperty(required=True)
+    occasion_1_img = ndb.StringProperty(required=True)
+    occasion_1_text = ndb.StringProperty(required=True)
+    occasion_2_img = ndb.StringProperty(required=True)
+    occasion_2_text = ndb.StringProperty(required=True)
+    occasion_3_img = ndb.StringProperty(required=True)
+    occasion_3_text = ndb.StringProperty(required=True)
+    tip = ndb.StringProperty(required=True)
+
+
+
 class LookOccasion(ndb.Model):
     dress_code = ndb.StringProperty(required=True, choices=DRESS_CODES)
     look_img_src = ndb.TextProperty(required=True)
@@ -297,483 +323,528 @@ class Item(ndb.Model):
     date = ndb.DateProperty(required=True)
 
 class DatastoreHandler(webapp2.RequestHandler):
+
     def get(self):
+        global populated
+
         ############################################################# BEGIN DATASTORE ####
         logging.info('hello from the datastore')
+        logging.info('populated: ')
+        logging.info(populated)
 
-        marissa_mayer_person = Person(
-            name='Marissa Mayer',
-            bio='CEO and President, Yahoo')
-        marissa_mayer_person.put()
+        if not populated:
+            populated = True
+            logging.info(populated)
 
-        one_a_marissa_mayer = SimilarStyle(
-                img_src='/images/who_wore_what/marissa_mayer/Marissa_1_a.jpg', 
-                item_page='https://www.jcrew.com/womens_category/dresses/weartowork/PRDOVR~E4684/E4684.jsp?color_name=black', 
+            marissa_mayer_person = Person(
+                name='Marissa Mayer',
+                bio='CEO and President, Yahoo')
+            marissa_mayer_person.put()
+
+            one_a_marissa_mayer = SimilarStyle(
+                    img_src='/images/who_wore_what/marissa_mayer/Marissa_1_a.jpg', 
+                    item_page='https://www.jcrew.com/womens_category/dresses/weartowork/PRDOVR~E4684/E4684.jsp?color_name=black', 
+                    description='Insert description.',
+                    brand='J. Crew',
+                    price=228)
+            one_a_key_marissa_mayer = one_a_marissa_mayer.put()
+
+            one_b_marissa_mayer = SimilarStyle(
+                    img_src='/images/who_wore_what/marissa_mayer/Marissa_1_b.jpg', 
+                    item_page='http://www.zara.com/us/en/sale/woman/dresses/view-all/long-tube-dress-c732061p2922083.html', 
+                    description='Insert description.',
+                    brand='Zara',
+                    price=22.99)
+            one_b_key_marissa_mayer = one_b_marissa_mayer.put()
+
+            look_one_marissa_mayer = Look(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_1.jpg',
+                description='Marissa wearing a knee-length navy dress and blue short cardigan.',
+                date=datetime.date(2016, 1, 18),
+                person=marissa_mayer_person,
+                id=0)
+            look_one_marissa_mayer.similar_style_keys.append(one_a_key_marissa_mayer)
+            look_one_marissa_mayer.similar_style_keys.append(one_b_key_marissa_mayer)
+            look_one_marissa_mayer.put()
+
+            two_a_marissa_mayer = SimilarStyle(
+                    img_src='/images/who_wore_what/marissa_mayer/Marissa_2_a.jpg', 
+                    item_page='http://www.anntaylor.com/tropical-wool-sheath-dress/391849?skuId=20147327&defaultColor=6600&colorExplode=false&catid=cata000012', 
+                    description='Insert description.',
+                    brand='Ann Taylor',
+                    price=169)
+            two_a_key_marissa_mayer = two_a_marissa_mayer.put()
+
+            two_b_marissa_mayer = SimilarStyle(
+                    img_src='/images/who_wore_what/marissa_mayer/Marissa_2_b.jpg', 
+                    item_page='http://www.anntaylor.com/wrap-flare-dress/392036?skuId=19992945&defaultColor=1246&colorExplode=false&catid=cata000012', 
+                    description='Insert description.',
+                    brand='Ann Taylor',
+                    price=129)
+            two_b_key_marissa_mayer = two_b_marissa_mayer.put()
+
+            look_two_marissa_mayer = Look(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_2.jpg',
+                description='Marissa wearing a short-sleeve, black dress.',
+                date=datetime.date(2016, 1, 18),
+                person=marissa_mayer_person,
+                id=1)
+            look_two_marissa_mayer.similar_style_keys.append(two_a_key_marissa_mayer)
+            look_two_marissa_mayer.similar_style_keys.append(two_b_key_marissa_mayer)
+            look_two_marissa_mayer.put()
+
+            three_a_marissa_mayer = SimilarStyle(
+                    img_src='/images/who_wore_what/marissa_mayer/Marissa_3_a.jpg', 
+                    item_page='http://www.anntaylor.com/long-sleeve-dress-shrug/391465?skuId=19924830&defaultColor=6600&colorExplode=false&catid=cata000011', 
+                    description='Insert description.',
+                    brand='Ann Taylor',
+                    price=64.99)
+            three_a_key_marissa_mayer = three_a_marissa_mayer.put()
+
+            look_three_marissa_mayer = Look(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_3.jpg',
+                description='Marissa sporting a black short cardigan over a green dress.',
+                date=datetime.date(2016, 1, 18),
+                person=marissa_mayer_person,
+                id=2)
+            look_three_marissa_mayer.similar_style_keys.append(three_a_key_marissa_mayer)
+            look_three_marissa_mayer.put()
+
+            #---------------------
+
+            indra_nooyi_person = Person(
+                name='Indra Nooyi',
+                bio='CEO and Chairman, PepsiCo')
+            indra_nooyi_person.put()
+
+            one_a_indra_nooyi = SimilarStyle(
+                    img_src='/images/who_wore_what/indra_nooyi/Indra_1_a.jpg', 
+                    item_page='https://www.jcrew.com/womens_category/outerwear_sm/wool/PRDOVR~C8552/C8552.jsp', 
+                    description='Insert description.',
+                    brand='J. Crew',
+                    price=350)
+            one_a_key_indra_nooyi = one_a_indra_nooyi.put()
+
+            look_one_indra_nooyi = Look(
+                img_src='/images/who_wore_what/indra_nooyi/Indra_1.jpg',
+                description='Indra posing in a sky blue coat.',
+                date=datetime.date(2016, 1, 18),
+                person=indra_nooyi_person,
+                id=3)
+            look_one_indra_nooyi.similar_style_keys.append(one_a_key_indra_nooyi)
+            look_one_indra_nooyi.put()
+
+            two_a_indra_nooyi = SimilarStyle(
+                    img_src='/images/who_wore_what/indra_nooyi/Indra_2_a.jpg', 
+                    item_page='https://www.jcrew.com/womens_category/blazers/regent/PRDOVR~B0323/B0323.jsp?color_name=BOHEMIAN%20RED&styles=B0323-RD6013', 
+                    description='Insert description.',
+                    brand='J. Crew',
+                    price=198)
+            two_a_key_indra_nooyi = two_a_indra_nooyi.put()
+
+            look_two_indra_nooyi = Look(
+                img_src='/images/who_wore_what/indra_nooyi/Indra_2.jpg',
+                description='Indra outside wearing a grapefruit-red jacket.',
+                date=datetime.date(2016, 1, 18),
+                person=indra_nooyi_person,
+                id=4)
+            look_two_indra_nooyi.similar_style_keys.append(two_a_key_indra_nooyi)
+            look_two_indra_nooyi.put()
+
+            #-----------------------------------------
+
+            sheryl_sandberg_person = Person(
+                name='Sheryl Sandberg',
+                bio='COO, Facebook')
+            sheryl_sandberg_person.put()
+
+            one_a_sheryl_sandberg = SimilarStyle(
+                    img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1_a.jpg', 
+                    item_page='https://www.jcrew.com/womens_category/sweaters/cardigans/PRDOVR~E2078/E2078.jsp', 
+                    description='Insert description.',
+                    brand='J. Crew',
+                    price=198)
+            one_a_key_sheryl_sandberg = one_a_sheryl_sandberg.put()
+
+            look_one_sheryl_sandberg = Look(
+                img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1.jpg',
                 description='Insert description.',
-                brand='J. Crew',
-                price=228)
-        one_a_key_marissa_mayer = one_a_marissa_mayer.put()
+                date=datetime.date(2016, 1, 18),
+                person=sheryl_sandberg_person,
+                id=5)
+            look_one_sheryl_sandberg.similar_style_keys.append(one_a_key_sheryl_sandberg)
+            look_one_sheryl_sandberg.put()
 
-        one_b_marissa_mayer = SimilarStyle(
-                img_src='/images/who_wore_what/marissa_mayer/Marissa_1_b.jpg', 
-                item_page='http://www.zara.com/us/en/sale/woman/dresses/view-all/long-tube-dress-c732061p2922083.html', 
+            two_a_sheryl_sandberg = SimilarStyle(
+                    img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_2_a.jpg', 
+                    item_page='http://www.anntaylor.com/all-season-stretch-one-button-jacket/379001?skuId=19195995&defaultColor=1878&colorExplode=false&catid=cata000013', 
+                    description='Insert description.',
+                    brand='Ann Taylor',
+                    price=169)
+            two_a_key_sheryl_sandberg = two_a_sheryl_sandberg.put()
+
+            look_two_sheryl_sandberg = Look(
+                img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_2.jpg',
                 description='Insert description.',
-                brand='Zara',
-                price=22.99)
-        one_b_key_marissa_mayer = one_b_marissa_mayer.put()
+                date=datetime.date(2016, 1, 18),
+                person=sheryl_sandberg_person,
+                id=6)
+            look_two_sheryl_sandberg.similar_style_keys.append(two_a_key_sheryl_sandberg)
+            look_two_sheryl_sandberg.put()
 
-        look_one_marissa_mayer = Look(
-            img_src='/images/who_wore_what/marissa_mayer/Marissa_1.jpg',
-            description='Marissa wearing a knee-length navy dress and blue short cardigan.',
-            date=datetime.date(2016, 1, 18),
-            person=marissa_mayer_person,
-            id=0)
-        look_one_marissa_mayer.similar_style_keys.append(one_a_key_marissa_mayer)
-        look_one_marissa_mayer.similar_style_keys.append(one_b_key_marissa_mayer)
-        look_one_marissa_mayer.put()
 
-        two_a_marissa_mayer = SimilarStyle(
-                img_src='/images/who_wore_what/marissa_mayer/Marissa_2_a.jpg', 
-                item_page='http://www.anntaylor.com/tropical-wool-sheath-dress/391849?skuId=20147327&defaultColor=6600&colorExplode=false&catid=cata000012', 
+
+
+            """
+            one_a_marissa_mayer = SimilarStyle(
+                    img_src='/images/who_wore_what/marissa_mayer/Marissa_1_a.jpg', 
+                    item_page='https://www.jcrew.com/womens_category/dresses/weartowork/PRDOVR~E4684/E4684.jsp?color_name=black', 
+                    description='Insert description.',
+                    brand='J. Crew',
+                    price=228)
+            one_a_key_marissa_mayer = one_a_marissa_mayer.put()
+
+            one_b_marissa_mayer = SimilarStyle(
+                    img_src='/images/who_wore_what/marissa_mayer/Marissa_1_b.jpg', 
+                    item_page='http://www.zara.com/us/en/sale/woman/dresses/view-all/long-tube-dress-c732061p2922083.html', 
+                    description='Insert description.',
+                    brand='Zara',
+                    price=22.99)
+            one_b_key_marissa_mayer = one_b_marissa_mayer.put()
+
+            posting_one_marissa_mayer = Posting(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_1.jpg',
+                description='Marissa wearing a knee-length navy dress and blue short cardigan.',
+                date=datetime.date(2016, 1, 18))
+            posting_one_marissa_mayer.similar_style_keys.append(one_a_key_marissa_mayer)
+            posting_one_marissa_mayer.similar_style_keys.append(one_b_key_marissa_mayer)
+
+            two_a_marissa_mayer = SimilarStyle(
+                    img_src='/images/who_wore_what/marissa_mayer/Marissa_2_a.jpg', 
+                    item_page='http://www.anntaylor.com/tropical-wool-sheath-dress/391849?skuId=20147327&defaultColor=6600&colorExplode=false&catid=cata000012', 
+                    description='Insert description.',
+                    brand='Ann Taylor',
+                    price=169)
+            two_a_key_marissa_mayer = two_a_marissa_mayer.put()
+
+            two_b_marissa_mayer = SimilarStyle(
+                    img_src='/images/who_wore_what/marissa_mayer/Marissa_2_b.jpg', 
+                    item_page='http://www.anntaylor.com/wrap-flare-dress/392036?skuId=19992945&defaultColor=1246&colorExplode=false&catid=cata000012', 
+                    description='Insert description.',
+                    brand='Ann Taylor',
+                    price=129)
+            two_b_key_marissa_mayer = two_b_marissa_mayer.put()
+
+            posting_two_marissa_mayer = Posting(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_2.jpg',
+                description='Marissa wearing a short-sleeve, black dress.',
+                date=datetime.date(2016, 1, 18))
+            posting_two_marissa_mayer.similar_style_keys.append(two_a_key_marissa_mayer)
+            posting_two_marissa_mayer.similar_style_keys.append(two_b_key_marissa_mayer)
+
+            three_a_marissa_mayer = SimilarStyle(
+                    img_src='/images/who_wore_what/marissa_mayer/Marissa_3_a.jpg', 
+                    item_page='http://www.anntaylor.com/long-sleeve-dress-shrug/391465?skuId=19924830&defaultColor=6600&colorExplode=false&catid=cata000011', 
+                    description='Insert description.',
+                    brand='Ann Taylor',
+                    price=64.99)
+            three_a_key_marissa_mayer = three_a_marissa_mayer.put()
+
+            posting_three_marissa_mayer = Posting(
+                img_src='/images/who_wore_what/marissa_mayer/Marissa_3.jpg',
+                description='Marissa sporting a black short cardigan over a green dress.',
+                date=datetime.date(2016, 1, 18))
+            posting_three_marissa_mayer.similar_style_keys.append(three_a_key_marissa_mayer)
+
+            marissa_mayer_person = Person(
+                name='Marissa Mayer',
+                bio='CEO and President, Yahoo',
+                postings=[posting_one_marissa_mayer, posting_two_marissa_mayer, posting_three_marissa_mayer])
+            marissa_mayer_person.put()
+
+            #---------------------
+
+            one_a_indra_nooyi = SimilarStyle(
+                    img_src='/images/who_wore_what/indra_nooyi/Indra_1_a.jpg', 
+                    item_page='https://www.jcrew.com/womens_category/outerwear_sm/wool/PRDOVR~C8552/C8552.jsp', 
+                    description='Insert description.',
+                    brand='J. Crew',
+                    price=350)
+            one_a_key_indra_nooyi = one_a_indra_nooyi.put()
+
+            posting_one_indra_nooyi = Posting(
+                img_src='/images/who_wore_what/indra_nooyi/Indra_1.jpg',
+                description='Indra posing in a sky blue coat.',
+                date=datetime.date(2016, 1, 18))
+            posting_one_indra_nooyi.similar_style_keys.append(one_a_key_indra_nooyi)
+
+            two_a_indra_nooyi = SimilarStyle(
+                    img_src='/images/who_wore_what/indra_nooyi/Indra_2_a.jpg', 
+                    item_page='https://www.jcrew.com/womens_category/blazers/regent/PRDOVR~B0323/B0323.jsp?color_name=BOHEMIAN%20RED&styles=B0323-RD6013', 
+                    description='Insert description.',
+                    brand='J. Crew',
+                    price=198)
+            two_a_key_indra_nooyi = two_a_indra_nooyi.put()
+
+            posting_two_indra_nooyi = Posting(
+                img_src='/images/who_wore_what/indra_nooyi/Indra_2.jpg',
+                description='Indra outside wearing a grapefruit-red jacket.',
+                date=datetime.date(2016, 1, 18))
+            posting_two_indra_nooyi.similar_style_keys.append(two_a_key_indra_nooyi)
+
+            indra_nooyi_person = Person(
+                name='Indra Nooyi',
+                bio='CEO and Chairman, PepsiCo',
+                postings=[posting_one_indra_nooyi, posting_two_indra_nooyi])
+            indra_nooyi_person.put()
+
+            #-----------------------------------------
+
+            one_a_sheryl_sandberg = SimilarStyle(
+                    img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1_a.jpg', 
+                    item_page='https://www.jcrew.com/womens_category/sweaters/cardigans/PRDOVR~E2078/E2078.jsp', 
+                    description='Insert description.',
+                    brand='J. Crew',
+                    price=198)
+            one_a_key_sheryl_sandberg = one_a_sheryl_sandberg.put()
+
+            posting_one_sheryl_sandberg = Posting(
+                img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1.jpg',
                 description='Insert description.',
-                brand='Ann Taylor',
-                price=169)
-        two_a_key_marissa_mayer = two_a_marissa_mayer.put()
+                date=datetime.date(2016, 1, 18))
+            posting_one_sheryl_sandberg.similar_style_keys.append(one_a_key_sheryl_sandberg)
 
-        two_b_marissa_mayer = SimilarStyle(
-                img_src='/images/who_wore_what/marissa_mayer/Marissa_2_b.jpg', 
-                item_page='http://www.anntaylor.com/wrap-flare-dress/392036?skuId=19992945&defaultColor=1246&colorExplode=false&catid=cata000012', 
+            two_a_sheryl_sandberg = SimilarStyle(
+                    img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_2_a.jpg', 
+                    item_page='http://www.anntaylor.com/all-season-stretch-one-button-jacket/379001?skuId=19195995&defaultColor=1878&colorExplode=false&catid=cata000013', 
+                    description='Insert description.',
+                    brand='Ann Taylor',
+                    price=169)
+            two_a_key_sheryl_sandberg = two_a_sheryl_sandberg.put()
+
+            posting_two_sheryl_sandberg = Posting(
+                img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_2.jpg',
                 description='Insert description.',
-                brand='Ann Taylor',
-                price=129)
-        two_b_key_marissa_mayer = two_b_marissa_mayer.put()
+                date=datetime.date(2016, 1, 18))
+            posting_two_sheryl_sandberg.similar_style_keys.append(two_a_key_sheryl_sandberg)
 
-        look_two_marissa_mayer = Look(
-            img_src='/images/who_wore_what/marissa_mayer/Marissa_2.jpg',
-            description='Marissa wearing a short-sleeve, black dress.',
-            date=datetime.date(2016, 1, 18),
-            person=marissa_mayer_person,
-            id=1)
-        look_two_marissa_mayer.similar_style_keys.append(two_a_key_marissa_mayer)
-        look_two_marissa_mayer.similar_style_keys.append(two_b_key_marissa_mayer)
-        look_two_marissa_mayer.put()
+            sheryl_sandberg_person = Person(
+                name='Sheryl Sandberg',
+                bio='COO, Facebook',
+                postings=[posting_one_sheryl_sandberg, posting_two_sheryl_sandberg])
+            sheryl_sandberg_person.put()
+            """
 
-        three_a_marissa_mayer = SimilarStyle(
-                img_src='/images/who_wore_what/marissa_mayer/Marissa_3_a.jpg', 
-                item_page='http://www.anntaylor.com/long-sleeve-dress-shrug/391465?skuId=19924830&defaultColor=6600&colorExplode=false&catid=cata000011', 
-                description='Insert description.',
-                brand='Ann Taylor',
-                price=64.99)
-        three_a_key_marissa_mayer = three_a_marissa_mayer.put()
+            #================================================================ COVERFLOW === 
 
-        look_three_marissa_mayer = Look(
-            img_src='/images/who_wore_what/marissa_mayer/Marissa_3.jpg',
-            description='Marissa sporting a black short cardigan over a green dress.',
-            date=datetime.date(2016, 1, 18),
-            person=marissa_mayer_person,
-            id=2)
-        look_three_marissa_mayer.similar_style_keys.append(three_a_key_marissa_mayer)
-        look_three_marissa_mayer.put()
-
-        #---------------------
-
-        indra_nooyi_person = Person(
-            name='Indra Nooyi',
-            bio='CEO and Chairman, PepsiCo')
-        indra_nooyi_person.put()
-
-        one_a_indra_nooyi = SimilarStyle(
-                img_src='/images/who_wore_what/indra_nooyi/Indra_1_a.jpg', 
-                item_page='https://www.jcrew.com/womens_category/outerwear_sm/wool/PRDOVR~C8552/C8552.jsp', 
-                description='Insert description.',
-                brand='J. Crew',
-                price=350)
-        one_a_key_indra_nooyi = one_a_indra_nooyi.put()
-
-        look_one_indra_nooyi = Look(
-            img_src='/images/who_wore_what/indra_nooyi/Indra_1.jpg',
-            description='Indra posing in a sky blue coat.',
-            date=datetime.date(2016, 1, 18),
-            person=indra_nooyi_person,
-            id=3)
-        look_one_indra_nooyi.similar_style_keys.append(one_a_key_indra_nooyi)
-        look_one_indra_nooyi.put()
-
-        two_a_indra_nooyi = SimilarStyle(
-                img_src='/images/who_wore_what/indra_nooyi/Indra_2_a.jpg', 
-                item_page='https://www.jcrew.com/womens_category/blazers/regent/PRDOVR~B0323/B0323.jsp?color_name=BOHEMIAN%20RED&styles=B0323-RD6013', 
-                description='Insert description.',
-                brand='J. Crew',
-                price=198)
-        two_a_key_indra_nooyi = two_a_indra_nooyi.put()
-
-        look_two_indra_nooyi = Look(
-            img_src='/images/who_wore_what/indra_nooyi/Indra_2.jpg',
-            description='Indra outside wearing a grapefruit-red jacket.',
-            date=datetime.date(2016, 1, 18),
-            person=indra_nooyi_person,
-            id=4)
-        look_two_indra_nooyi.similar_style_keys.append(two_a_key_indra_nooyi)
-        look_two_indra_nooyi.put()
-
-        #-----------------------------------------
-
-        sheryl_sandberg_person = Person(
-            name='Sheryl Sandberg',
-            bio='COO, Facebook')
-        sheryl_sandberg_person.put()
-
-        one_a_sheryl_sandberg = SimilarStyle(
-                img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1_a.jpg', 
-                item_page='https://www.jcrew.com/womens_category/sweaters/cardigans/PRDOVR~E2078/E2078.jsp', 
-                description='Insert description.',
-                brand='J. Crew',
-                price=198)
-        one_a_key_sheryl_sandberg = one_a_sheryl_sandberg.put()
-
-        look_one_sheryl_sandberg = Look(
-            img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1.jpg',
-            description='Insert description.',
-            date=datetime.date(2016, 1, 18),
-            person=sheryl_sandberg_person,
-            id=5)
-        look_one_sheryl_sandberg.similar_style_keys.append(one_a_key_sheryl_sandberg)
-        look_one_sheryl_sandberg.put()
-
-        two_a_sheryl_sandberg = SimilarStyle(
-                img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_2_a.jpg', 
-                item_page='http://www.anntaylor.com/all-season-stretch-one-button-jacket/379001?skuId=19195995&defaultColor=1878&colorExplode=false&catid=cata000013', 
-                description='Insert description.',
-                brand='Ann Taylor',
-                price=169)
-        two_a_key_sheryl_sandberg = two_a_sheryl_sandberg.put()
-
-        look_two_sheryl_sandberg = Look(
-            img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_2.jpg',
-            description='Insert description.',
-            date=datetime.date(2016, 1, 18),
-            person=sheryl_sandberg_person,
-            id=6)
-        look_two_sheryl_sandberg.similar_style_keys.append(two_a_key_sheryl_sandberg)
-        look_two_sheryl_sandberg.put()
-
-
-
-
-        """
-        one_a_marissa_mayer = SimilarStyle(
-                img_src='/images/who_wore_what/marissa_mayer/Marissa_1_a.jpg', 
-                item_page='https://www.jcrew.com/womens_category/dresses/weartowork/PRDOVR~E4684/E4684.jsp?color_name=black', 
-                description='Insert description.',
-                brand='J. Crew',
-                price=228)
-        one_a_key_marissa_mayer = one_a_marissa_mayer.put()
-
-        one_b_marissa_mayer = SimilarStyle(
-                img_src='/images/who_wore_what/marissa_mayer/Marissa_1_b.jpg', 
-                item_page='http://www.zara.com/us/en/sale/woman/dresses/view-all/long-tube-dress-c732061p2922083.html', 
-                description='Insert description.',
-                brand='Zara',
-                price=22.99)
-        one_b_key_marissa_mayer = one_b_marissa_mayer.put()
-
-        posting_one_marissa_mayer = Posting(
-            img_src='/images/who_wore_what/marissa_mayer/Marissa_1.jpg',
-            description='Marissa wearing a knee-length navy dress and blue short cardigan.',
-            date=datetime.date(2016, 1, 18))
-        posting_one_marissa_mayer.similar_style_keys.append(one_a_key_marissa_mayer)
-        posting_one_marissa_mayer.similar_style_keys.append(one_b_key_marissa_mayer)
-
-        two_a_marissa_mayer = SimilarStyle(
-                img_src='/images/who_wore_what/marissa_mayer/Marissa_2_a.jpg', 
-                item_page='http://www.anntaylor.com/tropical-wool-sheath-dress/391849?skuId=20147327&defaultColor=6600&colorExplode=false&catid=cata000012', 
-                description='Insert description.',
-                brand='Ann Taylor',
-                price=169)
-        two_a_key_marissa_mayer = two_a_marissa_mayer.put()
-
-        two_b_marissa_mayer = SimilarStyle(
-                img_src='/images/who_wore_what/marissa_mayer/Marissa_2_b.jpg', 
-                item_page='http://www.anntaylor.com/wrap-flare-dress/392036?skuId=19992945&defaultColor=1246&colorExplode=false&catid=cata000012', 
-                description='Insert description.',
-                brand='Ann Taylor',
-                price=129)
-        two_b_key_marissa_mayer = two_b_marissa_mayer.put()
-
-        posting_two_marissa_mayer = Posting(
-            img_src='/images/who_wore_what/marissa_mayer/Marissa_2.jpg',
-            description='Marissa wearing a short-sleeve, black dress.',
-            date=datetime.date(2016, 1, 18))
-        posting_two_marissa_mayer.similar_style_keys.append(two_a_key_marissa_mayer)
-        posting_two_marissa_mayer.similar_style_keys.append(two_b_key_marissa_mayer)
-
-        three_a_marissa_mayer = SimilarStyle(
-                img_src='/images/who_wore_what/marissa_mayer/Marissa_3_a.jpg', 
-                item_page='http://www.anntaylor.com/long-sleeve-dress-shrug/391465?skuId=19924830&defaultColor=6600&colorExplode=false&catid=cata000011', 
-                description='Insert description.',
-                brand='Ann Taylor',
-                price=64.99)
-        three_a_key_marissa_mayer = three_a_marissa_mayer.put()
-
-        posting_three_marissa_mayer = Posting(
-            img_src='/images/who_wore_what/marissa_mayer/Marissa_3.jpg',
-            description='Marissa sporting a black short cardigan over a green dress.',
-            date=datetime.date(2016, 1, 18))
-        posting_three_marissa_mayer.similar_style_keys.append(three_a_key_marissa_mayer)
-
-        marissa_mayer_person = Person(
-            name='Marissa Mayer',
-            bio='CEO and President, Yahoo',
-            postings=[posting_one_marissa_mayer, posting_two_marissa_mayer, posting_three_marissa_mayer])
-        marissa_mayer_person.put()
-
-        #---------------------
-
-        one_a_indra_nooyi = SimilarStyle(
-                img_src='/images/who_wore_what/indra_nooyi/Indra_1_a.jpg', 
-                item_page='https://www.jcrew.com/womens_category/outerwear_sm/wool/PRDOVR~C8552/C8552.jsp', 
-                description='Insert description.',
-                brand='J. Crew',
-                price=350)
-        one_a_key_indra_nooyi = one_a_indra_nooyi.put()
-
-        posting_one_indra_nooyi = Posting(
-            img_src='/images/who_wore_what/indra_nooyi/Indra_1.jpg',
-            description='Indra posing in a sky blue coat.',
-            date=datetime.date(2016, 1, 18))
-        posting_one_indra_nooyi.similar_style_keys.append(one_a_key_indra_nooyi)
-
-        two_a_indra_nooyi = SimilarStyle(
-                img_src='/images/who_wore_what/indra_nooyi/Indra_2_a.jpg', 
-                item_page='https://www.jcrew.com/womens_category/blazers/regent/PRDOVR~B0323/B0323.jsp?color_name=BOHEMIAN%20RED&styles=B0323-RD6013', 
-                description='Insert description.',
-                brand='J. Crew',
-                price=198)
-        two_a_key_indra_nooyi = two_a_indra_nooyi.put()
-
-        posting_two_indra_nooyi = Posting(
-            img_src='/images/who_wore_what/indra_nooyi/Indra_2.jpg',
-            description='Indra outside wearing a grapefruit-red jacket.',
-            date=datetime.date(2016, 1, 18))
-        posting_two_indra_nooyi.similar_style_keys.append(two_a_key_indra_nooyi)
-
-        indra_nooyi_person = Person(
-            name='Indra Nooyi',
-            bio='CEO and Chairman, PepsiCo',
-            postings=[posting_one_indra_nooyi, posting_two_indra_nooyi])
-        indra_nooyi_person.put()
-
-        #-----------------------------------------
-
-        one_a_sheryl_sandberg = SimilarStyle(
-                img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1_a.jpg', 
-                item_page='https://www.jcrew.com/womens_category/sweaters/cardigans/PRDOVR~E2078/E2078.jsp', 
-                description='Insert description.',
-                brand='J. Crew',
-                price=198)
-        one_a_key_sheryl_sandberg = one_a_sheryl_sandberg.put()
-
-        posting_one_sheryl_sandberg = Posting(
-            img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_1.jpg',
-            description='Insert description.',
-            date=datetime.date(2016, 1, 18))
-        posting_one_sheryl_sandberg.similar_style_keys.append(one_a_key_sheryl_sandberg)
-
-        two_a_sheryl_sandberg = SimilarStyle(
-                img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_2_a.jpg', 
-                item_page='http://www.anntaylor.com/all-season-stretch-one-button-jacket/379001?skuId=19195995&defaultColor=1878&colorExplode=false&catid=cata000013', 
-                description='Insert description.',
-                brand='Ann Taylor',
-                price=169)
-        two_a_key_sheryl_sandberg = two_a_sheryl_sandberg.put()
-
-        posting_two_sheryl_sandberg = Posting(
-            img_src='/images/who_wore_what/sheryl_sandberg/Sheryl_2.jpg',
-            description='Insert description.',
-            date=datetime.date(2016, 1, 18))
-        posting_two_sheryl_sandberg.similar_style_keys.append(two_a_key_sheryl_sandberg)
-
-        sheryl_sandberg_person = Person(
-            name='Sheryl Sandberg',
-            bio='COO, Facebook',
-            postings=[posting_one_sheryl_sandberg, posting_two_sheryl_sandberg])
-        sheryl_sandberg_person.put()
-        """
-
-        #================================================================ COVERFLOW === 
-
-        marissa_mayer_coverflow = Coverflow(
-            name='Marissa Mayer',
-            img_src='/images/who_wore_what/marissa_mayer/Marissa.png',
-            order_id=0)
-        marissa_mayer_coverflow.put()
-
-        indra_nooyi_coverflow = Coverflow(
-            name='Indra Nooyi',
-            img_src='/images/who_wore_what/indra_nooyi/Indra.png',
-            order_id=1)
-        indra_nooyi_coverflow.put()
-
-        sheryl_sandberg_coverflow = Coverflow(
-            name='Sheryl Sandberg',
-            img_src='/images/who_wore_what/sheryl_sandberg/Sheryl.png',
-            order_id=2)
-        sheryl_sandberg_coverflow.put()
-
-        #================================================================== DROPDOWNS === 
-        general_styles = DropdownSection(
-                heading='style', 
-                items=['smart casual', 'biz casual', 'biz formal'], 
-                dropdown='style guides',
+            marissa_mayer_coverflow = Coverflow(
+                name='Marissa Mayer',
+                img_src='/images/who_wore_what/marissa_mayer/Marissa.png',
                 order_id=0)
-        general_styles.put()
+            marissa_mayer_coverflow.put()
 
-        industry_styles = DropdownSection(
-                heading='industry', 
-                items=['consulting', 'industry 2'], 
-                dropdown='style guides',
+            indra_nooyi_coverflow = Coverflow(
+                name='Indra Nooyi',
+                img_src='/images/who_wore_what/indra_nooyi/Indra.png',
                 order_id=1)
-        industry_styles.put()
+            indra_nooyi_coverflow.put()
 
-        shop_filters = DropdownSection(
-                items=['top', 'bottom', 'dress', 'suit', 'outerwear'], 
-                dropdown='shop',
-                order_id=1)
-        shop_filters.put()
+            sheryl_sandberg_coverflow = Coverflow(
+                name='Sheryl Sandberg',
+                img_src='/images/who_wore_what/sheryl_sandberg/Sheryl.png',
+                order_id=2)
+            sheryl_sandberg_coverflow.put()
 
-        #=============================================================== LOOKOCCASION === 
-        
-        smartcasual_one = LookOccasion(
-                dress_code='smart casual',
-                look_img_src='/images/smartcasual.png',
-                look_descriptions=['White and blue stripe fit and flare dress'],
-                occasion_img_src='/images/smartcasual.png',
-                occasion_descriptions=['This dress is perfect for casual Fridays, a summer happy hour, or an outdoor work BBQ!'],
-                order_id=0,
-                shop_page='TODO')
-        smartcasual_one.put()
+            #================================================================== DROPDOWNS === 
+            general_styles = DropdownSection(
+                    heading='style', 
+                    items=['smart casual', 'biz casual', 'biz formal'], 
+                    dropdown='style guides',
+                    order_id=0)
+            general_styles.put()
 
-        smartcasual_two = LookOccasion(
-                dress_code='smart casual',
-                look_img_src='/images/casual_friday.jpg',
-                look_descriptions=['Dark wash jeans with striped tank top and black cotton blazer'],
-                occasion_img_src='/images/casual_friday.jpg',
-                occasion_descriptions=['Go from casual Friday in the office to after work drinks.  This outfit does it all!'],
-                order_id=1,
-                shop_page='TODO')
-        smartcasual_two.put()
+            industry_styles = DropdownSection(
+                    heading='industry', 
+                    items=['consulting', 'industry 2'], 
+                    dropdown='style guides',
+                    order_id=1)
+            industry_styles.put()
 
-        businesscasual_one = LookOccasion(
-                dress_code='biz casual',
-                look_img_src='/images/businesscasual.png',
-                look_descriptions=['Tan slacks with silk white top and a decorative neck tie'],
-                occasion_img_src='/images/businesscasual.png',
-                occasion_descriptions=['Wear this outfit for everyday meetings or traveling to and from client site.'],
-                order_id=0,
-                shop_page='TODO')
-        businesscasual_one.put()
+            shop_filters = DropdownSection(
+                    items=['top', 'bottom', 'dress', 'suit', 'outerwear'], 
+                    dropdown='shop',
+                    order_id=1)
+            shop_filters.put()
 
-        businesscasual_two = LookOccasion(
-                dress_code='biz casual',
-                look_img_src='/images/biz_casual_skirt.jpg',
-                look_descriptions=['Beige pencil skirt with navy long sleeve button down shirt'],
-                occasion_img_src='/images/biz_casual_skirt.jpg',
-                occasion_descriptions=['Great outfit for the office, presenting to the team, and going out for lunch meetings.'],
-                order_id=1,
-                shop_page='TODO')
-        businesscasual_two.put()
+            #=============================================================== LOOKOCCASION === 
+            """
+            smartcasual_one = LookOccasion(
+                    dress_code='smart casual',
+                    look_img_src='/images/smartcasual.png',
+                    look_descriptions=['White and blue stripe fit and flare dress'],
+                    occasion_img_src='/images/smartcasual.png',
+                    occasion_descriptions=['This dress is perfect for casual Fridays, a summer happy hour, or an outdoor work BBQ!'],
+                    order_id=0,
+                    shop_page='TODO')
+            smartcasual_one.put()
 
-        businessformal_one = LookOccasion(
-                dress_code='biz formal',
-                look_img_src='/images/businessformal.png',
-                look_descriptions=['Black suit jacket with matching pant and a white silk top'],
-                occasion_img_src='/images/businessformal.png',
-                occasion_descriptions=['Wear this suit for big presentations, executive meetings, or any time you need to make a great impression!'],
-                order_id=0,
-                shop_page='TODO')
-        businessformal_one.put()
+            smartcasual_two = LookOccasion(
+                    dress_code='smart casual',
+                    look_img_src='/images/casual_friday.jpg',
+                    look_descriptions=['Dark wash jeans with striped tank top and black cotton blazer'],
+                    occasion_img_src='/images/casual_friday.jpg',
+                    occasion_descriptions=['Go from casual Friday in the office to after work drinks.  This outfit does it all!'],
+                    order_id=1,
+                    shop_page='TODO')
+            smartcasual_two.put()
 
-        businessformal_two= LookOccasion(
-                dress_code='biz formal',
-                look_img_src='/images/biz_formal_skirtsuit.jpg',
-                look_descriptions=['Grey suit jacket with matching skirt and a navy top'],
-                occasion_img_src='/images/biz_formal_skirtsuit.jpg',
-                occasion_descriptions=['This skirt suit is great for big meetings, first day on a important job, or sales presentations.'],
-                order_id=1,
-                shop_page='TODO')
-        businessformal_two.put()
+            businesscasual_one = LookOccasion(
+                    dress_code='biz casual',
+                    look_img_src='/images/businesscasual.png',
+                    look_descriptions=['Tan slacks with silk white top and a decorative neck tie'],
+                    occasion_img_src='/images/businesscasual.png',
+                    occasion_descriptions=['Wear this outfit for everyday meetings or traveling to and from client site.'],
+                    order_id=0,
+                    shop_page='TODO')
+            businesscasual_one.put()
 
-        #======================================================= INDUSTRYSTYLE === 
+            businesscasual_two = LookOccasion(
+                    dress_code='biz casual',
+                    look_img_src='/images/biz_casual_skirt.jpg',
+                    look_descriptions=['Beige pencil skirt with navy long sleeve button down shirt'],
+                    occasion_img_src='/images/biz_casual_skirt.jpg',
+                    occasion_descriptions=['Great outfit for the office, presenting to the team, and going out for lunch meetings.'],
+                    order_id=1,
+                    shop_page='TODO')
+            businesscasual_two.put()
 
-        consulting_sc = IndustryStyle(
-                industry='consulting',
-                dress_code='smart casual',
-                img_src='/images/smartcasual.png',
-                relevance='low',
-                activities=['Happy hour', 'Social hangouts'],
-                attire=['Jeans', 'Blazer'],
-                shop_page='TODO')
-        consulting_sc.put()
+            businessformal_one = LookOccasion(
+                    dress_code='biz formal',
+                    look_img_src='/images/businessformal.png',
+                    look_descriptions=['Black suit jacket with matching pant and a white silk top'],
+                    occasion_img_src='/images/businessformal.png',
+                    occasion_descriptions=['Wear this suit for big presentations, executive meetings, or any time you need to make a great impression!'],
+                    order_id=0,
+                    shop_page='TODO')
+            businessformal_one.put()
 
-        consulting_bc = IndustryStyle(
-                industry='consulting',
-                dress_code='biz casual',
-                img_src='/images/businesscasual.png',
-                relevance='medium',
-                activities=['Casual fridays in office'],
-                attire=['Dress pant', 'Shirt'],
-                shop_page='TODO')
-        consulting_bc.put()
+            businessformal_two= LookOccasion(
+                    dress_code='biz formal',
+                    look_img_src='/images/biz_formal_skirtsuit.jpg',
+                    look_descriptions=['Grey suit jacket with matching skirt and a navy top'],
+                    occasion_img_src='/images/biz_formal_skirtsuit.jpg',
+                    occasion_descriptions=['This skirt suit is great for big meetings, first day on a important job, or sales presentations.'],
+                    order_id=1,
+                    shop_page='TODO')
+            businessformal_two.put()
+            """
 
-        consulting_bf = IndustryStyle(
-                industry='consulting',
-                dress_code='biz formal',
-                img_src='/images/businessformal.png',
-                relevance='high',
-                activities=['Client site activities'],
-                attire=['Dark suit', 'Top', 'etc.'],
-                shop_page='TODO')
-        consulting_bf.put()
-
-
-        #================================================================== ITEM === 
-
-        with open('sku_database_v1.csv', 'rb') as csvfile:
-            reader = csv.reader(csvfile)
-            first = True
-            keys = []
-            for row in reader:
-                if (first):
-                    keys = row
-                    first = False
-                else:
-                    # Make dictionary first
-                    d = {}
-                    for r in range(len(row)):
-                        if keys[r] == 'occasion' or keys[r] == 'dress_code' or keys[r] == 'apparel':
-                            d[keys[r]] = row[r].split(', ')
-                        else:
+            with open('style_guides_database.csv', 'rb') as csvfile:
+                reader = csv.reader(csvfile)
+                first = True
+                keys = []
+                prefix = '/images/style_guides/'
+                for row in reader:
+                    if (first):
+                        keys = row
+                        first = False
+                    else:
+                        # Make dictionary first
+                        d = {}
+                        for r in range(len(row)):
                             d[keys[r]] = row[r]
 
-                    logging.info("new item: ")
-                    logging.info(d)
+                        info = StyleInfo(
+                            name = d['name'],
+                            look_1_img = prefix + d['look_1_img'],
+                            look_1_name = d['look_1_name'],
+                            look_1_brand = d['look_1_brand'],
+                            look_1_tip = d['look_1_tip'],
+                            look_2_img = prefix + d['look_2_img'],
+                            look_2_name = d['look_2_name'],
+                            look_2_brand = d['look_2_brand'],
+                            look_2_tip = d['look_2_tip'],
+                            look_3_img = prefix + d['look_3_img'],
+                            look_3_name = d['look_3_name'],
+                            look_3_brand = d['look_3_brand'],
+                            look_3_tip = d['look_3_tip'],
+                            occasion_1_img = prefix + d['occasion_1_img'],
+                            occasion_1_text = d['occasion_1_text'],
+                            occasion_2_img = prefix + d['occasion_2_img'],
+                            occasion_2_text = d['occasion_2_text'],
+                            occasion_3_img = prefix + d['occasion_3_img'],
+                            occasion_3_text = d['occasion_3_text'],
+                            tip = d['tip'])
+                        info.put()
 
-                    item = Item(
-                        sku_id=int(d['sku_id']),
-                        name=d['name'],
-                        brand=d['brand'],
-                        apparels=d['apparel'],
-                        price=float(d['price']),
-                        industries=['consulting'],
-                        dress_codes=d['dress_code'],
-                        occasions=d['occasion'],
-                        description='Insert description.',
-                        img_src='/images/items/' + d['image_1'],
-                        external_src=d['url'],
-                        smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
-                        date=datetime.date(2016, 1, 10))
-                    item.put()
-        ############################################################### END DATASTORE ####
+            #======================================================= INDUSTRYSTYLE === 
+
+            consulting_sc = IndustryStyle(
+                    industry='consulting',
+                    dress_code='smart casual',
+                    img_src='/images/smartcasual.png',
+                    relevance='low',
+                    activities=['Happy hour', 'Social hangouts'],
+                    attire=['Jeans', 'Blazer'],
+                    shop_page='TODO')
+            consulting_sc.put()
+
+            consulting_bc = IndustryStyle(
+                    industry='consulting',
+                    dress_code='biz casual',
+                    img_src='/images/businesscasual.png',
+                    relevance='medium',
+                    activities=['Casual fridays in office'],
+                    attire=['Dress pant', 'Shirt'],
+                    shop_page='TODO')
+            consulting_bc.put()
+
+            consulting_bf = IndustryStyle(
+                    industry='consulting',
+                    dress_code='biz formal',
+                    img_src='/images/businessformal.png',
+                    relevance='high',
+                    activities=['Client site activities'],
+                    attire=['Dark suit', 'Top', 'etc.'],
+                    shop_page='TODO')
+            consulting_bf.put()
+
+
+            #================================================================== ITEM === 
+
+            with open('sku_database_v1.csv', 'rb') as csvfile:
+                reader = csv.reader(csvfile)
+                first = True
+                keys = []
+                for row in reader:
+                    if (first):
+                        keys = row
+                        first = False
+                    else:
+                        # Make dictionary first
+                        d = {}
+                        for r in range(len(row)):
+                            if keys[r] == 'occasion' or keys[r] == 'dress_code' or keys[r] == 'apparel':
+                                d[keys[r]] = row[r].split(', ')
+                            else:
+                                d[keys[r]] = row[r]
+
+                        item = Item(
+                            sku_id=int(d['sku_id']),
+                            name=d['name'],
+                            brand=d['brand'],
+                            apparels=d['apparel'],
+                            price=float(d['price']),
+                            industries=['consulting'],
+                            dress_codes=d['dress_code'],
+                            occasions=d['occasion'],
+                            description='Insert description.',
+                            img_src='/images/items/' + d['image_1'],
+                            external_src=d['url'],
+                            smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                            date=datetime.date(2016, 1, 10))
+                        item.put()
+            ############################################################### END DATASTORE ####
 
 
 class HomeHandler(BaseHandler):
@@ -811,26 +882,31 @@ class ShopHandler(BaseHandler):
         else:
             selected_page = PAGE_DEFAULT
 
-
+        # Check shop.js filters.
         filters = [
             {
-                'name': 'apparel',
+                'property_name': 'apparels',
+                'display_name': 'apparel',
                 'selections': APPARELS
             },
             {
-                'name': 'brand',
+                'property_name': 'brand',
+                'display_name': 'brand',
                 'selections': BRANDS 
             },
             {
-                'name': 'dress code',
+                'property_name': 'dress_codes',
+                'display_name': 'dress code',
                 'selections': DRESS_CODES 
             },
             {
-                'name': 'industries',
+                'property_name': 'industries',
+                'display_name': 'industry',
                 'selections': INDUSTRIES 
             },
             {
-                'name': 'occasions',
+                'property_name': 'occasions',
+                'display_name': 'occasion',
                 'selections': OCCASIONS 
             }
         ]
@@ -933,10 +1009,10 @@ class ShopHandler(BaseHandler):
     def applyCheckboxes(self, query, filters, argDict):
         # TODO: verify this works for repeated properties as well? (e.g. colors, industries, etc.)
         for f in filters:
-            if f['name'] in argDict:
-                fValues = argDict[f['name']]
+            if f['property_name'] in argDict:
+                fValues = argDict[f['property_name']]
 
-                query = query.filter(getattr(Item, f['name']).IN(fValues))
+                query = query.filter(getattr(Item, f['property_name']).IN(fValues))
 
                 """
                 for i in fValues:
@@ -1044,7 +1120,7 @@ class StyleGuidesIndustryHandler(BaseHandler):
         try: 
             industry_arg = self.request.get('industry')
 
-            industry_results= IndustryStyle.query(getattr(IndustryStyle, 'industry') == industry_arg).fetch()
+            industry_results = IndustryStyle.query(getattr(IndustryStyle, 'industry') == industry_arg).fetch()
 
             logging.info(industry_results)
 
@@ -1084,29 +1160,36 @@ class StyleGuidesIndustryHandler(BaseHandler):
 
 class StyleGuidesStyleHandler(BaseHandler):
     def get(self):
-        try: 
-            dress_code_arg = self.request.get('dress_code')
+        #try: 
+        dress_code_arg = self.request.get('dress_code')
 
-            dress_code_data = LookOccasion.query(getattr(LookOccasion, 'dress_code') == dress_code_arg).order(LookOccasion.order_id).fetch()
+        #dress_code_data = LookOccasion.query(getattr(LookOccasion, 'dress_code') == dress_code_arg).order(LookOccasion.order_id).fetch()
+        dress_code_data = StyleInfo.query(getattr(StyleInfo, 'name') == dress_code_arg).get()
+        data = dress_code_data
+        logging.info(data)
 
-            template_vars = {
-                    'industry_names': INDUSTRIES, 
-                    'dress_code_data': dress_code_data, 
-                    'dress_code': dress_code_arg
-            }
+        template_vars = {
+                'industry_names': INDUSTRIES, 
+                'dress_code_data': data, 
+                'dress_code': dress_code_arg
+        }
 
-            # Check if it's a valid industry.
-            if dress_code_arg == '':
-                print "didn't get a valid style value in get request."
+        # Check if it's a valid industry.
+        if dress_code_arg == '':
+            print "didn't get a valid style value in get request."
 
-            else:
-                # Display normal industry page.
-                logging.info('in style handler logging')
-                self.render_template('templates/style.html', template_vars)
+        else:
+            # Display normal industry page.
+            logging.info('in style handler logging')
+            self.render_template('templates/style.html', template_vars)
 
+        """
         except(TypeError, ValueError):
+            logging.info(TypeError)
+            logging.info(ValueError)
             template_vars['message'] = "Invalid style."
             self.render_template('templates/danger_message.html', template_vars)
+        """
 
 
 class StyleGuidesHandler(BaseHandler):

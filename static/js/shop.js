@@ -19,16 +19,16 @@ $(document).ready(function() {
         checkboxSelected('gender', $(this));
     })
 
-    $('.ef-apparel-filter').change(function() {
-        checkboxSelected('article', $(this));
+    $('.ef-apparels-filter').change(function() {
+        checkboxSelected('apparels', $(this));
     })
 
     $('.ef-brand-filter').change(function() {
         checkboxSelected('brand', $(this));
     })
 
-    $('.ef-dress-code-filter').change(function() {
-        checkboxSelected('dress_code', $(this));
+    $('.ef-dress_codes-filter').change(function() {
+        checkboxSelected('dress_codes', $(this));
     })
 
     $('.ef-industries-filter').change(function() {

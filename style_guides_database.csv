@@ -1,0 +1,4 @@
+name,look_1_img,look_1_name,look_1_brand,look_1_tip,look_2_img,look_2_name,look_2_brand,look_2_tip,look_3_img,look_3_name,look_3_brand,look_3_tip,occasion_1_img,occasion_1_text,occasion_2_img,occasion_2_text,occasion_3_img,occasion_3_text,tip
+biz formal,default.png,look_1_name,look_1_brand,look_1_tip,default.png,look_2_name,look_2_brand,look_2_tip,default.png,look_3_name,look_3_brand,look_3_tip,default.png,occasion_1_text,default.png,occasion_2_text,default.png,occasion_3_text,tip
+biz casual,default.png,look_1_name,look_1_brand,look_1_tip,default.png,look_2_name,look_2_brand,look_2_tip,default.png,look_3_name,look_3_brand,look_3_tip,default.png,occasion_1_text,default.png,occasion_2_text,default.png,occasion_3_text,tip
+smart casual,default.png,look_1_name,look_1_brand,look_1_tip,default.png,look_2_name,look_2_brand,look_2_tip,default.png,look_3_name,look_3_brand,look_3_tip,default.png,occasion_1_text,default.png,occasion_2_text,default.png,occasion_3_text,tip

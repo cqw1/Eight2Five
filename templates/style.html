@@ -63,34 +63,97 @@
     {% endfor %}
     -->
 
+    
+
     <div class="container">
-        {% for dress_code in dress_code_data %}
-            <div class="row ef-vertical-center">
-                <div class="col-xs-6">
-                    <img class="ef-image" src="{{dress_code.look_img_src}}">
-                </div>
+        <!-- Three rows of information -->
+        <div class="row ef-vertical-center">
+            <div class="col-xs-6">
+                <img class="ef-image" src="{{dress_code_data.look_1_img}}">
+            </div>
 
-                <div class="col-xs-6">
-                    <h4 class="media-heading ef-header">The Look</h4>
-                    <div class="ef-description">
-                        {% for description in dress_code.look_descriptions %}
-                            <p>{{description}}</p>
-                        {% endfor %}
-                    </div>
+            <div class="col-xs-6">
+                <h4 class="media-heading ef-header">Name: </h4>&nbsp; {{dress_code_data.look_1_name}}
+                <br>
+                <h4 class="media-heading ef-header">Brand: </h4>&nbsp; {{dress_code_data.look_1_brand}}
+                <br>
+                <h4 class="media-heading ef-header">Tip: </h4>&nbsp; {{dress_code_data.look_1_tip}}
+            </div>
+        </div>
 
-                    <br>
+        <div class="row ef-vertical-center">
+            <div class="col-xs-6">
+                <img class="ef-image" src="{{dress_code_data.look_2_img}}">
+            </div>
 
-                    <h4 class="media-heading ef-header">The Occasion</h4>
-                    <div class="ef-description">
-                        {% for description in dress_code.occasion_descriptions %}
-                            <p>{{description}}</p>
-                        {% endfor %}
+            <div class="col-xs-6">
+                <h4 class="media-heading ef-header">Name: </h4>&nbsp; 
+                {{dress_code_data.look_2_name}}
+                <br>
+                <h4 class="media-heading ef-header">Brand: </h4>&nbsp; 
+                {{dress_code_data.look_2_brand}}
+                <br>
+                <h4 class="media-heading ef-header">Tip: </h4>&nbsp; 
+                {{dress_code_data.look_2_tip}}
+            </div>
+        </div>
+
+        <div class="row ef-vertical-center">
+            <div class="col-xs-6">
+                <img class="ef-image" src="{{dress_code_data.look_3_img}}">
+            </div>
+
+            <div class="col-xs-6">
+                <h4 class="media-heading ef-header">Name: </h4>&nbsp; 
+                {{dress_code_data.look_3_name}}
+                <br>
+                <h4 class="media-heading ef-header">Brand: </h4>&nbsp; 
+                {{dress_code_data.look_3_brand}}
+                <br>
+                <h4 class="media-heading ef-header">Tip: </h4>&nbsp; 
+                {{dress_code_data.look_3_tip}}
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Row of 3 occassions -->
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="thumbnail">
+                    <img class="ef-image" src="{{dress_code_data.occasion_1_img}}">
+                    <div class="caption ef-text-center">
+                        {{dress_code_data.occasion_1_text}}
                     </div>
                 </div>
             </div>
 
-            <hr>
-        {% endfor %}
+            <div class="col-xs-4">
+                <div class="thumbnail">
+                    <img class="ef-image" src="{{dress_code_data.occasion_2_img}}">
+                    <div class="caption ef-text-center">
+                        {{dress_code_data.occasion_2_text}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+                <div class="thumbnail">
+                    <img class="ef-image" src="{{dress_code_data.occasion_3_img}}">
+                    <div class="caption ef-text-center">
+                        {{dress_code_data.occasion_3_text}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Tip -->
+        <div class="well">
+            <h4 class="media-heading ef-header">Tip: </h4>&nbsp; 
+            {{dress_code_data.tip}}
+        </div>
     </div>
 
     <div class="row ef-row-container text-center">
