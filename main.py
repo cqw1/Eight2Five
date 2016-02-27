@@ -1092,7 +1092,7 @@ class WhoWoreWhatHandler(BaseHandler):
         #look_data = Look.query().order(Look.id).fetch()
         #logging.info(look_data)
 
-        posting_data = Posting.query().order(Posting.date).fetch()
+        posting_data = Posting.query().order(-Posting.date).fetch()
         logging.info(posting_data)
 
         template_vars = {

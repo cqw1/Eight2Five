@@ -9,12 +9,14 @@ body {
   margin-bottom: 60px;
 }
 .footer {
-  position: absolute;
+  /*position: absolute;*/
+  position: static;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #222;
+  /* height: 60px;*/
+  /*background-color: #222;*/
+  background-color: black;
 }
 
 
