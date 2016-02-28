@@ -14,6 +14,13 @@ $(document).ready(function() {
 
     updateCheckboxes(argDict);
 
+    // Do something with out of stock.
+    $('.ef-out-of-stock-image').on('click', function(event) {
+        event.preventDefault();
+
+        console.log('out of stick triggered for' + $(this));
+    })
+
     // Filters. 
     $('.ef-gender-filter').change(function() {
         checkboxSelected('gender', $(this));

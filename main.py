@@ -332,6 +332,9 @@ class Item(ndb.Model):
     # Date added to database
     date = ndb.DateProperty(required=True)
 
+    # Whether current item is out of stock at parent website. 
+    #out_of_stock = ndb.BooleanProperty(required=True)
+
 class DatastoreHandler(webapp2.RequestHandler):
 
     def get(self):
