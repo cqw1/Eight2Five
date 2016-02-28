@@ -1259,7 +1259,7 @@ class StyleGuidesHandler(BaseHandler):
                 {'name': 'biz formal', 'img_src': '/images/businessformal.jpg'},
                 {'name': 'biz casual', 'img_src': '/images/businesscasual.jpg'},
                 {'name': 'smart casual', 'img_src': '/images/smartcasual.jpg'},
-                {'name': 'tech casual', 'img_src': '/images/pikachullama.png'}]
+                {'name': 'tech casual', 'img_src': '/images/techcasual.jpg'}]
 
 
         template_vars = {
