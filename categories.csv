@@ -1,4 +1,4 @@
-apparel,pant,sweater,jacket,coat,dress,skirt,blazer,blouse,top,suit
-occasion,interview,sell dinner,first day,client meeting,happy hour,casual friday,day to day,big presentation,,
-dress_code,biz casual,biz formal,smart casual,tech casual,,,,,,
-brand,BCBG,Zara,Banana Republic,Ann Taylor,J. Crew,Lululemon,Athleta,Uniqlo,Club Monaco,Tahari
+apparel,skirt,dress,top,blouse,sweater,pant,suit,jacket,coat,blazer
+occasion,interview,first day,client meeting,big presentation,sell dinner,happy hour,casual friday,day to day,,
+dress_code,biz formal,biz casual,smart casual,tech casual,,,,,,
+brand,Ann Taylor,Athleta,Banana Republic,BCBG,Club Monaco,J. Crew,Lululemon,Tahari,Uniqlo,Zara
