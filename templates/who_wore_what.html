@@ -24,12 +24,33 @@
         </div>
 
         <div class="ef-posting-image-container">
-            <img class="ef-posting-image" src="{{p.img_src}}">
+            <img class="ef-posting-image" src="{{p.imgs[0]}}">
+        </div>
+
+        <div class="ef-text-center">
+            Shop the Look
+        </div>
+
+        <div class="ef-posting-links ef-text-center">
+            {% for l in p.links %}
+                {% set text_link  = l.split(': ') %}
+
+                <a href="{{text_link[1]}}">{{text_link[0]}}</a>
+
+            {% endfor %}
         </div>
 
         <div class="ef-posting-description ef-text-center">
             {{p.description}}
         </div>
+
+        {% for other_imgs in p.imgs %}
+            {% if not loop.first %}
+                <div class="ef-posting-image-container">
+                    <img class="ef-posting-image" src="{{p.imgs[loop.index]}}">
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
 
     {% if not loop.last %}

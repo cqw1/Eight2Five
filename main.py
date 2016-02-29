@@ -78,13 +78,13 @@ SHOP_SORTS = [
 SHOP_SORT_DEFAULT = SHOP_SORTS[0]
 
 ITEMS_PER_PAGE = [
-        15, 
         30, 
+        60,
         90, 
         'all'
 ]
 
-ITEMS_PER_PAGE_DEFAULT = ITEMS_PER_PAGE[0]
+ITEMS_PER_PAGE_DEFAULT = ITEMS_PER_PAGE[1]
 
 PAGE_DEFAULT = 1
 
@@ -227,7 +227,8 @@ class Posting(ndb.Model):
     id = ndb.IntegerProperty(required=True) # Unique id
     date = ndb.DateProperty(required=True)
     title = ndb.TextProperty(required=True)
-    img_src = ndb.TextProperty(required=True)
+    imgs = ndb.TextProperty(repeated=True)
+    links = ndb.TextProperty(repeated=True) # Format: 'text: url'
     description = ndb.TextProperty(required=True)
 
 class Person(ndb.Model):
@@ -529,6 +530,14 @@ class DatastoreHandler(webapp2.RequestHandler):
                                 d['month'] = int(date_split[0])
                                 d['day'] = int(date_split[1])
                                 d['year'] = int(date_split[2])
+                            elif keys[r] == 'imgs':
+                                d[keys[r]] = row[r].split(', ')
+
+                                for i in range(len(d[keys[r]])):
+                                    # Need to add prefix to all pictures
+                                    d[keys[r]][i] = prefix + d[keys[r]][i]
+                            elif keys[r] == 'links':
+                                d[keys[r]] = row[r].split(', ')
                             else:
                                 d[keys[r]] = row[r]
 
@@ -536,7 +545,8 @@ class DatastoreHandler(webapp2.RequestHandler):
                             id=int(d['id']),
                             date=datetime.date(d['year'], d['month'], d['day']),
                             title=d['title'],
-                            img_src=prefix + d['img_src'],
+                            imgs=d['imgs'],
+                            links=d['links'],
                             description='Insert description.')
                         posting.put()
 

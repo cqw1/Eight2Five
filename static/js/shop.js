@@ -4,7 +4,7 @@ globalDefaultItems = 'defaultItems';
 globalDefaultPage = 0;
 globalNumPages = 1;
 
-var sendto = 'cqw1@rice.edu';
+var sendto = 'skirttheceiling@gmail.com';
 var subject = 'Out of Stock Report';
 
 $(document).ready(function() {
@@ -16,10 +16,6 @@ $(document).ready(function() {
             itemSelector: '.masonry-item'
         });
     });
-    
-
-
-
 
     console.log('shop.js document ready');
 
