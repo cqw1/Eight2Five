@@ -58,7 +58,7 @@ hr {
 }
 
 #photos-name {
-    font-size: 200%;
+    font-size: 400%;
     font-weight: bold;
 }
 
@@ -73,5 +73,5 @@ hr {
 .ef-posting-image {
     display: block;
     margin: auto;
-    width: 100%;
+    width: 50%;
 }
