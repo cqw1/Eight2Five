@@ -51,7 +51,8 @@
 
         <!-- List group -->
         <ul class="list-group">
-          {% for filter in filters %}
+            {% for filter in filters %}
+            {% if filter.display_name != 'industry' %}
             <li class="list-group-item">
               <h5 class="ef-filter-name" data-toggle="collapse" data-target="#{{filter.property_name}}">{{filter.display_name | title }}</h5>
               <div id="{{filter.property_name}}" class="collapse in ef-filter-container">
@@ -68,7 +69,8 @@
                     </li>
                   {% endfor %}
               </div>
-            </li>
+              </li>
+              {% endif %}
           {% endfor %}
 
         </ul>
