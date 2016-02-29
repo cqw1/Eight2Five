@@ -4,13 +4,29 @@ globalDefaultItems = 'defaultItems';
 globalDefaultPage = 0;
 globalNumPages = 1;
 
+var sendto = 'cqw1@rice.edu';
+var subject = 'Out of Stock Report';
+
 $(document).ready(function() {
+
+    var masonry_container = $('.masonry-container');
+    masonry_container.imagesLoaded(function() {
+        masonry_container.masonry({
+            columnWidth: '.masonry-item',
+            itemSelector: '.masonry-item'
+        });
+    });
+    
+
+
+
+
     console.log('shop.js document ready');
 
     argDict = createArgDict();
 
-    console.log('argDict ');
-    console.log(argDict);
+    //console.log('argDict ');
+    //console.log(argDict);
 
     updateCheckboxes(argDict);
 
@@ -18,7 +34,11 @@ $(document).ready(function() {
     $('.ef-out-of-stock-image').on('click', function(event) {
         event.preventDefault();
 
-        console.log('out of stick triggered for' + $(this));
+        console.log('out of stick triggered for:');
+        // janky way to get the img href. traversing dom right now.
+        console.log($(this).parent().parent().children("a").attr("href"));
+        url = $(this).parent().parent().children("a").attr("href");
+        window.open('mailto:' + sendto + '?subject=' + subject + '&body=' + url);
     })
 
     // Filters. 

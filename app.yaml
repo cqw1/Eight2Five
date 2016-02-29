@@ -22,6 +22,8 @@ handlers:
   static_dir: bootstrap 
 - url: /csv
   static_dir: csv
+- url: /masonry
+  static_dir: masonry 
 
 - url: .*
   script: main.app

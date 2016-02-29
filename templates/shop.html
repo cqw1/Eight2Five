@@ -9,6 +9,8 @@
   </script>
 
   <link rel="stylesheet" type="text/css" href="/css/shop.css">
+  <script type="text/javascript" src="/masonry/imagesloaded.pkgd.min.js"></script>
+  <script type="text/javascript" src="/masonry/masonry.pkgd.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -136,9 +138,9 @@
       </div>
 
       <!-- Grid of items -->
-      <div class="row">
+      <div class="row masonry-container">
         {% for i in results %} 
-          <div class="col-xs-6 text-center">
+          <div class="col-xs-6 text-center masonry-item">
               <div id="{{i.name}}" class="thumbnail ef-item"> 
                   <a href="{{i.external_src}}" target="_blank">
                       <img class="ef-shop-image" src="{{i.img_src}}"></img>
@@ -153,7 +155,7 @@
               </div>
           </div>
         {% endfor %}
-      </div>
+    </div>
 
       <!-- Bottom Controls -->
       <div class="row">
