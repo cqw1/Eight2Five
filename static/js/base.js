@@ -54,6 +54,6 @@ function redirectIndustry(arg) {
 }
 
 function redirectShop(arg) {
-    window.location.href='/shop?&article=' + arg;
+    window.location.href='/shop?&apparels=' + arg;
 }
 
