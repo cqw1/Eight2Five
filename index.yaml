@@ -179,6 +179,12 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
+- kind: Item
+  properties:
+  - name: dress_codes
+  - name: industries
+  - name: name
+
 - kind: LookOccasion
   properties:
   - name: dress_code
