@@ -62,7 +62,7 @@
           </button>
           <!--<a class="navbar-brand" href="/home">Eight2Five</a>-->
           <a class="navbar-brand" href="/home"><img alt="Logo" class="ef-logo" 
-              src="/images/stripe_logo.png"></a>
+              src="/images/stripe_logo_transparent.png"></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -85,10 +85,12 @@
                   <li><a class="ef-dropdown-dress-code" id="tech-casual" 
                       href="#">Tech Casual</a></li>
 
+                  <!--
                   <li role="separator" class="divider"></li>
 
                   <li class="dropdown-header ef-normal-pointer">Industry</li>
                   <li><a class="ef-dropdown-industry" id="consulting" href="#">Consulting</a></li>
+                  -->
                   <!--<li><a class="ef-dropdown-industry" id="industry-2" href="#">Industry 2</a></li>-->
                   
 
@@ -182,12 +184,15 @@
           <ul class="nav navbar-nav navbar-right">
             <!-- Signup / Sign in-->
 
+            <!--
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                -->
                   <!--                   
                   <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                   Guest
                   -->                
+                  <!--
                   SIGN IN <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu ef-sign-in">
@@ -204,6 +209,7 @@
             <li>
               <a href="/signup" class="">SIGN UP</a>  
             </li>
+              -->
 
           </ul>
  
@@ -221,9 +227,9 @@
     <br><br><br><br><br><br>
 
     <footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-9 ef-footer-text ef-inline-block">
+        <div class="row footer-white-bg">
+            <div class="container">
+            <div class="ef-footer-text ef-inline-block">
                 <p class="text-muted">
                     <!--Place sticky footer content here.-->
                     All product selections, opinions, style guides, and styling choices 
@@ -240,6 +246,10 @@
                 
                 </p>
             </div>
+        </div>
+        </div>
+        <div class="row footer-black-bg">
+            <div class="container">
 
             <div class="col-xs-3 ef-social-media-icons ef-inline-block ">
                 <div class="ef-icon ef-inline-block" id="ef-facebook-icon">
@@ -256,8 +266,10 @@
                 </div>
             </div>
         </div>
+        </div>
 
         <div class="row">
+            <div class="container">
             <!-- Begin MailChimp Signup Form -->
             <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
             <div id="mc_embed_signup">
@@ -272,9 +284,9 @@
             </form>
             </div>
             <!--End mc_embed_signup-->
+            </div>
         </div>
 
-    </div>
     </footer>
 
     {% block end_body %}{%endblock %}

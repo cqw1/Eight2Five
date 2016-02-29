@@ -16,7 +16,15 @@ body {
   /* Set the fixed height of the footer here */
   height: 243px; /* looked it up with inspect element. */
   /*background-color: #222;*/
-  background-color: black;
+  /*background-color: black;*/
+}
+
+.footer-white-bg {
+    background-color: white;
+}
+
+.footer-black-bg {
+    background-color: black;
 }
 
 
