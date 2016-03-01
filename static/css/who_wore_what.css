@@ -74,6 +74,7 @@ hr {
 .ef-posting-description {
      width: 50%;
      font-size: 130%;
+     text-align: center;
 }
 
 .ef-posting-date {
