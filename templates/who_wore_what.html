@@ -45,11 +45,10 @@
         </div>
 
         {% for other_imgs in p.imgs %}
-            {% if not loop.first %}
-                <div class="ef-posting-image-container">
-                    <img class="ef-posting-image" src="{{p.imgs[loop.index]}}">
-                </div>
-            {% endif %}
+            <!-- continues on in the array? -->
+            <div class="ef-posting-image-container">
+                <img class="ef-posting-image" src="{{p.imgs[loop.index]}}">
+            </div>
         {% endfor %}
     </div>
 
