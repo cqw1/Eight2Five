@@ -63,8 +63,22 @@ hr {
 }
 
 .ef-posting-title {
-    font-size: 400%;
-    font-weight: bold;
+    font-size: 180%;
+ 
+}
+
+.ef-text-box {
+    font-size: 140%;
+}
+
+.ef-posting-description {
+     width: 50%;
+     font-size: 130%;
+     text-align: center;
+}
+
+.ef-posting-date {
+    font-size: 130%;
 }
 
 .clearfix {
