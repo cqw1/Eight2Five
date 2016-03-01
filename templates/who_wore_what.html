@@ -27,11 +27,11 @@
             <img class="ef-posting-image" src="{{p.imgs[0]}}">
         </div>
 
-        <div class="ef-text-center">
+        <div class="ef-text-center ef-text-box">
             Shop the Look
         </div>
 
-        <div class="ef-posting-links ef-text-center">
+        <div class="ef-posting-links ef-text-center ef-text-box">
             {% for l in p.links %}
                 {% set text_link  = l.split(': ') %}
 
@@ -40,7 +40,7 @@
             {% endfor %}
         </div>
 
-        <div class="ef-posting-description ef-text-center">
+        <div class="ef-posting-description ef-text-center ef-text-box">
             {{p.description}}
         </div>
 
