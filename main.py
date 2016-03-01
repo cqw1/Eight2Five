@@ -547,7 +547,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                             title=d['title'],
                             imgs=d['imgs'],
                             links=d['links'],
-                            description='Insert description.')
+                            description=d['description'])
                         posting.put()
 
                     else:
