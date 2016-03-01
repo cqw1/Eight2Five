@@ -72,9 +72,9 @@ hr {
 }
 
 .ef-posting-description {
-     width: 50%;
-     font-size: 130%;
-     text-align: center;
+    width: 50%;
+    font-size: 130%;
+    margin: auto;
 }
 
 .ef-posting-date {
