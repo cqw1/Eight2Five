@@ -16,3 +16,7 @@
 .ef-industry-thumbnail {
     cursor: pointer;
 }
+
+.caption {
+	font-size: 160%;
+}
