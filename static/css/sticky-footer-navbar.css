@@ -6,7 +6,7 @@ html {
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 209px; /* match .footer height */
+  margin-bottom: 180px; /* match .footer height */
 }
 .footer {
   position: absolute;
@@ -14,9 +14,13 @@ body {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 209px; /* looked it up with inspect element. */
+  height: 180px; /* looked it up with inspect element. */
   /*background-color: #222;*/
   /*background-color: black;*/
+
+  /* There's some weird whitespace on the right and bottom of the footer? */
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .footer-white-bg {
