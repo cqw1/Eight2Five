@@ -152,7 +152,11 @@
                       src="/images/outofstock.png" title="Report out of stock"></img>
                   </span>
                   <div class="caption">
-                    {{i.name | upper}}
+                      {{i.name | upper}}
+                      <br>
+                      {{i.brand}}
+                      <br>
+                      {{"$%.2f" | format(i.price)}}
                   </div>
               </div>
           </div>
