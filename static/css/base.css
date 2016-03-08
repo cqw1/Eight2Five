@@ -69,8 +69,8 @@ body > .container {
 	padding-top: 15px;
 	padding-bottom: 15px;
     */
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .nav > li > .split-button {
@@ -81,11 +81,11 @@ body > .container {
 
 .nav > li > .split-button > a.dropdown-toggle {
   /*padding: 15px 15px 15px 5px;*/
-  padding: 5px 15px 5px 5px;
+  padding: 10px 15px 10px 5px;
 }
 .nav > li > .split-button > a {
   /*padding: 15px 0px 15px 15px;*/
-  padding: 5px 0px 5px 15px;
+  padding: 10px 0px 10px 15px;
 }
 .nav > li > .split-button > a:hover,
 .nav > li > .split-button > a:focus {
@@ -128,11 +128,11 @@ body > .container {
   }
   .navbar-nav .open .dropdown-menu > li > a,
   .navbar-nav .open .dropdown-menu .dropdown-header {
-    padding: 5px 15px 5px 25px;
+    padding: 10px 15px 10px 25px;
   }
   .navbar-nav .open .dropdown-menu > li > .split-button,
   .navbar-nav .open .dropdown-menu .dropdown-header {
-    padding: 5px 15px 5px 25px;
+    padding: 10px 15px 10px 25px;
   }
   .navbar-nav .open .dropdown-menu > li > a {
     line-height: 20px;
@@ -161,15 +161,15 @@ body > .container {
     /*padding-top: 15px;
     padding-bottom: 15px;
     */
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   .navbar-nav > li > .split-button {
     /*padding-top: 15px;
     padding-bottom: 15px;
     */
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
 .navbar-nav > li > .split-button > .dropdown-menu {
@@ -315,7 +315,7 @@ body > .container {
 }
 
 .navbar-brand {
-    padding: 5px 15px;
+    padding: 10px 15px;
     height: 30px;
 }
 
