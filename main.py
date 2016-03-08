@@ -322,7 +322,8 @@ class Item(ndb.Model):
     description = ndb.TextProperty(required=False, default='Description currently unavailable.')
 
     # Main image on shopping grid page.
-    img_src = ndb.TextProperty(required=True)
+    img_1_src = ndb.TextProperty(required=True)
+    img_2_src = ndb.TextProperty(required=True)
 
     # Link to outside website.
     external_src = ndb.TextProperty(required=True)
@@ -887,7 +888,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                         d = {}
                         for r in range(len(row)):
                             # Brands are case sensitive. but others aren't.
-                            if keys[r] != 'brand' and keys[r] != 'image_1' and keys[r] != 'url':
+                            if keys[r] != 'brand' and keys[r] != 'image_1' and keys[r] != 'image_2' and keys[r] != 'url':
                                 row[r] = row[r].lower()
 
                             # List of properties
@@ -906,7 +907,8 @@ class DatastoreHandler(webapp2.RequestHandler):
                             dress_codes=d['dress_code'],
                             occasions=d['occasion'],
                             description='Insert description.',
-                            img_src='/images/items/' + d['image_1'],
+                            img_1_src='/images/items/' + d['image_1'],
+                            img_2_src='/images/items/' + d['image_2'],
                             external_src=d['url'],
                             smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                             date=datetime.date(2016, 1, 10))

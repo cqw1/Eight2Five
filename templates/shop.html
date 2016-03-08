@@ -145,7 +145,10 @@
           <div class="col-xs-6 text-center masonry-item">
               <div id="{{i.name}}" class="thumbnail ef-item"> 
                   <a href="{{i.external_src}}" target="_blank">
-                      <img class="ef-shop-image ga-refer-link" src="{{i.img_src}}"></img>
+                      <img class="ef-shop-image ga-refer-link" 
+                      src="{{i.img_1_src}}" 
+                      onmouseover="this.src='{{i.img_2_src}}'" 
+                      onmouseout="this.src='{{i.img_1_src}}'" />
                   </a>
                   <span class="ef-out-of-stock-container">
                       <img class="ef-out-of-stock-image" 
