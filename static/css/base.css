@@ -12,7 +12,8 @@ body > .container {
 	border-radius: 0;
 
 	/* default bootstrap css */
-	min-height: 50px;
+	/*min-height: 50px;*/
+	min-height: 30px;
 	margin-bottom: 0px;
 	border: 1px solid transparent;
 }
@@ -64,8 +65,12 @@ body > .container {
 }
 
 .split-button > .dropdown-toggle {
+    /*
 	padding-top: 15px;
 	padding-bottom: 15px;
+    */
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .nav > li > .split-button {
@@ -75,10 +80,12 @@ body > .container {
 }
 
 .nav > li > .split-button > a.dropdown-toggle {
-  padding: 15px 15px 15px 5px;
+  /*padding: 15px 15px 15px 5px;*/
+  padding: 5px 15px 5px 5px;
 }
 .nav > li > .split-button > a {
-  padding: 15px 0px 15px 15px;
+  /*padding: 15px 0px 15px 15px;*/
+  padding: 5px 0px 5px 15px;
 }
 .nav > li > .split-button > a:hover,
 .nav > li > .split-button > a:focus {
@@ -151,12 +158,18 @@ body > .container {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 15px;
+    /*padding-top: 15px;
     padding-bottom: 15px;
+    */
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
   .navbar-nav > li > .split-button {
-    padding-top: 15px;
+    /*padding-top: 15px;
     padding-bottom: 15px;
+    */
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 }
 .navbar-nav > li > .split-button > .dropdown-menu {
@@ -185,13 +198,15 @@ body > .container {
 .navbar-inverse .navbar-nav > .active > .split-button > a:hover,
 .navbar-inverse .navbar-nav > .active > .split-button > a:focus {
   color: #fff;
-  background-color: #080808;
+  /*background-color: #080808;*/
+  background-color: black;
 }
 .navbar-inverse .navbar-nav > .active,
 .navbar-inverse .navbar-nav > .active:hover ,
 .navbar-inverse .navbar-nav > .active:focus {
   color: #fff;
-  background-color: #080808;
+  /*background-color: #080808;*/
+  background-color: black;
 }
 .navbar-inverse .navbar-nav > .disabled > .split-button > a,
 .navbar-inverse .navbar-nav > .disabled > .split-button > a:hover,
@@ -211,13 +226,15 @@ body > .container {
 }
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #101010;
+  /* border-color: #101010;*/
+  border-color: black;
 }
 .navbar-inverse .navbar-nav > li > .open > a,
 .navbar-inverse .navbar-nav > li > .open > a:hover,
 .navbar-inverse .navbar-nav > li > .open > a:focus {
   color: #fff;
-  background-color: #080808;
+  /*background-color: #080808;*/
+  background-color: black;
   text-decoration: none;
 }
 
@@ -225,16 +242,19 @@ body > .container {
 .navbar-inverse .navbar-nav > li > .open:hover,
 .navbar-inverse .navbar-nav > li > .open:focus {
   color: #fff;
-  background-color: #080808;
+  /*background-color: #080808;*/
+  background-color: black;
   text-decoration: none;
 }
 
 @media (max-width: 767px) {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
-    border-color: #080808;
+    /*background-color: #080808;*/
+    background-color: black;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
-    background-color: #080808;
+    /*background-color: #080808;*/
+    background-color: black;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
     color: #9d9d9d;
@@ -248,14 +268,16 @@ body > .container {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #fff;
-    background-color: #080808;
+    /*background-color: #080808;*/
+    background-color: black;
   }
 
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active:hover,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active:focus {
     color: #fff;
-    background-color: #080808;
+    /*background-color: #080808;*/
+    background-color: black;
   }
 
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,
@@ -276,7 +298,8 @@ body > .container {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > .split-button > a:hover,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > .split-button > a:focus {
     color: #fff;
-    background-color: #080808;
+    /*background-color: #080808;*/
+    background-color: black;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > .split-button > a,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > .split-button > a:hover,
@@ -286,6 +309,15 @@ body > .container {
   }
 }
 
+.navbar-inverse {
+    background-color: black;
+    border-color: black;
+}
+
+.navbar-brand {
+    padding: 5px 15px;
+    height: 30px;
+}
 
 
 /* Multicolumns */
