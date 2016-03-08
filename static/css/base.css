@@ -13,7 +13,7 @@ body > .container {
 
 	/* default bootstrap css */
 	/*min-height: 50px;*/
-	min-height: 30px;
+	min-height: 40px;
 	margin-bottom: 0px;
 	border: 1px solid transparent;
 }
@@ -348,8 +348,8 @@ body > .container {
 }
 
 .navbar-brand {
-    padding: 10px 15px;
-    height: 30px;
+    padding: 5px 15px;
+    height: 40px;
 }
 
 
