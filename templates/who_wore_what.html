@@ -35,7 +35,7 @@
             {% for l in p.links %}
                 {% set text_link  = l.split(': ') %}
 
-                <a href="{{text_link[1]}}">{{text_link[0]}}</a>
+                <a class="ga-www-refer" href="{{text_link[1]}}">{{text_link[0]}}</a>
 
             {% endfor %}
         </div>
