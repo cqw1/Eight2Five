@@ -230,6 +230,7 @@ class Posting(ndb.Model):
     imgs = ndb.TextProperty(repeated=True)
     links = ndb.TextProperty(repeated=True) # Format: 'text: url'
     description = ndb.TextProperty(required=True)
+    dress_code = ndb.TextProperty(required=True, choices=DRESS_CODES)
 
 class Person(ndb.Model):
     # Name must match coverflow name.
@@ -548,7 +549,9 @@ class DatastoreHandler(webapp2.RequestHandler):
                             title=d['title'],
                             imgs=d['imgs'],
                             links=d['links'],
-                            description=d['description'])
+                            description=d['description'],
+                            dress_code = d['dress_code']
+                        )
                         posting.put()
 
                     else:

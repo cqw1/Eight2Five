@@ -28,10 +28,13 @@
         </div>
 
         <div class="ef-text-center ef-text-box">
-            Shop the Look
+            Shop the Style: 
+            <a class="" href="/shop?&dress_codes={{p.dress_code}}">{{p.dress_code | title}}</a>
         </div>
 
-        <div class="ef-posting-links ef-text-center ef-text-box">
+        <div class="ef-text-center ef-text-box">
+            Shop the Look: 
+
             {% for l in p.links %}
                 {% set text_link  = l.split(': ') %}
 
