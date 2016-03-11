@@ -11,6 +11,11 @@
   <link rel="stylesheet" type="text/css" href="/css/shop.css">
   <script type="text/javascript" src="/masonry/imagesloaded.pkgd.min.js"></script>
   <script type="text/javascript" src="/masonry/masonry.pkgd.min.js"></script>
+
+  <!-- jquery ui for price slider -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
 {% endblock %}
 
 {% block content %}
@@ -51,28 +56,38 @@
 
         <!-- List group -->
         <ul class="list-group">
-            {% for filter in filters %}
+          {% for filter in filters %}
             {% if filter.display_name != 'industry' %}
-            <li class="list-group-item">
-              <h5 class="ef-filter-name" data-toggle="collapse" data-target="#{{filter.property_name}}">{{filter.display_name | title }}</h5>
-              <div id="{{filter.property_name}}" class="collapse in ef-filter-container">
-                <ul>
-                  {% for selection in filter.selections %}
-                    <li>
-                      <!-- input id is used for url arguments. if input id differs from the text of the label. change javascript -->
-                      <input type="checkbox" id="{{selection | replace(' ', '-')}}_filter" class="ef-{{filter.property_name}}-filter css-checkbox"/>
-                      {% if filter.display_name == 'brand' %}
-                        <label for="{{selection | replace(' ', '-')}}_filter" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection}}</label>
-                      {% else %}
-                        <label for="{{selection | replace(' ', '-')}}_filter" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection | title }}</label>
-                      {% endif %}
-                    </li>
-                  {% endfor %}
-              </div>
+              <li class="list-group-item">
+                <h5 class="ef-filter-name" data-toggle="collapse" data-target="#{{filter.property_name}}">{{filter.display_name | title }}</h5>
+                <div id="{{filter.property_name}}" class="collapse in ef-filter-container">
+                  <ul>
+                    {% for selection in filter.selections %}
+                      <li>
+                        <!-- input id is used for url arguments. if input id differs from the text of the label. change javascript -->
+                        <input type="checkbox" id="{{selection | replace(' ', '-')}}_filter" class="ef-{{filter.property_name}}-filter css-checkbox"/>
+                        {% if filter.display_name == 'brand' %}
+                          <label for="{{selection | replace(' ', '-')}}_filter" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection}}</label>
+                        {% else %}
+                          <label for="{{selection | replace(' ', '-')}}_filter" class="css-label ef-filter-label"><span class="ef-buffer-span"></span>{{selection | title }}</label>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
               </li>
-              {% endif %}
+            {% endif %}
           {% endfor %}
 
+          <!-- Price Slider -->
+          <li class="list-group-item">
+            <h5 class="ef-filter-name" data-toggle="collapse" data-target="#price-filter">Price</h5>
+              <div id="price-filter" class="collapse in ef-filter-container">
+                <div id="slider-range"></div>
+                <input type="text" id="price-min" readonly style="border:0; font-weight:bold;">
+                <input type="text" id="price-max" readonly style="border:0; font-weight:bold;">
+              </div>
+          </li>
         </ul>
       </div>
 

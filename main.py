@@ -110,6 +110,8 @@ with open('categories.csv', 'rb') as csvfile:
             DRESS_CODES = values
         elif row[0] == 'brand':
             BRANDS = values
+        elif row[0] == 'industry':
+            INDUSTRIES = values
         logging.info(row)
 
 # Taken from blog.abahgat.com/2013/01/07/user-authentication-with-webapp2-on-google-app-engine/
