@@ -1,6 +1,13 @@
 $(document).ready(function() {
     console.log('base.js document ready'); 
 
+    // Subscribe Modal
+    $(window).load(function(){
+	  setTimeout(function(){
+	      $('#subscribeModal').modal('show');
+	  }, 5000);
+	});
+
     // Update active tab on navbar.
     var pathname = window.location.pathname.split("/")[1];
 
