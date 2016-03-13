@@ -16,14 +16,14 @@ $(document).ready(function() {
       values: [ 75, 300 ],
       slide: function( event, ui ) {
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-        $( "#price-min" ).val( "$" + ui.values[ 0 ] );
-        $( "#price-min" ).val( "$" + ui.values[ 1 ] );
+        $( "#price-min" ).text( "$" + ui.values[ 0 ] );
+        $( "#price-max" ).text( "$" + ui.values[ 1 ] );
       }
     });
     $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
       " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-    $( "#price-min" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ));
-    $("#price-max").val("$" + $("#slider-range").slider("values", 1));
+    $("#price-min" ).text( "$" + $( "#slider-range" ).slider( "values", 0 ));
+    $("#price-max").text("$" + $("#slider-range").slider("values", 1));
 
     var masonry_container = $('.masonry-container');
     masonry_container.imagesLoaded(function() {

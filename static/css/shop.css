@@ -103,3 +103,15 @@ label {
 .ef-search-form {
     padding-right: 0px;
 }
+
+#price-min {
+    display: inline-block;
+    font-weight: bold;
+    float: left;
+}
+
+#price-max {
+    display: inline-block;
+    font-weight:bold;
+    float: right;
+}
