@@ -956,6 +956,7 @@ class ShopHandler(BaseHandler):
         else:
             selected_page = PAGE_DEFAULT
 
+
         # Check shop.js filters.
         filters = [
             {
@@ -987,8 +988,10 @@ class ShopHandler(BaseHandler):
 
         # create query filters.
         query = Item.query()
+        query = self.applyPriceFilters(query, argDict)
         query = self.applySort(query, argDict)
         query = self.applyCheckboxes(query, filters, argDict)
+        
 
         logging.info(query)
 
@@ -1092,6 +1095,16 @@ class ShopHandler(BaseHandler):
                 for i in fValues:
                     query = query.filter(getattr(Item, f['name']) == i)
                 """
+
+        return query
+
+    def applyPriceFilters(self, query, argDict):
+        if 'price-min' in argDict and 'price-max' in argDict:
+            logging.info(int(argDict['price-min'][0]))
+            logging.info(int(argDict['price-max'][0]))
+            query = query.filter(Item.price >= int(argDict['price-min'][0]))
+            query = query.filter(Item.price <= int(argDict['price-max'][0]))
+            query = query.order(Item.price)
 
         return query
 

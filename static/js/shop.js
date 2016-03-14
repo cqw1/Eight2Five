@@ -9,6 +9,8 @@ var subject = 'Out of Stock Report';
 
 $(document).ready(function() {
 
+    argDict = createArgDict();
+
     $( "#slider-range" ).slider({
       range: true,
       min: 0,
@@ -18,12 +20,29 @@ $(document).ready(function() {
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
         $( "#price-min" ).text( "$" + ui.values[ 0 ] );
         $( "#price-max" ).text( "$" + ui.values[ 1 ] );
+      },
+      stop: function(event, ui) {
+        argDict['price-min'] = [ui.values[0]];
+        argDict['price-max'] = [ui.values[1]];
+
+
+        updateUrl(argDict);
       }
     });
-    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
     $("#price-min" ).text( "$" + $( "#slider-range" ).slider( "values", 0 ));
     $("#price-max").text("$" + $("#slider-range").slider("values", 1));
+
+    if ('price-min' in argDict) {
+        $("#price-min" ).text( "$" + argDict['price-min']);
+    } else {
+        $("#price-min" ).text( "$" + $( "#slider-range" ).slider( "values", 0 ));
+    }
+
+    if ('price-max' in argDict) {
+        $("#price-max" ).text( "$" + argDict['price-max']);
+    } else {
+        $("#price-max" ).text( "$" + $( "#slider-range" ).slider( "values", 1));
+    }
 
     var masonry_container = $('.masonry-container');
     masonry_container.imagesLoaded(function() {
@@ -34,8 +53,6 @@ $(document).ready(function() {
     });
 
     console.log('shop.js document ready');
-
-    argDict = createArgDict();
 
     //console.log('argDict ');
     //console.log(argDict);
