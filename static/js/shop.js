@@ -11,11 +11,32 @@ $(document).ready(function() {
 
     argDict = createArgDict();
 
+    // Price Slider ==========
+    var slider_min = 0; // initially matches with min in slider initializer
+    var slider_max = 1000; // initially matches with max in slider initializer
+
+
+    // Check if we're given a price-min or price-max from the URL
+    if ('price-min' in argDict) {
+        $("#price-min" ).text( "$" + argDict['price-min']);
+        slider_min = argDict['price-min'];
+    } else {
+        $("#price-min" ).text("$" + slider_min);
+    }
+
+    if ('price-max' in argDict) {
+        $("#price-max" ).text( "$" + argDict['price-max']);
+        slider_max = argDict['price-max'];
+    } else {
+        $("#price-min" ).text("$" + slider_max);
+    }
+
+    // Initialize slider.
     $( "#slider-range" ).slider({
       range: true,
       min: 0,
-      max: 500,
-      values: [ 75, 300 ],
+      max: 1000,
+      values: [slider_min, slider_max],
       slide: function( event, ui ) {
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
         $( "#price-min" ).text( "$" + ui.values[ 0 ] );
@@ -29,21 +50,9 @@ $(document).ready(function() {
         updateUrl(argDict);
       }
     });
-    $("#price-min" ).text( "$" + $( "#slider-range" ).slider( "values", 0 ));
-    $("#price-max").text("$" + $("#slider-range").slider("values", 1));
 
-    if ('price-min' in argDict) {
-        $("#price-min" ).text( "$" + argDict['price-min']);
-    } else {
-        $("#price-min" ).text( "$" + $( "#slider-range" ).slider( "values", 0 ));
-    }
 
-    if ('price-max' in argDict) {
-        $("#price-max" ).text( "$" + argDict['price-max']);
-    } else {
-        $("#price-max" ).text( "$" + $( "#slider-range" ).slider( "values", 1));
-    }
-
+    // Masonry layout ===========
     var masonry_container = $('.masonry-container');
     masonry_container.imagesLoaded(function() {
         masonry_container.masonry({

@@ -988,7 +988,6 @@ class ShopHandler(BaseHandler):
 
         # create query filters.
         query = Item.query()
-        query = self.applyPriceFilters(query, argDict)
         query = self.applySort(query, argDict)
         query = self.applyCheckboxes(query, filters, argDict)
         
@@ -1036,6 +1035,12 @@ class ShopHandler(BaseHandler):
             logging.info('----------------------')
 
         logging.info('======================================')
+
+        # Manually filter out by price because gae required inequality filters 
+        # to have a sort on the query, and that would require sacrificing sorts 
+        # and maybe need more indexes.
+        if 'price-min' in argDict and 'price-max' in argDict:
+            results = self.filterByPrice(results, int(argDict['price-min'][0]), int(argDict['price-max'][0]))
 
         template_vars = {
                 'filters': filters,
@@ -1098,15 +1103,14 @@ class ShopHandler(BaseHandler):
 
         return query
 
-    def applyPriceFilters(self, query, argDict):
-        if 'price-min' in argDict and 'price-max' in argDict:
-            logging.info(int(argDict['price-min'][0]))
-            logging.info(int(argDict['price-max'][0]))
-            query = query.filter(Item.price >= int(argDict['price-min'][0]))
-            query = query.filter(Item.price <= int(argDict['price-max'][0]))
-            query = query.order(Item.price)
+    def filterByPrice(self, results, priceMin, priceMax):
+        filtered_results = []
 
-        return query
+        for r in results:
+            if r.price >= priceMin and r.price <= priceMax:
+                filtered_results.append(r)
+
+        return filtered_results
 
 class WhoWoreWhatHandler(BaseHandler):
     def get(self):
