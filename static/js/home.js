@@ -5,6 +5,6 @@ $(document).ready(function() {
     $(window).load(function(){
 	  setTimeout(function(){
 	      $('#subscribeModal').modal('show');
-	  }, 5000);
+	  }, 10000);
 	});
 });
