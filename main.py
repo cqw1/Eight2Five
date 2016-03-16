@@ -109,6 +109,7 @@ with open('categories.csv', 'rb') as csvfile:
         elif row[0] == 'dress_code':
             DRESS_CODES = values
         elif row[0] == 'brand':
+            logging.info(values)
             BRANDS = values
         elif row[0] == 'industry':
             INDUSTRIES = values

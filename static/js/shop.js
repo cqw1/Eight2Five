@@ -208,14 +208,14 @@ function updateCheckboxes(argDict) {
         var filters = argDict[key];
         for (var i in filters) {
             console.log(filters[i]);
-            console.log(filters[i].replace(/%20/g, '-'));
-            if (globalFilters.indexOf(filters[i].replace(/%20/g, ' ')) > -1) {
+            console.log(decodeURIComponent(filters[i].replace(/%20/g, '-')));
+            if (globalFilters.indexOf(decodeURIComponent(filters[i].replace(/%20/g, ' '))) > -1) {
                 // global filters comes in with spaces, but ids replace the spaces with dashes.
                 // Checkbox arg and not a dropdown arg.
-                var id = '' + filters[i].replace(/%20/g, '-') + '_filter';
-                $('#' + filters[i].replace(/%20/g, '-') + '_filter').prop('checked', true);
+                var id = '' + decodeURIComponent(filters[i].replace(/%20/g, '-')) + '_filter';
+                //$('#' + decodeURIComponent(filters[i].replace(/%20/g, '-')) + '_filter').prop('checked', true);
 
-                // Sometimes the jquery selector doesn't find it? Specifically for J. Crew for some reason.
+                // Sometimes the jquery selector doesn't find it? Specifically for J. Crew and H&M for some reason.
                 document.getElementById(id).checked = true;
             }
         }
@@ -227,6 +227,8 @@ function updateCheckboxes(argDict) {
 function updateArgDictCheckbox(argType, argValue, checked, argDict) {
     console.log(argDict);
     console.log(argValue);
+    console.log(encodeURIComponent(argValue));
+    argValue = encodeURIComponent(argValue);
     if (argType in argDict) {
         var values = argDict[argType];
         console.log(values);
