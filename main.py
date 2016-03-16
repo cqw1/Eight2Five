@@ -904,7 +904,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                                 d[keys[r]] = row[r]
 
                         item = Item(
-                            sku_id=int(d['id']),
+                            sku_id=int(d['sku_id']),
                             name=d['name'],
                             brand=d['brand'],
                             apparels=d['apparel'],
