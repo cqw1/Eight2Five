@@ -961,6 +961,11 @@ class ShopHandler(BaseHandler):
         # Check shop.js filters.
         filters = [
             {
+                'property_name': 'occasions',
+                'display_name': 'occasion',
+                'selections': OCCASIONS 
+            },
+            {
                 'property_name': 'apparels',
                 'display_name': 'apparel',
                 'selections': APPARELS
@@ -979,11 +984,6 @@ class ShopHandler(BaseHandler):
                 'property_name': 'industries',
                 'display_name': 'industry',
                 'selections': INDUSTRIES 
-            },
-            {
-                'property_name': 'occasions',
-                'display_name': 'occasion',
-                'selections': OCCASIONS 
             }
         ]
 

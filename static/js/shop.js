@@ -28,7 +28,7 @@ $(document).ready(function() {
         $("#price-max" ).text( "$" + argDict['price-max']);
         slider_max = argDict['price-max'];
     } else {
-        $("#price-min" ).text("$" + slider_max);
+        $("#price-max" ).text("$" + slider_max);
     }
 
     // Initialize slider.
@@ -110,7 +110,7 @@ $(document).ready(function() {
     $('.ef-sort-option').on('click', function(event) {
         event.preventDefault();
         var argType = 'sort';
-        var argValue = $(this).text().toLowerCase().replace(/ /g, "%20");
+        var argValue = encodeURIComponent($(this).text().toLowerCase());
 
         argDict = updateArgDictDropdownAndUrl(argType, argValue, argDict);
     })
@@ -165,7 +165,7 @@ $(document).ready(function() {
 });
 
 function checkboxSelected(argType, checkbox) {
-    var argValue = checkbox.attr('id').replace(/-/g, '%20').split('_')[0];
+    var argValue = checkbox.attr('id').replace(/-/g, ' ').split('_')[0];
     console.log(argValue);
     var checked = checkbox.prop('checked');
     console.log(checked);
@@ -208,11 +208,11 @@ function updateCheckboxes(argDict) {
         var filters = argDict[key];
         for (var i in filters) {
             console.log(filters[i]);
-            console.log(decodeURIComponent(filters[i].replace(/%20/g, '-')));
-            if (globalFilters.indexOf(decodeURIComponent(filters[i].replace(/%20/g, ' '))) > -1) {
+            console.log(decodeURIComponent(filters[i]).replace(/ /g, '-'));
+            if (globalFilters.indexOf(decodeURIComponent(filters[i])) > -1) {
                 // global filters comes in with spaces, but ids replace the spaces with dashes.
                 // Checkbox arg and not a dropdown arg.
-                var id = '' + decodeURIComponent(filters[i].replace(/%20/g, '-')) + '_filter';
+                var id = '' + decodeURIComponent(filters[i]).replace(/ /g, '-') + '_filter';
                 //$('#' + decodeURIComponent(filters[i].replace(/%20/g, '-')) + '_filter').prop('checked', true);
 
                 // Sometimes the jquery selector doesn't find it? Specifically for J. Crew and H&M for some reason.
@@ -329,7 +329,7 @@ function initGlobals(filters, defaultSort, defaultItems, defaultPage, numPages) 
         globalFilters = globalFilters.concat(filters[i].selections);
     }
 
-    globalDefaultSort = defaultSort.replace(/ /g, '%20');
+    globalDefaultSort = encodeURIComponent(defaultSort);
     globalDefaultItems = defaultItems;
     globalDefaultPage = defaultPage;
     globalNumPages = numPages.length
