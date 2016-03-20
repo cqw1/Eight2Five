@@ -1305,16 +1305,20 @@ class StyleGuidesHandler(BaseHandler):
         logging.info('in style guides handler logging')
         self.render_template('templates/style_guides.html', template_vars)
 
+class SignUpHandler(BaseHandler):
+    def get(self):
+            self.render_template('templates/sign_up.html')
+
+class BlogHandler(BaseHandler):
+    def get(self):
+            self.render_template('templates/blog.html')
+
 class PageNotFoundHandler(BaseHandler):
     def get(self):
             template_vars = {
                 'message': 'Error 404. Page not found.'
             }
             self.render_template('templates/danger_message.html', template_vars)
-
-class SignUpHandler(BaseHandler):
-    def get(self):
-            self.render_template('templates/sign_up.html')
 
 
 app = webapp2.WSGIApplication(routes=[
@@ -1327,6 +1331,7 @@ app = webapp2.WSGIApplication(routes=[
     ('/styleguides', StyleGuidesHandler),
     ('/populatedatastore', DatastoreHandler),
     ('/signup', SignUpHandler),
+    ('/blog', BlogHandler),
     ('/', HomeHandler),
     ('/home', HomeHandler),
     ('/.*', PageNotFoundHandler)

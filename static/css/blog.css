@@ -17,3 +17,15 @@
     text-align: center;
     font-size: 135%;
 }
+
+ol.tumblr_posts {
+    list-style: none;
+}
+
+/* Center images in posts */
+.tumblr_photo_post > img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
