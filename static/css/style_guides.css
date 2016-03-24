@@ -13,6 +13,10 @@
     cursor: pointer;
 }
 
+.ef-explanation-image {
+	width:100%;
+}
+
 .ef-industry-thumbnail {
     cursor: pointer;
 }
