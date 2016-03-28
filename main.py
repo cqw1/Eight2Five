@@ -903,22 +903,25 @@ class DatastoreHandler(webapp2.RequestHandler):
                             else:
                                 d[keys[r]] = row[r]
 
-                        item = Item(
-                            sku_id=int(d['sku_id']),
-                            name=d['name'],
-                            brand=d['brand'],
-                            apparels=d['apparel'],
-                            price=float(d['price']),
-                            industries=['consulting'],
-                            dress_codes=d['dress_code'],
-                            occasions=d['occasion'],
-                            description='Insert description.',
-                            img_1_src='/images/items/' + d['image_1'],
-                            img_2_src='/images/items/' + d['image_2'],
-                            external_src=d['url'],
-                            smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
-                            date=datetime.date(2016, 1, 10))
-                        item.put()
+                        logging.info(row)
+                        # Reading in empty rows now? Temporary patch.
+                        if d['sku_id'] != '' :
+                            item = Item(
+                                sku_id=int(d['sku_id']),
+                                name=d['name'],
+                                brand=d['brand'],
+                                apparels=d['apparel'],
+                                price=float(d['price']),
+                                industries=['consulting'],
+                                dress_codes=d['dress_code'],
+                                occasions=d['occasion'],
+                                description='Insert description.',
+                                img_1_src='/images/items/' + d['image_1'],
+                                img_2_src='/images/items/' + d['image_2'],
+                                external_src=d['url'],
+                                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                                date=datetime.date(2016, 1, 10))
+                            item.put()
             ############################################################### END DATASTORE ####
 
 
