@@ -1,10 +1,4 @@
 $(document).ready(function() {
-    // Subscribe Modal
-    $(window).load(function(){
-	  setTimeout(function(){
-	      $('#subscribeModal').modal('show');
-	  }, 10000);
-	});
 });
 
 // Global interval timer.
