@@ -8,6 +8,13 @@ var sendto = 'skirttheceiling@gmail.com';
 var subject = 'Out of Stock Report';
 
 $(document).ready(function() {
+    
+    // Subscribe Modal
+    $(window).load(function(){
+	  setTimeout(function(){
+	      $('#subscribeModal').modal('show');
+	  }, 10000);
+	});
 
     argDict = createArgDict();
 
