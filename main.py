@@ -1326,15 +1326,15 @@ class PageNotFoundHandler(BaseHandler):
 
 app = webapp2.WSGIApplication(routes=[
     ('/shop', ShopHandler),
-    ('/whoworewhat/look', WhoWoreWhatLookHandler),
-    ('/whoworewhat/person', WhoWoreWhatPersonHandler),
-    ('/whoworewhat', WhoWoreWhatHandler),
+    ('/whoworewhat/look', PageNotFoundHandler), #WhoWoreWhatLookHandler),
+    ('/whoworewhat/person', PageNotFoundHandler), #WhoWoreWhatPersonHandler),
+    ('/whoworewhat', PageNotFoundHandler), #WhoWoreWhatHandler),
     ('/styleguides/industry', StyleGuidesIndustryHandler),
     ('/styleguides/style', StyleGuidesStyleHandler),
     ('/styleguides', StyleGuidesHandler),
     ('/populatedatastore', DatastoreHandler),
     ('/signup', SignUpHandler),
-    ('/blog', BlogHandler),
+    ('/blog', PageNotFoundHandler),#BlogHandler),
     ('/', HomeHandler),
     ('/home', HomeHandler),
     ('/.*', PageNotFoundHandler)
