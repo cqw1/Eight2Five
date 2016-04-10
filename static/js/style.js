@@ -5,6 +5,14 @@ $(document).ready(function() {
         window.location.href = '/shop?&dress_codes=' + $(this).attr('id');
     })
 
+    $('.ef-occasion-thumbnail').on('click', function() {
+        window.location.href = '/shop?&occasion=' + $(this).attr('id').toLowerCase();
+    })
+
+    $('.ef-brand').on('click', function() {
+        window.location.href = '/shop?&brand=' + $(this).text();
+    })
+
 
 });
 

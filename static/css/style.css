@@ -40,6 +40,15 @@
     
 }
 
+.ef-occasion-thumbnail {
+    cursor: pointer;
+}
+
+.ef-brand {
+    cursor: pointer;
+}
+
 .caption {
     font-size: 150%;
 }
+

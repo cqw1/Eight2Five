@@ -13,7 +13,7 @@ $(document).ready(function() {
 
     // Price Slider ==========
     var slider_min = 0; // initially matches with min in slider initializer
-    var slider_max = 1000; // initially matches with max in slider initializer
+    var slider_max = 500; // initially matches with max in slider initializer
 
 
     // Check if we're given a price-min or price-max from the URL
@@ -35,7 +35,7 @@ $(document).ready(function() {
     $( "#slider-range" ).slider({
       range: true,
       min: 0,
-      max: 1000,
+      max: 500,
       values: [slider_min, slider_max],
       slide: function( event, ui ) {
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );

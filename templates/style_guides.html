@@ -58,12 +58,12 @@
     <div class="row">
       {% for i in dress_code_data %} 
         <div class="col-xs-6 text-center">
-          <div class="thumbnail">
-            <img id="{{i.name}}" class="ef-dress-code-image ga-style-codes" title='{{i.name | title}}' alt='{{i.name | title}}' src="{{i.img_src}}"></a>
+          <div class="thumbnail ef-dress-code-thumbnail" id="{{i.name}}">
+            <img class="ef-dress-code-image ga-style-codes" title='{{i.name | title}}' alt='{{i.name | title}}' src="{{i.img_src}}">
+
             <div class="caption">
               {{i.name | title}}
-            </div>
-
+          </div>
 
           </div>
         </div>

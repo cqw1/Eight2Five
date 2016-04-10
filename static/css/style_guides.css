@@ -6,11 +6,13 @@
 	padding: 1.5%;
 }
 */
+.ef-dress-code-thumbnail {
+    cursor: pointer;
+}
 
 .ef-dress-code-image {
     border: 1px solid;
     width: 100%;
-    cursor: pointer;
 }
 
 .ef-explanation-image {
