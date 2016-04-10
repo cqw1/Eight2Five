@@ -75,7 +75,7 @@ SHOP_SORTS = [
     'date [old - new]'
 ]
 
-SHOP_SORT_DEFAULT = SHOP_SORTS[0]
+SHOP_SORT_DEFAULT = SHOP_SORTS[4]
 
 ITEMS_PER_PAGE = [
         30, 
