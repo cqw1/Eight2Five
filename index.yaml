@@ -80,6 +80,19 @@ indexes:
 
 - kind: Item
   properties:
+  - name: brand 
+  - name: sku_id
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: brand 
+  - name: sku_id 
+
+###########################
+
+- kind: Item
+  properties:
   - name: dress_codes
   - name: date
     direction: desc
