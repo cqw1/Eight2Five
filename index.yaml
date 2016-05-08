@@ -33,6 +33,17 @@ indexes:
   - name: apparels
   - name: name
 
+- kind: Item
+  properties:
+  - name: apparels
+  - name: sku_id
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: apparels
+  - name: sku_id 
+
 ###########################
 - kind: Item
   properties:
@@ -100,6 +111,17 @@ indexes:
   - name: dress_codes
   - name: name
 
+- kind: Item
+  properties:
+  - name: dress_codes 
+  - name: sku_id
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: dress_codes 
+  - name: sku_id 
+
 ###########################
 
 - kind: Item
@@ -134,6 +156,17 @@ indexes:
   properties:
   - name: industries
   - name: name
+
+- kind: Item
+  properties:
+  - name: industries 
+  - name: sku_id
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: industries 
+  - name: sku_id 
 
 ###########################
 - kind: Item
@@ -168,6 +201,17 @@ indexes:
   properties:
   - name: occasions
   - name: name
+
+- kind: Item
+  properties:
+  - name: occasions 
+  - name: sku_id
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: occasions 
+  - name: sku_id 
 
 ####
 - kind: Item
