@@ -82,7 +82,13 @@
             {% if filter.display_name != 'industry' %}
               <li class="list-group-item">
                 <h5 class="ef-filter-name" data-toggle="collapse" data-target="#{{filter.property_name}}">{{filter.display_name | title }}</h5>
+                <!-- <div id="{{filter.property_name}}" class="collapse in ef-filter-container"> -->
+                <!-- Collapses all filters initially except for occasion. need to manually do this for price slider later -->
+                {% if filter.display_name == 'occasion' %}
                 <div id="{{filter.property_name}}" class="collapse in ef-filter-container">
+                {% else %}
+                <div id="{{filter.property_name}}" class="collapse ef-filter-container">
+                {% endif %}
                   <ul>
                     {% for selection in filter.selections %}
                       <li>
@@ -104,7 +110,7 @@
           <!-- Price Slider -->
           <li class="list-group-item">
             <h5 class="ef-filter-name" data-toggle="collapse" data-target="#price-filter">Price</h5>
-              <div id="price-filter" class="collapse in ef-filter-container">
+              <div id="price-filter" class="collapse ef-filter-container">
                   <div id="slider-range"></div>
 
                   <div style="padding:4px;"></div>
@@ -197,7 +203,7 @@
                       src="/images/outofstock.png" title="Report out of stock"></img>
                   </span>
                   <div class="caption">
-                      <a href="{{i.external_src}}">{{i.name | upper}}</a>
+                      <a href="{{i.external_src}}" target="_blank">{{i.name | upper}}</a>
                       <br>
                       {{i.brand}}
                       <br>

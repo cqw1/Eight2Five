@@ -67,6 +67,7 @@ OCCASIONS = [
 ]
 
 SHOP_SORTS = [
+    'none',
     'name [a - z]', 
     'name [z - a]', 
     'price [low - high]', 
@@ -75,7 +76,7 @@ SHOP_SORTS = [
     'date [old - new]'
 ]
 
-SHOP_SORT_DEFAULT = SHOP_SORTS[4]
+SHOP_SORT_DEFAULT = SHOP_SORTS[0]
 
 ITEMS_PER_PAGE = [
         30, 
@@ -1082,13 +1083,15 @@ class ShopHandler(BaseHandler):
                 query = query.order(-Item.date)
             elif sortType == 'date [old - new]':
                 query = query.order(Item.date)
+            elif sortType == 'none':
+                query = query.order(Item.sku_id)
             else:
                 logging.info('invalid sort: ')
                 logging.info(sortType)
 
         else:
             # Default sort.
-            query = query.order(Item.name)
+            query = query.order(Item.sku_id)
 
         return query
 

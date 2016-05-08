@@ -42,6 +42,9 @@ $(document).ready(function() {
     $('#ef-instagram-icon').click(function() {
         window.location.href = 'https://www.instagram.com/skirttheceiling'
     });
+    $('#ef-pinterest-icon').click(function() {
+        window.location.href = 'https://www.pinterest.com/skirttheceiling/'
+    });
 
 });
 
