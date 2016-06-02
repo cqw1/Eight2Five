@@ -106,6 +106,26 @@ $(document).ready(function() {
         checkboxSelected('occasions', $(this));
     })
 
+    $('.ef-discount-filter').change(function() {
+        console.log('discount');
+        checkboxSelected('discount', $(this));
+    })
+
+    $('.ef-geography-filter').change(function() {
+        console.log('geography');
+        checkboxSelected('geography', $(this));
+    })
+
+    $('.ef-weather-filter').change(function() {
+        console.log('weather');
+        checkboxSelected('weather', $(this));
+    })
+
+    $('.ef-colors-filter').change(function() {
+        console.log('colors');
+        checkboxSelected('colors', $(this));
+    })
+
     // Sorts.
     $('.ef-sort-option').on('click', function(event) {
         event.preventDefault();

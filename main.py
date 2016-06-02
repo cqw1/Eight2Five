@@ -22,6 +22,7 @@ import os
 import time
 import webapp2
 import webapp2_extras.appengine.auth.models
+import copy
 
 from datetime import date
 from google.appengine.ext import ndb
@@ -65,6 +66,18 @@ OCCASIONS = [
     'client meeting',
     'interview'
 ]
+
+# Alpha sorted.
+DISCOUNT = [
+    'none',
+    'sale'
+]
+
+WEATHER = []
+
+GEOGRAPHY = []
+
+COLORS = []
 
 SHOP_SORTS = [
     'none',
@@ -114,6 +127,14 @@ with open('categories.csv', 'rb') as csvfile:
             BRANDS = values
         elif row[0] == 'industry':
             INDUSTRIES = values
+        elif row[0] == 'discount':
+            DISCOUNT = values
+        elif row[0] == 'geography':
+            GEOGRAPHY = values
+        elif row[0] == 'weather':
+            WEATHER = values
+        elif row[0] == 'color':
+            COLORS = values
         logging.info(row)
 
 # Taken from blog.abahgat.com/2013/01/07/user-authentication-with-webapp2-on-google-app-engine/
@@ -322,6 +343,20 @@ class Item(ndb.Model):
     industries = ndb.StringProperty(repeated=True, choices=INDUSTRIES)
     dress_codes = ndb.StringProperty(repeated=True, choices=DRESS_CODES)
     occasions = ndb.StringProperty(repeated=True, choices=OCCASIONS)
+
+
+    # Allow for empty value if there is no property on the item.
+    DISCOUNT_BLANK = copy.deepcopy(DISCOUNT).append('')
+    discount = ndb.StringProperty(choices=DISCOUNT_BLANK)
+
+    COLORS_BLANK = copy.deepcopy(COLORS).append('')
+    colors = ndb.StringProperty(repeated=True, choices=COLORS_BLANK)
+
+    WEATHER_BLANK = copy.deepcopy(WEATHER).append('')
+    weather = ndb.StringProperty(repeated=True, choices=WEATHER_BLANK)
+
+    GEOGRAPHY_BLANK = copy.deepcopy(GEOGRAPHY).append('')
+    geography = ndb.StringProperty(repeated=True, choices=GEOGRAPHY_BLANK)
 
     # Description (product info) on item page.
     description = ndb.TextProperty(required=False, default='Description currently unavailable.')
@@ -899,7 +934,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                                 row[r] = row[r].lower()
 
                             # List of properties
-                            if keys[r] == 'occasion' or keys[r] == 'dress_code' or keys[r] == 'apparel':
+                            if keys[r] == 'occasion' or keys[r] == 'dress_code' or keys[r] == 'apparel' or keys[r] == 'weather' or keys[r] == 'geography' or keys[r] == 'colors':
                                 d[keys[r]] = row[r].split(', ')
                             else:
                                 d[keys[r]] = row[r]
@@ -916,6 +951,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                                 industries=['consulting'],
                                 dress_codes=d['dress_code'],
                                 occasions=d['occasion'],
+                                discount=d['discount'],
+                                weather=d['weather'],
+                                geography=d['geography'],
+                                colors=d['colors'],
                                 description='Insert description.',
                                 img_1_src='/images/items/' + d['image_1'],
                                 img_2_src='/images/items/' + d['image_2'],
@@ -967,7 +1006,12 @@ class ShopHandler(BaseHandler):
             {
                 'property_name': 'occasions',
                 'display_name': 'occasion',
-                'selections': OCCASIONS 
+                'selections': OCCASIONS
+            },
+            {
+                'property_name': 'discount',
+                'display_name': 'discount',
+                'selections': DISCOUNT 
             },
             {
                 'property_name': 'apparels',
@@ -988,6 +1032,21 @@ class ShopHandler(BaseHandler):
                 'property_name': 'industries',
                 'display_name': 'industry',
                 'selections': INDUSTRIES 
+            },
+            {
+                'property_name': 'colors',
+                'display_name': 'color',
+                'selections': COLORS 
+            },
+            {
+                'property_name': 'weather',
+                'display_name': 'weather',
+                'selections': WEATHER 
+            },
+            {
+                'property_name': 'geography',
+                'display_name': 'geography',
+                'selections': GEOGRAPHY 
             }
         ]
 
@@ -1338,7 +1397,7 @@ app = webapp2.WSGIApplication(routes=[
     ('/populatedatastore', DatastoreHandler),
     ('/signup', SignUpHandler),
     ('/blog', PageNotFoundHandler),#BlogHandler),
-    ('/', HomeHandler),
+    ('/', ShopHandler),#HomeHandler),
     ('/home', HomeHandler),
     ('/.*', PageNotFoundHandler)
 ], debug=True, config={

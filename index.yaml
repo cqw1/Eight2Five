@@ -226,6 +226,186 @@ indexes:
   - name: occasions 
   - name: sku_id 
 
+###########################
+- kind: Item
+  properties:
+  - name: discount 
+  - name: date
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: discount 
+  - name: date
+
+- kind: Item
+  properties:
+  - name: discount 
+  - name: price
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: discount 
+  - name: price
+
+- kind: Item
+  properties:
+  - name: discount 
+  - name: name
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: discount 
+  - name: name
+
+- kind: Item
+  properties:
+  - name: discount 
+  - name: sku_id
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: discount 
+  - name: sku_id 
+
+###########################
+- kind: Item
+  properties:
+  - name: weather 
+  - name: date
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: weather 
+  - name: date
+
+- kind: Item
+  properties:
+  - name: weather 
+  - name: price
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: weather 
+  - name: price
+
+- kind: Item
+  properties:
+  - name: weather 
+  - name: name
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: weather 
+  - name: name
+
+- kind: Item
+  properties:
+  - name: weather 
+  - name: sku_id
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: weather 
+  - name: sku_id 
+
+###########################
+- kind: Item
+  properties:
+  - name: geography 
+  - name: date
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: geography 
+  - name: date
+
+- kind: Item
+  properties:
+  - name: geography 
+  - name: price
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: geography 
+  - name: price
+
+- kind: Item
+  properties:
+  - name: geography 
+  - name: name
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: geography 
+  - name: name
+
+- kind: Item
+  properties:
+  - name: geography 
+  - name: sku_id
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: geography 
+  - name: sku_id 
+
+###########################
+- kind: Item
+  properties:
+  - name: colors  
+  - name: date
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: colors  
+  - name: date
+
+- kind: Item
+  properties:
+  - name: colors  
+  - name: price
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: colors  
+  - name: price
+
+- kind: Item
+  properties:
+  - name: colors  
+  - name: name
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: colors  
+  - name: name
+
+- kind: Item
+  properties:
+  - name: colors  
+  - name: sku_id
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: colors  
+  - name: sku_id 
+
 ####
 - kind: Item
   properties:
