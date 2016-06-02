@@ -1027,7 +1027,38 @@ class ShopHandler(BaseHandler):
                 'property_name': 'industries',
                 'display_name': 'industry',
                 'selections': INDUSTRIES 
-            }""",
+            }
+        ]
+
+        # Uncomment when you want to display all filters.
+        """
+        # Check shop.js filters.
+        filters = [
+            {
+                'property_name': 'occasions',
+                'display_name': 'occasion',
+                'selections': OCCASIONS
+            },
+            {
+                'property_name': 'apparels',
+                'display_name': 'apparel',
+                'selections': APPARELS
+            },
+            {
+                'property_name': 'brand',
+                'display_name': 'brand',
+                'selections': BRANDS 
+            },
+            {
+                'property_name': 'dress_codes',
+                'display_name': 'dress code',
+                'selections': DRESS_CODES 
+            },
+            {
+                'property_name': 'industries',
+                'display_name': 'industry',
+                'selections': INDUSTRIES 
+            },
             {
                 'property_name': 'colors',
                 'display_name': 'color',
@@ -1047,8 +1078,10 @@ class ShopHandler(BaseHandler):
                 'property_name': 'discount',
                 'display_name': 'discount',
                 'selections': DISCOUNT 
-            },"""
+            },
         ]
+        """
+
 
         # create query filters.
         query = Item.query()
