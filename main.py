@@ -1009,11 +1009,6 @@ class ShopHandler(BaseHandler):
                 'selections': OCCASIONS
             },
             {
-                'property_name': 'discount',
-                'display_name': 'discount',
-                'selections': DISCOUNT 
-            },
-            {
                 'property_name': 'apparels',
                 'display_name': 'apparel',
                 'selections': APPARELS
@@ -1032,7 +1027,7 @@ class ShopHandler(BaseHandler):
                 'property_name': 'industries',
                 'display_name': 'industry',
                 'selections': INDUSTRIES 
-            },
+            }""",
             {
                 'property_name': 'colors',
                 'display_name': 'color',
@@ -1047,7 +1042,12 @@ class ShopHandler(BaseHandler):
                 'property_name': 'geography',
                 'display_name': 'geography',
                 'selections': GEOGRAPHY 
-            }
+            },
+            {
+                'property_name': 'discount',
+                'display_name': 'discount',
+                'selections': DISCOUNT 
+            },"""
         ]
 
         # create query filters.
