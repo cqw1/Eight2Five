@@ -406,6 +406,51 @@ indexes:
   - name: colors  
   - name: sku_id 
 
+###########################
+- kind: Item
+  properties:
+  - name: accessories 
+  - name: date
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: accessories 
+  - name: date
+
+- kind: Item
+  properties:
+  - name: accessories 
+  - name: price
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: accessories 
+  - name: price
+
+- kind: Item
+  properties:
+  - name: accessories 
+  - name: name
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: accessories 
+  - name: name
+
+- kind: Item
+  properties:
+  - name: accessories 
+  - name: sku_id
+    direction: desc
+
+- kind: Item
+  properties:
+  - name: accessories 
+  - name: sku_id 
+  
 ####
 - kind: Item
   properties:
