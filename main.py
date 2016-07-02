@@ -1017,7 +1017,7 @@ class ShopHandler(BaseHandler):
             selected_page = PAGE_DEFAULT
 
 
-        """
+        # Uncomment when you want to display all filters.
         # Check shop.js filters.
         filters = [
             {
@@ -1029,6 +1029,11 @@ class ShopHandler(BaseHandler):
                 'property_name': 'apparels',
                 'display_name': 'apparel',
                 'selections': APPARELS
+            },
+            {
+                'property_name': 'accessories',
+                'display_name': 'accessory',
+                'selections': ACCESSORIES 
             },
             {
                 'property_name': 'brand',
@@ -1044,10 +1049,21 @@ class ShopHandler(BaseHandler):
                 'property_name': 'industries',
                 'display_name': 'industry',
                 'selections': INDUSTRIES 
-            }
+            },
+            {
+                'property_name': 'colors',
+                'display_name': 'color',
+                'selections': COLORS 
+            },
+            {
+                'property_name': 'discount',
+                'display_name': 'discount',
+                'selections': DISCOUNT 
+            },
         ]
-        """
 
+
+        """
         # Uncomment when you want to display all filters.
         # Check shop.js filters.
         filters = [
@@ -1102,6 +1118,7 @@ class ShopHandler(BaseHandler):
                 'selections': DISCOUNT 
             },
         ]
+        """
 
 
         # create query filters.
