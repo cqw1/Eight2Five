@@ -126,6 +126,11 @@ $(document).ready(function() {
         checkboxSelected('colors', $(this));
     })
 
+    $('.ef-accessories-filter').change(function() {
+        console.log('accessories');
+        checkboxSelected('accessories', $(this));
+    })
+
     // Sorts.
     $('.ef-sort-option').on('click', function(event) {
         event.preventDefault();

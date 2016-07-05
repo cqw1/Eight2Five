@@ -79,6 +79,8 @@ GEOGRAPHY = []
 
 COLORS = []
 
+ACCESSORIES = []
+
 SHOP_SORTS = [
     'none',
     'name [a - z]', 
@@ -135,6 +137,8 @@ with open('categories.csv', 'rb') as csvfile:
             WEATHER = values
         elif row[0] == 'color':
             COLORS = values
+        elif row[0] == 'accessory':
+            ACCESSORIES = values
         logging.info(row)
 
 # Taken from blog.abahgat.com/2013/01/07/user-authentication-with-webapp2-on-google-app-engine/
@@ -338,14 +342,13 @@ class Item(ndb.Model):
 
     name = ndb.StringProperty(required=True)
     brand = ndb.StringProperty(required=True, choices=BRANDS)
-    apparels = ndb.StringProperty(repeated=True, choices=APPARELS)
     price = ndb.FloatProperty(required=True)
-    industries = ndb.StringProperty(repeated=True, choices=INDUSTRIES)
-    dress_codes = ndb.StringProperty(repeated=True, choices=DRESS_CODES)
-    occasions = ndb.StringProperty(repeated=True, choices=OCCASIONS)
 
 
     # Allow for empty value if there is no property on the item.
+    APPARELS_BLANK = copy.deepcopy(APPARELS).append('')
+    apparels = ndb.StringProperty(repeated=True, choices=APPARELS_BLANK)
+
     DISCOUNT_BLANK = copy.deepcopy(DISCOUNT).append('')
     discount = ndb.StringProperty(choices=DISCOUNT_BLANK)
 
@@ -357,6 +360,18 @@ class Item(ndb.Model):
 
     GEOGRAPHY_BLANK = copy.deepcopy(GEOGRAPHY).append('')
     geography = ndb.StringProperty(repeated=True, choices=GEOGRAPHY_BLANK)
+
+    ACCESSORIES_BLANK = copy.deepcopy(ACCESSORIES).append('')
+    accessories = ndb.StringProperty(choices=ACCESSORIES_BLANK)
+
+    INDUSTRIES_BLANK = copy.deepcopy(INDUSTRIES).append('')
+    industries = ndb.StringProperty(repeated=True, choices=INDUSTRIES_BLANK)
+
+    DRESS_CODES_BLANK = copy.deepcopy(DRESS_CODES).append('')
+    dress_codes = ndb.StringProperty(repeated=True, choices=DRESS_CODES_BLANK)
+
+    OCCASIONS_BLANK = copy.deepcopy(OCCASIONS).append('')
+    occasions = ndb.StringProperty(repeated=True, choices=OCCASIONS_BLANK)
 
     # Description (product info) on item page.
     description = ndb.TextProperty(required=False, default='Description currently unavailable.')
@@ -955,6 +970,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                                 weather=d['weather'],
                                 geography=d['geography'],
                                 colors=d['colors'],
+                                accessories=d['accessory'],
                                 description='Insert description.',
                                 img_1_src='/images/items/' + d['image_1'],
                                 img_2_src='/images/items/' + d['image_2'],
@@ -1001,6 +1017,7 @@ class ShopHandler(BaseHandler):
             selected_page = PAGE_DEFAULT
 
 
+        # Uncomment when you want to display all filters.
         # Check shop.js filters.
         filters = [
             {
@@ -1012,6 +1029,11 @@ class ShopHandler(BaseHandler):
                 'property_name': 'apparels',
                 'display_name': 'apparel',
                 'selections': APPARELS
+            },
+            {
+                'property_name': 'accessories',
+                'display_name': 'accessory',
+                'selections': ACCESSORIES 
             },
             {
                 'property_name': 'brand',
@@ -1027,11 +1049,22 @@ class ShopHandler(BaseHandler):
                 'property_name': 'industries',
                 'display_name': 'industry',
                 'selections': INDUSTRIES 
-            }
+            },
+            {
+                'property_name': 'colors',
+                'display_name': 'color',
+                'selections': COLORS 
+            },
+            {
+                'property_name': 'discount',
+                'display_name': 'discount',
+                'selections': DISCOUNT 
+            },
         ]
 
-        # Uncomment when you want to display all filters.
+
         """
+        # Uncomment when you want to display all filters.
         # Check shop.js filters.
         filters = [
             {
@@ -1043,6 +1076,11 @@ class ShopHandler(BaseHandler):
                 'property_name': 'apparels',
                 'display_name': 'apparel',
                 'selections': APPARELS
+            },
+            {
+                'property_name': 'accessories',
+                'display_name': 'accessory',
+                'selections': ACCESSORIES 
             },
             {
                 'property_name': 'brand',
