@@ -1,4 +1,4 @@
-sku_id,brand,name,image_1,image_2,price,apparel,occasion,dress_code,url,discount,weather,geography,colors,
+sku_id,brand,name,image_1,image_2,price,apparel,occasion,dress_code,url,discount,weather,geography,colors,accessory
 300,BCBG,MAURICE SLIM-LEG PINTUCKED TROUSER,BCBG01.jpg,BCBG02.jpg,198,pant,"day to day, team dinner, travel","biz casual, smart casual",http://www.bcbg.com/en/maurice-slim-leg-pintucked-trouser/DVB2G038-221.html?dwvar_DVB2G038-221_color=221,,,,brown,
 300,BCBG,KURRA SLIM-LEG TROUSER,BCBG03.jpg,BCBG04.jpg,138,pant,"day to day, team dinner, travel","biz casual, smart casual",http://www.bcbg.com/en/kurra-slim-leg-trouser/RND2F934-001.html?dwvar_RND2F934-001_color=001#q=trousers&start=1,,,mountain,,
 300,BCBG,ARELIA A-LINE COAT,BCBG09.jpg,BCBG10.jpg,298,coat,"interview, client meeting, big presentation",biz formal,http://www.bcbg.com/en/arelia-a-line-coat/AUU4E367-001.html?dwvar_AUU4E367-001_color=001,,,,,
