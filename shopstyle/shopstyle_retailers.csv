@@ -1,0 +1,498 @@
+name,id
+Nordstrom,1
+Macy's,2
+Target,3
+Ann Taylor,4
+J.Crew,5
+Neiman Marcus,6
+Saks Fifth Avenue,7
+Bloomingdale's,8
+Barneys New York,9
+Bergdorf Goodman,10
+Dillard's,11
+Gap,13
+Talbots,16
+Eddie Bauer,17
+shopbop.com,21
+Anthropologie,22
+Intermix,23
+yoox.com,25
+French Connection,26
+NET-A-PORTER.COM,27
+Urban Outfitters,29
+Free People,31
+Bebe,32
+GUESS,35
+Forever 21,36
+Victoria's Secret,38
+LOFT,39
+Aeropostale,40
+American Eagle,41
+Tilly's,43
+DKNY,46
+Coach,47
+Kenneth Cole,48
+White House Black Market,50
+Chico's,51
+Ralph Lauren,52
+Zappos,53
+Banana Republic,54
+Ice.com,55
+New York & Co.,59
+Brooks Brothers,60
+Old Navy,61
+Max Studio,62
+Famous Footwear,63
+Sephora,64
+Buckle,65
+Ron Herman,68
+CoutureCandy,70
+Nine West,78
+A Pea in the Pod,80
+Motherhood,82
+eDressMe,83
+DVF.com,84
+Children's Place,86
+Johnston & Murphy,87
+Footcandy,88
+Pink Mascara,91
+Oscar de la Renta,92
+La Garçonne,94
+Elizabeth Charles,99
+Forzieri,100
+Ulta,101
+REVOLVE,105
+Puma,106
+Asos,108
+Fossil,110
+Nike,111
+Avon,113
+Marciano,117
+PacSun,120
+Michael Kors,130
+Beauty.com,132
+Kohl's,133
+Steve Madden,138
+Crate & Barrel,141
+Horchow,142
+Pottery Barn,143
+Pottery Barn Kids,144
+PBteen,145
+west elm,148
+Williams-Sonoma,149
+JCPenney,150
+CB2,152
+Design Within Reach,154
+Mikasa,157
+Sur La Table,159
+Bed Bath & Beyond,161
+2Modern,162
+drugstore.com,163
+Gaiam,165
+Giggle.com,177
+The Land of Nod,181
+The Body Shop,182
+Clinique,183
+Kiehl's,184
+Origins,187
+Prescriptives,188
+Sally Beauty,189
+SpaceNK,190
+Smallflower,192
+7 For All Mankind,193
+MANGO,205
+Karen Millen,210
+Shu Uemura,224
+Giorgio Armani Beauty,232
+Coggles.com,244
+Ylang 23,247
+Boden,250
+Soma Intimates,252
+Isabella Oliver,282
+Burberry,285
+Tory Burch,299
+Walgreens,302
+SSENSE,306
+James Perse,308
+Express,309
+Swarovski,314
+Home Depot,317
+STYLEBOP.com,322
+Betsey Johnson,324
+Marissa Collections,326
+DERMAdoctor,333
+Benefit,336
+Boutique to You,337
+L'Occitane,338
+Agent Provocateur,341
+Farfetch,344
+BCBGMAXAZRIA,357
+Bliss,358
+Smashbox,362
+Calvin Klein,364
+Kirna Zabete,369
+Charles Tyrwhitt,375
+Thomas Pink,378
+Alloy Apparel,383
+Bare Necessities,390
+Zappos Luxury,391
+Topman,408
+Splendid,410
+Ella Moss,412
+Lord & Taylor,413
+True Religion,421
+The Outnet,427
+Diesel,433
+Juicy Couture,434
+mytheresa,435
+Natori,449
+Athleta,457
+Kate Spade,467
+UGG Australia,470
+Yumi Kim,478
+Diani Boutique,482
+Topshop,483
+Zoe,492
+Alexander McQueen,494
+OTTE,540
+Paige Denim,552
+Loeffler Randall,554
+White + Warren,556
+Ben Sherman,571
+Lab Series,572
+Bobbi Brown,573
+Forward By Elyse Walker,574
+Fat Face,577
+Yves Saint Laurent,580
+Savannahs,585
+The Limited,586
+John Varvatos,591
+Hanna Andersson,595
+Mackage,596
+Lilly Pulitzer,597
+NARS Cosmetics,613
+Reebok,617
+Lucy,631
+Blue & Cream,643
+Planet Blue,644
+ModCloth,666
+Sorel,684
+Ethan Allen,708
+Rebecca Minkoff,717
+Footnotesonline,718
+Madewell,720
+Milly,721
+Charm & Chain,722
+Theory,736
+Petit Bateau,737
+Last Call by Neiman Marcus,750
+Dooney & Bourke,759
+Rag & Bone,760
+Trina Turk,777
+HUGO BOSS,788
+Proenza Schouler,789
+J Brand,791
+AllSaints,801
+AG Jeans,805
+RONROBINSON.com,807
+Hudson,808
+Vince Camuto,832
+Reiss,846
+Serena and Lily,855
+TOMS Shoes,857
+alice + olivia,864
+La Perla,865
+Buffalo David Bitton,894
+MR PORTER,895
+Stuart Weitzman,913
+The Trend Boutique,917
+6pm.com,920
+eBay,921
+HSN,922
+Overstock,924
+QVC,925
+Avenue,928
+DERMSTORE,953
+diapers.com,955
+Dockers,957
+shoes.com,963
+Shoebuy,964
+Finish Line,970
+HauteLook,978
+Home Decorators Collection,980
+Lands' End,990
+Levi's,992
+LUISAVIAROMA,994
+Nautica,999
+Patagonia,1006
+ShoeMall,1016
+Sierra Trading Post,1018
+SKECHERS,1019
+Under Armour,1034
+Vans,1035
+Zales,1039
+Nancy Meyer,1054
+John Hardy,1057
+Need Supply Co.,1058
+Tibi,1060
+Carter's,1066
+OshKosh B'Gosh,1078
+SwimSpot,1084
+Brahmin,1087
+Alexander Wang,1103
+Original Penguin,1107
+CUBAVERA,1125
+Perry Ellis,1128
+BaubleBar,1138
+Amara,1222
+House of Harlow,1236
+Marc Jacobs,1246
+AlexandAlexa,1262
+Stride Rite,1272
+Club Monaco,1276
+Disney Store,1302
+Gucci,1340
+Elie Tahari,1355
+MATCHESFASHION.COM,1375
+METROPARK,1376
+shoptiques.com,1378
+MODA OPERANDI,1402
+Nasty Gal,1426
+Dorothy Perkins,1465
+Gilt,1467
+Steven Alan,1470
+armani.com,1479
+Helmut Lang,1480
+Little Circus,1481
+Wallis,1511
+J.Crew Factory,1512
+Zadig & Voltaire,1523
+Henri Bendel,1531
+Rebecca Taylor,1534
+Warby Parker,1536
+Barneys Warehouse,1538
+Gorjana,1539
+NYDJ,1542
+One Kings Lane,1543
+Vera Bradley,1545
+Zobha,1546
+Cosabella,1551
+stella & dot,1563
+Sole Society,1585
+Joie,1586
+Kule,1588
+CASA.com,1605
+Rachel Pally,1619
+Belstaff,1632
+Cynthia Rowley,1639
+Everlane,1652
+Stellamccartney.com,1658
+Avenue32,1659
+Alex and Ani,1681
+H&M,1689
+Uniqlo,1690
+East Dane,1691
+Wayfair,1695
+Kelly Wearstler,1696
+Lululemon,1697
+Mark & Graham,1707
+Off 5th,1720
+aerie,1731
+BooHoo,1745
+Belle & Clive,1751
+Editorialist,1759
+Menlook,1767
+Terrain,1777
+JackThreads,1785
+BALENCIAGA,1787
+BHLDN,1798
+Cost Plus World Market,1807
+The Dreslyn,1809
+Jimmy Choo,1810
+Zulily,1837
+Century 21,1839
+River Island,1841
+Missguided,1852
+Nordstrom Rack,1853
+Ily Couture,1855
+Lane Crawford,1857
+Of A Kind,1861
+TheRealReal,1862
+Moschino,1865
+Tronc Company,1872
+Dot & Bo,1880
+Loom Decor,1881
+Zady,1882
+Joe Fresh,1885
+Marie-Chantal,1887
+Splits59,1889
+Kaufmann Mercantile,1891
+oki-ni,1894
+Marmot,1896
+Charlotte Tilbury,1897
+Derek Lam,1898
+The Honest Company,1901
+Azalea,1903
+GiGi New York,1906
+Vince,1909
+Runway2Street,1917
+Lulu & Georgia,1929
+True&Co.,1930
+UncommonGoods,1931
+AHAlife,1933
+Dormify,1936
+Dynamite,1937
+Stutterheim,1947
+Westward Leaning,1948
+Maggy London,1950
+Glossier,1953
+W concept,1954
+3.1 Phillip Lim,1959
+Bally,1962
+Dune London,1965
+FREDA SALVADOR,1966
+LUXE | DH,1971
+MZ WALLACE,1974
+Pier 1 Imports,1975
+Ted Baker,1983
+meli melo,1987
+Sigma Beauty,1988
+Welcome Stranger,1989
+Alternative,1993
+Antonioli,1995
+Apt2B,1996
+Burt's Bees Baby,1998
+BySymphony,1999
+ELOQUII,2001
+Haggar,2002
+JOE'S Jeans,2003
+Kendra Scott,2004
+Murad,2006
+Nambe,2007
+Sam Edelman,2009
+Show Me Your Mumu,2010
+Superdry,2012
+The Well Appointed House,2013
+Uniform Wares,2015
+Plum Pretty Sugar,2018
+Komarov,2019
+Sachin & Babi,2020
+The Tie Bar,2021
+navabi,2025
+Humble Chic NY,2031
+Jonathan Adler,2032
+Oasis,2037
+Parker,2043
+Velvet by Graham & Spencer,2046
+M.Gemi,2051
+Ernest Alexander,2074
+Sweaty Betty,2080
+Tommy John,2083
+Hunter,2084
+The Idle Man,2088
+Twillory,2102
+DSTLD,2105
+Scotch & Soda,2111
+SOIA & KYO,2112
+Keds,2120
+Todd Snyder,2129
+Garage,2136
+Halston Heritage,2138
+Junk Food Clothing,2139
+Mara Hoffman,2140
+Matt & Nat,2152
+Matthew Williamson,2154
+Ragdoll LA,2155
+Paul Smith,2161
+Tommy Hilfiger,2162
+Black Halo,2168
+DITTO,2176
+Shabby Apple,2179
+HYPEBEAST,2186
+BeautyCounter,2190
+Alexis Bittar,2196
+Frank & Oak,2198
+Italist,2201
+Violet Grey,2205
+Bailey 44,2210
+Calypso St. Barth,2238
+domino,2239
+Draper James,2240
+marc b,2243
+Monsoon,2244
+One Kings Lane Vintage,2245
+Smallable,2249
+The Frye Company,2250
+Madda Fella,2262
+Charming charlie,2271
+Andrew Marc,2285
+Ledbury,2287
+Simply Be,2294
+Vix Paula Hermanny,2295
+DYLANLEX,2296
+Effy Jewelry,2304
+J CASHMERE,2305
+Peace Love World,2307
+L.L.Bean,2314
+Bandier,2318
+Clarks,2319
+TEMPTU,2323
+Shu Uemura Art of Hair,2327
+Tamara Mellon,2328
+Kerastase,2332
+Rejuvenation,2333
+Stowaway Cosmetics,2338
+Bella Bag,2342
+eBay Pre-Owned,2344
+Melijoe,2351
+MOTHER Denim,2354
+Jack Wills,2356
+J.McLaughlin,2357
+Plukka,2360
+Mr. Kate,2365
+UNIONBAY,2367
+Maje,2372
+Pour La Victoire,2376
+Jenny Bird,2380
+Reformation,2382
+TM Lewin,2386
+Kelsi Dagger Brooklyn,2389
+Ahava,2390
+Blade + Blue,2393
+Sperry,2398
+Minted,2401
+Veronica Beard,2403
+Buy Buy Baby,2404
+Fashion to Figure,2406
+OSEA Malibu,2410
+Peony & Me,2411
+Sandro,2412
+Tula,2415
+Tumi,2416
+Tuxe Bodywear,2417
+Journelle,2419
+Lulu Frost,2430
+TJ Maxx,2432
+Apple,2437
+South Moon Under,2442
+Juice Beauty,2443
+Herve Leger,2447
+BCBGeneration,2448
+Wala Swim,2449
+Fleur du Mal,2450
+Italist,2451
+Mela Artisans,2452
+Negative Underwear,2453
+Selfridges,2454
+Rachel Parcell,2455
+Apothica,2462
+MCM Worldwide,2463
+Rothy's,2464
+The Webster,2467
+NOVICA,2468
+Marks and Spencer,2470
+Mindy Mae's Market,2473
+Donald J Pliner,2482
+Etsy,1688
+Tula,2415
+Expedia,2395
