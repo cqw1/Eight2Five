@@ -11,7 +11,8 @@ OFFSET = 0
 OFFSET_MAX = 100 # max that shopstyle sets
 LIMIT = 50 # max that shopstyle sets
 
-URL = "http://api.shopstyle.com/api/" + VERSION + "/" + METHOD_NAME + "/?pid=" + API_KEY +"&cat=" + CATEGORY + "&offset=" + str(OFFSET) + "&limit=" + str(LIMIT) + "&fl=r" + RETAILER
+sku_set = set()
+
 
 with open('shopstyle_products.csv', 'wb') as writefile:
     writer = csv.writer(writefile)
@@ -48,6 +49,9 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                     while OFFSET <= OFFSET_MAX:
                         print "offset: " + str(OFFSET)
 
+                        URL = "http://api.shopstyle.com/api/" + VERSION + "/" + METHOD_NAME + "/?pid=" + API_KEY +"&cat=" + CATEGORY + "&offset=" + str(OFFSET) + "&limit=" + str(LIMIT) + "&fl=r" + RETAILER
+                        print "URL: " + URL
+
                         # Get the response from the api call
                         response = urllib2.urlopen(URL)
                         json_string = response.read()
@@ -73,6 +77,12 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                                     combined_colors += ", " + c['name']
 
 
+                            if p['id'] in sku_set:
+                                continue
+                            else:
+                                sku_set.add(p['id'])
+
+
                             result = [p['id']]
 
                             """
@@ -84,6 +94,11 @@ with open('shopstyle_products.csv', 'wb') as writefile:
 
                             if 'retailer' in p:
                                 result.append(p['retailer']['name'].encode('utf-8'))
+                            else:
+                                result.append("")
+
+                            if 'name' in p:
+                                result.append(p['name'].encode('utf-8'))
                             else:
                                 result.append("")
 
