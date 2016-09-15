@@ -8,8 +8,8 @@ API_KEY = "uid849-34126543-19"
 CATEGORY = "dresses"
 RETAILER = ""
 OFFSET = 0
-OFFSET_MAX = 100 # max that shopstyle sets
-LIMIT = 50 # max that shopstyle sets
+OFFSET_MAX = 29 # max that shopstyle sets, normally 100
+LIMIT = 30 # max that shopstyle sets, normally 50
 
 sku_set = set()
 
