@@ -13,6 +13,10 @@ LIMIT = 30 # max that shopstyle sets, normally 50
 
 sku_set = set()
 
+#Strips whitespace and turns all letters to lowercase.
+def unformat(s):
+    return ''.join(s.split()).lower()
+
 
 with open('shopstyle_products.csv', 'wb') as writefile:
     writer = csv.writer(writefile)
@@ -77,10 +81,13 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                                     combined_colors += ", " + c['name']
 
 
-                            if p['id'] in sku_set:
+                            #if p['id'] in sku_set:
+                            if unformat(p['name']) in sku_set:
                                 continue
+
                             else:
-                                sku_set.add(p['id'])
+                                #sku_set.add(p['id'])
+                                sku_set.add(unformat(p['name']))
 
 
                             result = [p['id']]
@@ -96,6 +103,8 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                                 result.append(p['retailer']['name'].encode('utf-8'))
                             else:
                                 result.append("")
+
+                            result.append(CATEGORY)
 
                             if 'name' in p:
                                 result.append(p['name'].encode('utf-8'))
