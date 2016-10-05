@@ -99,18 +99,6 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                                 result.append("")
                             """
 
-                            # In case a product falls under multiple categories, need to add all of them
-                            combined_categories = ""
-                            if len(p['categories']) > 0:
-                                combined_categories += p['categories'][0]['name']
-
-                                for c in p['categories'][1:]:  # Iterate over everything except the last item
-                                    combined_categories += ", " + c['name']
-
-                                result.append(combined_categories)
-                            else:
-                                result.append(CATEGORY)
-
                             # Adds name.
                             if 'name' in p:
                                 result.append(p['name'].encode('utf-8'))
@@ -125,7 +113,9 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                                     result.append(p['image']['sizes']['Best']['url'])
                                 else:
                                     result.append('no Best or Original image');
+                                    result.append('no Best or Original image');
                             else:
+                                result.append('no Best or Original image');
                                 result.append('no Best or Original image');
 
                             # Adds price
@@ -134,12 +124,25 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                             else:
                                 result.append("")
 
+                            # In case a product falls under multiple categories, need to add all of them
+                            combined_categories = ""
+                            if len(p['categories']) > 0:
+                                combined_categories += p['categories'][0]['name']
+
+                                for c in p['categories'][1:]:  # Iterate over everything except the last item
+                                    combined_categories += ", " + c['name']
+
+                                result.append(combined_categories)
+                            else:
+                                result.append(CATEGORY)
+
                             # Skip occasion
                             result.append("")
 
                             # Skip dress_code 
                             result.append("")
 
+                            # Add url
                             if 'pageUrl' in p:
                                 result.append(p['pageUrl'])
                             else:
