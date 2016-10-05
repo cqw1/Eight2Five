@@ -20,7 +20,7 @@ def unformat(s):
 
 with open('shopstyle_products.csv', 'wb') as writefile:
     writer = csv.writer(writefile)
-    writer.writerow(['sku_id', 'retailer', 'name', 'image_1', 'image_2', 'price', 'apparel', 'occasion', 'dress_code', 'url', 'discount', 'weather', 'geography', 'colors', 'accessory'])
+    writer.writerow(['sku_id', 'brand', 'name', 'image_1', 'image_2', 'price', 'apparel', 'occasion', 'dress_code', 'url', 'discount', 'weather', 'geography', 'colors', 'accessory'])
 
     with open('selected_retailers.csv', 'rb') as retailers_file:
         retailers_reader = csv.reader(retailers_file)
@@ -64,14 +64,7 @@ with open('shopstyle_products.csv', 'wb') as writefile:
 
                         for p in json_obj['products']:
 
-                            # In case a product falls under multiple categories, need to add all of them
-                            combined_categories = ""
-                            if len(p['categories']) > 0:
-                                combined_categories += p['categories'][0]['name']
-
-                                for c in p['categories'][1:]:  # Iterate over everything except the last item
-                                    combined_categories += ", " + c['name']
-
+                            """
                             # In case a product has multiple colors
                             combined_colors = ""
                             if len(p['colors']) > 0:
@@ -79,9 +72,10 @@ with open('shopstyle_products.csv', 'wb') as writefile:
 
                                 for c in p['colors'][1:]:  # Iterate over everything except the last item
                                     combined_colors += ", " + c['name']
+                            """
 
 
-                            #if p['id'] in sku_set:
+                            #if p['name'] in sku_set, keeps track of duplicates:
                             if unformat(p['name']) in sku_set:
                                 continue
 
@@ -92,24 +86,81 @@ with open('shopstyle_products.csv', 'wb') as writefile:
 
                             result = [p['id']]
 
-                            """
+                            # Adds brand
                             if 'brand' in p:
                                 result.append(p['brand']['name'].encode('utf-8'))
                             else:
                                 result.append("")
-                                """
 
+                            """
                             if 'retailer' in p:
                                 result.append(p['retailer']['name'].encode('utf-8'))
                             else:
                                 result.append("")
+                            """
 
-                            result.append(CATEGORY)
+                            # In case a product falls under multiple categories, need to add all of them
+                            combined_categories = ""
+                            if len(p['categories']) > 0:
+                                combined_categories += p['categories'][0]['name']
 
+                                for c in p['categories'][1:]:  # Iterate over everything except the last item
+                                    combined_categories += ", " + c['name']
+
+                                result.append(combined_categories)
+                            else:
+                                result.append(CATEGORY)
+
+                            # Adds name.
                             if 'name' in p:
                                 result.append(p['name'].encode('utf-8'))
                             else:
                                 result.append("")
+
+                            # Adds image_1 and image_2
+                            if 'image' in p:
+                                if 'Original' in p['image']['sizes']:
+                                    result.append(p['image']['sizes']['Original']['url'])
+                                elif 'Best' in p['image']['sizes']:
+                                    result.append(p['image']['sizes']['Best']['url'])
+                                else:
+                                    result.append('no Best or Original image');
+                            else:
+                                result.append('no Best or Original image');
+
+                            # Adds price
+                            if 'price' in p:
+                                result.append(p['price'])
+                            else:
+                                result.append("")
+
+                            # Skip occasion
+                            result.append("")
+
+                            # Skip dress_code 
+                            result.append("")
+
+                            if 'pageUrl' in p:
+                                result.append(p['pageUrl'])
+                            else:
+                                result.append("")
+
+                            # Skip discount 
+                            result.append("")
+
+                            # Skip weather 
+                            result.append("")
+
+                            # Skip geography 
+                            result.append("")
+
+                            # Skip colors 
+                            result.append("")
+
+                            # Skip accessory 
+                            result.append("")
+
+
 
                             #result.extend([p['name'].encode('utf-8'), p['image']['sizes']['Best']['url'].encode('utf-8'), "", p['price'].encode('utf-8'), combined_categories.encode('utf-8'), "", "", p['clickUrl'].encode('utf-8'), "", "", "", combined_colors.encode('utf-8'), ""])
                             #result.extend([p['name'].encode('utf-8'), p['image']['sizes']['Best']['url'].encode('utf-8'), "", p['price'].encode('utf-8'), combined_categories.encode('utf-8'), "", "", p['clickUrl'].encode('utf-8'), "", "", "", combined_colors.encode('utf-8'), ""])
