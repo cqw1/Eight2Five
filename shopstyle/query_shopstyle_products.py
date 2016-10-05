@@ -109,14 +109,16 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                             if 'image' in p:
                                 if 'Original' in p['image']['sizes']:
                                     result.append(p['image']['sizes']['Original']['url'])
+                                    result.append(p['image']['sizes']['Original']['url'])
                                 elif 'Best' in p['image']['sizes']:
                                     result.append(p['image']['sizes']['Best']['url'])
+                                    result.append(p['image']['sizes']['Best']['url'])
                                 else:
-                                    result.append('no Best or Original image');
-                                    result.append('no Best or Original image');
+                                    result.append('no Best or Original image')
+                                    result.append('no Best or Original image')
                             else:
-                                result.append('no Best or Original image');
-                                result.append('no Best or Original image');
+                                result.append('no Best or Original image')
+                                result.append('no Best or Original image')
 
                             # Adds price
                             if 'price' in p:
