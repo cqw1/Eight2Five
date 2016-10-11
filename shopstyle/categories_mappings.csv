@@ -1,0 +1,851 @@
+name,id
+Women's Fashion,women
+Clothing,womens-clothes
+Accessories,womens-accessories
+Belts,belts
+Gifts,gifts
+Gift Cards,gift-cards
+Gloves,gloves
+Hats,hats
+Scarves & Wraps,scarves
+Eyewear,womens-eyewear
+Eyeglasses,womens-eyeglasses
+Sunglasses,sunglasses
+Key Chains,key-chains
+Tech Accessories,womens-tech-accessories
+Umbrellas,womens-umbrellas
+Activewear,womens-athletic-clothes
+Activewear Jackets,athletic-jackets
+Activewear Pants,athletic-pants
+Activewear Shorts,athletic-shorts
+Sport Skirts,athletic-skirts
+Sport Bras & Underwear,sports-bras-and-underwear
+Sport Tops,athletic-tops
+Bridal,bridal
+Bride,bride
+Bridal Gowns,bridal-gowns
+Bridal Veils & Headpieces,bridal-veils
+Bridal Bags,bridal-bags
+Bridal Jewelry,bridal-jewelry
+Bridal Lingerie,bridal-lingerie
+Bridal Shoes,bridal-shoes
+Bridesmaid,bridesmaid
+Bridesmaid' Dresses,bridal-bridesmaid-dresses
+Bridesmaid' Bags,bridesmaid-bags
+Bridesmaid' Jewelry,bridesmaid-jewelry
+Mother of the Bride,bridal-mother
+Mother of the Bride' Dresses,bridal-mother-dresses
+Mother of the Bride' Bags,bridal-mother-bags
+Mother of the Bride' Jewelry,bridal-mother-jewelry
+Denim,jeans
+Bootcut Denim,bootcut-jeans
+Classic Denim,classic-jeans
+Cropped Denim,cropped-jeans
+Distressed Denim,distressed-jeans
+Flare Denim,flare-jeans
+Relaxed Denim,relaxed-jeans
+Skinny Denim,skinny-jeans
+Straight Denim,straight-leg-jeans
+Stretch Denim,stretch-jeans
+Dresses,dresses
+Bridal Dresses,bridal-dresses
+Bridal Gowns,wedding-dresses
+Bridesmaid Dresses,bridesmaid-dresses
+Mother of the Bride Dresses,mother-bride-dresses
+Cocktail Dresses,cocktail-dresses
+Day Dresses,day-dresses
+Evening Dresses,evening-dresses
+Intimates,womens-intimates
+Bras,bras
+Camisoles,camisoles
+Chemises,chemises
+Nightgowns,gowns
+Hosiery,hosiery
+Pajamas,pajamas
+Panties,panties
+Robes,robes
+Socks,socks
+Shapewear,shapewear
+Slippers,slippers
+Thongs,thongs
+Jackets,jackets
+Blazers,blazers
+Casual Jackets,casual-jackets
+Vests,vests
+Leather Jackets,leather-jackets
+Jewelry,jewelry
+Diamond Jewelry,diamond-jewelry
+Diamond Bracelets,diamond-bracelets
+Diamond Earrings,diamond-earrings
+Diamond Necklaces,diamond-necklaces
+Diamond Rings,diamond-rings
+Bracelets,bracelets
+Charms,charms
+Earrings,earrings
+Necklaces,necklaces
+Pins,brooches-and-pins
+Rings,rings
+Watches,watches
+Maternity Clothes,maternity-clothes
+Maternity Jeans,maternity-jeans
+Maternity Dresses,maternity-dresses
+Maternity Intimates,maternity-intimates
+Maternity Jackets,maternity-jackets
+Maternity Outerwear,maternity-outerwear
+Maternity Pants,maternity-pants
+Maternity Shorts,maternity-shorts
+Maternity Skirts,maternity-skirts
+Maternity Sweaters,maternity-sweaters
+Maternity Swimwear,maternity-swimsuits
+Maternity Tops,maternity-tops
+Outerwear,womens-outerwear
+Coats,coats
+Fur Coats,fur-and-shearling-coats
+Leather Coats,leather-and-suede-coats
+Puffers,puffer-coats
+Raincoats & Trenchcoats,raincoats-and-trenchcoats
+Wool Coats,wool-coats
+Pants,womens-pants
+Casual Pants,casual-pants
+Cropped Pants,cropped-pants
+Dress Pants,dress-pants
+Leggings,leggings
+Skinny Pants,skinny-pants
+Wide Leg Pants,wide-leg-pants
+Petites Clothing,petites
+Petite Jeans,petite-jeans
+Petite Dresses,petite-dresses
+Petite Intimates,petite-intimates
+Petite Jackets,petite-jackets
+Petite Outerwear,petite-outerwear
+Petite Pants,petite-pants
+Petite Shorts,petite-shorts
+Petite Skirts,petite-skirts
+Petite Sweatshirts,petite-sweatshirts
+Petite Sweaters,petite-sweaters
+Petite Swimwear,petite-swimsuits
+Petite Tops,petite-tops
+Plus Sizes,plus-sizes
+Plus Jeans,plus-size-jeans
+Plus Dresses,plus-size-dresses
+Plus Intimates,plus-size-intimates
+Plus Jackets,plus-size-jackets
+Plus Outerwear,plus-size-outerwear
+Plus Pants,plus-size-pants
+Plus Shorts,plus-size-shorts
+Plus Skirts,plus-size-skirts
+Plus Sweatshirts,plus-size-sweatshirts
+Plus Sweaters,plus-size-sweaters
+Plus Swimwear,plus-size-swimsuits
+Plus Tops,plus-size-tops
+Shorts,shorts
+Skirts,skirts
+Mini Skirts,mini-skirts
+Mid-length Skirts,mid-length-skirts
+Long Skirts,long-skirts
+Suits,womens-suits
+Sweaters,sweaters
+Cardigans,cardigan-sweaters
+Cashmere Sweaters,cashmere-sweaters
+Crewnecks & Scoopnecks,crewneck-sweaters
+Turtlenecks,turleneck-sweaters
+V-Neck Sweaters,v-neck-sweaters
+Swimwear,swimsuits
+One-Piece Swimwear,one-piece-swimsuits
+Two-Piece Swimwear,two-piece-swimsuits
+Cover-ups,swimsuit-coverups
+Sweats & Hoodies,sweatshirts
+Teen Girls' Clothes,teen-girls-clothes
+Teen Girls' Denim,teen-girls-jeans
+Teen Girls' Dresses,teen-girls-dresses
+Teen Girls' Intimates,teen-girls-intimates
+Teen Girls' Jackets,teen-girls-jackets
+Teen Girls' Outerwear,teen-girls-outerwear
+Teen Girls' Pants,teen-girls-pants
+Teen Girls' Shorts,teen-girls-shorts
+Teen Girls' Skirts,teen-girls-skirts
+Teen Girls' Sweats & Hoodies,teen-girls-sweatshirts
+Teen Girls' Sweaters,teen-girls-sweaters
+Teen Girls' Swimwear,teen-girls-swimsuits
+Teen Girls' Tops,teen-girls-tops
+Tops,womens-tops
+Button Front Tops,button-front-tops
+Camisoles,camisole-tops
+Cashmere Tops,cashmere-tops
+Halters,halter-tops
+Longsleeve Tops,longsleeve-tops
+Shortsleeve Tops,shortsleeve-tops
+Sleeveless Tops,sleeveless-tops
+Tanks,tank-tops
+Tees,tees-and-tshirts
+Tunics,tunic-tops
+Polos,polo-tops
+Bags,handbags
+Backpacks,backpacks
+Clutches,clutches
+Evening Bags,evening-handbags
+Hobos,hobo-bags
+Satchels,satchels
+Shoulder Bags,shoulder-bags
+Duffels & Totes,tote-bags
+Wallets,wallets
+Shoes,womens-shoes
+Athletic Shoes,shoes-athletic
+Boots,boots
+Evening Shoes,evening-shoes
+Flats,flats
+Mules & Clogs,mules-and-clogs
+Platforms,platforms
+Pumps,pumps
+Sandals,sandals
+Sneakers,womens-sneakers
+Wedges,wedges
+Beauty Products,womens-beauty
+Bath & Body,bath-body
+Body Cleansers,body-cleansers
+Bath & Shower Gel,bath-shower-gel
+Bubble Bath & Bath Oil,bubble-bath-bath-oil
+Soap,body-cleansers-soap
+Deodorant,deodorant
+Shave Cream,shave-cream
+Body Moisturizers,body-moisturizers
+Body Lotions & Creams,body-lotions-creams
+Body Oils,body-oils
+Treatments,body-treatments
+All Over Body Treatments Treatments,all-over-body-treatments
+Body Scrubs & Exfoliants,body-scrubs-exfoliants
+Cellulite Treatments,cellulite-treatments
+Neck & Decollete,neck-decollete
+Hand Treatments,hand-treatments
+Foot & Leg Treatments,foot-leg-treatments
+Tooth Care,tooth-care
+Tooth Whiteners,tooth-whiteners
+Toothpaste,toothpaste
+Gifts & Sets,bath-body-gift-sets
+Fragrances,perfume
+Hair Accessories,hair-accessories
+Hair Care,hair-care
+Conditioner,hair-conditioner
+Lightweight Conditioner,hair-conditioner-lightweight
+Intensive Conditioner,hair-conditioner-intensive
+Hair Styling Tools,hair-styling-tools
+Blow Dryers & Irons,blow-dryers-irons
+Brushes & Combs,hair-styling-tools-brushes-combs
+Styling Accessories,hair-styling-tools-styling-accessories
+Hair & Scalp Treatments,hair-scalp-treatments
+Shampoo,hair-shampoo
+Normal Hair Shampoo,hair-shampoo-normal
+Dry Hair Shampoo,hair-shampoo-dry
+Damaged or Treated Hair Shampoo,hair-shampoo-damaged-chemically-treated
+Shampoo Oily/Dandruff,hair-shampoo-oily-dandruff
+Styling Products,hair-styling-products
+Makeup,makeup
+Body Products,beauty-body-makeup
+Body Shimmer & Glitter,body-shimmer-glitter
+Body Makeup,body-makeup
+Eye Makeup,eye-makeup
+Eye Shadow,eye-shadow
+Eyes Shimmer & Glitter,eyes-shimmer-glitter
+Eyeliner,eyeliner
+Mascara,mascara
+False Eyelashes,false-eyelashes
+Eyebrow Enhancers,eyebrow-enhancers
+Eyes Concealer/Shadow Base,eyes-concealer-shadow-base
+Eyes Eye Makeup Remover,eye-makeup-remover
+Face Makeup,face-makeup
+Face Blush,blush
+Face Primer,face-primer
+Face Concealer,face-concealer
+Liquid Foundation,face-liquid-foundation
+Cream Foundation,face-cream-foundation
+Powder Foundation,face-powder-foundation
+Loose Powder,face-loose-powder
+Pressed Powder,face-pressed-powder
+Shine Control/Blotting Papers,face-shine-control-blotting-papers
+Face Bronzer,face-bronzer
+Face Luminizer,face-luminizer
+Face Shimmer & Glitter,face-shimmer-glitter
+Lip Products,lip-products
+Lip Gloss,lip-gloss
+Lip Plumpers,lip-plumpers
+Lipstick,lipstick
+Lip Stain,lip-stain
+Lip Pencils,lip-pencils
+Lip Treatments,lip-treatments
+Nail Products,nail-products
+Nail Treatments,nail-treatments
+Nail Polish,nail-polish
+Makeup Sets,makeup-sets
+Skin Care,skin-care
+Eye Care,eye-care
+Eyes Fine Lines & Wrinkles,eyes-fine-lines-wrinkles
+Eyes Dryness,eyes-dryness
+Dark Circles,eyes-dark-circles
+Eyes Puffiness,eyes-puffiness
+Eye Treatments,eye-treatments
+Face Care,face-care
+Face Makeup Removers,face-makeup-removers
+Face Cleansers,face-cleansers
+Face Toners,face-toners
+Face Moisturizers,face-moisturizers
+Face Tinted Moisturizers,face-tinted-moisturizers
+Lip Balm/Treatments,lip-balm-treatments
+Face Anti-Aging,face-anti-aging
+Face Oil/Blemish Control,face-oil-blemish-control
+Face Scrubs & Exfoliants,face-scrubs-exfoliants
+Face Masks,face-masks
+Face Skin Revitalizers,face-skin-revitalizers
+Face Skin Lighteners,face-skin-lighteners
+Face Night Treatments,face-night-treatments
+Sun Care,sun-care
+SPF 15 & Below,spf-15-below
+SPF 15 & Above,spf-15-above
+Sun Water Resistant,sun-water-resistant
+After Sun,after-sun
+Sun Bronzers & Self-Tanners,sun-bronzers-self-tanners
+Beauty Tools,beauty-tools
+Bags & Cases,beauty-tools-bags-cases
+Makeup & Travel Bags,makeup-travel-bags
+Brush Bags,bags-cases-brush-bags
+Train Cases,bags-cases-train-cases
+Refillables,bags-cases-refillables
+Brushes & Applicators,beauty-tools-brushes-applicators
+Face Brushes & Applicators,brushes-applicators-face
+Eyes Brushes & Applicators,brushes-applicators-eyes
+Lips Brushes & Applicators,brushes-applicators-lips
+Brushes & Applicators Sets,brushes-applicators-sets
+Brushes & Applicators Cleaners,brushes-applicators-cleaners
+Eyelash Curler,beauty-tools-eyelash-curler
+Foot Tools,beauty-tools-foot-tools
+Hair Removal,beauty-tools-hair-removal
+Nail Tools,beauty-tools-nail-tools
+Beauty Mirrors,beauty-tools-mirrors
+Tools Scissors & Shears,beauty-tools-scissors-shears
+Sharpeners,beauty-tools-sharpeners
+Skincare Tools,beauty-tools-skincare-tools
+Tweezers & Brow,beauty-tools-tweezers-brow
+Men's Fashion,men
+Clothing,mens-clothes
+Accessories,mens-accessories
+Belts,mens-belts
+Eyewear,mens-eyewear
+Eyeglasses,mens-eyeglasses
+Sunglasses,mens-sunglasses
+Gloves,mens-gloves
+Scarves,mens-scarves
+Hats,mens-hats
+Tech Accessories,mens-tech-accessories
+Umbrellas,mens-umbrellas
+Wallets,mens-wallets
+Athletic Clothes,mens-athletic
+Activewear Jackets,mens-athletic-jackets
+Activewear Pants,mens-athletic-pants
+Activewear Shirts,mens-athletic-shirts
+Activewear Shorts,mens-athletic-shorts
+Big & Tall,mens-big-and-tall
+Tall Coats,mens-big-and-tall-coats-and-jackets
+Tall Jeans,mens-big-and-tall-jeans
+Tall Pants,mens-big-and-tall-pants
+Tall Shirts,mens-big-and-tall-shirts
+Tall Shorts,mens-big-and-tall-shorts
+Tall Sportcoats,mens-big-and-tall-blazers
+Tall Suits,mens-big-and-tall-suits
+Tall Sweaters,mens-big-and-tall-sweaters
+Underwear & Socks,mens-big-and-tall-underwear-and-socks
+Jeans,mens-jeans
+Bootcut Jeans,mens-bootcut-jeans
+Distressed Jeans,mens-distressed-jeans
+Loose Jeans,mens-loose-jeans
+Low Rise Jeans,mens-low-rise-jeans
+Relaxed Jeans,mens-relaxed-jeans
+Slim Jeans,mens-slim-jeans
+Straight Leg Jeans,mens-straight-leg-jeans
+Outerwear,mens-outerwear
+Denim Jackets,mens-denim-jackets
+Jackets,mens-jackets
+Leather Jackets,mens-leather-and-suede-coats
+Overcoats & Trenchcoats,mens-overcoats-and-trenchcoats
+Wool Coats,mens-wool-coats
+Pants,mens-pants
+Cargo Pants,mens-cargo-pants
+Casual Pants,mens-casual-pants
+Chinos & Khakis,mens-chinos-and-khakis
+Dress Pants,mens-dress-pants
+Shirts,mens-shirts
+Dress Shirts,mens-dress-shirts
+Longsleeve Shirts,mens-longsleeve-shirts
+Shortsleeve Shirts,mens-shortsleeve-shirts
+Polos,mens-polo-shirts
+Tees,mens-tees-and-tshirts
+Shorts,mens-shorts
+Sleepwear,mens-sleepwear
+Pajamas,mens-pajamas
+Robes,mens-robes
+Slippers,mens-slippers
+Sportcoats,mens-blazers-and-sport-coats
+Suits,mens-suits
+Sweaters,mens-sweaters
+Cardigans & Zip Ups,mens-cardigan-sweaters
+Cashmere Sweaters,mens-cashmere-sweaters
+Crewneck Sweaters,mens-crewneck-sweaters
+Half-zip Sweaters,mens-half-zip-sweaters
+Turtleneck Sweaters,mens-turtleneck-sweaters
+V-neck Sweaters,mens-v-neck-sweaters
+Vests,mens-vests
+Sweats & Hoodies,mens-sweatshirts
+Swimwear,mens-swimsuits
+Ties,mens-ties
+Teen Guys' Clothes,teen-guys-clothes
+Teen Guys Jeans,teen-guys-jeans
+Teen Guys Outerwear,teen-guys-outerwear
+Teen Guys Pants,teen-guys-pants
+Teen Guys Shirts,teen-guys-shirts
+Teen Guys Shorts,teen-guys-shorts
+Teen Guys Sportcoats,teen-guys-blazers
+Teen Guys Suits,teen-guys-suits
+Teen Guys Sweaters,teen-guys-sweaters
+Teen Guys Swimwear,teen-guys-swimsuits
+Teen Guys Underwear & Socks,teen-guys-underwear-and-socks
+Underwear & Socks,mens-underwear-and-socks
+Briefs,mens-briefs
+Boxers,mens-boxers
+Socks,mens-socks
+Undershirts,mens-tee-shirts
+Watches & Jewelry,mens-watches-and-jewelry
+Cuff links,mens-cuff-links
+Jewelry,mens-jewelry
+Watches,mens-watches
+Bags,mens-bags
+Messenger Bags,mens-messenger-bags
+Totes,mens-tote-bags
+Business Bags,mens-business-bags
+Backpacks,mens-backpacks
+Gym & Sports Bags,mens-sports-bags
+Shoes,mens-shoes
+Athletic Shoes,mens-shoes-athletic
+Boots,mens-boots
+Sandals,mens-sandals
+Lace-up Shoes,mens-lace-up-shoes
+Slip-ons & Loafers,mens-slip-ons-shoes
+Sneakers,mens-sneakers
+Men's Grooming,mens-grooming
+Bath & Body,mens-bath-body
+Bath & Shower Gel,mens-bath-shower-gel
+Body Moisturizers,mens-body-moisturizers
+Cleansing Bars,mens-cleansing-bars
+Deodorants,mens-deodorants
+Hands & Feet Care,mens-hands-feet-care
+Tooth Care,mens-tooth-care
+Fragrances,mens-fragrances
+Hair Care,mens-hair-care
+Conditioners,mens-hair-conditioners
+Hair Styling Tools,mens-hair-styling-tools
+Hair Treatments,mens-hair-treatments
+Shampoos,mens-hair-shampoos
+Hair Styling Products,mens-hair-styling-products
+Shaving,mens-shaving
+Shaving Products,mens-shaving-products
+Post Shave,mens-post-shave
+Shaving Tools,mens-shaving-tools
+Skin Care,mens-skin-care
+"Kids' Nursery, Clothes and Toys",kids-and-baby
+Baby Gear,baby-gear
+Activity Gyms & Swings,baby-activity-gyms-swings
+Activity Centers & Jumpers,activity-centers-jumpers
+Bouncers,baby-bouncers
+Gyms & Playmats,baby-gyms-and-playmats
+Portable Beds & Playards,baby-playards
+Swings,baby-swings
+Baby Travel Accessories,baby-travel-accessories
+Baby Walkers,baby-walkers
+Baby Carriers,baby-carriers
+Backpack & Frame Baby Carriers,backpack-frame-baby-carriers
+Front Baby Carriers,front-baby-carriers
+Organic Baby Carriers,organic-baby-carriers
+Slings & Wraps,baby-slings-and-wraps
+Car Seats,baby-car-seats
+Booster Car Seats,booster-baby-car-seats
+Convertible Car Seats,convertible-baby-car-seats
+Infant Car Seats,infant-car-seats
+Baby Car Seats Accessories,baby-car-seat-accessories
+Baby Diapering,baby-diapering
+Diapers,baby-diapers
+Diaper Cakes,baby-diaper-cakes
+Diaper Pails & Refills,baby-diaper-pails-and-refills
+Diaper Bags,baby-diaper-bags
+Diaper Backpacks,baby-diaper-backpacks
+Diaper Messenger Bags,baby-diaper-messenger-bags
+Diaper Bag Totes,baby-diaper-tote-bags
+Diaper Bags For Dad,baby-diaper-bags-for-dad
+Baby Changing Pads,baby-changing-pads
+Baby Wipes & Accessories,baby-wipes-and-accessories
+Baby Feeding,baby-feeding
+Bibs & Burp Cloths,bibs-and-burp-cloths
+Bottle Feeding,bottle-feeding
+Feeding Bottles & Nipples,feeding-bottles-and-nipples
+Bottle Feeding Accessories,feeding-bottles-accessories
+Breastfeeding,breastfeeding
+High Chairs & Booster Seats,feeding-chairs-and-seats
+Baby Feeding Tableware,baby-feeding-tableware
+Baby's Health & Safety,baby-health-and-safety
+Baby Humidifiers & Purifiers,baby-humidifiers
+"Rails, Guards & Safety Gates",baby-gates
+Babyproofing,baby-household-safety
+Baby Monitors,baby-monitors
+Baby Pacifiers & Soothers,baby-pacifiers-and-soothers
+Strollers,baby-strollers
+Single Strollers,baby-single-strollers
+Double & Triple Strollers,baby-double-triple-strollers
+Jogging Strollers,baby-jogging-strollers
+Baby Travel Systems,baby-travel-systems
+Stroller Accessories,baby-stroller-accessories
+Kids Bath,kids-and-baby-bath
+Kids Bath & Body,kids-bath-and-body
+Kids Bath Accessories,kids-bath-accessories
+Kids & Baby Robes,kids-baby-robes
+Kids & Baby Towels,kids-baby-towels
+Bath Toys,kids-bath-toys
+Kids Bedroom,kids-bedroom
+Kids Bedding,kids-and-baby-bedding
+Boys Bedding,kids-boy-bedding
+Girls Bedding,kids-girl-bedding
+Kids Mattress Pads & Covers,kids-bedding-mattresses-pads-and-covers
+Kids Pillows,kids-bedding-pillows
+Kids Décor,kids-decor
+Kids Clocks,kids-decor-clocks
+Kids Curtains,kids-decor-curtains
+Kids Desk Accessories,kids-decor-desk-accessories
+Kids Hanging Décor & Wall Arts,kids-decor-hanging-decor
+Kids Lighting,kids-decor-lighting
+Kids Mirrors,kids-decor-mirrors
+Picture Frames,kids-decor-picture-frames
+Kids Rugs,kids-decor-rugs
+Kids Bedroom Furniture,kids-bedroom-furniture
+Kids Beds & Mattresses,kids-beds-and-mattresses
+Kids Bookcases,kids-bookcases
+"Kids Desks, Chairs & Rockers",kids-desks-charis
+Kids Dressers & Armoires,kids-dressers-and-armoires
+Kids Nightstands,kids-nightstands
+Kids Storage & Shelving,kids-storage-and-shelving
+Toy Boxes & Benches,toy-boxes-and-benches
+Nursery,nursery-kids-and-baby
+Bassinets & Cradles,bassinets-and-cradles
+Nursery Blankets,kids-bedding-blankets-and-quilts
+Changing Tables,changing-tables
+Cribs & Crib Sets,cribs
+Nursery Rockers,kids-rockers
+Kids' Clothes,kids-and-baby-clothing
+Boys' Clothing,boys
+Boys' Accessories,boys-accessories
+Boys' Bags,boys-bags
+Boys' Watches,boys-watches
+Boys' Bodysuits,boys-bodysuits
+Boys' Jeans,boys-jeans
+Boys' Matching Sets,boys-matching-sets
+Infant Boys' Onesies,boys-one-piece
+Boys' Outerwear,boys-outerwear
+Boys' Pants,boys-pants
+Boys' Shoes,boys-shoes
+Boys' Shorts,boys-shorts
+Boys' Sleepwear,boys-sleepwear
+Boys' Nightgowns,boys-nightgowns
+Boys' Pajamas,boys-pajamas
+Boys' Sleep Sacks,boys-sleep-sacks
+Boys' Sweaters,boys-sweaters
+Boys' Sweatshirts,boys-sweatshirts
+Boys' Swimwear,boys-swimsuits
+Boys' Tops,boys-tops
+Boys' Polos,boys-polos
+Boys' Shirts,boys-shirts
+Boys' Tees,boys-tees-and-tshirts
+Boys' Underwear & Socks,boys-underwear
+Girls' Clothing,girls
+Girls' Accessories,girls-accessories
+Girls' Bags,girls-bags
+Girls' Jewelry,girls-jewelry
+Girls' Watches,girls-watches
+Girls' Bodysuits,girls-bodysuits
+Girls' Dresses,girls-dresses
+Girls' Jeans,girls-jeans
+Girls' Matching Sets,girls-matching-sets
+Girls' Onesies,girls-one-piece
+Girls' Outerwear,girls-outerwear
+Girls' Pants,girls-pants
+Girls' Shoes,girls-shoes
+Girls' Shorts,girls-shorts
+Girls' Skirts & Skorts,girls-skirts
+Girls' Sleepwear,girls-sleepwear
+Girls' Nightgowns,girls-nightgowns
+Girls' Pajamas,girls-pajamas
+Girls' Sleep Sacks,girls-sleep-sacks
+Girls' Sweaters,girls-sweaters
+Girls' Sweatshirts,girls-sweatshirts
+Girls' Swimwear,girls-swimsuits
+Girls' Tops,girls-tops
+Girls' Shirts & Blouses,girls-shirts
+Girls' Polos,girls-polos
+Girls' Tees,girls-tees-and-tshirts
+Girls' Underwear & Socks,girls-underwear
+Toys,kids-toys
+Action Figures & Vehicles,kids-action-figures-and-vehicles
+Vehicle Toys,kids-miniature-vehicles
+Action & Toy Figures,kids-action-figures
+Models & Kits,kids-models-and-kits
+Baby & Infant Toys,baby-infant-toys
+Activity Gyms & Playmats,kids-playmats
+"Blocks, Stackers & Sorters",baby-blocks-stackers-and-sorters
+Crib Toys,crib-toys
+Early Learning Toys,baby-learning-toys
+Kids Rattles & Teethers,kids-rattles-and-teethers
+Soft & Plush Toys,soft-and-plush-toys
+Walkers & Baby Ride-Ons,walkers-and-ride-ons
+Kids Books Music & DVDs,kids-books-music-and-dvds
+Baby & Toddler Books,baby-and-toddler-books
+Books for Mom & Dad,books-for-mom-and-dad
+Children's DVDs,childrens-dvds
+Children's Music,childrens-music
+Dolls & Stuffed Animals,dolls-and-stuffed-animals
+Baby & Toddler Dolls,baby-and-toddler-dolls
+Children's Dolls,childrens-dolls
+Dollhouses & Accessories,dollhouses-and-accessories
+Stuffed Animals,kids-stuffed-animals
+Games & Puzzles,kids-games-and-puzzles
+Board Games,kids-board-games
+Puzzles,kids-puzzles
+Travel Games & Novelties,kids-travel-games
+Card Games,kids-card-games
+Learning & Activity Toys,learning-and-activity
+Arts & Crafts Toys,kids-arts-craft-toys
+"Bricks, Blocks & Building Toys",kids-bricks-blocks
+Educational Toys,kids-educational-toys
+Outdoor Sports & Games,kids-outdoor-sports-and-games
+Backyard & Garden Play,kids-backyard-and-garden-play
+Beach & Pool Play,kids-beach-and-pool-play
+Bikes & Ride-Ons Toys,kids-bikes-and-ride-ons
+Safety Gears,kids-safety-gears
+Sports & Activities,kids-sports-and-activities
+Pretend Play & Costumes,kids-pretend-plays-and-costumes
+Play Food & Cooking Toys,kids-play-food-and-cooking-toys
+Costumes & Dress-Up,kids-costumes
+Tools & Workshops Toys,kids-tools-toys
+Tents & Tunnels,kids-tents-and-tunnels
+Puppets,kids-puppets
+Home & Living,living
+Bath,bath
+Bath Accessories,bath-accessories
+Bath Hardware,bath-hardware
+Bath Rugs & Mats,bath-mats
+Shower Curtains,shower-curtains
+Soaps & Gift Sets,soaps-gift-sets
+Bath Robes,bath-robes
+Towels,towels
+Bedding,bedding
+Bed Skirts,bed-skirts
+Blankets,blankets
+Comforters & Duvets,comforters-duvets
+Mattress Pads,mattress-pads
+Pillows,pillows
+Pillowcases & Shams,pillowcases-shams
+Sheets,sheets
+Decor,accents
+Artwork,artwork
+Baskets & Boxes,accents-baskets-boxes
+Accent Bowls,accent-bowls
+Candles,candles-candleholders
+Clocks,clocks
+Decorative Pillows,decorative-pillows
+Solid Pillows,solid-pillows
+Striped Pillows,striped-pillows
+Desktop Decor,accents-desktop
+Desktop Books,desktop-books
+Desk Sets,desk-sets
+Journals & Planners,journals-planners
+Paperweights,paperweights
+Photo Albums,photo-albums
+Stationery,stationery
+Drapery,drapery
+Drapery Hardware,drapery-hardware
+Panels,panels
+Shades,shades
+Sheers,sheers
+Figurines,figurines
+Frames,frames
+Garden Decor,garden
+Home Fragrance,home-fragrance
+Home Hardware,home-hardware
+Door Hardware,door-hardware
+Hinges & Latches,hinges-latches
+Hooks,hooks
+Knobs,knobs
+Pulls,pulls
+Switch Plates,switch-plates
+Mirrors,mirrors
+Floor Mirrors,mirrors-floor
+Wall Mirrors,mirrors-wall
+Seasonal Decor,accents-seasonal
+Throws,accents-throws
+Vases,vases
+Furniture,furniture
+Living Room Furniture,living-room-furniture
+Living Room Benches,livingroom-benches
+Bookcases,bookcases
+Living Room Chairs,livingroom-chairs
+Coffee Tables,coffee-tables
+Ottomans,ottomans
+Sectionals,sectionals
+Side & End Tables,side-end-tables
+Sofas,sofas
+Living Room Trunks,livingroom-trunks
+Wall Units & Storage,living-wall-units-storage
+Bedroom Furniture,bedroom-furniture
+Armoires,armoires
+Beds,beds
+Bedroom Benches,bedroom-benches
+Dressers,dressers
+Headboards,headboards
+Mattresses,mattresses
+Nightstands,nightstands
+Vanities,vanities
+Dining Room Furniture,dining-room-furniture
+Bar Furniture,bar-furniture
+Consoles & Buffets,consoles-buffets
+Dining Cabinets,dining-cabinets
+Dining Chairs,dining-chairs
+Dining Tables,dining-tables
+Home Office Furniture,home-office-furniture
+Desks,desks
+File Cabinets,file-cabinets
+Office Chairs,office-chairs
+Office Storage,office-storage
+Office Tables,office-tables
+Bathroom Furniture,bathroom-furniture
+Bathroom Cabinets,bathroom-cabinets
+Bathroom Shelves,bathroom-shelves
+Sinks & Washstands,sinks-washstands
+Tubs,tubs
+Outdoor Furniture,outdoor-furniture
+Outdoor Chairs,outdoor-chairs
+Outdoor Chaises & Benches,outdoor-chaises-benches
+Outdoor Coffee & Side Tables,outdoor-coffee-side-tables
+Outdoor Furniture Covers,outdoor-furniture-covers
+Hammocks & Swings,hammocks-swings
+Outdoor Pillows & Cushions,outdoor-pillows-cushions
+Outdoor Tables,outdoor-tables
+Outdoor Umbrellas,outdoor-umbrellas
+Kitchen,kitchen
+Kitchen Appliances,kitchen-appliances
+Blenders & Juicers,blenders-juicers
+Food Processors,food-processors
+Indoor Grills,indoor-grills
+Mixers & Accessories,mixers-accessories
+"Slow, Rice & Pressure Cookers",slow-rice-pressure-cookers
+Toasters & Ovens,toasters-ovens
+Bakeware,bakeware
+Bakeware Sets,bakeware-sets
+Cake Pans,cake-pans
+Mixing Bowls,mixing-bowls
+Muffin Pans & Sheets,muffin-pans-sheets
+Pie & Tart Pans,pie-tart-pans
+Kitchen Cleaning,kitchen-cleaning
+Cleaning Supplies,cleaning-supplies
+Trash Cans,trash-cans
+"Coffee, Tea & Espresso",coffee-tea
+Coffee & Tea Accessories,coffee-tea-accessories
+Coffee Makers,coffee-makers
+Espresso Machines,espresso-machines
+Coffee Grinders,coffee-grinders
+Tea Kettles,tea-kettles
+Cookware,cookware
+Braisers & Roasters,braisers-roasters
+Casseroles & Dutch Ovens,casseroles-dutch-ovens
+Chef's Pans,chefs-pans
+Cookware Sets,cookware-sets
+Fry & Saute Pans,fry-saute-pans
+Griddles & Grill Pans,griddles-grill-pans
+Saucepans,saucepans
+Stockpots & Steamers,stockpots-steamers
+Strainers & Colanders,strainers-colanders
+Kitchen Knives & Cutlery,kitchen-cutlery
+Kitchen Knives,kitchen-knives
+Knife Sets,knife-sets
+Sharpeners,sharpeners
+Steak Knives,steak-knives
+Cookbooks,cookbooks
+Kitchen Linens,kitchen-linens
+Aprons,aprons
+Dish Towels,dish-towels
+Pot Holders,pot-holders
+Kitchen Storage,kitchen-storage
+Storage Containers,storage-containers
+Kitchen Organizers,kitchen-organizers
+Pot Racks,pot-racks
+Spice Racks,spice-racks
+Wine Storage,wine-storage
+Kitchen Tools,kitchen-tools-gadgets
+Can Openers,can-openers
+Cooking Tools,cooking-tools
+Cutting Boards,cutting-boards
+Grilling Tools,grilling-tools
+Measuring Tools,kitchen-tools-and-gadgets-measuring
+Pastry & Baking Tools,kitchen-pastry-baking-tools
+Kitchen Timers,timers
+Lighting,accent-lighting
+Bathroom Lighting,bathroom-lighting
+Ceiling Fans,ceiling-fans
+Ceiling Lighting,ceiling-lighting
+Desk Lamps,desk-lamps
+Floor Lamps,floor-lamps
+Lamp Shades,lamp-shades
+Outdoor Lighting,outdoor-lighting
+Table Lamps,table-lamps
+Wall Lighting,wall-lighting
+Rugs,rugs
+Floor Runners,floor-runners
+Indoor Rugs,rugs-indoor
+Outdoor Rugs,rugs-outdoor
+Rug Pads,rug-pads
+Tabletop,dining
+Bar,bar
+Bar Accessories,bar-accessories
+Coasters,coasters
+Cocktail Shakers,cocktail-shakers
+Corkscrews & Openers,corkscrews-openers
+Wine Buckets & Coolers,wine-buckets-coolers
+Dinnerware,dinnerware
+Casual Dining,casual-dining
+Fine China,fine-china
+Drinkware,drinkware
+Beer Glasses,beer-glasses
+Brandy Glasses,brandy-glasses
+Carafes & Decanters,carafes-decanters
+Cups & Mugs,cups-mugs
+Drinkware Flutes,drinkware-flutes
+Jugs & Pitchers,jugs-pitchers
+Margarita Glasses,margarita-glasses
+Martini Glasses,martini-glasses
+Tumblers & Water Glasses,tumblers-water-glasses
+Wine Glasses,wine-glasses
+Flatware,flatware
+Flatware Chests,flatware-chests
+Flatware Sets,flatware-sets
+Serving Pieces,dining-serving
+"Cake, Pie & Dessert Servers",serving-cake-pie-dessert
+Cheese Boards & Slicers,cheese-boards
+Salt & Pepper Shakers,salt-pepper
+Serving Bowls,serving-bowls
+Serving Dishes,serving-dishes
+Serving Utensils,serving-utensils
+Trays & Platters,trays-platters
+Table Linens,table-linens
+Napkin Rings & Holders,napkin-rings-holders
+Napkins,napkins
+Placemats,placemats
+Runners,runners
+Tablecloths,tablecloths
+Luggage,luggage
+Carry-on Luggage,carry-on-luggage
+Travel Duffels & Totes,travel-duffels-and-totes
+Garment Bags,garment-bags
+Laptop Cases,laptop-cases
+Luggage Sets,luggage-sets
+Rolling Luggage,rolling-luggage

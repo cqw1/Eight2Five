@@ -341,7 +341,11 @@ class Item(ndb.Model):
     sku_id = ndb.IntegerProperty(required=True)
 
     name = ndb.StringProperty(required=True)
-    brand = ndb.StringProperty(required=True, choices=BRANDS)
+
+    # TODO. uncomment when we've figured out brands from shopstyle
+    #brand = ndb.StringProperty(required=True, choices=BRANDS)
+    brand = ndb.StringProperty(required=True)
+
     price = ndb.FloatProperty(required=True)
 
 
@@ -932,7 +936,8 @@ class DatastoreHandler(webapp2.RequestHandler):
 
             #================================================================== ITEM === 
 
-            with open('sku_database_v1.csv', 'rb') as csvfile:
+            #with open('sku_database_v1.csv', 'rb') as csvfile:
+            with open('shopstyle/shopstyle_products.csv', 'rb') as csvfile:
                 reader = csv.reader(csvfile)
                 first = True
                 keys = []
@@ -955,6 +960,7 @@ class DatastoreHandler(webapp2.RequestHandler):
                                 d[keys[r]] = row[r]
 
                         logging.info(row)
+                        """
                         # Reading in empty rows now? Temporary patch.
                         if d['sku_id'] != '' :
                             item = Item(
@@ -974,6 +980,30 @@ class DatastoreHandler(webapp2.RequestHandler):
                                 description='Insert description.',
                                 img_1_src='/images/items/' + d['image_1'],
                                 img_2_src='/images/items/' + d['image_2'],
+                                external_src=d['url'],
+                                smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
+                                date=datetime.date(2016, 1, 10))
+                            item.put()
+                        """
+                        # Reading in empty rows now? Temporary patch.
+                        if d['sku_id'] != '' :
+                            item = Item(
+                                sku_id=int(d['sku_id']),
+                                name=d['name'],
+                                brand=d['brand'],
+                                apparels=d['apparel'],
+                                price=float(d['price']),
+                                industries=['consulting'],
+                                dress_codes=d['dress_code'],
+                                occasions=d['occasion'],
+                                discount=d['discount'],
+                                weather=d['weather'],
+                                geography=d['geography'],
+                                colors=d['colors'],
+                                accessories=d['accessory'],
+                                description='Insert description.',
+                                img_1_src=d['image_1'],
+                                img_2_src=d['image_2'],
                                 external_src=d['url'],
                                 smaller_imgs=['/images/charmanderllama.png', '/images/charmeleonllama.png', '/images/charizardllama.png'],
                                 date=datetime.date(2016, 1, 10))

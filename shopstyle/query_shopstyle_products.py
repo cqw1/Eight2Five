@@ -90,7 +90,7 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                             if 'brand' in p:
                                 result.append(p['brand']['name'].encode('utf-8'))
                             else:
-                                result.append("")
+                                continue
 
                             """
                             if 'retailer' in p:
@@ -103,7 +103,7 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                             if 'name' in p:
                                 result.append(p['name'].encode('utf-8'))
                             else:
-                                result.append("")
+                                continue
 
                             # Adds image_1 and image_2
                             if 'image' in p:
@@ -117,15 +117,15 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                                     result.append('no Best or Original image')
                                     result.append('no Best or Original image')
                             else:
-                                result.append('no Best or Original image')
-                                result.append('no Best or Original image')
+                                continue
 
                             # Adds price
                             if 'price' in p:
                                 result.append(p['price'])
                             else:
-                                result.append("")
+                                continue
 
+                            """
                             # In case a product falls under multiple categories, need to add all of them
                             combined_categories = ""
                             if len(p['categories']) > 0:
@@ -137,6 +137,10 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                                 result.append(combined_categories)
                             else:
                                 result.append(CATEGORY)
+                            """
+
+                            # TODO. implement category mappings.
+                            result.append("dress")
 
                             # Skip occasion
                             result.append("")
@@ -148,7 +152,7 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                             if 'pageUrl' in p:
                                 result.append(p['pageUrl'])
                             else:
-                                result.append("")
+                                continue
 
                             # Skip discount 
                             result.append("")
