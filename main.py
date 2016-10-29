@@ -949,6 +949,10 @@ class DatastoreHandler(webapp2.RequestHandler):
                         # Make dictionary first
                         d = {}
                         for r in range(len(row)):
+                            # TODO: remove when we're not using an extra column 
+                            # to display retailers for shopstyle
+                            if r == len(row) - 1:
+                                continue
                             # Brands are case sensitive. but others aren't.
                             if keys[r] != 'brand' and keys[r] != 'image_1' and keys[r] != 'image_2' and keys[r] != 'url':
                                 row[r] = row[r].lower()

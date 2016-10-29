@@ -53,7 +53,10 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                     while OFFSET <= OFFSET_MAX:
                         print "offset: " + str(OFFSET)
 
-                        URL = "http://api.shopstyle.com/api/" + VERSION + "/" + METHOD_NAME + "/?pid=" + API_KEY +"&cat=" + CATEGORY + "&offset=" + str(OFFSET) + "&limit=" + str(LIMIT) + "&fl=r" + RETAILER
+                        URL = "http://api.shopstyle.com/api/" + VERSION + "/" + METHOD_NAME + "/?pid=" + API_KEY +"&cat=" + CATEGORY + "&offset=" + str(OFFSET) + "&limit=" + str(LIMIT) + "&fl=r" + RETAILER + "&fl=p20:32"
+                        #URL = "http://api.shopstyle.com/api/" + VERSION + "/" + METHOD_NAME + "/?pid=" + API_KEY +"&cat=" + CATEGORY + "&offset=" + str(OFFSET) + "&limit=" + str(LIMIT) + "&fl=r" + RETAILER 
+                        # &fl=p20:32 = $0-500. Basing it off of search url from 
+                        # shopstylecollective
                         print "URL: " + URL
 
                         # Get the response from the api call
@@ -61,8 +64,11 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                         json_string = response.read()
                         json_obj = json.loads(json_string)
 
+                        #print "found " + str(len(json_obj['products'])) + " products"
+
 
                         for p in json_obj['products']:
+                            #print "sku set size " + str(len(sku_set))
 
                             """
                             # In case a product has multiple colors
@@ -77,12 +83,12 @@ with open('shopstyle_products.csv', 'wb') as writefile:
 
                             #if p['name'] in sku_set, keeps track of duplicates:
                             if unformat(p['name']) in sku_set:
+                                print "already in sku_set"
                                 continue
 
                             else:
                                 #sku_set.add(p['id'])
                                 sku_set.add(unformat(p['name']))
-
 
                             result = [p['id']]
 
@@ -91,13 +97,6 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                                 result.append(p['brand']['name'].encode('utf-8'))
                             else:
                                 continue
-
-                            """
-                            if 'retailer' in p:
-                                result.append(p['retailer']['name'].encode('utf-8'))
-                            else:
-                                result.append("")
-                            """
 
                             # Adds name.
                             if 'name' in p:
@@ -149,8 +148,8 @@ with open('shopstyle_products.csv', 'wb') as writefile:
                             result.append("")
 
                             # Add url
-                            if 'pageUrl' in p:
-                                result.append(p['pageUrl'])
+                            if 'clickUrl' in p:
+                                result.append(p['clickUrl'])
                             else:
                                 continue
 
@@ -168,6 +167,12 @@ with open('shopstyle_products.csv', 'wb') as writefile:
 
                             # Skip accessory 
                             result.append("")
+
+                            # Record retailer 
+                            if 'retailer' in p:
+                                result.append(p['retailer']['name'].encode('utf-8'))
+                            else:
+                                result.append("")
 
 
 
